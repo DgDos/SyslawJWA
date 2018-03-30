@@ -8,11 +8,10 @@ package Controller;
 import Dao.UsuarioDAO;
 import Model.Usuario;
 import Util.Encription;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -36,7 +35,8 @@ public class Register extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String correo=request.getParameter("correo");
             UsuarioDAO u=new UsuarioDAO();
-            out.print(u.isUser(correo));
+            Gson gson=new Gson();
+            out.print(gson.toJson(u.isUser(correo)));
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
