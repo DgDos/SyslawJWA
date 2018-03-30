@@ -91,6 +91,7 @@ public class DemandaDAO {
             d.setDte_apo_tar_pro(rs.getInt("dte_apo_tar_pro"));
             d.setDte_dir_not(rs.getString("dte_dir_not"));
             d.setDte_email(rs.getString("dte_email"));
+                        //faltan los dem
             d.setPretensiones(rs.getString("pretensiones"));
             d.setHechos(rs.getString("hechos"));
             d.setDepende_cumplimiento(rs.getBoolean("depende_cumplimiento"));
@@ -136,7 +137,7 @@ public class DemandaDAO {
         preparedStatement.setString(13, d.getDte_apo_nom());
         preparedStatement.setInt(14, d.getDte_apo_id_tipo());
         preparedStatement.setInt(15, d.getDte_apo_id());
-        preparedStatement.setInt(16, d.getDte_apo_tar_pro());
+        preparedStatement.setInt(16, d.getDte_apo_tar_pro());   
         preparedStatement.setString(17, d.getDte_dir_not());
         preparedStatement.setString(18, d.getDte_email());
         preparedStatement.setString(19, d.getDem_nom());
@@ -144,12 +145,12 @@ public class DemandaDAO {
         preparedStatement.setBoolean(21, d.getDem_rep_tiene());
         preparedStatement.setString(22, d.getDem_rep_nom());
         preparedStatement.setBoolean(23, d.getDem_apo_tiene());
-        preparedStatement.setString(24, d.getDem_apo_nom());
+        preparedStatement.setString(24, d.getDem_apo_nom());  
         preparedStatement.setString(25, d.getDem_dir_not());
         preparedStatement.setString(26, d.getDem_email());
         preparedStatement.setString(27, d.getPretensiones());
         preparedStatement.setString(28, d.getHechos());
-        preparedStatement.setBoolean(29, d.getDepende_cumplimiento());
+        preparedStatement.setBoolean(29, d.getDepende_cumplimiento());       
         preparedStatement.setBoolean(30, d.getTengo_pruebas());
         preparedStatement.setString(31, d.getPruebas());
         preparedStatement.setBoolean(32, d.getEstaba_obligado());

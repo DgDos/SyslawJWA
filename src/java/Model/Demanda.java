@@ -445,6 +445,11 @@ public class Demanda {
         this.id_autoguardado = id_autoguardado;
     }
 
+    @Override
+    public String toString() {
+        return "Demanda{" + "id_demanda=" + id_demanda + ", id_usuario=" + id_usuario + ", id_ayudante=" + id_ayudante + ", titulo=" + titulo + ", juez_nombre=" + juez_nombre + ", dte_nom=" + dte_nom + ", dte_ciudad=" + dte_ciudad + ", dte_id_tipo=" + dte_id_tipo + ", dte_id=" + dte_id + ", dte_rep_tiene=" + dte_rep_tiene + ", dte_rep_nom=" + dte_rep_nom + ", dte_rep_id_tipo=" + dte_rep_id_tipo + ", dte_rep_id=" + dte_rep_id + ", dte_apo_tiene=" + dte_apo_tiene + ", dte_apo_nom=" + dte_apo_nom + ", dte_apo_id_tipo=" + dte_apo_id_tipo + ", dte_apo_id=" + dte_apo_id + ", dte_apo_tar_pro=" + dte_apo_tar_pro + ", dte_dir_not=" + dte_dir_not + ", dte_email=" + dte_email + ", dem_nom=" + dem_nom + ", dem_ciu=" + dem_ciu + ", dem_rep_tiene=" + dem_rep_tiene + ", dem_rep_nom=" + dem_rep_nom + ", dem_apo_tiene=" + dem_apo_tiene + ", dem_apo_nom=" + dem_apo_nom + ", dem_dir_not=" + dem_dir_not + ", dem_email=" + dem_email + ", pretensiones=" + pretensiones + ", hechos=" + hechos + ", depende_cumplimiento=" + depende_cumplimiento + ", tengo_pruebas=" + tengo_pruebas + ", pruebas=" + pruebas + ", estaba_obligado=" + estaba_obligado + ", fundamentos=" + fundamentos + ", anexos=" + anexos + ", solicito_cautelares=" + solicito_cautelares + ", cautelares_que_solicita=" + cautelares_que_solicita + ", porcentaje=" + porcentaje + ", fecha_creacion=" + fecha_creacion + ", fecha_modificacion=" + fecha_modificacion + ", fecha_autoguardado=" + fecha_autoguardado + ", id_autoguardado=" + id_autoguardado + '}';
+    }
+
     
 
     
