@@ -149,8 +149,8 @@ function preLoadDemanda(id_demanda) {
             }
 
             $('#dte_apo_nom').val(json.dte_apo_nom);
-            $('#dte_apo_id_tipo').val(json.dte_apo_id_tipo);
-            $('input:radio[name=dte_apo_id]').val([json.dte_apo_id]);
+            $('input:radio[name=dte_apo_id_tipo]').val([json.dte_apo_id_tipo]);
+            $('#dte_apo_id').val(json.dte_apo_id);
             $('#dte_apo_tar_pro').val(json.dte_apo_tar_pro);
             $('#dte_dir_not').val(json.dte_dir_not);
             $('#dte_email').val(json.dte_email);
