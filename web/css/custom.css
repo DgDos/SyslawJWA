@@ -724,3 +724,7 @@ input:-webkit-autofill {
 .checkbox-label {
     margin-bottom: 9px !important;
 }
+
+.hidden-vis {
+    visibility: hidden;
+}

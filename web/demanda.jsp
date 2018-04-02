@@ -46,7 +46,14 @@
         <!--WaitMe Css-->
         <link href="plugins/waitme/waitMe.css" rel="stylesheet" />
 
-        <style>.modal-backdrop.in { opacity: .4;}</style>
+        <style>
+            .fadeIn {
+                -webkit-animation: fadeIn 0.5s; /* Safari 4+ */
+                -moz-animation:    fadeIn 0.5s; /* Fx 5+ */
+                -o-animation:      fadeIn 0.5s; /* Opera 12+ */
+                animation:         fadeIn 0.5s; /* IE 10+, Fx 29+ */
+            }
+        </style>
 
 
     </head>
@@ -196,6 +203,8 @@
 
                         <div class="body" id="dashboard-container" style="background-color: #f1f1f1;">  
                             <h2 style="color: #138fc3;">Título de la demanda</h2>
+                            <input type="text" id="id_demanda" class="form-control" value="id_demanda" disabled>
+                            <input type="text" id="titulo" class="form-control" value="titulo" disabled>
                             <div class="card">
                                 <div class="body">
                                     <form id="demanda_wizard" autocomplete="off">
@@ -240,29 +249,19 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12">
-                                                    <label for="juez_nombre">Señor, juez municipal de</label>
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                            <input type="" id="juez_nombre" class="form-control" placeholder="Ingrese la ciudad del juez...">
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <div class="col-md-6">
                                                     <label for="dte_id_tipo">Tipo de id del demandante</label>
                                                     <div class="id-type-radio">
-                                                        <input name="dte_id_tipo" type="radio" id="radio1" value="0" class="with-gap radio-col-blue" checked="">
-                                                        <label for="radio1">C.C</label>
-                                                        <input name="dte_id_tipo" type="radio" id="radio2" value="1" class="with-gap radio-col-blue">
-                                                        <label for="radio2">NIT</label>
-                                                        <input name="dte_id_tipo" type="radio" id="radio3" value="2" class="with-gap radio-col-blue">
-                                                        <label for="radio3">TI</label>
-                                                        <input name="dte_id_tipo" type="radio" id="radio4" value="3" class="with-gap radio-col-blue">
-                                                        <label for="radio4">PASAPORTE</label>
+                                                        <input name="dte_id_tipo" type="radio" id="radio_dte_id_tipo_1" value="0"  class="with-gap radio-col-blue" checked="">
+                                                        <label for="radio_dte_id_tipo_1">C.C</label>
+                                                        <input name="dte_id_tipo" type="radio" id="radio_dte_id_tipo_2" value="1" class="with-gap radio-col-blue">
+                                                        <label for="radio_dte_id_tipo_2">NIT</label>
+                                                        <input name="dte_id_tipo" type="radio" id="radio_dte_id_tipo_3" value="2" class="with-gap radio-col-blue">
+                                                        <label for="radio_dte_id_tipo_3">TI</label>
+                                                        <input name="dte_id_tipo" type="radio" id="radio_dte_id_tipo_4" value="3" class="with-gap radio-col-blue">
+                                                        <label for="radio_dte_id_tipo_4">PASAPORTE</label>
                                                     </div>
-                                                </div>
-
-
+                                                </div> 
                                                 <div class="col-md-6">
                                                     <label for="dte_id">Numero del demandante</label>
                                                     <div class="form-group">
@@ -272,8 +271,6 @@
                                                     </div>
                                                 </div>
 
-
-
                                                 <div class="col-md-12" style="padding: 0px; margin: 0px;">
                                                     <h3 class="form-section-title">Representante legal</h3>
                                                 </div>
@@ -282,7 +279,7 @@
                                                     <input type="checkbox" id="dte_rep_tiene" class="filled-in chk-col-blue">
                                                     <label for="dte_rep_tiene">Demandante tiene representante legal</label>
                                                 </div>
-                                                <div class="hidden" id="dte_rep_tiene_section">
+                                                <div id="dte_rep_tiene_section" class="animated fadeIn">
                                                     <div class="col-md-6">
                                                         <label for="dte_rep_nom">Nombre del representante</label>
                                                         <div class="form-group">
@@ -294,18 +291,16 @@
                                                     <div class="col-md-6">
                                                         <label for="dte_rep_id_tipo">Tipo de id del representante</label>
                                                         <div class="id-type-radio">
-                                                            <input name="dte_rep_id_tipo" type="radio" id="radio1" value="0" class="with-gap radio-col-blue" checked="">
-                                                            <label for="radio1">C.C</label>
-                                                            <input name="dte_rep_id_tipo" type="radio" id="radio2" value="1" class="with-gap radio-col-blue">
-                                                            <label for="radio2">NIT</label>
-                                                            <input name="dte_rep_id_tipo" type="radio" id="radio3" value="2" class="with-gap radio-col-blue">
-                                                            <label for="radio3">TI</label>
-                                                            <input name="dte_rep_id_tipo" type="radio" id="radio4" value="3" class="with-gap radio-col-blue">
-                                                            <label for="radio4">PASAPORTE</label>
+                                                            <input name="dte_rep_id_tipo" type="radio" id="radio_dte_rep_id_tipo_1" value="0"  class="with-gap radio-col-blue" checked="">
+                                                            <label for="radio_dte_rep_id_tipo_1">C.C</label>
+                                                            <input name="dte_rep_id_tipo" type="radio" id="radio_dte_rep_id_tipo_2" value="1" class="with-gap radio-col-blue">
+                                                            <label for="radio_dte_rep_id_tipo_2">NIT</label>
+                                                            <input name="dte_rep_id_tipo" type="radio" id="radio_dte_rep_id_tipo_3" value="2" class="with-gap radio-col-blue">
+                                                            <label for="radio_dte_rep_id_tipo_3">TI</label>
+                                                            <input name="dte_rep_id_tipo" type="radio" id="radio_dte_rep_id_tipo_4" value="3" class="with-gap radio-col-blue">
+                                                            <label for="radio_dte_rep_id_tipo_4">PASAPORTE</label>
                                                         </div>
                                                     </div>
-
-
                                                     <div class="col-md-6">
                                                         <label for="dte_rep_id">Numero del representante</label>
                                                         <div class="form-group">
@@ -316,6 +311,77 @@
                                                     </div>
                                                 </div>
 
+                                                <div class="col-md-12" style="padding: 0px; margin: 0px;">
+                                                    <h3 class="form-section-title">Apoderado</h3>
+                                                </div>
+                                                <div class="col-md-6">    
+                                                    <label class="checkbox-label">Apoderado</label><br>
+                                                    <input type="checkbox" id="dte_apo_tiene" class="filled-in chk-col-blue">
+                                                    <label for="dte_apo_tiene">Demandante tiene apoderado</label>
+                                                </div>
+                                                <div id="dte_apo_tiene_section" class="animated fadeIn">
+                                                    <div class="col-md-6">
+                                                        <label for="dte_apo_nom">Nombre del apoderado</label>
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="dte_apo_nom" class="form-control" placeholder="Ingrese el nombre...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="dte_apo_id_tipo">Tipo de identificación</label>
+                                                        <div class="id-type-radio">
+                                                            <input name="dte_apo_id_tipo" type="radio" id="radio_dte_apo_id_tipo_1" value="0"  class="with-gap radio-col-blue" checked="">
+                                                            <label for="radio_dte_apo_id_tipo_1">C.C</label>
+                                                            <input name="dte_apo_id_tipo" type="radio" id="radio_dte_apo_id_tipo_2" value="1" class="with-gap radio-col-blue">
+                                                            <label for="radio_dte_apo_id_tipo_2">NIT</label>
+                                                            <input name="dte_apo_id_tipo" type="radio" id="radio_dte_apo_id_tipo_3" value="2" class="with-gap radio-col-blue">
+                                                            <label for="radio_dte_apo_id_tipo_3">TI</label>
+                                                            <input name="dte_apo_id_tipo" type="radio" id="radio_dte_apo_id_tipo_4" value="3" class="with-gap radio-col-blue">
+                                                            <label for="radio_dte_apo_id_tipo_4">PASAPORTE</label>
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-6">
+                                                        <label for="dte_apo_id">Numero de identificación</label>
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="dte_apo_id" class="form-control" placeholder="Número de identificación...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="dte_apo_tar_pro">Tarjeta profesional No.</label>
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="dte_apo_tar_pro" class="form-control" placeholder="Número de tarjeta profesional...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="dte_dir_not">Dirección donde recibe notificaciones:</label>
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="dte_dir_not" class="form-control" placeholder="Dirección de notificaciones...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <label for="dte_email">Dirección de correo electrónico</label>
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="email" id="dte_email" class="form-control" placeholder="Correo electrónico...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+
+
+
+
+                                                </div>
+
 
 
                                         </section>
@@ -323,66 +389,26 @@
                                         <h2>Demandado</h2>
                                         <section>
 
-                                            <div class="col-md-12">                                               
-                                                <input type="checkbox" id="dte_rep_tiene" class="filled-in chk-col-blue">
-                                                <label for="dte_rep_tiene">Demandante tiene representante legal</label>
-                                            </div>
-
-                                            <div class="col-md-12" style="padding: 0px; margin: 0px;">
-                                                <h3 class="form-section-title">Apoderado</h3>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="dte_rep_nom">Nombre del representante</label>
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id="dte_rep_nom" class="form-control" placeholder="Ingrese el nombre...">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="dte_rep_id_tipo">Tipo de id del representante</label>
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id="dte_rep_id_tipo" class="form-control" placeholder="Tipo de identificacion...">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <label for="dte_rep_id">Numero del representante</label>
-                                                <div class="form-group">
-                                                    <div class="form-line">
-                                                        <input type="text" id="dte_rep_id" class="form-control" placeholder="Número de identificación...">
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
-
                                         </section>
 
                                         <h2>Pretensiones</h2>
                                         <section>
-                                            <input id="acceptTerms-2" name="acceptTerms" type="checkbox" required>
-                                            <label for="acceptTerms-2">I agree with the Terms and Conditions.</label>
+                                           
                                         </section>
 
                                         <h2>Hechos</h2>
                                         <section>
-                                            <input id="acceptTerms-2" name="acceptTerms" type="checkbox" required>
-                                            <label for="acceptTerms-2">I agree with the Terms and Conditions.</label>
+                                           
                                         </section>
 
                                         <h2>Pruebas</h2>
                                         <section>
-                                            <input id="acceptTerms-2" name="acceptTerms" type="checkbox" required>
-                                            <label for="acceptTerms-2">I agree with the Terms and Conditions.</label>
+                                            
                                         </section>
 
                                         <h2>Manifestaciones</h2>
                                         <section>
-                                            <input id="acceptTerms-2" name="acceptTerms" type="checkbox" required>
-                                            <label for="acceptTerms-2">I agree with the Terms and Conditions.</label>
+                                            
                                         </section>
                                     </form>
                                 </div>
