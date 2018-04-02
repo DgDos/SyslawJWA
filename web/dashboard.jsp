@@ -195,8 +195,13 @@
                         <div class="card" style="box-shadow: none" >
                             <div class="header bg-white add-event-header" style="background-color: #f1f1f1 !important;">
                                 <div class="row clearfix">
-                                    <div class="col-xs-12 col-sm-12" style="margin-top: 5px">
+                                    <div class="col-xs-6 col-sm-6" style="margin-top: 5px">
                                         <h2 style="color: #1981ad;">Mis demandas</h2>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-6 align-right">
+                                        <button data-original-title="Agregar evento" data-toggle="tooltip" data-placement="bottom" onclick="nuevaDemanda();"   type="button" class="btn bg-grey-light waves-effect btn-no-shadow">
+                                            <i id="toogle-add-event-icon" class="material-icons">add</i>
+                                        </button>
                                     </div>
                                 </div>
 
