@@ -79,16 +79,16 @@ public class DemandaDAO {
             d.setDte_nom(rs.getString("dte_nom"));
             d.setDte_ciudad(rs.getString("dte_ciudad"));
             d.setDte_id_tipo(rs.getInt("dte_id_tipo"));
-            d.setDte_id(rs.getInt("dte_id"));
+            d.setDte_id(rs.getString("dte_id"));
             d.setDte_rep_tiene(rs.getBoolean("dte_rep_tiene"));
             d.setDte_rep_nom(rs.getString("dte_rep_nom"));
             d.setDte_rep_id_tipo(rs.getInt("dte_rep_id_tipo"));
-            d.setDte_rep_id(rs.getInt("dte_rep_id"));
+            d.setDte_rep_id(rs.getString("dte_rep_id"));
             d.setDte_apo_tiene(rs.getBoolean("dte_apo_tiene"));
             d.setDte_apo_nom(rs.getString("dte_apo_nom"));
             d.setDte_apo_id_tipo(rs.getInt("dte_apo_id_tipo"));
-            d.setDte_apo_id(rs.getInt("dte_apo_id"));
-            d.setDte_apo_tar_pro(rs.getInt("dte_apo_tar_pro"));
+            d.setDte_apo_id(rs.getString("dte_apo_id"));
+            d.setDte_apo_tar_pro(rs.getString("dte_apo_tar_pro"));
             d.setDte_dir_not(rs.getString("dte_dir_not"));
             d.setDte_email(rs.getString("dte_email"));
             d.setDem_nom(rs.getString("dem_nom"));
@@ -128,46 +128,52 @@ public class DemandaDAO {
     }
     
     public void updateDemanda(Demanda d) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("update demanda set id_ayudante=?,titulo=?,juez_nombre=?,dte_nom=?,dte_ciudad=?,dte_id_tipo=?,dte_id=?,dte_rep_tiene=?,dte_rep_nom=?,dte_rep_id_tipo=?,dte_rep_id=?,dte_apo_tiene=?,dte_apo_nom=?,dte_apo_id_tipo=?,dte_apo_id=?,dte_apo_tar_pro=?,dte_dir_not=?,dte_email=?,dem_nom=?,dem_ciu=?,dem_rep_tiene=?,dem_rep_nom=?,dem_apo_tiene=?,dem_apo_nom=?,dem_dir_not=?,dem_email=?,pretensiones=?,hechos=?,depende_cumplimiento=?,tengo_pruebas=?,pruebas=?,estaba_obligado=?,fundamentos=?,anexos=?,solicito_cautelares=?,cautelares_que_solicita=?,porcentaje=?,fecha_modificacion=? where id_demanda="+d.getId_demanda());
-        preparedStatement.setInt(1, d.getId_ayudante());
-        preparedStatement.setString(2, d.getTitulo());
-        preparedStatement.setString(3, d.getJuez_nombre());
-        preparedStatement.setString(4, d.getDte_nom());
-        preparedStatement.setString(5, d.getDte_ciudad());
-        preparedStatement.setInt(6, d.getDte_id_tipo());
-        preparedStatement.setInt(7, d.getDte_id());
-        preparedStatement.setBoolean(8, d.getDte_rep_tiene());
-        preparedStatement.setString(9, d.getDte_rep_nom());
-        preparedStatement.setInt(10, d.getDte_rep_id_tipo());
-        preparedStatement.setInt(11, d.getDte_rep_id());
-        System.out.println(d.getDte_apo_tiene()+"LLLEGEUEUEUEUEUEUEUEUUE");
-        preparedStatement.setBoolean(12, d.getDte_apo_tiene());
-        preparedStatement.setString(13, d.getDte_apo_nom());
-        preparedStatement.setInt(14, d.getDte_apo_id_tipo());
-        preparedStatement.setInt(15, d.getDte_apo_id());
-        preparedStatement.setInt(16, d.getDte_apo_tar_pro());   
-        preparedStatement.setString(17, d.getDte_dir_not());
-        preparedStatement.setString(18, d.getDte_email());
-        preparedStatement.setString(19, d.getDem_nom());
-        preparedStatement.setString(20, d.getDem_ciu());
-        preparedStatement.setBoolean(21, d.getDem_rep_tiene());
-        preparedStatement.setString(22, d.getDem_rep_nom());
-        preparedStatement.setBoolean(23, d.getDem_apo_tiene());
-        preparedStatement.setString(24, d.getDem_apo_nom());  
-        preparedStatement.setString(25, d.getDem_dir_not());
-        preparedStatement.setString(26, d.getDem_email());
-        preparedStatement.setString(27, d.getPretensiones());
-        preparedStatement.setString(28, d.getHechos());
-        preparedStatement.setBoolean(29, d.getDepende_cumplimiento());       
-        preparedStatement.setBoolean(30, d.getTengo_pruebas());
-        preparedStatement.setString(31, d.getPruebas());
-        preparedStatement.setBoolean(32, d.getEstaba_obligado());
-        preparedStatement.setString(33, d.getFundamentos());
-        preparedStatement.setString(34, d.getAnexos());
-        preparedStatement.setBoolean(35, d.getSolicito_cautelares());
-        preparedStatement.setString(36, d.getCautelares_que_solicita());
-        preparedStatement.setFloat(37, d.getPorcentaje());
-        preparedStatement.setTimestamp(38, new Timestamp(System.currentTimeMillis()));
+        PreparedStatement preparedStatement;
+        if(d.getId_ayudante()==0){
+            preparedStatement = connection.prepareStatement("update demanda set titulo=?,juez_nombre=?,dte_nom=?,dte_ciudad=?,dte_id_tipo=?,dte_id=?,dte_rep_tiene=?,dte_rep_nom=?,dte_rep_id_tipo=?,dte_rep_id=?,dte_apo_tiene=?,dte_apo_nom=?,dte_apo_id_tipo=?,dte_apo_id=?,dte_apo_tar_pro=?,dte_dir_not=?,dte_email=?,dem_nom=?,dem_ciu=?,dem_rep_tiene=?,dem_rep_nom=?,dem_apo_tiene=?,dem_apo_nom=?,dem_dir_not=?,dem_email=?,pretensiones=?,hechos=?,depende_cumplimiento=?,tengo_pruebas=?,pruebas=?,estaba_obligado=?,fundamentos=?,anexos=?,solicito_cautelares=?,cautelares_que_solicita=?,porcentaje=?,fecha_modificacion=? where id_demanda="+d.getId_demanda()); 
+        }else{
+            preparedStatement = connection.prepareStatement("update demanda set titulo=?,juez_nombre=?,dte_nom=?,dte_ciudad=?,dte_id_tipo=?,dte_id=?,dte_rep_tiene=?,dte_rep_nom=?,dte_rep_id_tipo=?,dte_rep_id=?,dte_apo_tiene=?,dte_apo_nom=?,dte_apo_id_tipo=?,dte_apo_id=?,dte_apo_tar_pro=?,dte_dir_not=?,dte_email=?,dem_nom=?,dem_ciu=?,dem_rep_tiene=?,dem_rep_nom=?,dem_apo_tiene=?,dem_apo_nom=?,dem_dir_not=?,dem_email=?,pretensiones=?,hechos=?,depende_cumplimiento=?,tengo_pruebas=?,pruebas=?,estaba_obligado=?,fundamentos=?,anexos=?,solicito_cautelares=?,cautelares_que_solicita=?,porcentaje=?,fecha_modificacion=?,id_ayudante=? where id_demanda="+d.getId_demanda());
+        }
+        preparedStatement.setString(1, d.getTitulo());
+        preparedStatement.setString(2, d.getJuez_nombre());
+        preparedStatement.setString(3, d.getDte_nom());
+        preparedStatement.setString(4, d.getDte_ciudad());
+        preparedStatement.setInt(5, d.getDte_id_tipo());
+        preparedStatement.setString(6, d.getDte_id());
+        preparedStatement.setBoolean(7, d.getDte_rep_tiene());
+        preparedStatement.setString(8, d.getDte_rep_nom());
+        preparedStatement.setInt(9, d.getDte_rep_id_tipo());
+        preparedStatement.setString(10, d.getDte_rep_id());
+        preparedStatement.setBoolean(11, d.getDte_apo_tiene());
+        preparedStatement.setString(12, d.getDte_apo_nom());
+        preparedStatement.setInt(13, d.getDte_apo_id_tipo());
+        preparedStatement.setString(14, d.getDte_apo_id());
+        preparedStatement.setString(15, d.getDte_apo_tar_pro());   
+        preparedStatement.setString(16, d.getDte_dir_not());
+        preparedStatement.setString(17, d.getDte_email());
+        preparedStatement.setString(18, d.getDem_nom());
+        preparedStatement.setString(19, d.getDem_ciu());
+        preparedStatement.setBoolean(20, d.getDem_rep_tiene());
+        preparedStatement.setString(21, d.getDem_rep_nom());
+        preparedStatement.setBoolean(22, d.getDem_apo_tiene());
+        preparedStatement.setString(23, d.getDem_apo_nom());  
+        preparedStatement.setString(24, d.getDem_dir_not());
+        preparedStatement.setString(25, d.getDem_email());
+        preparedStatement.setString(26, d.getPretensiones());
+        preparedStatement.setString(27, d.getHechos());
+        preparedStatement.setBoolean(28, d.getDepende_cumplimiento());       
+        preparedStatement.setBoolean(29, d.getTengo_pruebas());
+        preparedStatement.setString(30, d.getPruebas());
+        preparedStatement.setBoolean(31, d.getEstaba_obligado());
+        preparedStatement.setString(32, d.getFundamentos());
+        preparedStatement.setString(33, d.getAnexos());
+        preparedStatement.setBoolean(34, d.getSolicito_cautelares());
+        preparedStatement.setString(35, d.getCautelares_que_solicita());
+        preparedStatement.setFloat(36, d.getPorcentaje());
+        preparedStatement.setTimestamp(37, new Timestamp(System.currentTimeMillis()));
+        if(d.getId_ayudante()!=0){
+            preparedStatement.setInt(38, d.getId_ayudante());
+        }
         preparedStatement.executeUpdate();
     }
     

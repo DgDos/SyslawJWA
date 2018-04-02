@@ -16,16 +16,16 @@ public class Demanda {
     private String dte_nom;
     private String dte_ciudad;
     private int dte_id_tipo;
-    private int dte_id;
+    private String dte_id;
     private Boolean dte_rep_tiene;
     private String dte_rep_nom;
     private int dte_rep_id_tipo;
-    private int dte_rep_id;
+    private String dte_rep_id;
     private Boolean dte_apo_tiene;
     private String dte_apo_nom;
     private int dte_apo_id_tipo;
-    private int dte_apo_id;
-    private int dte_apo_tar_pro;
+    private String dte_apo_id;
+    private String dte_apo_tar_pro;
     private String dte_dir_not;
     private String dte_email;
     private String dem_nom;
@@ -55,7 +55,7 @@ public class Demanda {
     public Demanda() {
     }
 
-    public Demanda(int id_demanda, int id_usuario, int id_ayudante, String titulo, String juez_nombre, String dte_nom, String dte_ciudad, int dte_id_tipo, int dte_id, Boolean dte_rep_tiene, String dte_rep_nom, int dte_rep_id_tipo, int dte_rep_id, Boolean dte_apo_tiene, String dte_apo_nom, int dte_apo_id_tipo, int dte_apo_id, int dte_apo_tar_pro, String dte_dir_not, String dte_email, String dem_nom, String dem_ciu, Boolean dem_rep_tiene, String dem_rep_nom, Boolean dem_apo_tiene, String dem_apo_nom, String dem_dir_not, String dem_email, String pretensiones, String hechos, Boolean depende_cumplimiento, Boolean tengo_pruebas, String pruebas, Boolean estaba_obligado, String fundamentos, String anexos, Boolean solicito_cautelares, String cautelares_que_solicita, float porcentaje, Date fecha_creacion, Date fecha_modificacion, Date fecha_autoguardado, int id_autoguardado) {
+    public Demanda(int id_demanda, int id_usuario, int id_ayudante, String titulo, String juez_nombre, String dte_nom, String dte_ciudad, int dte_id_tipo, String dte_id, Boolean dte_rep_tiene, String dte_rep_nom, int dte_rep_id_tipo, String dte_rep_id, Boolean dte_apo_tiene, String dte_apo_nom, int dte_apo_id_tipo, String dte_apo_id, String dte_apo_tar_pro, String dte_dir_not, String dte_email, String dem_nom, String dem_ciu, Boolean dem_rep_tiene, String dem_rep_nom, Boolean dem_apo_tiene, String dem_apo_nom, String dem_dir_not, String dem_email, String pretensiones, String hechos, Boolean depende_cumplimiento, Boolean tengo_pruebas, String pruebas, Boolean estaba_obligado, String fundamentos, String anexos, Boolean solicito_cautelares, String cautelares_que_solicita, float porcentaje, Date fecha_creacion, Date fecha_modificacion, Date fecha_autoguardado, int id_autoguardado) {
         this.id_demanda = id_demanda;
         this.id_usuario = id_usuario;
         this.id_ayudante = id_ayudante;
@@ -165,11 +165,11 @@ public class Demanda {
         this.dte_id_tipo = dte_id_tipo;
     }
 
-    public int getDte_id() {
+    public String getDte_id() {
         return dte_id;
     }
 
-    public void setDte_id(int dte_id) {
+    public void setDte_id(String dte_id) {
         this.dte_id = dte_id;
     }
 
@@ -197,11 +197,11 @@ public class Demanda {
         this.dte_rep_id_tipo = dte_rep_id_tipo;
     }
 
-    public int getDte_rep_id() {
+    public String getDte_rep_id() {
         return dte_rep_id;
     }
 
-    public void setDte_rep_id(int dte_rep_id) {
+    public void setDte_rep_id(String dte_rep_id) {
         this.dte_rep_id = dte_rep_id;
     }
 
@@ -229,19 +229,19 @@ public class Demanda {
         this.dte_apo_id_tipo = dte_apo_id_tipo;
     }
 
-    public int getDte_apo_id() {
+    public String getDte_apo_id() {
         return dte_apo_id;
     }
 
-    public void setDte_apo_id(int dte_apo_id) {
+    public void setDte_apo_id(String dte_apo_id) {
         this.dte_apo_id = dte_apo_id;
     }
 
-    public int getDte_apo_tar_pro() {
+    public String getDte_apo_tar_pro() {
         return dte_apo_tar_pro;
     }
 
-    public void setDte_apo_tar_pro(int dte_apo_tar_pro) {
+    public void setDte_apo_tar_pro(String dte_apo_tar_pro) {
         this.dte_apo_tar_pro = dte_apo_tar_pro;
     }
 
@@ -445,11 +445,7 @@ public class Demanda {
         this.id_autoguardado = id_autoguardado;
     }
 
-    @Override
-    public String toString() {
-        return "Demanda{" + "id_demanda=" + id_demanda + ", id_usuario=" + id_usuario + ", id_ayudante=" + id_ayudante + ", titulo=" + titulo + ", juez_nombre=" + juez_nombre + ", dte_nom=" + dte_nom + ", dte_ciudad=" + dte_ciudad + ", dte_id_tipo=" + dte_id_tipo + ", dte_id=" + dte_id + ", dte_rep_tiene=" + dte_rep_tiene + ", dte_rep_nom=" + dte_rep_nom + ", dte_rep_id_tipo=" + dte_rep_id_tipo + ", dte_rep_id=" + dte_rep_id + ", dte_apo_tiene=" + dte_apo_tiene + ", dte_apo_nom=" + dte_apo_nom + ", dte_apo_id_tipo=" + dte_apo_id_tipo + ", dte_apo_id=" + dte_apo_id + ", dte_apo_tar_pro=" + dte_apo_tar_pro + ", dte_dir_not=" + dte_dir_not + ", dte_email=" + dte_email + ", dem_nom=" + dem_nom + ", dem_ciu=" + dem_ciu + ", dem_rep_tiene=" + dem_rep_tiene + ", dem_rep_nom=" + dem_rep_nom + ", dem_apo_tiene=" + dem_apo_tiene + ", dem_apo_nom=" + dem_apo_nom + ", dem_dir_not=" + dem_dir_not + ", dem_email=" + dem_email + ", pretensiones=" + pretensiones + ", hechos=" + hechos + ", depende_cumplimiento=" + depende_cumplimiento + ", tengo_pruebas=" + tengo_pruebas + ", pruebas=" + pruebas + ", estaba_obligado=" + estaba_obligado + ", fundamentos=" + fundamentos + ", anexos=" + anexos + ", solicito_cautelares=" + solicito_cautelares + ", cautelares_que_solicita=" + cautelares_que_solicita + ", porcentaje=" + porcentaje + ", fecha_creacion=" + fecha_creacion + ", fecha_modificacion=" + fecha_modificacion + ", fecha_autoguardado=" + fecha_autoguardado + ", id_autoguardado=" + id_autoguardado + '}';
-    }
-
+    
     
 
     

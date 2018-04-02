@@ -7,6 +7,7 @@ package Controller;
 
 import Dao.DemandaDAO;
 import Model.Demanda;
+import Model.Usuario;
 import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -34,27 +35,23 @@ public class DemandaS extends HttpServlet {
             String opcion = request.getParameter("opcion");
             if (opcion.equalsIgnoreCase("allMe")) {
                 DemandaDAO d = new DemandaDAO();
-                //Usuario user=(Usuario)request.getSession().getAttribute("usuario");
-                //ArrayList<Demanda> demandas=d.getAllDemandasById(user.getId_usuario());
-                ArrayList<Demanda> demandas = d.getAllDemandasById(2);
-                
+                Usuario user=(Usuario)request.getSession().getAttribute("usuario");
+                ArrayList<Demanda> demandas=d.getAllDemandasById(user.getId_usuario());
                 Gson gson = new Gson();
                 out.println(gson.toJson(demandas));
             }
             if (opcion.equalsIgnoreCase("allHelp")) {
                 DemandaDAO d = new DemandaDAO();
-                //Usuario user=(Usuario)request.getSession().getAttribute("usuario");
-                //ArrayList<Demanda> demandas=d.getAllDemandasById(user.getId_usuario());
-                ArrayList<Demanda> demandas = d.getAllDemandasByIdAyudante(2);
+                Usuario user=(Usuario)request.getSession().getAttribute("usuario");
+                ArrayList<Demanda> demandas=d.getAllDemandasById(user.getId_usuario());
                 Gson gson = new Gson();
                 out.println(gson.toJson(demandas));
             }
             if (opcion.equalsIgnoreCase("one")) {
                 int id_demanda = Integer.parseInt(request.getParameter("id_demanda"));
                 DemandaDAO d = new DemandaDAO();
-                //Usuario user=(Usuario)request.getSession().getAttribute("usuario");
-                //Demanda demanda=d.getDemandaByUserAndId(user.getId_usuario(), id_demanda);
-                Demanda demanda = d.getDemandaByUserAndId(2, id_demanda);
+                Usuario user=(Usuario)request.getSession().getAttribute("usuario");
+                Demanda demanda=d.getDemandaByUserAndId(user.getId_usuario(), id_demanda);
                 request.getSession().setAttribute("demanda", demanda);
                 Gson gson = new Gson();
                 out.println(gson.toJson(demanda));
@@ -75,64 +72,65 @@ public class DemandaS extends HttpServlet {
                 String titulo = request.getParameter("titulo");
                 //Usuario user=(Usuario)request.getSession().getAttribute("usuario");
                 //d.addDemanda(titulo,user.getId_usuario());
-                d.addDemanda(titulo, 2);
+                d.addDemanda(titulo,1);
                 request.getSession().setAttribute("demanda", d.getDemandaByUserAndId(0, 0));
             }
             if (opcion.equalsIgnoreCase("update")) {
                 Demanda d = new Demanda();
-                if (request.getParameter("id_ayudante")!=null && !request.getParameter("dte_apo_id").equals("")) {
+                if (request.getParameter("id_ayudante") != null && !request.getParameter("id_ayudante").equals("")) {
                     d.setId_ayudante(Integer.parseInt(request.getParameter("id_ayudante")));
+                }else{
+                    d.setId_ayudante(0);
                 }
                 d.setTitulo(request.getParameter("titulo"));
                 d.setJuez_nombre(request.getParameter("juez_nombre"));
                 d.setDte_nom(request.getParameter("dte_nom"));
                 d.setDte_ciudad(request.getParameter("dte_ciudad"));
-                if (request.getParameter("dte_id_tipo")!=null) {
+                if (request.getParameter("dte_id_tipo") != null) {
                     d.setDte_id_tipo(Integer.parseInt(request.getParameter("dte_id_tipo")));
                 }
-                if (request.getParameter("dte_id")!=null) {
-                    d.setDte_id(Integer.parseInt(request.getParameter("dte_id")));
-                }
-                if (request.getParameter("dte_rep_tiene")!=null) {
+                d.setDte_id(request.getParameter("dte_id"));
+
+                if (request.getParameter("dte_rep_tiene") != null) {
                     d.setDte_rep_tiene(Boolean.parseBoolean(request.getParameter("dte_rep_tiene")));
-                }else{
+                } else {
                     d.setDte_rep_tiene(false);
                 }
                 d.setDte_rep_nom(request.getParameter("dte_rep_nom"));
-                if (request.getParameter("dte_rep_id_tipo")!=null) {
+                if (request.getParameter("dte_rep_id_tipo") != null) {
                     d.setDte_rep_id_tipo(Integer.parseInt(request.getParameter("dte_rep_id_tipo")));
                 }
-                if (request.getParameter("dte_rep_id")!=null) {
-                    d.setDte_rep_id(Integer.parseInt(request.getParameter("dte_rep_id")));
-                }
-                if (request.getParameter("dte_apo_tiene")!=null) {
+
+                d.setDte_rep_id(request.getParameter("dte_rep_id"));
+
+                if (request.getParameter("dte_apo_tiene") != null) {
                     d.setDte_apo_tiene(Boolean.parseBoolean(request.getParameter("dte_apo_tiene")));
-                }else{
+                } else {
                     d.setDte_apo_tiene(false);
                 }
                 d.setDte_apo_nom(request.getParameter("dte_apo_nom"));
-                if (request.getParameter("dte_apo_id_tipo")!=null) {
+                if (request.getParameter("dte_apo_id_tipo") != null) {
                     d.setDte_apo_id_tipo(Integer.parseInt(request.getParameter("dte_apo_id_tipo")));
                 }
-                if (request.getParameter("dte_apo_id")!=null && !request.getParameter("dte_apo_id").equals("")) {
-                    d.setDte_apo_id(Integer.parseInt(request.getParameter("dte_apo_id")));
+                if (request.getParameter("dte_apo_id") != null && !request.getParameter("dte_apo_id").equals("")) {
+                    d.setDte_apo_id(request.getParameter("dte_apo_id"));
                 }
-                if (request.getParameter("dte_apo_tar_pro")!=null) {
-                     d.setDte_apo_tar_pro(Integer.parseInt(request.getParameter("dte_apo_tar_pro")));
+                if (request.getParameter("dte_apo_tar_pro") != null) {
+                    d.setDte_apo_tar_pro(request.getParameter("dte_apo_tar_pro"));
                 }
                 d.setDte_dir_not(request.getParameter("dte_dir_not"));
                 d.setDte_email(request.getParameter("dte_email"));
                 d.setDem_nom(request.getParameter("dem_nom"));
                 d.setDem_ciu(request.getParameter("dem_ciu"));
-                if (request.getParameter("dem_rep_tiene")!=null) {
+                if (request.getParameter("dem_rep_tiene") != null) {
                     d.setDem_rep_tiene(Boolean.parseBoolean(request.getParameter("dem_rep_tiene")));
-                }else{
+                } else {
                     d.setDem_rep_tiene(false);
                 }
                 d.setDem_rep_nom(request.getParameter("dem_rep_nom"));
-                if (request.getParameter("dem_apo_tiene")!=null) {
+                if (request.getParameter("dem_apo_tiene") != null) {
                     d.setDem_apo_tiene(Boolean.parseBoolean(request.getParameter("dem_apo_tiene")));
-                }else{
+                } else {
                     d.setDem_apo_tiene(false);
                 }
                 d.setDem_apo_nom(request.getParameter("dem_apo_nom"));
@@ -140,32 +138,32 @@ public class DemandaS extends HttpServlet {
                 d.setDem_email(request.getParameter("dem_email"));
                 d.setPretensiones(request.getParameter("pretensiones"));
                 d.setHechos(request.getParameter("hechos"));
-                if (request.getParameter("depende_cumplimiento")!=null) {
+                if (request.getParameter("depende_cumplimiento") != null) {
                     d.setDepende_cumplimiento(Boolean.parseBoolean(request.getParameter("depende_cumplimiento")));
-                }else{
+                } else {
                     d.setDepende_cumplimiento(false);
                 }
-                if (request.getParameter("tengo_pruebas")!=null) {
+                if (request.getParameter("tengo_pruebas") != null) {
                     d.setTengo_pruebas(Boolean.parseBoolean(request.getParameter("tengo_pruebas")));
-                }else{
+                } else {
                     d.setTengo_pruebas(false);
                 }
                 d.setPruebas(request.getParameter("pruebas"));
-                if (request.getParameter("estaba_obligado")!=null) {
+                if (request.getParameter("estaba_obligado") != null) {
                     d.setEstaba_obligado(Boolean.parseBoolean(request.getParameter("estaba_obligado")));
-                }else{
+                } else {
                     d.setEstaba_obligado(false);
                 }
                 d.setFundamentos(request.getParameter("fundamentos"));
                 d.setAnexos(request.getParameter("anexos"));
-                if (request.getParameter("solicito_cautelares")!=null) {
+                if (request.getParameter("solicito_cautelares") != null) {
                     d.setSolicito_cautelares(Boolean.parseBoolean(request.getParameter("solicito_cautelares")));
-                }else{
+                } else {
                     d.setSolicito_cautelares(false);
                 }
-                
+
                 d.setCautelares_que_solicita(request.getParameter("cautelares_que_solicita"));
-                if (request.getParameter("porcentaje")!=null) {
+                if (request.getParameter("porcentaje") != null) {
                     d.setPorcentaje(Float.parseFloat(request.getParameter("porcentaje")));
                 }
                 d.setId_demanda(Integer.parseInt(request.getParameter("id_demanda")));
