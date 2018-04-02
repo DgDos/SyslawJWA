@@ -43,9 +43,9 @@ public class Login extends HttpServlet {
             UsuarioDAO u = new UsuarioDAO();
             if (u.isUser(user, e.encription(pass))) {
                 request.getSession().setAttribute("usuario", u.getUsuario(user));
-                out.println("si");
+                out.print("si");
             } else {
-                out.println("no");
+                out.print("no");
             }
         } catch (NoSuchAlgorithmException | SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(Login.class.getName()).log(Level.SEVERE, null, ex);

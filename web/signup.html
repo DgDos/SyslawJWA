@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <title>Registro | Syslaw</title>
+        <!-- Favicon-->
+        <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+
+        <!-- Google Fonts -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">        
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+
+        <!-- Bootstrap Core Css -->
+        <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
+
+        <!-- Waves Effect Css -->
+        <link href="plugins/node-waves/waves.css" rel="stylesheet" />
+
+        <!-- Animation Css -->
+        <link href="plugins/animate-css/animate.css" rel="stylesheet" />
+
+        <!-- Custom Css -->
+        <link href="css/style.css" rel="stylesheet">
+        <link href="css/custom.css" rel="stylesheet">
+    </head>
+
+    <body class="signup-page bg-syslaw-login">
+        <div class="signup-box">
+            <div class="logo">
+                <div class="py-5 text-center">
+                    <img class="d-block mx-auto mb-4" src="images/logo.svg" alt="" width="197" height="72">
+                    <h5 class="subtitle" >Registro de usuario</h5>
+                </div>
+            </div>
+            <div class="card">
+                <div class="body">
+                    <form id="agregarPersona" autocomplete="off">
+                        <small></small>
+                        <div class="form-group input-group form-float" style="margin-bottom: 20px">
+                            <span class="input-group-addon">
+                                <i class="material-icons">person</i>
+                            </span>
+                            <div class="form-line">
+                                <input type="text" required id="nombre" name="nombre" class="form-control transparent-control">
+                                <label class="form-label">Nombre completo</label>
+                            </div>
+                        </div>
+                        <div class="form-group input-group form-float" style="margin-bottom: 20px">
+                            <span class="input-group-addon">
+                                <i class="material-icons">email</i>
+                            </span>
+                            <div class="form-line">
+                                <input type="email" required id="correo" name="correo" class="form-control transparent-control">
+                                <label class="form-label">Correo electrónico</label>
+                            </div>
+                        </div>  
+                        <div class="form-group input-group form-float" style="margin-bottom: 20px">
+                            <span class="input-group-addon">
+                                <i class="material-icons">lock</i>
+                            </span>
+                            <div class="form-line">
+                                <input type="password" required id="password" name="password" class="form-control transparent-control">
+                                <label class="form-label">Contraseña</label>
+                            </div>
+                        </div>
+                        <div class="form-group input-group form-float" style="margin-bottom: 20px">
+                            <span class="input-group-addon">
+                                <i class="material-icons">verified_user</i>
+                            </span>
+                            <div class="form-line">
+                                <input type="password" required id="confirm" name="confirm" class="form-control transparent-control">
+                                <label class="form-label">Confirmar contraseña</label>
+                            </div>
+                        </div>
+                        <div class="form-group input-group " style="margin-bottom: 20px">
+                            <span class="input-group-addon" style="vertical-align: top; padding-top: -0px;">
+                                <i class="material-icons">people</i>
+                            </span>
+                            <div class="demo-radio-button">
+                                <label class="form-label">Tipo de usuario</label>
+                                <input name="tipo_usuario" type="radio" value="1" id="radio_1" class="with-gap radio-col-blue" checked="">
+                                <label for="radio_1">Abogado</label>
+                                <input name="tipo_usuario" type="radio" value="2" id="radio_2" class="with-gap radio-col-blue">
+                                <label for="radio_2">Persona Natural</label>
+                                <input name="tipo_usuario" type="radio" value="0" id="radio_3" class="with-gap radio-col-blue">
+                                <label for="radio_3">Administrador</label>
+                                
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-blue">
+                            <label for="terms">Leí y estoy deacuerdo con los <a href="javascript:void(0);">términos de uso</a>.</label>
+                        </div>
+
+                        <button class="btn btn-block btn-lg bg-blue waves-effect" type="submit">CREAR CUENTA</button>
+
+                        <div class="m-t-25 m-b--0 align-center">
+                            <a href="signin.html">¿Ya tiene una cuenta?</a>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Jquery Core Js -->
+        <script src="plugins/jquery/jquery.min.js"></script>
+
+        <!-- Bootstrap Core Js -->
+        <script src="plugins/bootstrap/js/bootstrap.js"></script>
+
+        <!-- Waves Effect Plugin Js -->
+        <script src="plugins/node-waves/waves.js"></script>
+
+        <!-- Validation Plugin Js -->
+        <script src="plugins/jquery-validation/jquery.validate.js"></script>
+
+        <!-- Custom Js -->
+        <script src="js/admin.js"></script>
+        <script src="js/custom/signup.js"></script>
+    </body>
+
+</html>

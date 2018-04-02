@@ -37,6 +37,7 @@ public class DemandaS extends HttpServlet {
                 //Usuario user=(Usuario)request.getSession().getAttribute("usuario");
                 //ArrayList<Demanda> demandas=d.getAllDemandasById(user.getId_usuario());
                 ArrayList<Demanda> demandas = d.getAllDemandasById(2);
+                
                 Gson gson = new Gson();
                 out.println(gson.toJson(demandas));
             }
