@@ -50,9 +50,7 @@ public class DemandaS extends HttpServlet {
             if (opcion.equalsIgnoreCase("one")) {
                 int id_demanda = Integer.parseInt(request.getParameter("id_demanda"));
                 DemandaDAO d = new DemandaDAO();
-                Usuario user=(Usuario)request.getSession().getAttribute("usuario");
-                Demanda demanda=d.getDemandaByUserAndId(user.getId_usuario(), id_demanda);
-                request.getSession().setAttribute("demanda", demanda);
+                Demanda demanda=d.getDemandaById(id_demanda);
                 Gson gson = new Gson();
                 out.println(gson.toJson(demanda));
             }
@@ -73,14 +71,13 @@ public class DemandaS extends HttpServlet {
                 //Usuario user=(Usuario)request.getSession().getAttribute("usuario");
                 //d.addDemanda(titulo,user.getId_usuario());
                 d.addDemanda(titulo,1);
-                request.getSession().setAttribute("demanda", d.getDemandaByUserAndId(0, 0));
             }
             if (opcion.equalsIgnoreCase("update")) {
                 Demanda d = new Demanda();
                 if (request.getParameter("id_ayudante") != null && !request.getParameter("id_ayudante").equals("")) {
-                    d.setId_ayudante(Integer.parseInt(request.getParameter("id_ayudante")));
+                    d.setId_ayudante(request.getParameter("id_ayudante"));
                 }else{
-                    d.setId_ayudante(0);
+                    d.setId_ayudante("");
                 }
                 d.setTitulo(request.getParameter("titulo"));
                 d.setJuez_nombre(request.getParameter("juez_nombre"));

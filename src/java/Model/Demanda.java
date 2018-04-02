@@ -10,7 +10,7 @@ public class Demanda {
 
     private int id_demanda;
     private int id_usuario;
-    private int id_ayudante;
+    private String id_ayudante;
     private String titulo;
     private String juez_nombre;
     private String dte_nom;
@@ -55,7 +55,7 @@ public class Demanda {
     public Demanda() {
     }
 
-    public Demanda(int id_demanda, int id_usuario, int id_ayudante, String titulo, String juez_nombre, String dte_nom, String dte_ciudad, int dte_id_tipo, String dte_id, Boolean dte_rep_tiene, String dte_rep_nom, int dte_rep_id_tipo, String dte_rep_id, Boolean dte_apo_tiene, String dte_apo_nom, int dte_apo_id_tipo, String dte_apo_id, String dte_apo_tar_pro, String dte_dir_not, String dte_email, String dem_nom, String dem_ciu, Boolean dem_rep_tiene, String dem_rep_nom, Boolean dem_apo_tiene, String dem_apo_nom, String dem_dir_not, String dem_email, String pretensiones, String hechos, Boolean depende_cumplimiento, Boolean tengo_pruebas, String pruebas, Boolean estaba_obligado, String fundamentos, String anexos, Boolean solicito_cautelares, String cautelares_que_solicita, float porcentaje, Date fecha_creacion, Date fecha_modificacion, Date fecha_autoguardado, int id_autoguardado) {
+    public Demanda(int id_demanda, int id_usuario, String id_ayudante, String titulo, String juez_nombre, String dte_nom, String dte_ciudad, int dte_id_tipo, String dte_id, Boolean dte_rep_tiene, String dte_rep_nom, int dte_rep_id_tipo, String dte_rep_id, Boolean dte_apo_tiene, String dte_apo_nom, int dte_apo_id_tipo, String dte_apo_id, String dte_apo_tar_pro, String dte_dir_not, String dte_email, String dem_nom, String dem_ciu, Boolean dem_rep_tiene, String dem_rep_nom, Boolean dem_apo_tiene, String dem_apo_nom, String dem_dir_not, String dem_email, String pretensiones, String hechos, Boolean depende_cumplimiento, Boolean tengo_pruebas, String pruebas, Boolean estaba_obligado, String fundamentos, String anexos, Boolean solicito_cautelares, String cautelares_que_solicita, float porcentaje, Date fecha_creacion, Date fecha_modificacion, Date fecha_autoguardado, int id_autoguardado) {
         this.id_demanda = id_demanda;
         this.id_usuario = id_usuario;
         this.id_ayudante = id_ayudante;
@@ -117,11 +117,11 @@ public class Demanda {
         this.id_usuario = id_usuario;
     }
 
-    public int getId_ayudante() {
+    public String getId_ayudante() {
         return id_ayudante;
     }
 
-    public void setId_ayudante(int id_ayudante) {
+    public void setId_ayudante(String id_ayudante) {
         this.id_ayudante = id_ayudante;
     }
 
@@ -445,7 +445,6 @@ public class Demanda {
         this.id_autoguardado = id_autoguardado;
     }
 
-    
     
 
     

@@ -66,14 +66,15 @@ public class DemandaDAO {
         return demandas;
     }
     
-    public Demanda getDemandaByUserAndId(int id_usuario, int id_demanda) throws SQLException {
+    public Demanda getDemandaById(int id_demanda) throws SQLException, URISyntaxException, ClassNotFoundException, IOException {
         Demanda d = new Demanda();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from demanda where delete=1 and id_usuario=" + id_usuario + " and id_demanda=" + id_demanda);
+        ResultSet rs = statement.executeQuery("select * from demanda where delete=1 and id_demanda=" + id_demanda);
         while (rs.next()) {
             d.setId_demanda(rs.getInt("id_demanda"));
             d.setId_usuario(rs.getInt("id_usuario"));
-            d.setId_ayudante(rs.getInt("id_ayudante"));
+            UsuarioDAO u=new UsuarioDAO();
+            d.setId_ayudante(u.getNameAyudante(rs.getInt("id_ayudante")));
             d.setTitulo(rs.getString("titulo"));
             d.setJuez_nombre(rs.getString("juez_nombre"));
             d.setDte_nom(rs.getString("dte_nom"));
@@ -127,9 +128,9 @@ public class DemandaDAO {
         preparedStatement.executeUpdate();
     }
     
-    public void updateDemanda(Demanda d) throws SQLException {
+    public void updateDemanda(Demanda d) throws SQLException, URISyntaxException, ClassNotFoundException, IOException {
         PreparedStatement preparedStatement;
-        if(d.getId_ayudante()==0){
+        if(d.getId_ayudante().equals("")){
             preparedStatement = connection.prepareStatement("update demanda set titulo=?,juez_nombre=?,dte_nom=?,dte_ciudad=?,dte_id_tipo=?,dte_id=?,dte_rep_tiene=?,dte_rep_nom=?,dte_rep_id_tipo=?,dte_rep_id=?,dte_apo_tiene=?,dte_apo_nom=?,dte_apo_id_tipo=?,dte_apo_id=?,dte_apo_tar_pro=?,dte_dir_not=?,dte_email=?,dem_nom=?,dem_ciu=?,dem_rep_tiene=?,dem_rep_nom=?,dem_apo_tiene=?,dem_apo_nom=?,dem_dir_not=?,dem_email=?,pretensiones=?,hechos=?,depende_cumplimiento=?,tengo_pruebas=?,pruebas=?,estaba_obligado=?,fundamentos=?,anexos=?,solicito_cautelares=?,cautelares_que_solicita=?,porcentaje=?,fecha_modificacion=? where id_demanda="+d.getId_demanda()); 
         }else{
             preparedStatement = connection.prepareStatement("update demanda set titulo=?,juez_nombre=?,dte_nom=?,dte_ciudad=?,dte_id_tipo=?,dte_id=?,dte_rep_tiene=?,dte_rep_nom=?,dte_rep_id_tipo=?,dte_rep_id=?,dte_apo_tiene=?,dte_apo_nom=?,dte_apo_id_tipo=?,dte_apo_id=?,dte_apo_tar_pro=?,dte_dir_not=?,dte_email=?,dem_nom=?,dem_ciu=?,dem_rep_tiene=?,dem_rep_nom=?,dem_apo_tiene=?,dem_apo_nom=?,dem_dir_not=?,dem_email=?,pretensiones=?,hechos=?,depende_cumplimiento=?,tengo_pruebas=?,pruebas=?,estaba_obligado=?,fundamentos=?,anexos=?,solicito_cautelares=?,cautelares_que_solicita=?,porcentaje=?,fecha_modificacion=?,id_ayudante=? where id_demanda="+d.getId_demanda());
@@ -171,10 +172,13 @@ public class DemandaDAO {
         preparedStatement.setString(35, d.getCautelares_que_solicita());
         preparedStatement.setFloat(36, d.getPorcentaje());
         preparedStatement.setTimestamp(37, new Timestamp(System.currentTimeMillis()));
-        if(d.getId_ayudante()!=0){
-            preparedStatement.setInt(38, d.getId_ayudante());
+        if(!d.getId_ayudante().equals("")){
+            UsuarioDAO u=new UsuarioDAO();
+            preparedStatement.setInt(38, u.getIdAyudante(d.getId_ayudante()));
         }
         preparedStatement.executeUpdate();
     }
+
+    
     
 }
