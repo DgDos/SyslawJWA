@@ -69,9 +69,8 @@ public class DemandaS extends HttpServlet {
             if (opcion.equalsIgnoreCase("create")) {
                 DemandaDAO d = new DemandaDAO();
                 String titulo = request.getParameter("titulo");
-                //Usuario user=(Usuario)request.getSession().getAttribute("usuario");
-                //d.addDemanda(titulo,user.getId_usuario());
-                d.addDemanda(titulo,1);
+                Usuario user=(Usuario)request.getSession().getAttribute("usuario");
+                d.addDemanda(titulo,user.getId_usuario());
                 out.print(gson.toJson(true));
             }
             if (opcion.equalsIgnoreCase("update")) {
