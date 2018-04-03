@@ -142,7 +142,7 @@
                     <ul class="list">
                         <li class="header">MENÚ DE NAVEGACIÓN</li>
                         <li class="active">
-                            <a href="studentdash.jsp">
+                            <a href="#">
                                 <i class="material-icons">clear_all</i>
                                 <span>Mis Demandas</span>
                             </a>
@@ -191,7 +191,7 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row clearfix">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px; margin-top:-20px">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px; margin-top:-10px">
                         <div class="card" style="box-shadow: none" >
                             <div class="header bg-white add-event-header" style="background-color: #f1f1f1 !important;">
                                 <div class="row clearfix">
@@ -199,16 +199,17 @@
                                         <h2 style="color: #1981ad;">Mis demandas</h2>
                                     </div>
                                     <div class="col-xs-12 col-sm-6 align-right">
-                                        <button data-original-title="Agregar evento" data-toggle="tooltip" data-placement="bottom" onclick="nuevaDemanda();"   type="button" class="btn bg-grey-light waves-effect btn-no-shadow">
+                                        <button type="button" data-toggle="modal" data-target="#nuevaDemanda" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i id="toogle-add-event-icon" class="material-icons">add</i>
                                         </button>
+                                        
                                     </div>
                                 </div>
 
                             </div>
 
-                            <div class="body" id="dashboard-container" style="background-color: #f1f1f1;">  
-
+                          <div class="body" id="dashboard-container" style="background-color: #f1f1f1;">  
+  
                                 <div class="card">
                                     <div class="body">
                                         <div class="table-responsive">
@@ -243,93 +244,48 @@
                     </div>
                 </div>
 
+               
                 <!-- Evento publico modal -->
-                <div class="modal fade-scale fade" id="modalEventoPublico" tabindex="-1" role="dialog" style="display: none;">
+                <div class="modal fade-scale fade" id="nuevaDemanda" tabindex="-1" role="dialog" style="display: none;">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
 
-                            <div class="modal-header detail-header bg-red" id="modEvePubHeader">
+                            <div class="modal-header detail-header bg-blue" id="modEvePubHeader">
                                 <div class="pull-left">
-                                    <h4 class="modal-title" style="font-size:18px" id="modEvePubTitulo">Clase de técnica vocal</h4>
-                                    <small id="modEvePubSub">Decanatura de Estudiantes</small>
+                                    <h4 style="font-size:18px" id="modEvePubTitulo">Nueva demanda</h4>
+                                    
                                 </div>
 
                                 <button data-dismiss="modal" type="button" class="pull-right btn btn-info btn-sm btn-transparent">
                                     <i id="toogle-add-event-icon" class="material-icons">close</i>
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                <ul class="list-group">
-                                    <li class="list-group-item detail-item">
-                                        <span data-original-title="Organizador" data-toggle="tooltip" data-placement="right" class="detail-icon"><i class="material-icons">mood</i></span>
-                                        <span id="modEvePubOrg">Decanatura de estudiantes</span>
-                                        <span class="badge bg-grey">Organizador</span></li>
-                                    <li class="list-group-item detail-item"><span class="detail-icon"><i class="material-icons">event</i></span>
-                                        <span id="modEvePubFecha">Miércoles, 3 de Enero, 4:00 p.m.</span>
-                                        <span class="badge bg-grey">Fecha y hora</span></li>
-                                    <li class="list-group-item detail-item"><span class="detail-icon"><i class="material-icons">location_on</i></span>
-                                        <span id="modEvePubLoc">B203</span>
-                                        <span class="badge bg-grey">Ubicación</span></li>
+                            <form id="nueva_demanda_form" autocomplete="off">
+                                <div class="modal-body">
 
-                                    <div class="btn-group btn-group-justified btn-group-lg" style="margin-top: 10px" role="group" aria-label="Justified button group">
-                                        <a href="javascript:void(0);" id="modevepub-btn-asist-no" class="btn btn-default waves-effect" role="button">
-                                            <i style="font-size: 21px;margin-top: -10px; top: 6px; margin-right: 5px; margin-left: -5px;" class="material-icons">close</i>
-                                            No registrado</a>
-                                        <a href="javascript:void(0);" id="modevepub-btn-asist-int" class="btn btn-default waves-effect" role="button">
-                                            <i style="font-size: 21px;margin-top: -10px; top: 5px; margin-right: 5px; margin-left: -5px" class="material-icons">star_border</i>
-                                            Me interesa</a>
-                                        <a href="javascript:void(0);" id="modevepub-btn-asist-con" class="btn btn-danger waves-effect" role="button">
-                                            <i style="font-size: 21px;margin-top: -10px; top: 6px; margin-right: 5px; margin-left: -5px" class="material-icons">check</i>
-                                            Asistiré</a>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label for="nuevotitulo">Titulo de la nueva demanda</label>
+                                            <div class="form-group">
+                                                <div class="form-line">
+                                                    <input autofocus type="text" id="nuevotitulo" class="form-control" placeholder="Ingresa un título...">
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <!--
-                                    <li class="list-group-item detail-item"><span class="detail-icon"><i class="material-icons">event_note</i></span>
-                                        <span class="list-group-item-heading">List group item heading</span>
-                                    <p class="list-group-item-text">
-                                            Lorem ipsum dolor sit amet, ut duo atqui exerci dicunt, ius impedit mediocritatem an. Pri ut tation electram moderatius.
-                                            Per te suavitate democritum. Duis nemore probatus ne quo, ad liber essent aliquid
-                                            pro. Et eos nusquam accumsan, vide mentitum fabellas ne est, eu munere gubergren
-                                            sadipscing mel.
-                                        </p></li> -->
-                                </ul>
-                            </div>
 
+
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-lg btn-default waves-effect" data-dismiss="modal">Cancelar</button>
+                                    <button type="submit" class="btn btn-lg btn-primary waves-effect">Crear demanda</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
 
-                <!-- Lista de sugerencias modal -->
-                <div class="modal fade-scale fade" id="modalListaSugerencias" tabindex="-1" role="dialog" style="display: none;">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
 
-                            <div class="modal-header detail-header bg-orange">
-                                <div class="pull-left">
-                                    <h4 class="modal-title" style="font-size:18px" id="modEveSugTitulo">5 sugerencias encontradas</h4>
-                                </div>
-
-                                <button data-dismiss="modal" type="button" class="pull-right btn btn-info btn-sm btn-transparent btn-short">
-                                    <i id="toogle-add-event-icon" class="material-icons">close</i>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row" id="modal-sugerencias-container">
-                                    <div class="col-xs-12 col-md-6 card-section-waves">
-                                        <div class="card waves-effect waves-light" onclick="verSugerenciaLista(0);" style="cursor: pointer;"><div class="header bg-orange"><h2>EventoSugerido1<small>dom</small><small>Descripcion para sugerido 1</small></h2></div></div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6 card-section-waves">
-                                        <div class="card waves-effect waves-light" onclick="verSugerenciaLista(0);" style="cursor: pointer;"><div class="header bg-orange"><h2>EventoSugerido1<small>dom</small><small>Descripcion para sugerido 1</small></h2></div></div>
-                                    </div>
-                                    <div class="col-xs-12 col-md-6 card-section-waves">
-                                        <div class="card waves-effect waves-light" onclick="verSugerenciaLista(0);" style="cursor: pointer;"><div class="header bg-orange"><h2>EventoSugerido1<small>dom</small><small>Descripcion para sugerido 1</small></h2></div></div>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
             </div>
 
         </section>

@@ -34,7 +34,8 @@
 
         <link href="plugins/jquery-spinner/css/bootstrap-spinner.css" rel="stylesheet">
 
-        <link href="plugins/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css" rel="stylesheet">
+        <!-- Dropzone Css -->
+        <link href="plugins/dropzone/dropzone.css" rel="stylesheet">
 
         <!-- Custom Css -->
         <link href="css/style.css" rel="stylesheet">
@@ -149,7 +150,7 @@
                     <ul class="list">
                         <li class="header">MENÚ DE NAVEGACIÓN</li>
                         <li class="active">
-                            <a href="studentdash.jsp">
+                            <a href="#demandas" onclick="resetStorageRedirect('dashboard.jsp')">
                                 <i class="material-icons">clear_all</i>
                                 <span>Mis Demandas</span>
                             </a>
@@ -198,6 +199,7 @@
         <section class="content">
             <div class="container-fluid">
                 <div class="row clearfix">
+
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 
@@ -205,19 +207,19 @@
                             <h2 style="color: #138fc3;">Título de la demanda</h2>
                             <input type="text" id="id_demanda" class="form-control" value="id_demanda" disabled>
                             <input type="text" id="titulo" class="form-control" value="titulo" disabled>
+
                             <div class="card">
                                 <div class="body">
+
                                     <form id="demanda_wizard" autocomplete="off">
 
 
                                         <h2>Demandante</h2>
                                         <section>
-
-                                            <div class="row clearfix">
+                                            <div class="row clearfix">                                               
                                                 <div class="col-md-12" style="padding: 0px; margin: 0px;">
                                                     <h3 class="form-section-title">Juez</h3>
                                                 </div>
-
                                                 <div class="col-md-12">
                                                     <label for="juez_nombre">Señor, juez municipal de</label>
                                                     <div class="form-group">
@@ -226,13 +228,9 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-
                                                 <div class="col-md-12" style="padding: 0px; margin: 0px;">
                                                     <h3 class="form-section-title">Demandante</h3>
                                                 </div>
-
-
                                                 <div class="col-md-6">
                                                     <label for="dte_nom">Nombre del demandante</label>
                                                     <div class="form-group">
@@ -261,7 +259,7 @@
                                                         <input name="dte_id_tipo" type="radio" id="radio_dte_id_tipo_4" value="3" class="with-gap radio-col-blue">
                                                         <label for="radio_dte_id_tipo_4">PASAPORTE</label>
                                                     </div>
-                                                </div> 
+                                                </div>
                                                 <div class="col-md-6">
                                                     <label for="dte_id">Numero del demandante</label>
                                                     <div class="form-group">
@@ -270,49 +268,25 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="col-md-12" style="padding: 0px; margin: 0px;">
-                                                    <h3 class="form-section-title">Representante legal</h3>
-                                                </div>
-                                                <div class="col-md-6">    
-                                                    <label class="checkbox-label">Representante legal</label><br>
-                                                    <input type="checkbox" id="dte_rep_tiene" class="filled-in chk-col-blue">
-                                                    <label for="dte_rep_tiene">Demandante tiene representante legal</label>
-                                                </div>
-                                                <div id="dte_rep_tiene_section" class="animated fadeIn">
-                                                    <div class="col-md-6">
-                                                        <label for="dte_rep_nom">Nombre del representante</label>
-                                                        <div class="form-group">
-                                                            <div class="form-line">
-                                                                <input type="text" id="dte_rep_nom" class="form-control" placeholder="Ingrese el nombre...">
-                                                            </div>
+                                                <div class="col-md-6">
+                                                    <label for="dte_dir_not">Dirección donde recibe notificaciones:</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="text" id="dte_dir_not" class="form-control" placeholder="Dirección de notificaciones...">
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <label for="dte_rep_id_tipo">Tipo de id del representante</label>
-                                                        <div class="id-type-radio">
-                                                            <input name="dte_rep_id_tipo" type="radio" id="radio_dte_rep_id_tipo_1" value="0"  class="with-gap radio-col-blue" checked="">
-                                                            <label for="radio_dte_rep_id_tipo_1">C.C</label>
-                                                            <input name="dte_rep_id_tipo" type="radio" id="radio_dte_rep_id_tipo_2" value="1" class="with-gap radio-col-blue">
-                                                            <label for="radio_dte_rep_id_tipo_2">NIT</label>
-                                                            <input name="dte_rep_id_tipo" type="radio" id="radio_dte_rep_id_tipo_3" value="2" class="with-gap radio-col-blue">
-                                                            <label for="radio_dte_rep_id_tipo_3">TI</label>
-                                                            <input name="dte_rep_id_tipo" type="radio" id="radio_dte_rep_id_tipo_4" value="3" class="with-gap radio-col-blue">
-                                                            <label for="radio_dte_rep_id_tipo_4">PASAPORTE</label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="dte_rep_id">Numero del representante</label>
-                                                        <div class="form-group">
-                                                            <div class="form-line">
-                                                                <input type="text" id="dte_rep_id" class="form-control" placeholder="Número de identificación...">
-                                                            </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="dte_email">Dirección de correo electrónico</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="email" id="dte_email" class="form-control" placeholder="Correo electrónico...">
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-12" style="padding: 0px; margin: 0px;">
-                                                    <h3 class="form-section-title">Apoderado</h3>
+                                                    <h3 class="form-section-title">Apoderado del demantante</h3>
                                                 </div>
                                                 <div class="col-md-6">    
                                                     <label class="checkbox-label">Apoderado</label><br>
@@ -320,6 +294,7 @@
                                                     <label for="dte_apo_tiene">Demandante tiene apoderado</label>
                                                 </div>
                                                 <div id="dte_apo_tiene_section" class="animated fadeIn">
+
                                                     <div class="col-md-6">
                                                         <label for="dte_apo_nom">Nombre del apoderado</label>
                                                         <div class="form-group">
@@ -341,8 +316,6 @@
                                                             <label for="radio_dte_apo_id_tipo_4">PASAPORTE</label>
                                                         </div>
                                                     </div>
-
-
                                                     <div class="col-md-6">
                                                         <label for="dte_apo_id">Numero de identificación</label>
                                                         <div class="form-group">
@@ -359,56 +332,175 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <label for="dte_dir_not">Dirección donde recibe notificaciones:</label>
-                                                        <div class="form-group">
-                                                            <div class="form-line">
-                                                                <input type="text" id="dte_dir_not" class="form-control" placeholder="Dirección de notificaciones...">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label for="dte_email">Dirección de correo electrónico</label>
-                                                        <div class="form-group">
-                                                            <div class="form-line">
-                                                                <input type="email" id="dte_email" class="form-control" placeholder="Correo electrónico...">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-
-
-
 
                                                 </div>
-
-
-
+                                            </div>
                                         </section>
 
                                         <h2>Demandado</h2>
                                         <section>
+                                            <div class="row clearfix">
+                                                <div class="col-md-12" style="padding: 0px; margin: 0px;">
+                                                    <h3 class="form-section-title">Demandado</h3>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="dem_nom">Identificación del demandado</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="text" id="dem_nom" class="form-control" placeholder="Número de identificación...">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="col-md-6">
+                                                    <label for="dem_ciu">Ciudad de domicilio del demandado</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="text" id="dem_ciu" class="form-control" placeholder="Ingrese la ciudad...">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="dem_dir_not">Dirección donde recibe notificaciones:</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="text" id="dem_dir_not" class="form-control" placeholder="Dirección de notificaciones...">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <label for="dem_email">Dirección de correo electrónico</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="email" id="dem_email" class="form-control" placeholder="Correo electrónico...">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12" style="padding: 0px; margin: 0px;">
+                                                    <h3 class="form-section-title">Apoderado del demandado</h3>
+                                                </div>
+                                                <div class="col-md-6">    
+                                                    <label class="checkbox-label">Apoderado</label><br>
+                                                    <input type="checkbox" id="dem_apo_tiene" class="filled-in chk-col-blue">
+                                                    <label for="dem_apo_tiene">Demandado tiene apoderado</label>
+                                                </div>
+
+                                                <div id="dem_apo_tiene_section" class="animated fadeIn">
+                                                    <div class="col-md-6">
+                                                        <label for="dem_apo_nom">Nombre del apoderado</label>
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="dem_apo_nom" class="form-control" placeholder="Ingrese el nombre...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
 
                                         </section>
 
                                         <h2>Pretensiones</h2>
                                         <section>
-                                           
+                                            <div class="row clearfix">
+                                                <div class="col-md-12">
+                                                    <label for="pretensiones">Pretensiones</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="pretensiones" placeholder="Indique las sumas de dinero cuyo pago solicita..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </section>
 
                                         <h2>Hechos</h2>
                                         <section>
-                                           
+                                            <div class="row clearfix">
+                                                <div class="col-md-12">
+                                                    <label for="hechos">Hechos</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="hechos" placeholder="Refiera en forma concreta los hechos que fundamentan su solicitud..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">    
+                                                    <label class="checkbox-label">Manifiesto que</label><br>
+                                                    <input type="checkbox" id="depende_cumplimiento" class="filled-in chk-col-blue">
+                                                    <label for="depende_cumplimiento">El pago de la suma adeudada depende del cumplimiento de una obligación a mi cargo.</label>
+                                                </div>
+                                                <div class="col-md-6">    
+                                                    <label class="checkbox-label">Manifiesto bajo juramento que</label><br>
+                                                    <input type="checkbox" id="tengo_pruebas" class="filled-in chk-col-blue">
+                                                    <label for="tengo_pruebas">Tengo en mi poder pruebas documentales sobre la existencia de la obligación cuyo pago pretendo.</label>
+                                                </div>
+
+
+                                            </div>
                                         </section>
 
                                         <h2>Pruebas</h2>
                                         <section>
-                                            
+                                            <div class="row clearfix">
+                                                <div class="col-md-12">
+                                                    <label for="pruebas">Pruebas</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="pruebas" placeholder="Refiera las pruebas que usted aporta..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                                <div class="col-md-12" id='pruebasfile'></div>
+
+                                                <div class="col-md-12">    
+                                                    <label class="checkbox-label">Manifiesto que</label><br>
+                                                    <input type="checkbox" id="estaba_obligado " class="filled-in chk-col-blue">
+                                                    <label for="estaba_obligado ">Estaba obligado legalmente a declarar renta en el año gravable inmediatamente anterior.</label>
+                                                </div>
+
+
+                                            </div>
                                         </section>
 
-                                        <h2>Manifestaciones</h2>
+                                        <h2>Otros</h2>
                                         <section>
-                                            
+                                            <div class="row clearfix">
+                                                <div class="col-md-6">
+                                                    <label for="fundamentos">Fundamentos de derecho</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="fundamentos" placeholder="Otras normas aplicables..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label for="anexos ">Anexos</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="anexos " placeholder="Adjunte los anexos..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12" id='anexosfile'></div>
+                                                <div class="col-md-6">    
+                                                    <label class="checkbox-label">Solicito medidas cautelares</label><br>
+                                                    <input type="checkbox" id="solicito_cautelares" class="filled-in chk-col-blue">
+                                                    <label for="solicito_cautelares">Solicito la práctica de medidas cautelares</label>
+                                                </div>
+                                                <div id="solicito_cautelares_section" class="animated fadeIn">
+                                                    <div class="col-md-6">
+                                                        <label for="cautelares_que_solicita">Medidas cautelares que solicita</label>
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <textarea rows="1" class="form-control no-resize auto-growth" id="cautelares_que_solicita" placeholder="Precise a continuación las que solicita..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </section>
                                     </form>
                                 </div>
@@ -457,8 +549,12 @@
         <script src="plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
         <script src="plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
 
+        <!-- Dropzone Plugin Js -->
+        <script src="plugins/dropzone/dropzone.js"></script>
+
         <!-- Theme Js -->
         <script src="js/admin.js"></script>
+        <script src="js/pages/ui/tooltips-popovers.js"></script>
 
         <!-- Custom Js -->
         <script src="js/custom/demanda.js"></script>
