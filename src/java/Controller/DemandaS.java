@@ -65,12 +65,14 @@ public class DemandaS extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String opcion = request.getParameter("opcion");
+            Gson gson = new Gson();
             if (opcion.equalsIgnoreCase("create")) {
                 DemandaDAO d = new DemandaDAO();
                 String titulo = request.getParameter("titulo");
                 //Usuario user=(Usuario)request.getSession().getAttribute("usuario");
                 //d.addDemanda(titulo,user.getId_usuario());
                 d.addDemanda(titulo,1);
+                out.print(gson.toJson(true));
             }
             if (opcion.equalsIgnoreCase("update")) {
                 Demanda d = new Demanda();
@@ -164,8 +166,9 @@ public class DemandaS extends HttpServlet {
                     d.setPorcentaje(Float.parseFloat(request.getParameter("porcentaje")));
                 }
                 d.setId_demanda(Integer.parseInt(request.getParameter("id_demanda")));
-                DemandaDAO de = new DemandaDAO();
+                DemandaDAO de = new DemandaDAO(); 
                 de.updateDemanda(d);
+                out.print(gson.toJson(true));
             }
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(DemandaS.class.getName()).log(Level.SEVERE, null, ex);

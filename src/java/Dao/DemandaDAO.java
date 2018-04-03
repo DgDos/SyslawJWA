@@ -74,7 +74,10 @@ public class DemandaDAO {
             d.setId_demanda(rs.getInt("id_demanda"));
             d.setId_usuario(rs.getInt("id_usuario"));
             UsuarioDAO u = new UsuarioDAO();
-            d.setId_ayudante(u.getNameAyudante(rs.getInt("id_ayudante")));
+            int test = rs.getInt("id_ayudante");
+            if (test != 0) {
+                d.setId_ayudante(u.getNameAyudante(rs.getInt("id_ayudante")));
+            }
             d.setTitulo(rs.getString("titulo"));
             d.setJuez_nombre(rs.getString("juez_nombre"));
             d.setDte_nom(rs.getString("dte_nom"));

@@ -38,14 +38,16 @@ $(document).ready(function () {
             //set button waves effect
             setButtonWavesEffect(event);
 
+
+// preload form with data from controller
+            preLoadDemanda(id_demanda);
+
             // set changes save button show
             $('#demanda_wizard :input').on('change', function () {
                 changesdone = true;
                 $('#btnSave').show();
             });
 
-            // preload form with data from controller
-            preLoadDemanda(id_demanda);
         },
         onStepChanged: function (event) {
             setButtonWavesEffect(event);
@@ -222,7 +224,7 @@ function preLoadDemanda(id_demanda) {
             $('#dte_email').val(json.dte_email);
 
             if (json.dte_apo_tiene) {
-                $('#dte_apo_tiene').prop('checked', true);
+                $('#dte_apo_tiene').prop('checked', true).change();
             }
             $('#dte_apo_nom').val(json.dte_apo_nom);
             $('input:radio[name=dte_apo_id_tipo]').val([json.dte_apo_id_tipo]);
@@ -235,34 +237,33 @@ function preLoadDemanda(id_demanda) {
             $('#dem_email').val(json.dem_email);
 
             if (json.dem_apo_tiene) {
-                $('#dem_apo_tiene').prop('checked', true);
+                $('#dem_apo_tiene').prop('checked', true).change();
             }
             $('#dem_apo_nom').val(json.dem_apo_nom);
             $('#pretensiones').html(json.pretensiones);
             $('#hechos').html(json.hechos);
             if (json.depende_cumplimiento) {
-                $('#depende_cumplimiento').prop('checked', true);
+                $('#depende_cumplimiento').prop('checked', true).change();
             }
             if (json.tengo_pruebas) {
-                $('#tengo_pruebas').prop('checked', true);
+                $('#tengo_pruebas').prop('checked', true).change();
             }
             $('#pruebas').html(json.pruebas);
             if (json.estaba_obligado) {
-                $('#estaba_obligado ').prop('checked', true);
+                $('#estaba_obligado ').prop('checked', true).change();
             }
             $('#fundamentos').html(json.fundamentos);
             $('#anexos ').html(json.anexos);
             if (json.solicito_cautelares) {
-                $('#solicito_cautelares').prop('checked', true);
+                $('#solicito_cautelares').prop('checked', true).change();
             }
             $('#cautelares_que_solicita').html(json.cautelares_que_solicita);
         },
-        async: true
+        async: false
     });
 }
 
 function saveChanges() {
-    changesdone = false;
     $.ajax({
         type: 'POST',
         url: "DemandaS",
@@ -271,22 +272,40 @@ function saveChanges() {
             'opcion': "update",
             'id_demanda': $('#id_demanda').val(),
             'titulo': $('#titulo').val(),
+
             'juez_nombre': $('#juez_nombre').val(),
+
             'dte_nom': $('#dte_nom').val(),
             'dte_ciudad': $('#dte_ciudad').val(),
             'dte_id_tipo': $('input:radio[name=dte_id_tipo]:checked').val(),
             'dte_id': $('#dte_id').val(),
-            'dte_rep_tiene': $("#dte_rep_tiene").is(":checked"),
-            'dte_rep_nom': $('#dte_rep_nom').val(),
-            'dte_rep_id_tipo': $('input:radio[name=dte_rep_id_tipo]:checked').val(),
-            'dte_rep_id': $('#dte_rep_id').val(),
+            'dte_dir_not': $('#dte_dir_not').val(),
+            'dte_email': $('#dte_email').val(),
+
             'dte_apo_tiene': $("#dte_apo_tiene").is(":checked"),
             'dte_apo_nom': $('#dte_apo_nom').val(),
             'dte_apo_id_tipo': $('input:radio[name=dte_apo_id_tipo]:checked').val(),
             'dte_apo_id': $('#dte_apo_id').val(),
             'dte_apo_tar_pro': $('#dte_apo_tar_pro').val(),
-            'dte_dir_not': $('#dte_dir_not').val(),
-            'dte_email': $('#dte_email').val()
+
+            'dem_nom': $('#dem_nom').val(),
+            'dem_ciu': $('#dem_ciu').val(),
+            'dem_dir_not': $('#dem_dir_not').val(),
+            'dem_email': $('#dem_email').val(),
+
+            'dem_apo_tiene': $("#dem_apo_tiene").is(":checked"),
+            'dem_apo_nom': $('#dem_apo_nom').val(),
+            'pretensiones': $('#pretensiones').val(),
+            'hechos': $('#hechos').val(),
+            'depende_cumplimiento': $("#depende_cumplimiento").is(":checked"),
+            'tengo_pruebas': $("#tengo_pruebas").is(":checked"),
+            'pruebas': $('#pruebas').val(),
+            'estaba_obligado ': $("#estaba_obligado ").is(":checked"),
+            'fundamentos': $('#fundamentos').val(),
+            'anexos ': $('#anexos ').val(),
+            'solicito_cautelares': $("#solicito_cautelares").is(":checked"),
+            'cautelares_que_solicita': $('#cautelares_que_solicita').val()
+
         },
         dataType: "text",
         success: function (data) {
@@ -294,16 +313,18 @@ function saveChanges() {
             var json = $.parseJSON(data);
             if (json == true) {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
-                console.log('si se encontro el usuario');
-                document.location.href = 'signin.html';
+                console.log('si se actualizo');
             } else {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
-                console.log('no se encontro el usuario');
+                console.log('no se actualizo');
                 alert('Error desconocido');
             }
         },
         async: false
     });
+
+    changesdone = false;
+    location.reload();
 }
 
 // prevenir salida sin guardar cambios
@@ -324,38 +345,6 @@ function resetStorageRedirect(redirect) {
 function setButtonWavesEffect(event) {
     $(event.currentTarget).find('[role="menu"] li a').removeClass('waves-effect');
     $(event.currentTarget).find('[role="menu"] li:not(.disabled) a').addClass('waves-effect');
-}
-
-
-function render(wizard, options, state) {
-    // Create a content wrapper and copy HTML from the intial wizard structure
-    var contentWrapperTemplate = "<{0} class=\"{1}\"></{0}>",
-            stepsWrapperTemplate = "<{0} class=\"{1}\">{2}</{0}>",
-            orientation = getValidEnumValue(stepsOrientation, options.stepsOrientation),
-            verticalCssClass = (orientation === stepsOrientation.vertical) ? " vertical" : "",
-            contentWrapper = $(contentWrapperTemplate.format(options.contentContainerTag, "content " + options.clearFixCssClass)),
-            stepsWrapper = $(stepsWrapperTemplate.format(options.stepsContainerTag, "steps " + options.clearFixCssClass, "<ul role=\"tablist\"></ul>"));
-
-    // Transform the wizard wrapper by wrapping the innerHTML in the content wrapper, then prepending the stepsWrapper
-    wizard.attr("role", "application").wrapInner(contentWrapper).prepend(stepsWrapper)
-            .addClass(options.cssClass + " " + options.clearFixCssClass + verticalCssClass);
-
-    //Now that wizard is tansformed, select the the title and contents elements
-    var populatedContent = wizard.find('.content'),
-            stepTitles = populatedContent.children(options.headerTag),
-            stepContents = populatedContent.children(options.bodyTag);
-
-    // Add WIA-ARIA support
-    stepContents.each(function (index) {
-        renderBody(wizard, state, $(this), index);
-    });
-
-    stepTitles.each(function (index) {
-        renderTitle(wizard, options, state, $(this), index);
-    });
-
-    refreshStepNavigation(wizard, options, state);
-    renderPagination(wizard, options, state);
 }
 
 
