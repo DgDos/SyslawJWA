@@ -15,6 +15,10 @@
         <servlet-name>DemandaS</servlet-name>
         <servlet-class>Controller.DemandaS</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>AdministradorS</servlet-name>
+        <servlet-class>Controller.AdministradorS</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
@@ -26,6 +30,10 @@
     <servlet-mapping>
         <servlet-name>DemandaS</servlet-name>
         <url-pattern>/DemandaS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdministradorS</servlet-name>
+        <url-pattern>/AdministradorS</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

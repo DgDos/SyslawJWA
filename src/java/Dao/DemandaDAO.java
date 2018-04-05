@@ -6,6 +6,7 @@
 package Dao;
 
 import Model.Demanda;
+import Model.Estadisticas;
 import Util.DbUtil;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -195,6 +196,10 @@ public class DemandaDAO {
             preparedStatement.setInt(38, u.getIdAyudante(d.getId_ayudante()));
         }
         preparedStatement.executeUpdate();
+    }
+
+    public ArrayList<Estadisticas> getDemandadosVeces() {
+        
     }
 
 }
