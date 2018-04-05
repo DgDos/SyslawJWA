@@ -8,6 +8,7 @@ package Controller;
 import Dao.DemandaDAO;
 import Model.Estadisticas;
 import Model.Usuario;
+import com.google.gson.Gson;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URISyntaxException;
@@ -38,6 +39,10 @@ public class AdministradorS extends HttpServlet {
             if(user.getId_usuario()==0){
                 DemandaDAO d=new DemandaDAO();
                 ArrayList<Estadisticas> esta=d.getDemandadosVeces();
+                Gson gson=new Gson();
+                out.print(gson.toJson(esta));
+            }else{
+                out.print(false);
             }
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(AdministradorS.class.getName()).log(Level.SEVERE, null, ex);
