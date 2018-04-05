@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Mis demandas | Syslaw</title>
+        <title>Administrador | Syslaw</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -196,12 +196,10 @@
                             <div class="header bg-white add-event-header" style="background-color: #f1f1f1 !important;">
                                 <div class="row clearfix">
                                     <div class="col-xs-6 col-sm-6" style="margin-top: 5px">
-                                        <h2 style="color: #1981ad;">Mis demandas</h2>
+                                        <h2 style="color: #1981ad;">Dashboard de Administrador</h2>
                                     </div>
                                     <div class="col-xs-12 col-sm-6 align-right">
-                                        <button type="button" data-toggle="modal" data-target="#nuevaDemanda" class="btn bg-syslaw waves-effect btn-no-shadow">
-                                            <i id="toogle-add-event-icon" class="material-icons">add</i>
-                                        </button>
+                                        <h2 class="text-muted">Estadísticas</h2>
                                         
                                     </div>
                                 </div>
@@ -216,14 +214,15 @@
                                             <table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="estadisticas">
                                                 <thead>
                                                     <tr>
-                                                        <th>Nombre</th>
-                                                        <th>Cantidad de demandas</th>
+                                                        <th>Empresa</th>
+                                                        <th>Demandas</th>
                                                     </tr>
                                                 </thead>
                                                 <tfoot>
                                                     <tr>
-                                                        <th>Nombre</th>
-                                                        <th>Cantidad de demandas</th>
+                                                        <th>Empresa</th>
+                                                        <th>Demandas</th>
+                                                        <th></th>
                                                     </tr>
                                                 </tfoot>
                                             </table>
@@ -236,48 +235,7 @@
                     </div>
                 </div>
 
-               
-                <!-- Evento publico modal -->
-                <div class="modal fade-scale fade" id="nuevaDemanda" tabindex="-1" role="dialog" style="display: none;">
-                    <div class="modal-dialog" role="document">
-                        <div class="modal-content">
-
-                            <div class="modal-header detail-header bg-blue" id="modEvePubHeader">
-                                <div class="pull-left">
-                                    <h4 style="font-size:18px" id="modEvePubTitulo">Nueva demanda</h4>
-                                    
-                                </div>
-
-                                <button data-dismiss="modal" type="button" class="pull-right btn btn-info btn-sm btn-transparent">
-                                    <i id="toogle-add-event-icon" class="material-icons">close</i>
-                                </button>
-                            </div>
-                            <form id="nueva_demanda_form" autocomplete="off">
-                                <div class="modal-body">
-
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label for="nuevotitulo">Titulo de la nueva demanda</label>
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input autofocus type="text" id="nuevotitulo" class="form-control" placeholder="Ingresa un título...">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-lg btn-default waves-effect" data-dismiss="modal">Cancelar</button>
-                                    <button type="submit" class="btn btn-lg btn-primary waves-effect">Crear demanda</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-
-
+                
             </div>
 
         </section>

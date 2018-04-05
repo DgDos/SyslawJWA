@@ -36,7 +36,7 @@ public class AdministradorS extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             Usuario user=(Usuario)request.getSession().getAttribute("usuario");
-            if(user.getId_usuario()==0){
+            if(user.getTipo_usuario()==0){
                 DemandaDAO d=new DemandaDAO();
                 ArrayList<Estadisticas> esta=d.getDemandadosVeces();
                 Gson gson=new Gson();
@@ -53,6 +53,8 @@ public class AdministradorS extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        System.out.println("test");
         
     }
 
