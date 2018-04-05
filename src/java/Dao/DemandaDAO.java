@@ -201,7 +201,7 @@ public class DemandaDAO {
     public ArrayList<Estadisticas> getDemandadosVeces() throws SQLException {
         ArrayList<Estadisticas> estadisticas=new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select dem_nom,COUNT(dem_nom) from demanda where delete=1 group by dem_nom ");
+        ResultSet rs = statement.executeQuery("select dem_nom,COUNT(dem_nom) as veces from demanda where delete=1 group by dem_nom ");
         while(rs.next()){
             Estadisticas e=new Estadisticas();
             e.setId_usuario(rs.getString("dem_nom"));
