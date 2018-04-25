@@ -54,8 +54,7 @@ public class Register extends HttpServlet {
             String correo = request.getParameter("correo");
             String pass = request.getParameter("pass");
             Encription e = new Encription();
-            int tipo = Integer.parseInt(request.getParameter("tipo_usuario"));
-            Usuario user=new Usuario(documento, nombre, ciudad, direccion, correo, tipo_documento, 1);
+            Usuario user=new Usuario(documento, nombre, ciudad, direccion, correo, 1, tipo_documento);
             UsuarioDAO u = new UsuarioDAO();
             u.addUsuario(user, e.encription(pass));
             

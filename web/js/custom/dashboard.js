@@ -44,7 +44,7 @@ $(document).ready(function () {
 
     $('#demandas tbody').on('click', 'button', function () {
         var data = table.row($(this).parents('tr')).data();
-        abrir(data.id_demanda);
+        abrir(data.id_d);
     });
 
 });
