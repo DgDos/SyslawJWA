@@ -180,7 +180,7 @@
                                     <form id="demanda_wizard" autocomplete="off">
 
 
-                                        <h2>Demandante</h2>
+                                        <h2>Demandado</h2>
                                         <section>
                                             <div class="row clearfix">                                               
                                                 <div class="col-md-12" style="padding: 0px; margin: 0px;">
@@ -319,105 +319,129 @@
                                             </div>
                                         </section>
 
-                                        <h2>Pronunciamiento sobre</h2>
-                                        <section>
-                                            <div class="row clearfix">
-                                                <div class="col-md-12" style="padding: 0px; margin: 0px;">
-                                                    <h3 class="form-section-title">Demandado</h3>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="dem_nom">Identificación del demandado</label>
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                            <input type="text" id="dem_nom" class="form-control" placeholder="Número de identificación...">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-
-                                                <div class="col-md-6">
-                                                    <label for="dem_ciu">Ciudad de domicilio del demandado</label>
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                            <input type="text" id="dem_ciu" class="form-control" placeholder="Ingrese la ciudad...">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="dem_dir_not">Dirección donde recibe notificaciones:</label>
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                            <input type="text" id="dem_dir_not" class="form-control" placeholder="Dirección de notificaciones...">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <label for="dem_email">Dirección de correo electrónico</label>
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                            <input type="email" id="dem_email" class="form-control" placeholder="Correo electrónico...">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12" style="padding: 0px; margin: 0px;">
-                                                    <h3 class="form-section-title">Apoderado del demandado</h3>
-                                                </div>
-                                                <div class="col-md-6">    
-                                                    <label class="checkbox-label">Apoderado</label><br>
-                                                    <input type="checkbox" id="dem_apo_tiene" class="filled-in chk-col-blue">
-                                                    <label for="dem_apo_tiene">Demandado tiene apoderado</label>
-                                                </div>
-
-                                                <div id="dem_apo_tiene_section" class="animated fadeIn">
-                                                    <div class="col-md-6">
-                                                        <label for="dem_apo_nom">Nombre del apoderado</label>
-                                                        <div class="form-group">
-                                                            <div class="form-line">
-                                                                <input type="text" id="dem_apo_nom" class="form-control" placeholder="Ingrese el nombre...">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-
-                                        </section>
-
                                         <h2>Pretensiones</h2>
                                         <section>
-                                            <div class="row clearfix">
-                                                <div class="col-md-12">
-                                                    <label for="pretensiones">Pretensiones</label>
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="pretensiones" placeholder="Indique las sumas de dinero cuyo pago solicita..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                            <label for="pretenciones">(Recuerte que si usted se opene sin fundamento y es condenado, se le impondrá una multa equivalente al 10% del valor de la deuda a favor de su acreedor y, además, pagará las costas del proceso)</label>
+                                            <div class="col-md-6">    
+                                                <label class="checkbox-label">Si</label>
+                                                <input type="checkbox" id="si" class="filled-in chk-col-blue">
+                                                <label for="depende_cumplimiento">me opongo a las pretensiones.</label>
                                             </div>
+                                            <div class="col-md-6">    
+                                                <label class="checkbox-label">No</label>
+                                                <input type="checkbox" id="no" class="filled-in chk-col-blue">
+                                                <label for="depende_cumplimiento">me opongo a las pretensiones.</label>
+                                            </div>
+
                                         </section>
 
                                         <h2>Hechos</h2>
                                         <section>
                                             <div class="row clearfix">
                                                 <div class="col-md-12">
-                                                    <label for="hechos">Hechos</label>
+                                                    <label for="admitidos">ADMITO los siquientes hechos</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="hechos" placeholder="Refiera en forma concreta los hechos que fundamentan su solicitud..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="admitidos" placeholder="Refiera en forma concreta los hechos que fundamentan su solicitud..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">    
-                                                    <label class="checkbox-label">Manifiesto que</label><br>
-                                                    <input type="checkbox" id="depende_cumplimiento" class="filled-in chk-col-blue">
-                                                    <label for="depende_cumplimiento">El pago de la suma adeudada depende del cumplimiento de una obligación a mi cargo.</label>
+                                                <div class="col-md-12">
+                                                    <label for="negados">NIEGO los siguientes hechos, y en general niego total ( ) o parcialmente ( ) la deuda reclamada</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="negados" placeholder="Refiera en forma concreta los hechos que fundamentan su solicitud..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div class="col-md-6">    
-                                                    <label class="checkbox-label">Manifiesto bajo juramento que</label><br>
-                                                    <input type="checkbox" id="tengo_pruebas" class="filled-in chk-col-blue">
-                                                    <label for="tengo_pruebas">Tengo en mi poder pruebas documentales sobre la existencia de la obligación cuyo pago pretendo.</label>
+                                                <div class="col-md-12">
+                                                    <label for="explicacion">Explique por qué niega estos hechos, o niega total o parcialmente la deuda reclamada en la demanda:</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="explicacion" placeholder="Explique detalladamente..." style="overflow: hidden; word-wrap: break-word; height: 132px;"></textarea>
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                <div class="col-md-12">
+                                                    <label for="nomeconstan">NO ME CONSTAN LOS SIGUIENTES HECHOS</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="nomeconstan" placeholder="Refiera en forma concreta los hechos que fundamentan su solicitud..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label for="explicacionNomeconstan">Explique por qué no le constan estos hechos:</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="explicacionNomeconstan" placeholder="Explique detalladamente..." style="overflow: hidden; word-wrap: break-word; height: 132px;"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+                                            </div>
+                                        </section>
+
+                                        <h2>Excepciones</h2>
+                                        <section>
+                                            <div class="row clearfix">
+                                                &nbsp;
+                                                &nbsp;
+                                                <label for="excepciones1">(Si quiere plantear excepciones, indíquelas a continuación y precise en forma contreta los hechos que las fundamentan)</label><br><br>
+
+                                                <div class="col-md-12">
+                                                    <label for="nom_excep1">Nombre de la excepción:</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="text" id="nom_excep1" class="form-control" placeholder="Ingrese el nombre de la excepción...">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <label for="fundamentos1">Fundamentos:</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="text" id="fundamentos1" class="form-control" placeholder="Ingrese los fundamentos...">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label for="nom_excep2">Nombre de la excepción:</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="text" id="nom_excep2" class="form-control" placeholder="Ingrese el nombre de la excepción...">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label for="fundamentos2">Fundamentos:</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="text" id="fundamentos2" class="form-control" placeholder="Ingrese los fundamentos...">
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-12">
+                                                    <label for="reconocimiento">Si Usted pide el reconocimiento de alguna suma de dinero vinculada a la reclamanción de su demandnte (por ejemplo mejoras), debe estimarla bajo juramento y justificar cada uno de los conceptos.</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="reconocimiento" placeholder="Explique detalladamente..." style="overflow: hidden; word-wrap: break-word; height: 132px;"></textarea>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                &nbsp;
+                                                &nbsp;
+                                                <label for="excepciones1">(Recuerde que si usted se excede en el 50% de la cantidad probada, se le condenará a pagarle a su contraparte, una suma equivalente al 10% de la diferencia.)</label><br>
+                                                <div class="col-md-6">    
+                                                    <label class="checkbox-label">En los casos en que procede, invoca usted el derecho de retención </label>
+                                                    <input type="checkbox" id="si2" class="filled-in chk-col-blue">
+                                                    <label for="depende_cumplimiento">:</label>
+                                                </div>
+
 
 
                                             </div>
