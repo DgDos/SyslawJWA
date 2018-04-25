@@ -10,27 +10,33 @@ package Model;
  * @author FiJus
  */
 public class Usuario {
-    private int id_usuario;
+    private String documento;
     private String nombre;
+    private String ciudad;
+    private String direccion;
     private String correo;
     private int tipo_usuario;
+    private int tipo_id;
 
     public Usuario() {
     }
 
-    public Usuario(int id_usuario, String nombre, String correo, int tipo_usuario) {
-        this.id_usuario = id_usuario;
+    public Usuario(String documento, String nombre, String ciudad, String direccion, String correo, int tipo_usuario, int tipo_id) {
+        this.documento = documento;
         this.nombre = nombre;
+        this.ciudad = ciudad;
+        this.direccion = direccion;
         this.correo = correo;
         this.tipo_usuario = tipo_usuario;
+        this.tipo_id = tipo_id;
     }
 
-    public int getId_usuario() {
-        return id_usuario;
+    public String getDocumento() {
+        return documento;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setDocumento(String documento) {
+        this.documento = documento;
     }
 
     public String getNombre() {
@@ -39,6 +45,22 @@ public class Usuario {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getCiudad() {
+        return ciudad;
+    }
+
+    public void setCiudad(String ciudad) {
+        this.ciudad = ciudad;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public String getCorreo() {
@@ -56,5 +78,15 @@ public class Usuario {
     public void setTipo_usuario(int tipo_usuario) {
         this.tipo_usuario = tipo_usuario;
     }
+
+    public int getTipo_id() {
+        return tipo_id;
+    }
+
+    public void setTipo_id(int tipo_id) {
+        this.tipo_id = tipo_id;
+    }
+
+    
     
 }

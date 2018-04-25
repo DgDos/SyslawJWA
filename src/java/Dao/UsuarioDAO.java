@@ -28,11 +28,15 @@ public class UsuarioDAO {
     }
 
     public void addUsuario(Usuario u, String pass) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into usuario(nombre,correo,password,tipo_usuario) values (?,?,?,?)");
-        preparedStatement.setString(1, u.getNombre());
-        preparedStatement.setString(2, u.getCorreo());
-        preparedStatement.setString(3, pass);
-        preparedStatement.setInt(4, u.getTipo_usuario());
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into usuario(documento,tipo_documento,nombre,ciudad,direccion,correo,password,tipo_usuario,delete) values (?,?,?,?,?,?,?,?,1)");
+        preparedStatement.setString(1, u.getDocumento());
+        preparedStatement.setInt(2, u.getTipo_id());
+        preparedStatement.setString(3, u.getNombre());
+        preparedStatement.setString(4, u.getCiudad());
+        preparedStatement.setString(5, u.getDireccion());
+        preparedStatement.setString(6, u.getCorreo());
+        preparedStatement.setString(7, pass);
+        preparedStatement.setInt(8, u.getTipo_usuario());
         preparedStatement.executeUpdate();
     }
 
@@ -59,7 +63,7 @@ public class UsuarioDAO {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select * from usuario where correo='" + correo + "'");
         while (rs.next()) {
-            user.setId_usuario(rs.getInt("id_usuario"));
+            user.setDocumento(rs.getString("documento"));
             user.setCorreo(correo);
             user.setNombre(rs.getString("nombre"));
             user.setTipo_usuario(rs.getInt("tipo_usuario"));
@@ -67,9 +71,9 @@ public class UsuarioDAO {
         return user;
     }
 
-    public String getNameAyudante(int id_usuario) throws SQLException {
+    public String getNameAyudante(String documento) throws SQLException {
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select correo from usuario where delete=1 and id_usuario=" + id_usuario);
+        ResultSet rs = statement.executeQuery("select correo from usuario where delete=1 and documento=" + documento);
         while (rs.next()) {
             return rs.getString("correo");
         }

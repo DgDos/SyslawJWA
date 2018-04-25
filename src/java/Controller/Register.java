@@ -35,7 +35,6 @@ public class Register extends HttpServlet {
             String correo = request.getParameter("correo");
             UsuarioDAO u = new UsuarioDAO();
             Gson gson = new Gson();
-            boolean test = u.isUser(correo);
             out.print(gson.toJson(!u.isUser(correo)));
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
@@ -47,12 +46,16 @@ public class Register extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try {
-            String correo = request.getParameter("correo");
             String nombre = request.getParameter("nombre");
+            int tipo_documento=Integer.parseInt(request.getParameter("tipo_documento"));
+            String documento=request.getParameter("documento");
+            String ciudad=request.getParameter("ciudad");
+            String direccion=request.getParameter("direccion");
+            String correo = request.getParameter("correo");
             String pass = request.getParameter("pass");
             Encription e = new Encription();
             int tipo = Integer.parseInt(request.getParameter("tipo_usuario"));
-            Usuario user = new Usuario(0, nombre, correo, tipo);
+            Usuario user=new Usuario(documento, nombre, ciudad, direccion, correo, tipo_documento, 1);
             UsuarioDAO u = new UsuarioDAO();
             u.addUsuario(user, e.encription(pass));
             

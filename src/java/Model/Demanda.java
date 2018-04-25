@@ -9,7 +9,7 @@ import java.util.Date;
 public class Demanda {
 
     private int id_demanda;
-    private int id_usuario;
+    private String id_usuario;
     private String id_ayudante;
     private String titulo;
     private String juez_nombre;
@@ -51,11 +51,12 @@ public class Demanda {
     private Date fecha_modificacion;
     private Date fecha_autoguardado;
     private int id_autoguardado;
+    private int paso;
 
     public Demanda() {
     }
 
-    public Demanda(int id_demanda, int id_usuario, String id_ayudante, String titulo, String juez_nombre, String dte_nom, String dte_ciudad, int dte_id_tipo, String dte_id, Boolean dte_rep_tiene, String dte_rep_nom, int dte_rep_id_tipo, String dte_rep_id, Boolean dte_apo_tiene, String dte_apo_nom, int dte_apo_id_tipo, String dte_apo_id, String dte_apo_tar_pro, String dte_dir_not, String dte_email, String dem_nom, String dem_ciu, Boolean dem_rep_tiene, String dem_rep_nom, Boolean dem_apo_tiene, String dem_apo_nom, String dem_dir_not, String dem_email, String pretensiones, String hechos, Boolean depende_cumplimiento, Boolean tengo_pruebas, String pruebas, Boolean estaba_obligado, String fundamentos, String anexos, Boolean solicito_cautelares, String cautelares_que_solicita, float porcentaje, Date fecha_creacion, Date fecha_modificacion, Date fecha_autoguardado, int id_autoguardado) {
+    public Demanda(int id_demanda, String id_usuario, String id_ayudante, String titulo, String juez_nombre, String dte_nom, String dte_ciudad, int dte_id_tipo, String dte_id, Boolean dte_rep_tiene, String dte_rep_nom, int dte_rep_id_tipo, String dte_rep_id, Boolean dte_apo_tiene, String dte_apo_nom, int dte_apo_id_tipo, String dte_apo_id, String dte_apo_tar_pro, String dte_dir_not, String dte_email, String dem_nom, String dem_ciu, Boolean dem_rep_tiene, String dem_rep_nom, Boolean dem_apo_tiene, String dem_apo_nom, String dem_dir_not, String dem_email, String pretensiones, String hechos, Boolean depende_cumplimiento, Boolean tengo_pruebas, String pruebas, Boolean estaba_obligado, String fundamentos, String anexos, Boolean solicito_cautelares, String cautelares_que_solicita, float porcentaje, Date fecha_creacion, Date fecha_modificacion, Date fecha_autoguardado, int id_autoguardado, int paso) {
         this.id_demanda = id_demanda;
         this.id_usuario = id_usuario;
         this.id_ayudante = id_ayudante;
@@ -99,6 +100,7 @@ public class Demanda {
         this.fecha_modificacion = fecha_modificacion;
         this.fecha_autoguardado = fecha_autoguardado;
         this.id_autoguardado = id_autoguardado;
+        this.paso = paso;
     }
 
     public int getId_demanda() {
@@ -109,11 +111,11 @@ public class Demanda {
         this.id_demanda = id_demanda;
     }
 
-    public int getId_usuario() {
+    public String getId_usuario() {
         return id_usuario;
     }
 
-    public void setId_usuario(int id_usuario) {
+    public void setId_usuario(String id_usuario) {
         this.id_usuario = id_usuario;
     }
 
@@ -445,7 +447,15 @@ public class Demanda {
         this.id_autoguardado = id_autoguardado;
     }
 
-    
+    public int getPaso() {
+        return paso;
+    }
+
+    public void setPaso(int paso) {
+        this.paso = paso;
+    }
+
+   
 
     
 }
