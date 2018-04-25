@@ -3,17 +3,20 @@ $(document).ready(function () {
 
 $('#agregarPersona').on('submit', function () {
 
-    var nombre = $('#nombre').val();    
+    var nombre = $('#nombre').val(); 
+    var tipo_documento = $('input[name=tipo_documento]:checked').val();
+    var documento = $('#documento').val();
+    var ciudad = $('#ciudad').val();
+    var direccion = $('#direccion').val();
     var correo = $('#correo').val();
     var contrasena = $('#password').val();
-    var tipo_usuario = $('input[name=tipo_usuario]:checked').val();
 
-    addPersona(nombre, correo, contrasena, tipo_usuario);
+    addPersona(nombre, tipo_documento, documento, ciudad, direccion, correo, contrasena );
 
     return false;
 });
 
-function addPersona(name, correo, password, tipo_usuario) {
+function addPersona(name, tipo_documento, documento, ciudad, direccion, correo, password ) {
 
     $.ajax({
         type: 'POST',
@@ -21,9 +24,13 @@ function addPersona(name, correo, password, tipo_usuario) {
         //force to handle it as text
         data: {
             'nombre': name,
+            'tipo_documento': tipo_documento, 
+            'documento': documento,
+            'ciudad': ciudad,
+            'direccion': direccion,
             'correo': correo,
-            'pass': password,
-            'tipo_usuario': tipo_usuario // <-- the $ sign in the parameter name seems unusual, I would avoid it
+            'pass': password
+            
         },
         dataType: "text",
         success: function (data) {

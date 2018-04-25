@@ -146,41 +146,7 @@
                 </div>
                 <!-- #User Info -->
                 <!-- Menu -->
-                <div class="menu">
-                    <ul class="list">
-                        <li class="header">MENÚ DE NAVEGACIÓN</li>
-                        <li class="active">
-                            <a href="#demandas" onclick="resetStorageRedirect('dashboard.jsp')">
-                                <i class="material-icons">clear_all</i>
-                                <span>Mis Demandas</span>
-                            </a>
-                        </li>
-                        <!--
-                        <li>
-                            <a href="studentbase.jsp">
-                                <i class="material-icons">view_array</i>
-                                <span>Horario Base</span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <i class="material-icons">view_compact</i>
-                                <span>Dashboard</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="pages/maps/google.html">Horario Base</a>
-                                </li>
-                                <li>
-                                        <a href="pages/maps/yandex.html">Ver horas disponibles</a>
-                                </li>
-                            </ul>
-                        </li>-->
-
-
-                    </ul>
-                </div>
+                <%@include file="menu.jsp" %>
                 <!-- #Menu -->
                 <!-- Footer -->
                 <div class="legal">
@@ -452,7 +418,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="col-md-12" id='pruebasfile'></div>
 
                                                 <div class="col-md-12">    

@@ -138,41 +138,8 @@
                 </div>
                 <!-- #User Info -->
                 <!-- Menu -->
-                <div class="menu">
-                    <ul class="list">
-                        <li class="header">MENÚ DE NAVEGACIÓN</li>
-                        <li class="active">
-                            <a href="#">
-                                <i class="material-icons">clear_all</i>
-                                <span>Mis Demandas</span>
-                            </a>
-                        </li>
-                        <!--
-                        <li>
-                            <a href="studentbase.jsp">
-                                <i class="material-icons">view_array</i>
-                                <span>Horario Base</span>
-                            </a>
-                        </li>
-                        
-                        <li>
-                            <a href="javascript:void(0);" class="menu-toggle">
-                                <i class="material-icons">view_compact</i>
-                                <span>Dashboard</span>
-                            </a>
-                            <ul class="ml-menu">
-                                <li>
-                                    <a href="pages/maps/google.html">Horario Base</a>
-                                </li>
-                                <li>
-                                        <a href="pages/maps/yandex.html">Ver horas disponibles</a>
-                                </li>
-                            </ul>
-                        </li>-->
+                <%@include file="menu.jsp" %>
 
-
-                    </ul>
-                </div>
                 <!-- #Menu -->
                 <!-- Footer -->
                 <div class="legal">
@@ -202,14 +169,14 @@
                                         <button type="button" data-toggle="modal" data-target="#nuevaDemanda" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i id="toogle-add-event-icon" class="material-icons">add</i>
                                         </button>
-                                        
+
                                     </div>
                                 </div>
 
                             </div>
 
-                          <div class="body" id="dashboard-container" style="background-color: #f1f1f1;">  
-  
+                            <div class="body" id="dashboard-container" style="background-color: #f1f1f1;">  
+
                                 <div class="card">
                                     <div class="body">
                                         <div class="table-responsive">
@@ -244,7 +211,7 @@
                     </div>
                 </div>
 
-               
+
                 <!-- Evento publico modal -->
                 <div class="modal fade-scale fade" id="nuevaDemanda" tabindex="-1" role="dialog" style="display: none;">
                     <div class="modal-dialog" role="document">
@@ -253,7 +220,7 @@
                             <div class="modal-header detail-header bg-blue" id="modEvePubHeader">
                                 <div class="pull-left">
                                     <h4 style="font-size:18px" id="modEvePubTitulo">Nueva demanda</h4>
-                                    
+
                                 </div>
 
                                 <button data-dismiss="modal" type="button" class="pull-right btn btn-info btn-sm btn-transparent">
