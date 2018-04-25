@@ -30,14 +30,14 @@ public class DemandaDAO {
         connection = DbUtil.getConnection();
     }
 
-    public ArrayList<Demanda> getAllDemandasById(int id_usuario) throws SQLException {
+    public ArrayList<Demanda> getAllDemandasById(String id_usuario) throws SQLException {
         ArrayList<Demanda> demandas = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from demanda where delete=1 and id_usuario=" + id_usuario);
+        ResultSet rs = statement.executeQuery("select * from demanda where delete=1 and id_usuario='" + id_usuario+"'");
         while (rs.next()) {
             Demanda d = new Demanda();
             d.setId_demanda(rs.getInt("id_demanda"));
-            d.setId_usuario(rs.getInt("id_usuario"));
+            d.setId_usuario(rs.getString("id_usuario"));
             d.setTitulo(rs.getString("titulo"));
             d.setPorcentaje(rs.getFloat("porcentaje"));
             d.setFecha_creacion(rs.getTimestamp("fecha_creacion"));
@@ -48,14 +48,14 @@ public class DemandaDAO {
         return demandas;
     }
 
-    public ArrayList<Demanda> getAllDemandasByIdAyudante(int id_ayudante) throws SQLException {
+    public ArrayList<Demanda> getAllDemandasByIdAyudante(String id_ayudante) throws SQLException {
         ArrayList<Demanda> demandas = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from demanda where delete=1 and id_ayudante=" + id_ayudante);
+        ResultSet rs = statement.executeQuery("select * from demanda where delete=1 and id_ayudante='" + id_ayudante+"'");
         while (rs.next()) {
             Demanda d = new Demanda();
             d.setId_demanda(rs.getInt("id_demanda"));
-            d.setId_usuario(rs.getInt("id_usuario"));
+            d.setId_usuario(rs.getString("id_usuario"));
             d.setTitulo(rs.getString("titulo"));
             d.setPorcentaje(rs.getFloat("porcentaje"));
             d.setFecha_creacion(rs.getTimestamp("fecha_creacion"));
@@ -72,11 +72,11 @@ public class DemandaDAO {
         ResultSet rs = statement.executeQuery("select * from demanda where delete=1 and id_demanda=" + id_demanda);
         while (rs.next()) {
             d.setId_demanda(rs.getInt("id_demanda"));
-            d.setId_usuario(rs.getInt("id_usuario"));
+            d.setId_usuario(rs.getString("id_usuario"));
             UsuarioDAO u = new UsuarioDAO();
             int test = rs.getInt("id_ayudante");
             if (test != 0) {
-                d.setId_ayudante(u.getNameAyudante(rs.getInt("id_ayudante")));
+                d.setId_ayudante(u.getNameAyudante(rs.getString("id_ayudante")));
             }
             d.setTitulo(rs.getString("titulo"));
             d.setJuez_nombre(rs.getString("juez_nombre"));
@@ -122,9 +122,9 @@ public class DemandaDAO {
         return d;
     }
 
-    public void addDemanda(String titulo, int id_usuario) throws SQLException {
+    public void addDemanda(String titulo, String id_usuario) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("insert into demanda(id_usuario,titulo,juez_nombre,dte_nom,dte_ciudad,dte_id_tipo,dte_id,dte_rep_tiene,dte_rep_nom,dte_rep_id_tipo,dte_rep_id,dte_apo_tiene,dte_apo_nom,dte_apo_id_tipo,dte_apo_id,dte_apo_tar_pro,dte_dir_not,dte_email,dem_nom,dem_ciu,dem_rep_tiene,dem_rep_nom,dem_apo_tiene,dem_apo_nom,dem_dir_not,dem_email,pretensiones,hechos,depende_cumplimiento,tengo_pruebas,pruebas,estaba_obligado,fundamentos,anexos,solicito_cautelares,cautelares_que_solicita,porcentaje,fecha_creacion,fecha_modificacion,delete) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1)");
-        preparedStatement.setInt(1, id_usuario);
+        preparedStatement.setString(1, id_usuario);
         preparedStatement.setString(2, titulo);
         for (int i = 3; i < 38; i++) {
             if (i == 6 || i == 10 || i == 14) {

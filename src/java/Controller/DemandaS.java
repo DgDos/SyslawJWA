@@ -33,17 +33,18 @@ public class DemandaS extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String opcion = request.getParameter("opcion");
+            System.out.println("opcion---"+opcion);
             if (opcion.equalsIgnoreCase("allMe")) {
                 DemandaDAO d = new DemandaDAO();
                 Usuario user=(Usuario)request.getSession().getAttribute("usuario");
-                ArrayList<Demanda> demandas=d.getAllDemandasById(user.getId_usuario());
+                ArrayList<Demanda> demandas=d.getAllDemandasById(user.getDocumento());
                 Gson gson = new Gson();
                 out.println(gson.toJson(demandas));
             }
             if (opcion.equalsIgnoreCase("allHelp")) {
                 DemandaDAO d = new DemandaDAO();
                 Usuario user=(Usuario)request.getSession().getAttribute("usuario");
-                ArrayList<Demanda> demandas=d.getAllDemandasById(user.getId_usuario());
+                ArrayList<Demanda> demandas=d.getAllDemandasById(user.getDocumento());
                 Gson gson = new Gson();
                 out.println(gson.toJson(demandas));
             }
@@ -70,7 +71,7 @@ public class DemandaS extends HttpServlet {
                 DemandaDAO d = new DemandaDAO();
                 String titulo = request.getParameter("titulo");
                 Usuario user=(Usuario)request.getSession().getAttribute("usuario");
-                d.addDemanda(titulo,user.getId_usuario());
+                d.addDemanda(titulo,user.getDocumento());
                 out.print(gson.toJson(true));
             }
             if (opcion.equalsIgnoreCase("update")) {
