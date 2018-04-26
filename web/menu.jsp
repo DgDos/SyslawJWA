@@ -20,7 +20,7 @@
                             </a>
                         </li>
                         <li class="active">
-                            <a href="contestacion.jsp">
+                            <a href="dashboardContestaciones.jsp">
                                 <i class="material-icons">call</i>
                                 <span>Contestaciones</span>
                             </a>
