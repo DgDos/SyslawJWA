@@ -40,7 +40,7 @@ $(document).ready(function () {
 
 
 // preload form with data from controller
-            preLoadDemanda(id_contestacion);
+            preLoadContestacion(id_contestacion);
 
             // set changes save button show
             $('#contestacion_wizard :input').on('change', function () {
@@ -64,104 +64,27 @@ $(document).ready(function () {
 
 
     // Area de grupos condicionales
-
-    // Representante legal
-    var dte_rep_tiene = $("#dte_rep_tiene"); // elemento checkbox
-    var dte_rep_tiene_val; // valor del checkbox
-    var dte_rep_tiene_section = $("#dte_rep_tiene_section"); // seccion que controla el checkbox
-
-    dte_rep_tiene_val = dte_rep_tiene.prop("checked") ? true : false; // tomar valor
-
-    // primera reaccion
-    if (!dte_rep_tiene_val) {
-        dte_rep_tiene_section.addClass("hidden");
-    }
-    //reaccion en el cambio del elemento
-    dte_rep_tiene.on('change', function () {
-
-        dte_rep_tiene_val = dte_rep_tiene.prop("checked") ? true : false;
-        if (!dte_rep_tiene_val) {
-            dte_rep_tiene_section.addClass("hidden");
-        } else {
-            dte_rep_tiene_section.removeClass("hidden");
-        }
-    });
-
-
-    // conditionals start
-
-
-    // dte_apo_tiene conditional
-    var dte_apo_tiene = $('#dte_apo_tiene'); // elemento checkbox
-    var dte_apo_tiene_val; // valor del checkbox
-    var dte_apo_tiene_section = $('#dte_apo_tiene_section'); // seccion que controla el checkbox
-
-    dte_apo_tiene_val = dte_apo_tiene.prop('checked') ? true : false; // tomar valor
-    //
-    // primera reaccion
-    if (!dte_apo_tiene_val) {
-        dte_apo_tiene_section.addClass('hidden');
-    }
-    //reaccion en el cambio del elemento
-    dte_apo_tiene.on('change', function () {
-
-        dte_apo_tiene_val = dte_apo_tiene.prop('checked') ? true : false;
-        if (!dte_apo_tiene_val) {
-            dte_apo_tiene_section.addClass('hidden');
-        } else {
-            dte_apo_tiene_section.removeClass('hidden');
-        }
-    });
-
-
-
 // dem_apo_tiene conditional
-    var dem_apo_tiene = $('#dem_apo_tiene'); // elemento checkbox
-    var dem_apo_tiene_val; // valor del checkbox
-    var dem_apo_tiene_section = $('#dem_apo_tiene_section'); // seccion que controla el checkbox
+    var ddo_apo_tiene = $('#ddo_apo_tiene '); // elemento checkbox
+    var ddo_apo_tiene_val; // valor del checkbox
+    var ddo_apo_tiene_section = $('#ddo_apo_tiene_section'); // seccion que controla el checkbox
 
-    dem_apo_tiene_val = dem_apo_tiene.prop('checked') ? true : false; // tomar valor
+    ddo_apo_tiene_val = ddo_apo_tiene.prop('checked') ? true : false; // tomar valor
     //
     // primera reaccion
-    if (!dem_apo_tiene_val) {
-        dem_apo_tiene_section.addClass('hidden');
+    if (!ddo_apo_tiene_val) {
+        ddo_apo_tiene_section.addClass('hidden');
     }
     //reaccion en el cambio del elemento
-    dem_apo_tiene.on('change', function () {
+    ddo_apo_tiene.on('change', function () {
 
-        dem_apo_tiene_val = dem_apo_tiene.prop('checked') ? true : false;
-        if (!dem_apo_tiene_val) {
-            dem_apo_tiene_section.addClass('hidden');
+        ddo_apo_tiene_val = ddo_apo_tiene.prop('checked') ? true : false;
+        if (!ddo_apo_tiene_val) {
+            ddo_apo_tiene_section.addClass('hidden');
         } else {
-            dem_apo_tiene_section.removeClass('hidden');
+            ddo_apo_tiene_section.removeClass('hidden');
         }
     });
-
-
-// solicito_cautelares conditional
-    var solicito_cautelares = $('#solicito_cautelares'); // elemento checkbox
-    var solicito_cautelares_val; // valor del checkbox
-    var solicito_cautelares_section = $('#solicito_cautelares_section'); // seccion que controla el checkbox
-
-    solicito_cautelares_val = solicito_cautelares.prop('checked') ? true : false; // tomar valor
-    //
-    // primera reaccion
-    if (!solicito_cautelares_val) {
-        solicito_cautelares_section.addClass('hidden');
-    }
-    //reaccion en el cambio del elemento
-    solicito_cautelares.on('change', function () {
-
-        solicito_cautelares_val = solicito_cautelares.prop('checked') ? true : false;
-        if (!solicito_cautelares_val) {
-            solicito_cautelares_section.addClass('hidden');
-        } else {
-            solicito_cautelares_section.removeClass('hidden');
-        }
-    });
-
-
-
 
     // conditionals end
 
@@ -173,45 +96,6 @@ $(document).ready(function () {
         paramName: "file",
         maxFilesize: 2
     };
-    //verifica si un demandado se encuentra en la app
-    $("#botonVerificacion").on('click', function () {
-        $.ajax({
-            type: 'GET',
-            url: "UsuarioS",
-            data: {
-                'opcion': "existUser",
-                'documento': $("#dem_id").val()
-            },
-            dataType: "text",
-            success: function (data) {
-                var json = $.parseJSON(data);
-                $('#dem_nom').val(json.nombre);
-                $('#dem_id').val(json.documento);
-                $('input:radio[name=dem_id_tipo]').val([json.tipo_id]);
-                $('#dem_ciu').val(json.ciudad);
-                $('#dem_dir_not').val(json.direccion);
-                $('#dem_email').val(json.correo);
-            },
-            async: false
-        });
-    });
-    //al finalizar una demanda
-    $("#finalizar").on('click', function () {
-        saveChanges();
-        $.ajax({
-            type: 'POST',
-            url: "DemandaS",
-            data: {
-                'opcion': "endDone",
-                'id_demanda':  $('#id_demanda').val()
-            },
-            dataType: "text",
-            success: function (data) {
-                window.location.replace("/SyslawJWA/dashboard.jsp");
-            },
-            async: false
-        });
-    });
 });
 
 
@@ -234,69 +118,54 @@ function generateDropzone(title, subtitle) {
 
 }
 
-function preLoadDemanda(id_demanda) {
+function preLoadContestacion(id_contestacion) {
     $.ajax({
         type: 'GET',
-        url: "DemandaS",
+        url: "ContestacionS",
         //force to handle it as text
         data: {
             'opcion': "one",
-            'id_demanda': id_demanda,
+            'id_contestacion': id_contestacion
         },
         dataType: "text",
         success: function (data) {
 
             var json = $.parseJSON(data);
-            $('#id_demanda').val(json.id_demanda);
+            $('#proceso').val(json.proceso);
+            $('#contra').val(json.contra);
+            $('#id_contestacion').val(json.id_contestacion);
             $('#titulo').val(json.titulo);
 
-
-            $('#juez_nombre').val(json.juez_nombre);
-
-            $('#dte_nom').val(json.dte_nom);
-            $('#dte_ciudad').val(json.dte_ciudad);
-            $('input:radio[name=dte_id_tipo]').val([json.dte_id_tipo]);
-            $('#dte_id').val(json.dte_id);
-            $('#dte_dir_not').val(json.dte_dir_not);
-            $('#dte_email').val(json.dte_email);
-
-            if (json.dte_apo_tiene) {
-                $('#dte_apo_tiene').prop('checked', true).change();
+            if (json.ddo_apo_tiene) {
+                $('#ddo_apo_tiene').prop('checked', true).change();
             }
-            $('#dte_apo_nom').val(json.dte_apo_nom);
-            $('input:radio[name=dte_apo_id_tipo]').val([json.dte_apo_id_tipo]);
-            $('#dte_apo_id').val(json.dte_apo_id);
-            $('#dte_apo_tar_pro').val(json.dte_apo_tar_pro);
+            $('#ddo_apo_nom').val(json.dte_apo_nom);
+            $('input:radio[name=ddo_apo_id_tipo]').val([json.dte_apo_id_tipo]);
+            $('#ddo_apo_id').val(json.dte_apo_id);
+            $('#ddo_apo_tar_pro').val(json.dte_apo_tar_pro);
 
-            $('#dem_nom').val(json.dem_nom);
-            $('#dem_id').val(json.dem_id);
-            $('input:radio[name=dem_id_tipo]').val([json.dem_id_tipo]);
-            $('#dem_ciu').val(json.dem_ciu);
-            $('#dem_dir_not').val(json.dem_dir_not);
-            $('#dem_email').val(json.dem_email);
+            $('#nombre_demandado').val(json.nombre_demandado);
+            $('#ciudad_demandado').val(json.ciudad_demandado);
+            $('input:radio[name=tipo_documento_demandado]').val([json.tipo_documento_demandado]);
+            $('#documento_demandado').val(json.documento_demandado);
+            $('#direccion_notificaciones').val(json.direccion_notificaciones);
+            $('#email').val(json.email);
+            if (json.pretenciones) {
+                $('#pretenciones').prop('checked', true).change();
+            }
+            $('#hechos_admitidos').html(json.hechos_admitidos);
+            $('#hechos_negados').html(json.hechos_negados);
+            $('#explicacion_negados').html(json.explicacion_negados);
+            $('#hechos_no_constan').html(json.hechos_no_constan);
+            $('#explicacion_no_constan').html(json.explicacion_no_constan);
+            $('#excepciones').html(json.excepciones);
+            $('#reconocimiento').html(json.reconocimiento);
 
-            if (json.dem_apo_tiene) {
-                $('#dem_apo_tiene').prop('checked', true).change();
-            }
-            $('#dem_apo_nom').val(json.dem_apo_nom);
-            $('#pretensiones').html(json.pretensiones);
-            $('#hechos').html(json.hechos);
-            if (json.depende_cumplimiento) {
-                $('#depende_cumplimiento').prop('checked', true).change();
-            }
-            if (json.tengo_pruebas) {
-                $('#tengo_pruebas').prop('checked', true).change();
+            if (json.retencion) {
+                $('#retencion').prop('checked', true).change();
             }
             $('#pruebas').html(json.pruebas);
-            if (json.estaba_obligado) {
-                $('#estaba_obligado ').prop('checked', true).change();
-            }
-            $('#fundamentos').html(json.fundamentos);
             $('#anexos ').html(json.anexos);
-            if (json.solicito_cautelares) {
-                $('#solicito_cautelares').prop('checked', true).change();
-            }
-            $('#cautelares_que_solicita').html(json.cautelares_que_solicita);
         },
         async: false
     });
@@ -305,47 +174,44 @@ function preLoadDemanda(id_demanda) {
 function saveChanges() {
     $.ajax({
         type: 'POST',
-        url: "DemandaS",
+        url: "ContestacionS",
         //force to handle it as text
         data: {
             'opcion': "update",
-            'id_demanda': $('#id_demanda').val(),
+            'proceso': $('#proceso').val(),
+            'contra': $('#contra').val(),
+            'id_contestacion': $('#id_contestacion').val(),
             'titulo': $('#titulo').val(),
 
-            'juez_nombre': $('#juez_nombre').val(),
+            'ddo_apo_tiene': $('#ddo_apo_tiene').is(":checked"),
 
-            'dte_nom': $('#dte_nom').val(),
-            'dte_ciudad': $('#dte_ciudad').val(),
-            'dte_id_tipo': $('input:radio[name=dte_id_tipo]:checked').val(),
-            'dte_id': $('#dte_id').val(),
-            'dte_dir_not': $('#dte_dir_not').val(),
-            'dte_email': $('#dte_email').val(),
+            'ddo_apo_nom': $('#ddo_apo_nom').val(),
+            'ddo_apo_id_tipo': $('input:radio[name=ddo_apo_id_tipo]:checked').val(),
+            'ddo_apo_id': $('#ddo_apo_id').val(),
+            'ddo_apo_tar_pro': $('#ddo_apo_tar_pro').val(),
 
-            'dte_apo_tiene': $("#dte_apo_tiene").is(":checked"),
-            'dte_apo_nom': $('#dte_apo_nom').val(),
-            'dte_apo_id_tipo': $('input:radio[name=dte_apo_id_tipo]:checked').val(),
-            'dte_apo_id': $('#dte_apo_id').val(),
-            'dte_apo_tar_pro': $('#dte_apo_tar_pro').val(),
+            'nombre_demandado': $('#nombre_demandado').val(),
+            'ciudad_demandado': $('#ciudad_demandado').val(),
+            'tipo_documento_demandado': $('input:radio[name=tipo_documento_demandado]:checked').val(),
+            'documento_demandado': $('#documento_demandado').val(),
+            'direccion_notificaciones': $('#direccion_notificaciones').val(),
+            'email': $('#email').val(),
 
-            'dem_nom': $('#dem_nom').val(),
-            'dem_ciu': $('#dem_ciu').val(),
-            'dem_id_tipo': $('input:radio[name=dem_id_tipo]:checked').val(),
-            'dem_id': $('#dem_id').val(),
-            'dem_dir_not': $('#dem_dir_not').val(),
-            'dem_email': $('#dem_email').val(),
+            'pretenciones': $('#pretenciones').is(":checked"),
 
-            'dem_apo_tiene': $("#dem_apo_tiene").is(":checked"),
-            'dem_apo_nom': $('#dem_apo_nom').val(),
-            'pretensiones': $('#pretensiones').val(),
-            'hechos': $('#hechos').val(),
-            'depende_cumplimiento': $("#depende_cumplimiento").is(":checked"),
-            'tengo_pruebas': $("#tengo_pruebas").is(":checked"),
+            'hechos_admitidos': $('#hechos_admitidos').val(),
+            'hechos_negados': $('#hechos_negados').val(),
+            'explicacion_negados': $('#explicacion_negados').val(),
+            'hechos_no_constan': $('#hechos_no_constan').val(),
+            'explicacion_no_constan': $('#explicacion_no_constan').val(),
+            'excepciones': $('#excepciones').val(),
+            'reconocimiento': $('#reconocimiento').val(),
+
+            'retencion': $('#retencion').is(":checked"),
+
             'pruebas': $('#pruebas').val(),
-            'estaba_obligado ': $("#estaba_obligado ").is(":checked"),
-            'fundamentos': $('#fundamentos').val(),
-            'anexos ': $('#anexos ').val(),
-            'solicito_cautelares': $("#solicito_cautelares").is(":checked"),
-            'cautelares_que_solicita': $('#cautelares_que_solicita').val()
+
+            'anexos': $('#anexos ').val(),
 
         },
         dataType: "text",

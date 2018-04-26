@@ -206,7 +206,7 @@
                                                     <label for="contra">Contra:</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="contra" class="form-control" placeholder="Ingrese el contra...">
+                                                            <input type="text" readonly id="contra" class="form-control" placeholder="Ingrese el contra...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -217,7 +217,7 @@
                                                     <label for="ddo_nom">Nombre del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="nombre_demandado" class="form-control" placeholder="Ingrese el nombre...">
+                                                            <input type="text" readonly id="nombre_demandado" class="form-control" placeholder="Ingrese el nombre...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -225,28 +225,28 @@
                                                     <label for="ddo_ciudad">Ciudad del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="ciudad_demandado" class="form-control" placeholder="Ingrese la ciudad...">
+                                                            <input type="text" readonly id="ciudad_demandado" class="form-control" placeholder="Ingrese la ciudad...">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="ddo_id_tipo">Tipo de id del demandado</label>
-                                                    <div class="id-type-radio">
-                                                        <input name="ddo_id_tipo" type="radio" id="radio_ddo_id_tipo_1" value="0"  class="with-gap radio-col-blue" checked="">
-                                                        <label for="radio_ddo_id_tipo_1">C.C</label>
-                                                        <input name="ddo_id_tipo" type="radio" id="radio_ddo_id_tipo_2" value="1" class="with-gap radio-col-blue">
+                                                    <label for="tipo_documento_demandado">Tipo de id del demandado</label>
+                                                    <div readonly class="id-type-radio">
+                                                        <input name="tipo_documento_demandado" type="radio" id="radio_tipo_documento_demandado_1" value="0"  class="with-gap radio-col-blue" checked="">
+                                                        <label for="radio_tipo_documento_demandado_1">C.C</label>
+                                                        <input name="tipo_documento_demandado" type="radio" id="radio_tipo_documento_demandado_2" value="1" class="with-gap radio-col-blue">
                                                         <label for="radio_dte_id_tipo_2">NIT</label>
-                                                        <input name="ddo_id_tipo" type="radio" id="radio_ddo_id_tipo_3" value="2" class="with-gap radio-col-blue">
-                                                        <label for="radio_ddo_id_tipo_3">TI</label>
-                                                        <input name="ddo_id_tipo" type="radio" id="radio_ddo_id_tipo_4" value="3" class="with-gap radio-col-blue">
-                                                        <label for="radio_ddo_id_tipo_4">PASAPORTE</label>
+                                                        <input name="tipo_documento_demandado" type="radio" id="radio_tipo_documento_demandado_3" value="2" class="with-gap radio-col-blue">
+                                                        <label for="radio_tipo_documento_demandado_3">TI</label>
+                                                        <input name="tipo_documento_demandado" type="radio" id="radio_tipo_documento_demandado_4" value="3" class="with-gap radio-col-blue">
+                                                        <label for="radio_tipo_documento_demandado_4">PASAPORTE</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label for="documento_demandado">Numero del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="documento_demandado" class="form-control" placeholder="Número de identificación...">
+                                                            <input type="text" readonly id="documento_demandado" class="form-control" placeholder="Número de identificación...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -254,7 +254,7 @@
                                                     <label for="direccion_notificaciones">Dirección donde recibe notificaciones:</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="direccion_notificaciones" class="form-control" placeholder="Dirección de notificaciones...">
+                                                            <input type="text" readonly id="direccion_notificaciones" class="form-control" placeholder="Dirección de notificaciones...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -262,7 +262,7 @@
                                                     <label for="email">Dirección de correo electrónico</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="email" id="email" class="form-control" placeholder="Correo electrónico...">
+                                                            <input type="email" readonly id="email" class="form-control" placeholder="Correo electrónico...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -272,10 +272,10 @@
                                                 </div>
                                                 <div class="col-md-6">    
                                                     <label class="checkbox-label">Apoderado</label><br>
-                                                    <input type="checkbox" id="dte_apo_tiene" class="filled-in chk-col-blue">
-                                                    <label for="dte_apo_tiene">Demandado tiene apoderado</label>
+                                                    <input type="checkbox" id="ddo_apo_tiene" class="filled-in chk-col-blue">
+                                                    <label for="ddo_apo_tiene">Demandado tiene apoderado</label>
                                                 </div>
-                                                <div id="dte_apo_tiene_section" class="animated fadeIn">
+                                                <div id="ddo_apo_tiene_section" class="animated fadeIn">
 
                                                     <div class="col-md-6">
                                                         <label for="ddo_apo_nom">Nombre del apoderado</label>
@@ -307,6 +307,14 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
+                                                        <label for="ddo_apo_dir">Domicilio del demandado</label>
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="ddo_apo_dir" class="form-control" placeholder="Dirección ...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
                                                         <label for="ddo_apo_tar_pro">Tarjeta profesional No.</label>
                                                         <div class="form-group">
                                                             <div class="form-line">
@@ -325,10 +333,9 @@
                                             <div class="col-md-6">    
                                                 <label class="checkbox-label">Si</label>
                                                 <input type="checkbox" id="pretenciones" class="filled-in chk-col-blue">
-                                                <label for="depende_cumplimiento">me opongo a las pretensiones.</label>
+                                                <label for="pretenciones">me opongo a las pretensiones.</label>
                                             </div>
                                         </section>
-
                                         <h2>Hechos</h2>
                                         <section>
                                             <div class="row clearfix">
@@ -435,14 +442,6 @@
                                         <h2>Otros</h2>
                                         <section>
                                             <div class="row clearfix">
-                                                <div class="col-md-6">
-                                                    <label for="fundamentos">Fundamentos de derecho</label>
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="fundamentosfe" placeholder="Otras normas aplicables..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                                 <div class="col-md-12">
                                                     <label for="anexos ">Anexos</label>
                                                     <div class="form-group">
@@ -509,7 +508,7 @@
         <script src="js/pages/ui/tooltips-popovers.js"></script>
 
         <!-- Custom Js -->
-        <script src="js/custom/demanda.js"></script>
+        <script src="js/custom/contestacion.js"></script>
         <script src="js/pages/index.js"></script>
 
 

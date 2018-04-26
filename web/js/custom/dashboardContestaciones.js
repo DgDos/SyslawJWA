@@ -44,7 +44,7 @@ $(document).ready(function () {
 
     $('#contestaciones tbody').on('click', 'button', function () {
         var data = table.row($(this).parents('tr')).data();
-        abrir(data.id_demanda);
+        abrir(data.id_contestacion);
     });
 
 });

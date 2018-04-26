@@ -85,7 +85,7 @@ public class ContestacionS extends HttpServlet {
                 }else{
                     d.setId_ayudante("");
                 }
-                d.setId_demanda(Integer.parseInt(request.getParameter("id_demanda")));
+                d.setId_contestacion(Integer.parseInt(request.getParameter("id_contestacion")));
                 d.setNombre_demandado(request.getParameter("nombre_demandado"));
                 d.setDocumento_demandado(request.getParameter("documento_demandado"));
                 if (request.getParameter("tipo_documento_demandado") != null) {
@@ -98,14 +98,14 @@ public class ContestacionS extends HttpServlet {
                 if (request.getParameter("tipo_documento_representante") != null) {
                     d.setTipo_documento_representante(Integer.parseInt(request.getParameter("tipo_documento_representante")));
                 }
-                d.setNombre_apoderado(request.getParameter("nombre_apoderado"));
-                d.setDomicilio_apoderado(request.getParameter("domicilio_apoderado"));
-                d.setDocumento_apoderado(request.getParameter("documento_apoderado"));
+                d.setDdo_apo_nom(request.getParameter("ddo_apo_nom"));
+                d.setDdo_apo_dir(request.getParameter("ddo_apo_dir"));
+                d.setDdo_apo_id(request.getParameter("ddo_apo_id"));
             
-                if (request.getParameter("tipo_documento_apoderado") != null) {
-                    d.setTipo_documento_apoderado(Integer.parseInt(request.getParameter("tipo_documento_apoderado")));
+                if (request.getParameter("ddo_apo_id_tipo") != null) {
+                    d.setDdo_apo_id_tipo(Integer.parseInt(request.getParameter("ddo_apo_id_tipo")));
                 }
-                 d.setTarjeta_profesional_apoderado(request.getParameter("tarjeta_profesional_apoderado"));
+                 d.setDdo_apo_tar_pro(request.getParameter("ddo_apo_tar_pro"));
                  d.setDireccion_notificaciones(request.getParameter("direccion_notificaciones"));
                  d.setEmail(request.getParameter("email"));
 
@@ -125,7 +125,22 @@ public class ContestacionS extends HttpServlet {
                 if (request.getParameter("porcentaje") != null) {
                     d.setPorcentaje(Float.parseFloat(request.getParameter("porcentaje")));
                 } 
-                
+                d.setProceso(request.getParameter("proceso"));
+                d.setContra(request.getParameter("contra"));
+                d.setCiudad_demandado(request.getParameter("ciudad_demandado"));
+                d.setReconocimiento(request.getParameter("reconocimiento"));
+                d.setAnexos(request.getParameter("anexos"));
+                if (request.getParameter("retencion") != null) {
+                    d.setRetencion(Boolean.parseBoolean(request.getParameter("retencion")));
+                } else {
+                    d.setRetencion(false);
+                }
+                if (request.getParameter("ddo_apo_tiene") != null) {
+                    d.setDdo_apo_tiene(Boolean.parseBoolean(request.getParameter("ddo_apo_tiene")));
+                } else {
+                    d.setDdo_apo_tiene(false);
+                }
+                System.out.println(d.toString());
                 
                 ContestacionDAO de = new ContestacionDAO(); 
                 de.updateContestacion(d);
