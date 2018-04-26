@@ -501,6 +501,7 @@
                                             </div>
                                         </section>
                                     </form>
+                                    <button type="button" id="finalizar" class="btn btn-success waves-effect">Finalizar</button>
                                 </div>
                             </div>
 

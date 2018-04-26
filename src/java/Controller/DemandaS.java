@@ -54,6 +54,13 @@ public class DemandaS extends HttpServlet {
                 Gson gson = new Gson();
                 out.println(gson.toJson(demanda));
             }
+            if(opcion.equalsIgnoreCase("allMeDemandado")){
+                DemandaDAO d = new DemandaDAO();
+                Usuario user=(Usuario)request.getSession().getAttribute("usuario");
+                ArrayList<Demanda> demandas=d.getAllDemandasByIdMias(user.getDocumento());
+                Gson gson = new Gson();
+                out.println(gson.toJson(demandas));
+            }
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(DemandaS.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -172,6 +179,11 @@ public class DemandaS extends HttpServlet {
                 DemandaDAO de = new DemandaDAO(); 
                 de.updateDemanda(d);
                 out.print(gson.toJson(true));
+            }
+            if(opcion.equalsIgnoreCase("endDone")){
+                DemandaDAO de=new DemandaDAO();
+                int id_demanda=Integer.parseInt(request.getParameter("id_demanda"));
+                de.endDone(id_demanda);
             }
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(DemandaS.class.getName()).log(Level.SEVERE, null, ex);

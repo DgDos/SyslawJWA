@@ -119,15 +119,15 @@ public class ContestacionDAO {
         return d;
     }
 
-    public void addContestacion(String titulo, Usuario user, int id_demanda) throws SQLException {
+    public void addContestacion( Usuario user, Demanda demanda) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("insert into contestacion(id_demanda,nombre_demandado,documento_demandado,tipo_documento_demandado,nombre_representante_legal,domicilio_representante_legal,documento_representante_legal,tipo_documento_representante,nombre_apoderado,domicilio_apoderado,documento_apoderado,tipo_documento_apoderado,tarjeta_profesional_apoderado,direccion_notificaciones,email,pretenciones,hechos_admitidos,hechos_negados,explicacion_negados,hechos_no_constan,explicacion_no_constan,excepciones,pruebas,porcentaje,fecha_creacion,fecha_modificacion,fecha_autoguardado,id_autoguardado,id_usuario,id_ayudante,titulo,delete) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1)");
-        preparedStatement.setInt(1, id_demanda);
+        preparedStatement.setInt(1, demanda.getId_demanda());
         preparedStatement.setString(2, user.getNombre());
         preparedStatement.setString(3, user.getDocumento());
         preparedStatement.setInt(4, user.getTipo_id());
         preparedStatement.setTimestamp(25, new Timestamp(System.currentTimeMillis()));
         preparedStatement.setTimestamp(26, new Timestamp(System.currentTimeMillis()));
-        preparedStatement.setString(31, titulo);
+        preparedStatement.setString(31, demanda.getTitulo());
         
         
         for (int i = 5; i < 32; i++) {

@@ -173,30 +173,47 @@ $(document).ready(function () {
         paramName: "file",
         maxFilesize: 2
     };
-
-    $("#botonVerificacion").on('click',function(){
-    $.ajax({
-        type: 'GET',
-        url: "UsuarioS",
-        data: {
-            'opcion':"existUser",
-            'documento': $("#dem_id").val()
-        },
-        dataType: "text",
-        success: function (data) {
-            var json = $.parseJSON(data);
-            $('#dem_nom').val(json.nombre);
-            $('#dem_id').val(json.documento);
-            $('input:radio[name=dem_id_tipo]').val([json.tipo_id]);
-            $('#dem_ciu').val(json.ciudad);
-            $('#dem_dir_not').val(json.direccion);
-            $('#dem_email').val(json.correo);
-        },
-        async: false
+    //verifica si un demandado se encuentra en la app
+    $("#botonVerificacion").on('click', function () {
+        $.ajax({
+            type: 'GET',
+            url: "UsuarioS",
+            data: {
+                'opcion': "existUser",
+                'documento': $("#dem_id").val()
+            },
+            dataType: "text",
+            success: function (data) {
+                var json = $.parseJSON(data);
+                $('#dem_nom').val(json.nombre);
+                $('#dem_id').val(json.documento);
+                $('input:radio[name=dem_id_tipo]').val([json.tipo_id]);
+                $('#dem_ciu').val(json.ciudad);
+                $('#dem_dir_not').val(json.direccion);
+                $('#dem_email').val(json.correo);
+            },
+            async: false
+        });
+    });
+    //al finalizar una demanda
+    $("#finalizar").on('click', function () {
+        saveChanges();
+        $.ajax({
+            type: 'POST',
+            url: "DemandaS",
+            data: {
+                'opcion': "endDone",
+                'id_demanda':  $('#id_demanda').val()
+            },
+            dataType: "text",
+            success: function (data) {
+                window.location.replace("/SyslawJWA/dashboard.jsp");
+            },
+            async: false
+        });
     });
 });
 
-});
 
 function generateDropzone(title, subtitle) {
 

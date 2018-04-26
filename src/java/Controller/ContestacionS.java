@@ -69,10 +69,13 @@ public class ContestacionS extends HttpServlet {
             String opcion = request.getParameter("opcion");
             Gson gson = new Gson();
             if (opcion.equalsIgnoreCase("create")) {
-                DemandaDAO d = new DemandaDAO();
-                String titulo = request.getParameter("titulo");
+                ContestacionDAO d = new ContestacionDAO();
+                DemandaDAO dem=new DemandaDAO();
+                int id_demanda = Integer.parseInt(request.getParameter("id_demanda"));
+                Demanda demanda=dem.getDemandaById(id_demanda);
                 Usuario user=(Usuario)request.getSession().getAttribute("usuario");
-                d.addDemanda(titulo,user.getDocumento());
+                d.addContestacion( user, demanda);
+                dem.endFinish(id_demanda);
                 out.print(gson.toJson(true));
             }
             if (opcion.equalsIgnoreCase("update")) {

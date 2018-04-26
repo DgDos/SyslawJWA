@@ -48,6 +48,24 @@ public class DemandaDAO {
         }
         return demandas;
     }
+    
+    public ArrayList<Demanda> getAllDemandasByIdMias(String documento) throws SQLException {
+        ArrayList<Demanda> demandas = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from demanda where delete=1 and dem_id='" + documento + "' and paso=2");
+        while (rs.next()) {
+            Demanda d = new Demanda();
+            d.setId_demanda(rs.getInt("id_demanda"));
+            d.setId_usuario(rs.getString("id_usuario"));
+            d.setTitulo(rs.getString("titulo"));
+            d.setPorcentaje(rs.getFloat("porcentaje"));
+            d.setFecha_creacion(rs.getTimestamp("fecha_creacion"));
+            d.setFecha_modificacion(rs.getTimestamp("fecha_modificacion"));
+            d.setFecha_autoguardado(rs.getTimestamp("fecha_autoguardado"));
+            demandas.add(d);
+        }
+        return demandas;
+    }
 
     public Demanda getDemandaById(int id_demanda) throws SQLException, URISyntaxException, ClassNotFoundException, IOException {
         Demanda d = new Demanda();
@@ -208,5 +226,25 @@ public class DemandaDAO {
         }
         return estadisticas;
     }
+
+    public boolean endDone(int id_demanda) throws SQLException {
+        PreparedStatement preparedStatement;
+        preparedStatement = connection.prepareStatement("update demanda set paso=? where id_demanda=?");
+        preparedStatement.setInt(1, 2);
+        preparedStatement.setInt(2, id_demanda);
+        preparedStatement.executeUpdate();
+        return true;
+    }
+
+    public boolean endFinish(int id_demanda) throws SQLException {
+        PreparedStatement preparedStatement;
+        preparedStatement = connection.prepareStatement("update demanda set paso=? where id_demanda=?");
+        preparedStatement.setInt(1, 3);
+        preparedStatement.setInt(2, id_demanda);
+        preparedStatement.executeUpdate();
+        return true;
+    }
+
+    
 
 }

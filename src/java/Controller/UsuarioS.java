@@ -34,7 +34,6 @@ public class UsuarioS extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String opcion = request.getParameter("opcion");
-            System.out.println("holi me estan buscando:"+request.getParameter("documento"));
             if (opcion.equalsIgnoreCase("existUser")) {
                 UsuarioDAO u=new UsuarioDAO();
                 String documento=request.getParameter("documento");
