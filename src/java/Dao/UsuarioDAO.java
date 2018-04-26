@@ -76,7 +76,7 @@ public class UsuarioDAO {
 
     public String getNameAyudante(String documento) throws SQLException {
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select correo from usuario where delete=1 and documento=" + documento);
+        ResultSet rs = statement.executeQuery("select correo from usuario where delete=1 and documento='" + documento+"'");
         while (rs.next()) {
             return rs.getString("correo");
         }
@@ -85,11 +85,33 @@ public class UsuarioDAO {
 
     public int getIdAyudante(String correo) throws SQLException {
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select id_usuario from usuario where delete=1 and correo=" + correo);
+        ResultSet rs = statement.executeQuery("select documento from usuario where delete=1 and correo='" + correo+"'");
         while (rs.next()) {
             return rs.getInt("id_usuario");
         }
         return 0;
+    }
+
+    public Usuario existUser(String documento) throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from usuario where delete=1 and documento='" + documento+"'");
+        Usuario user=new Usuario();
+        while(rs.next()){
+            user.setDocumento(documento);
+            user.setNombre(rs.getString("nombre"));
+            user.setCiudad(rs.getString("ciudad"));
+            user.setDireccion(rs.getString("direccion"));
+            user.setCorreo(rs.getString("correo"));
+            user.setTipo_id(rs.getInt("tipo_documento"));
+            return user;
+        }
+        user.setDocumento(documento);
+        user.setNombre("");
+        user.setDireccion("");
+        user.setCiudad("");
+        user.setCorreo("");
+        user.setTipo_id(-1);
+        return user;
     }
 
 }

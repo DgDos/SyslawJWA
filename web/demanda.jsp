@@ -313,7 +313,7 @@
                                                     <label for="dem_nom">Nombre del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dem_nom" class="form-control" placeholder="Número de identificación...">
+                                                            <input type="text" id="dem_nom" class="form-control" readonly placeholder="Número de identificación...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -323,7 +323,7 @@
                                                     <label for="dem_ciu">Ciudad de domicilio del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dem_ciu" class="form-control" placeholder="Ingrese la ciudad...">
+                                                            <input type="text" id="dem_ciu" class="form-control" readonly placeholder="Ingrese la ciudad...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -342,7 +342,7 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-6">
+                                                <div class="col-md-3">
                                                     <label for="dem_id">Documento del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
@@ -350,11 +350,20 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <div class="col-md-3">
+                                                    <label for="dem_id">Verificar documento</label>
+                                                    <div class="form-group">
+                                                        
+                                                            <button type="button" id="botonVerificacion" class="btn bg-purple btn-circle waves-effect waves-circle waves-float">
+                                                                <i class="material-icons">search</i>
+                                                        
+                                                    </div>
+                                                </div>
                                                 <div class="col-md-6">
                                                     <label for="dem_dir_not">Dirección donde recibe notificaciones:</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dem_dir_not" class="form-control" placeholder="Dirección de notificaciones...">
+                                                            <input type="text" id="dem_dir_not" class="form-control" readonly placeholder="Dirección de notificaciones...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -362,7 +371,7 @@
                                                     <label for="dem_email">Dirección de correo electrónico</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="email" id="dem_email" class="form-control" placeholder="Correo electrónico...">
+                                                            <input type="email" id="dem_email" class="form-control" readonly placeholder="Correo electrónico...">
                                                         </div>
                                                     </div>
                                                 </div>
