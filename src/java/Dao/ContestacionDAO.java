@@ -78,48 +78,42 @@ public class ContestacionDAO {
             UsuarioDAO u = new UsuarioDAO();
             int test = rs.getInt("id_ayudante");
             if (test != 0) {
-                d.setId_ayudante(u.getNameAyudante(rs.getInt("id_ayudante")));
+                d.setId_ayudante(u.getNameAyudante(rs.getString("id_ayudante")));
             }
-            d.setTitulo(rs.getString("titulo"));
-            d.setJuez_nombre(rs.getString("juez_nombre"));
-            d.setDte_nom(rs.getString("dte_nom"));
-            d.setDte_ciudad(rs.getString("dte_ciudad"));
-            d.setDte_id_tipo(rs.getInt("dte_id_tipo"));
-            d.setDte_id(rs.getString("dte_id"));
-            d.setDte_rep_tiene(rs.getBoolean("dte_rep_tiene"));
-            d.setDte_rep_nom(rs.getString("dte_rep_nom"));
-            d.setDte_rep_id_tipo(rs.getInt("dte_rep_id_tipo"));
-            d.setDte_rep_id(rs.getString("dte_rep_id"));
-            d.setDte_apo_tiene(rs.getBoolean("dte_apo_tiene"));
-            d.setDte_apo_nom(rs.getString("dte_apo_nom"));
-            d.setDte_apo_id_tipo(rs.getInt("dte_apo_id_tipo"));
-            d.setDte_apo_id(rs.getString("dte_apo_id"));
-            d.setDte_apo_tar_pro(rs.getString("dte_apo_tar_pro"));
-            d.setDte_dir_not(rs.getString("dte_dir_not"));
-            d.setDte_email(rs.getString("dte_email"));
-            d.setDem_nom(rs.getString("dem_nom"));
-            d.setDem_ciu(rs.getString("dem_ciu"));
-            d.setDem_rep_tiene(rs.getBoolean("dem_rep_tiene"));
-            d.setDem_rep_nom(rs.getString("dem_rep_nom"));
-            d.setDem_apo_tiene(rs.getBoolean("dem_apo_tiene"));
-            d.setDem_apo_nom(rs.getString("dem_apo_nom"));
-            d.setDem_dir_not(rs.getString("dem_dir_not"));
-            d.setDem_email(rs.getString("dem_email"));
-            d.setPretensiones(rs.getString("pretensiones"));
-            d.setHechos(rs.getString("hechos"));
-            d.setDepende_cumplimiento(rs.getBoolean("depende_cumplimiento"));
-            d.setTengo_pruebas(rs.getBoolean("tengo_pruebas"));
-            d.setPruebas(rs.getString("pruebas"));
-            d.setEstaba_obligado(rs.getBoolean("estaba_obligado"));
-            d.setFundamentos(rs.getString("fundamentos"));
-            d.setAnexos(rs.getString("anexos"));
-            d.setSolicito_cautelares(rs.getBoolean("solicito_cautelares"));
-            d.setCautelares_que_solicita(rs.getString("cautelares_que_solicita"));
-            d.setPorcentaje(rs.getFloat("porcentaje"));
-            d.setFecha_creacion(rs.getTimestamp("fecha_creacion"));
-            d.setFecha_modificacion(rs.getTimestamp("fecha_modificacion"));
-            d.setFecha_autoguardado(rs.getTimestamp("fecha_autoguardado"));
-            d.setId_autoguardado(rs.getInt("id_autoguardado"));
+            
+         d.setId_contestacion(rs.getInt("id_contestacion"));
+         d.setNombre_demandado(rs.getString("nombre_demandado"));
+         d.setDocumento_demandado(rs.getString("documente_demandado"));
+         d.setTipo_documento_demandado(rs.getInt("tipo_documento_demandado"));
+         d.setNombre_representante_legal(rs.getString("nombre_representante_legal"));
+         d.setDomicilio_representante_legal(rs.getString("domicilio_representante_legal"));
+         d.setDocumento_representante_legal(rs.getString("documento_representante_legal"));
+         d.setTipo_documento_representante(rs.getInt("tipo_documento_representante"));
+         d.setNombre_apoderado(rs.getString("nombre_apoderado"));
+         d.setDomicilio_apoderado(rs.getString("domicilio_apoderado"));
+         d.setDocumento_apoderado(rs.getString("documento_apoderado"));
+         d.setTipo_documento_apoderado(rs.getInt("tipo_documento_apoderado"));
+         d.setTarjeta_profesional_apoderado(rs.getString("tarjeta_profesional_apoderado"));
+         d.setDireccion_notificaciones(rs.getString("direccion_notificaciones"));
+         d.setEmail(rs.getString("email"));
+         d.setPretenciones(rs.getBoolean("pretenciones"));
+         d.setHechos_admitidos(rs.getString("hechos_admitidos"));
+         d.setHechos_negados(rs.getString("hechos_negados"));
+         d.setExplicacion_negados(rs.getString("explicacion_negados"));
+         d.setHechos_no_constan(rs.getString("hechos_no_constan"));
+         d.setExplicacion_no_constan(rs.getString("explicacion_no_constan"));
+         d.setExcepciones(rs.getString("excepciones"));
+         d.setPruebas(rs.getString("pruebas"));
+         d.setPorcentaje(rs.getFloat("porcentaje"));
+         d.setFecha_creacion(rs.getDate("fecha_creacion"));
+         d.setFecha_modificacion(rs.getDate("fecha_modificacion"));
+         d.setFecha_autoguardado(rs.getDate("fecha_autoguardado"));
+         d.setId_autoguardado(rs.getInt("id_autoguardado"));
+         d.setId_usuario(rs.getString("id_usuario"));
+         d.setId_ayudante(rs.getString("id_ayudante"));
+         d.setTitulo(rs.getString("titulo"));
+         d.setDelete(rs.getInt("delete"));
+     
         }
         return d;
     }
@@ -148,68 +142,41 @@ public class ContestacionDAO {
         preparedStatement.executeUpdate();
     }
 
-    public void updateDemanda(Demanda d) throws SQLException, URISyntaxException, ClassNotFoundException, IOException {
+    public void updateDemanda(Contestacion c) throws SQLException, URISyntaxException, ClassNotFoundException, IOException {
         PreparedStatement preparedStatement;
-        if (d.getId_ayudante().equals("")) {
-            preparedStatement = connection.prepareStatement("update demanda set titulo=?,juez_nombre=?,dte_nom=?,dte_ciudad=?,dte_id_tipo=?,dte_id=?,dte_rep_tiene=?,dte_rep_nom=?,dte_rep_id_tipo=?,dte_rep_id=?,dte_apo_tiene=?,dte_apo_nom=?,dte_apo_id_tipo=?,dte_apo_id=?,dte_apo_tar_pro=?,dte_dir_not=?,dte_email=?,dem_nom=?,dem_ciu=?,dem_rep_tiene=?,dem_rep_nom=?,dem_apo_tiene=?,dem_apo_nom=?,dem_dir_not=?,dem_email=?,pretensiones=?,hechos=?,depende_cumplimiento=?,tengo_pruebas=?,pruebas=?,estaba_obligado=?,fundamentos=?,anexos=?,solicito_cautelares=?,cautelares_que_solicita=?,porcentaje=?,fecha_modificacion=? where id_demanda=" + d.getId_demanda());
-        } else {
-            preparedStatement = connection.prepareStatement("update demanda set titulo=?,juez_nombre=?,dte_nom=?,dte_ciudad=?,dte_id_tipo=?,dte_id=?,dte_rep_tiene=?,dte_rep_nom=?,dte_rep_id_tipo=?,dte_rep_id=?,dte_apo_tiene=?,dte_apo_nom=?,dte_apo_id_tipo=?,dte_apo_id=?,dte_apo_tar_pro=?,dte_dir_not=?,dte_email=?,dem_nom=?,dem_ciu=?,dem_rep_tiene=?,dem_rep_nom=?,dem_apo_tiene=?,dem_apo_nom=?,dem_dir_not=?,dem_email=?,pretensiones=?,hechos=?,depende_cumplimiento=?,tengo_pruebas=?,pruebas=?,estaba_obligado=?,fundamentos=?,anexos=?,solicito_cautelares=?,cautelares_que_solicita=?,porcentaje=?,fecha_modificacion=?,id_ayudante=? where id_demanda=" + d.getId_demanda());
-        }
-        preparedStatement.setString(1, d.getTitulo());
-        preparedStatement.setString(2, d.getJuez_nombre());
-        preparedStatement.setString(3, d.getDte_nom());
-        preparedStatement.setString(4, d.getDte_ciudad());
-        preparedStatement.setInt(5, d.getDte_id_tipo());
-        preparedStatement.setString(6, d.getDte_id());
-        preparedStatement.setBoolean(7, d.getDte_rep_tiene());
-        preparedStatement.setString(8, d.getDte_rep_nom());
-        preparedStatement.setInt(9, d.getDte_rep_id_tipo());
-        preparedStatement.setString(10, d.getDte_rep_id());
-        preparedStatement.setBoolean(11, d.getDte_apo_tiene());
-        preparedStatement.setString(12, d.getDte_apo_nom());
-        preparedStatement.setInt(13, d.getDte_apo_id_tipo());
-        preparedStatement.setString(14, d.getDte_apo_id());
-        preparedStatement.setString(15, d.getDte_apo_tar_pro());
-        preparedStatement.setString(16, d.getDte_dir_not());
-        preparedStatement.setString(17, d.getDte_email());
-        preparedStatement.setString(18, d.getDem_nom());
-        preparedStatement.setString(19, d.getDem_ciu());
-        preparedStatement.setBoolean(20, d.getDem_rep_tiene());
-        preparedStatement.setString(21, d.getDem_rep_nom());
-        preparedStatement.setBoolean(22, d.getDem_apo_tiene());
-        preparedStatement.setString(23, d.getDem_apo_nom());
-        preparedStatement.setString(24, d.getDem_dir_not());
-        preparedStatement.setString(25, d.getDem_email());
-        preparedStatement.setString(26, d.getPretensiones());
-        preparedStatement.setString(27, d.getHechos());
-        preparedStatement.setBoolean(28, d.getDepende_cumplimiento());
-        preparedStatement.setBoolean(29, d.getTengo_pruebas());
-        preparedStatement.setString(30, d.getPruebas());
-        preparedStatement.setBoolean(31, d.getEstaba_obligado());
-        preparedStatement.setString(32, d.getFundamentos());
-        preparedStatement.setString(33, d.getAnexos());
-        preparedStatement.setBoolean(34, d.getSolicito_cautelares());
-        preparedStatement.setString(35, d.getCautelares_que_solicita());
-        preparedStatement.setFloat(36, d.getPorcentaje());
-        preparedStatement.setTimestamp(37, new Timestamp(System.currentTimeMillis()));
-        if (!d.getId_ayudante().equals("")) {
-            UsuarioDAO u = new UsuarioDAO();
-            preparedStatement.setInt(38, u.getIdAyudante(d.getId_ayudante()));
-        }
+        
+        preparedStatement = connection.prepareStatement("update contestacion set id_demanda=?,nombre_demandado=?,documento_demandado=?,tipo_documento_demandado=?,nombre_representante_legal=?,domicilio_representante_legal=?,documento_representante_legal=?,tipo_documento_representante=?,nombre_apoderado=?,domicilio_apoderado=?,documento_apoderado=?,tipo_documento_apoderado=?,tarjeta_profesional_apoderado=?,direccion_notificaciones=?,email=?,pretenciones=?,hechos_admitidos=?,hechos_negados=?,explicacion_negados=?,hechos_no_constan=?,explicacion_no_constan=?,excepciones=?,pruebas=?,porcentaje=?,fecha_modificacion=? where id_demanda=" + c.getId_demanda());
+        
+        preparedStatement.setInt(1, c.getId_demanda());
+        preparedStatement.setString(2, c.getNombre_demandado());
+        preparedStatement.setString(3, c.getDocumento_demandado());
+        preparedStatement.setInt(4, c.getTipo_documento_demandado());
+        preparedStatement.setString(5, c.getNombre_representante_legal());
+        preparedStatement.setString(6, c.getDomicilio_representante_legal());
+        preparedStatement.setString(7, c.getDocumento_representante_legal());
+        preparedStatement.setInt(8, c.getTipo_documento_representante());
+        preparedStatement.setString(9, c.getNombre_apoderado());
+        preparedStatement.setString(10, c.getDomicilio_apoderado());
+        preparedStatement.setString(11, c.getDocumento_apoderado());
+        preparedStatement.setInt(12, c.getTipo_documento_apoderado());
+        preparedStatement.setString(13, c.getTarjeta_profesional_apoderado());
+        preparedStatement.setString(14, c.getDireccion_notificaciones());
+        preparedStatement.setString(15, c.getEmail());
+        preparedStatement.setBoolean(16, c.isPretenciones());
+        preparedStatement.setString(17, c.getHechos_admitidos());
+        preparedStatement.setString(18, c.getHechos_negados());
+        preparedStatement.setString(19, c.getExplicacion_negados());
+        preparedStatement.setString(20, c.getHechos_no_constan());
+        preparedStatement.setString(21, c.getExplicacion_no_constan());
+        preparedStatement.setString(22, c.getExcepciones());
+        preparedStatement.setString(23, c.getPruebas());
+        preparedStatement.setFloat(24, c.getPorcentaje());
+        preparedStatement.setTimestamp(25, new Timestamp(System.currentTimeMillis()));
+        
+   
+       
         preparedStatement.executeUpdate();
     }
 
-    public ArrayList<Estadisticas> getDemandadosVeces() throws SQLException {
-        ArrayList<Estadisticas> estadisticas=new ArrayList<>();
-        Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select dem_nom,COUNT(dem_nom) as veces from demanda where delete=1 group by dem_nom ");
-        while(rs.next()){
-            Estadisticas e=new Estadisticas();
-            e.setId_usuario(rs.getString("dem_nom"));
-            e.setVeces(rs.getInt("veces"));
-            estadisticas.add(e);
-        }
-        return estadisticas;
-    }
 
 }
