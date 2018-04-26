@@ -8,6 +8,7 @@ package Dao;
 import Model.Contestacion;
 import Model.Demanda;
 import Model.Estadisticas;
+import Model.Usuario;
 import Util.DbUtil;
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -118,12 +119,19 @@ public class ContestacionDAO {
         return d;
     }
 
-    public void addDemanda(String titulo, int id_usuario) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into demanda(id_usuario,titulo,juez_nombre,dte_nom,dte_ciudad,dte_id_tipo,dte_id,dte_rep_tiene,dte_rep_nom,dte_rep_id_tipo,dte_rep_id,dte_apo_tiene,dte_apo_nom,dte_apo_id_tipo,dte_apo_id,dte_apo_tar_pro,dte_dir_not,dte_email,dem_nom,dem_ciu,dem_rep_tiene,dem_rep_nom,dem_apo_tiene,dem_apo_nom,dem_dir_not,dem_email,pretensiones,hechos,depende_cumplimiento,tengo_pruebas,pruebas,estaba_obligado,fundamentos,anexos,solicito_cautelares,cautelares_que_solicita,porcentaje,fecha_creacion,fecha_modificacion,delete) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1)");
-        preparedStatement.setInt(1, id_usuario);
-        preparedStatement.setString(2, titulo);
-        for (int i = 3; i < 38; i++) {
-            if (i == 6 || i == 10 || i == 14) {
+    public void addContestacion(String titulo, Usuario user, int id_demanda) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into contestacion(id_demanda,nombre_demandado,documento_demandado,tipo_documento_demandado,nombre_representante_legal,domicilio_representante_legal,documento_representante_legal,tipo_documento_representante,nombre_apoderado,domicilio_apoderado,documento_apoderado,tipo_documento_apoderado,tarjeta_profesional_apoderado,direccion_notificaciones,email,pretenciones,hechos_admitidos,hechos_negados,explicacion_negados,hechos_no_constan,explicacion_no_constan,excepciones,pruebas,porcentaje,fecha_creacion,fecha_modificacion,fecha_autoguardado,id_autoguardado,id_usuario,id_ayudante,titulo,delete) values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,1)");
+        preparedStatement.setInt(1, id_demanda);
+        preparedStatement.setString(2, user.getNombre());
+        preparedStatement.setString(3, user.getDocumento());
+        preparedStatement.setInt(4, user.getTipo_id());
+        preparedStatement.setTimestamp(25, new Timestamp(System.currentTimeMillis()));
+        preparedStatement.setTimestamp(26, new Timestamp(System.currentTimeMillis()));
+        preparedStatement.setString(31, titulo);
+        
+        
+        for (int i = 5; i < 32; i++) {
+            if (i == 8 || i == 12 || i == 28) {
                 preparedStatement.setInt(i, -1);
             } else {
                 if (i == 8 || i == 12 || i == 21 || i == 23 || i == 29 || i == 30 || i == 32 || i == 35) {
@@ -137,8 +145,7 @@ public class ContestacionDAO {
                 }
             }
         }
-        preparedStatement.setTimestamp(38, new Timestamp(System.currentTimeMillis()));
-        preparedStatement.setTimestamp(39, new Timestamp(System.currentTimeMillis()));
+       
         preparedStatement.executeUpdate();
     }
 

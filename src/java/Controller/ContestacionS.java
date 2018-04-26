@@ -72,7 +72,7 @@ public class ContestacionS extends HttpServlet {
                 DemandaDAO d = new DemandaDAO();
                 String titulo = request.getParameter("titulo");
                 Usuario user=(Usuario)request.getSession().getAttribute("usuario");
-                d.addDemanda(titulo,user.getId_usuario());
+                d.addDemanda(titulo,user.getDocumento());
                 out.print(gson.toJson(true));
             }
             if (opcion.equalsIgnoreCase("update")) {
