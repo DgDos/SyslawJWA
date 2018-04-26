@@ -232,6 +232,8 @@ function preLoadDemanda(id_demanda) {
             $('#dte_apo_tar_pro').val(json.dte_apo_tar_pro);
 
             $('#dem_nom').val(json.dem_nom);
+            $('#dem_id').val(json.dem_id);
+            $('input:radio[name=dem_id_tipo]').val([json.dem_id_tipo]);
             $('#dem_ciu').val(json.dem_ciu);
             $('#dem_dir_not').val(json.dem_dir_not);
             $('#dem_email').val(json.dem_email);
@@ -290,6 +292,8 @@ function saveChanges() {
 
             'dem_nom': $('#dem_nom').val(),
             'dem_ciu': $('#dem_ciu').val(),
+            'dem_id_tipo': $('input:radio[name=dem_id_tipo]:checked').val(),
+            'dem_id': $('#dem_id').val(),
             'dem_dir_not': $('#dem_dir_not').val(),
             'dem_email': $('#dem_email').val(),
 
@@ -346,5 +350,10 @@ function setButtonWavesEffect(event) {
     $(event.currentTarget).find('[role="menu"] li a').removeClass('waves-effect');
     $(event.currentTarget).find('[role="menu"] li:not(.disabled) a').addClass('waves-effect');
 }
+
+
+//$("").keypress(function(){
+//    $("span").text(i += 1);
+//});
 
 

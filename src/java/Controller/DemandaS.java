@@ -33,7 +33,6 @@ public class DemandaS extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String opcion = request.getParameter("opcion");
-            System.out.println("opcion---"+opcion);
             if (opcion.equalsIgnoreCase("allMe")) {
                 DemandaDAO d = new DemandaDAO();
                 Usuario user=(Usuario)request.getSession().getAttribute("usuario");
@@ -71,7 +70,7 @@ public class DemandaS extends HttpServlet {
                 DemandaDAO d = new DemandaDAO();
                 String titulo = request.getParameter("titulo");
                 Usuario user=(Usuario)request.getSession().getAttribute("usuario");
-                d.addDemanda(titulo,user.getDocumento());
+                d.addDemanda(titulo,user);
                 out.print(gson.toJson(true));
             }
             if (opcion.equalsIgnoreCase("update")) {
@@ -119,6 +118,10 @@ public class DemandaS extends HttpServlet {
                 }
                 d.setDte_dir_not(request.getParameter("dte_dir_not"));
                 d.setDte_email(request.getParameter("dte_email"));
+                if (request.getParameter("dem_id_tipo") != null) {
+                    d.setDem_id_tipo(Integer.parseInt(request.getParameter("dem_id_tipo")));
+                }
+                d.setDem_id(request.getParameter("dem_id"));
                 d.setDem_nom(request.getParameter("dem_nom"));
                 d.setDem_ciu(request.getParameter("dem_ciu"));
                 if (request.getParameter("dem_rep_tiene") != null) {

@@ -64,8 +64,11 @@ public class UsuarioDAO {
         ResultSet rs = statement.executeQuery("select * from usuario where correo='" + correo + "'");
         while (rs.next()) {
             user.setDocumento(rs.getString("documento"));
-            user.setCorreo(correo);
+            user.setTipo_id(rs.getInt("tipo_documento"));
             user.setNombre(rs.getString("nombre"));
+            user.setCiudad(rs.getString("ciudad"));
+            user.setDireccion(rs.getString("direccion"));
+            user.setCorreo(correo);
             user.setTipo_usuario(rs.getInt("tipo_usuario"));
         }
         return user;

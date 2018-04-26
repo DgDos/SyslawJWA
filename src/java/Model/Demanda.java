@@ -52,11 +52,13 @@ public class Demanda {
     private Date fecha_autoguardado;
     private int id_autoguardado;
     private int paso;
+    private String dem_id;
+    private int dem_id_tipo;
 
     public Demanda() {
     }
 
-    public Demanda(int id_demanda, String id_usuario, String id_ayudante, String titulo, String juez_nombre, String dte_nom, String dte_ciudad, int dte_id_tipo, String dte_id, Boolean dte_rep_tiene, String dte_rep_nom, int dte_rep_id_tipo, String dte_rep_id, Boolean dte_apo_tiene, String dte_apo_nom, int dte_apo_id_tipo, String dte_apo_id, String dte_apo_tar_pro, String dte_dir_not, String dte_email, String dem_nom, String dem_ciu, Boolean dem_rep_tiene, String dem_rep_nom, Boolean dem_apo_tiene, String dem_apo_nom, String dem_dir_not, String dem_email, String pretensiones, String hechos, Boolean depende_cumplimiento, Boolean tengo_pruebas, String pruebas, Boolean estaba_obligado, String fundamentos, String anexos, Boolean solicito_cautelares, String cautelares_que_solicita, float porcentaje, Date fecha_creacion, Date fecha_modificacion, Date fecha_autoguardado, int id_autoguardado, int paso) {
+    public Demanda(int id_demanda, String id_usuario, String id_ayudante, String titulo, String juez_nombre, String dte_nom, String dte_ciudad, int dte_id_tipo, String dte_id, Boolean dte_rep_tiene, String dte_rep_nom, int dte_rep_id_tipo, String dte_rep_id, Boolean dte_apo_tiene, String dte_apo_nom, int dte_apo_id_tipo, String dte_apo_id, String dte_apo_tar_pro, String dte_dir_not, String dte_email, String dem_nom, String dem_ciu, Boolean dem_rep_tiene, String dem_rep_nom, Boolean dem_apo_tiene, String dem_apo_nom, String dem_dir_not, String dem_email, String pretensiones, String hechos, Boolean depende_cumplimiento, Boolean tengo_pruebas, String pruebas, Boolean estaba_obligado, String fundamentos, String anexos, Boolean solicito_cautelares, String cautelares_que_solicita, float porcentaje, Date fecha_creacion, Date fecha_modificacion, Date fecha_autoguardado, int id_autoguardado, int paso, String dem_id, int dem_id_tipo) {
         this.id_demanda = id_demanda;
         this.id_usuario = id_usuario;
         this.id_ayudante = id_ayudante;
@@ -101,6 +103,8 @@ public class Demanda {
         this.fecha_autoguardado = fecha_autoguardado;
         this.id_autoguardado = id_autoguardado;
         this.paso = paso;
+        this.dem_id = dem_id;
+        this.dem_id_tipo = dem_id_tipo;
     }
 
     public int getId_demanda() {
@@ -454,6 +458,24 @@ public class Demanda {
     public void setPaso(int paso) {
         this.paso = paso;
     }
+
+    public String getDem_id() {
+        return dem_id;
+    }
+
+    public void setDem_id(String dem_id) {
+        this.dem_id = dem_id;
+    }
+
+    public int getDem_id_tipo() {
+        return dem_id_tipo;
+    }
+
+    public void setDem_id_tipo(int dem_id_tipo) {
+        this.dem_id_tipo = dem_id_tipo;
+    }
+
+    
 
    
 
