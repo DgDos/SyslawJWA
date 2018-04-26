@@ -352,8 +352,26 @@ function setButtonWavesEffect(event) {
 }
 
 
-//$("").keypress(function(){
-//    $("span").text(i += 1);
-//});
+$("#dem_id").keypress(function () {
+    $.ajax({
+        type: 'GET',
+        url: "UsuarioS",
+        data: {
+            'opcion':"existUser";
+            'documento': $("#dem_id").val()
+        },
+        dataType: "text",
+        success: function (data) {
+            var json = $.parseJSON(data);
+            $('#dem_nom').val(json.dem_nom);
+            $('#dem_id').val(json.dem_id);
+            $('input:radio[name=dem_id_tipo]').val([json.dem_id_tipo]);
+            $('#dem_ciu').val(json.dem_ciu);
+            $('#dem_dir_not').val(json.dem_dir_not);
+            $('#dem_email').val(json.dem_email);
+        },
+        async: false
+    });
+});
 
 
