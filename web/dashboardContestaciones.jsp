@@ -175,7 +175,7 @@
                                 <div class="card">
                                     <div class="body">
                                         <div class="table-responsive">
-                                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="demandas">
+                                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="contestaciones">
                                                 <thead>
                                                     <tr>
                                                         <th>Título</th>
@@ -259,7 +259,7 @@
         <script src="js/pages/ui/tooltips-popovers.js"></script>
 
         <!-- Custom Js -->
-        <script src="js/custom/dashboard.js"></script>
+        <script src="js/custom/dashboardContestaciones.js"></script>
         <script src="js/pages/index.js"></script>
 
 

@@ -36,10 +36,10 @@ public class ContestacionDAO {
     public ArrayList<Contestacion> getAllContestacionById(String id_usuario) throws SQLException {
         ArrayList<Contestacion> contestaciones = new ArrayList<>();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from contestacion where delete=1 and id_usuario=" + id_usuario);
+        ResultSet rs = statement.executeQuery("select * from contestacion where delete=1 and id_usuario='" + id_usuario+"'");
         while (rs.next()) {
             Contestacion c = new Contestacion();
-            c.setId_demanda(rs.getInt("id_demanda"));
+            c.setId_contestacion(rs.getInt("id_contestacion"));
             c.setId_usuario(rs.getString("id_usuario"));
             c.setTitulo(rs.getString("titulo"));
             c.setPorcentaje(rs.getFloat("porcentaje"));
@@ -132,7 +132,7 @@ public class ContestacionDAO {
         preparedStatement.setString(27, user.getDocumento());
         preparedStatement.setString(28, demanda.getTitulo());
 
-        for (int i = 5; i < 24; i++) {
+        for (int i = 5; i <= 24; i++) {
             if (i == 8 || i == 12 ) {
                 preparedStatement.setInt(i, -1);
             } else {

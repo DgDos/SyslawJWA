@@ -171,13 +171,13 @@
 
                         <div class="body" id="dashboard-container" style="background-color: #f1f1f1;">  
                             <h2 style="color: #138fc3;">Título de la demanda</h2>
-                            <input type="text" id="id_demanda" class="form-control" value="id_demanda" disabled>
+                            <input type="text" id="id_contestacion" class="form-control" value="id_demanda" disabled>
                             <input type="text" id="titulo" class="form-control" value="titulo" disabled>
 
                             <div class="card">
                                 <div class="body">
 
-                                    <form id="demanda_wizard" autocomplete="off">
+                                    <form id="contestacion_wizard" autocomplete="off">
 
 
                                         <h2>Demandado</h2>
@@ -198,7 +198,7 @@
                                                     <label for="monitorio">Ref: Proceso monitorio de</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="monitorio" class="form-control" placeholder="Ingrese el numero del proceso...">
+                                                            <input type="text" id="proceso" class="form-control" placeholder="Ingrese el numero del proceso...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -217,7 +217,7 @@
                                                     <label for="ddo_nom">Nombre del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="ddo_nom" class="form-control" placeholder="Ingrese el nombre...">
+                                                            <input type="text" id="nombre_demandado" class="form-control" placeholder="Ingrese el nombre...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -225,7 +225,7 @@
                                                     <label for="ddo_ciudad">Ciudad del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="ddo_ciudad" class="form-control" placeholder="Ingrese la ciudad...">
+                                                            <input type="text" id="ciudad_demandado" class="form-control" placeholder="Ingrese la ciudad...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -243,26 +243,26 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="ddo_id">Numero del demandado</label>
+                                                    <label for="documento_demandado">Numero del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="ddo_id" class="form-control" placeholder="Número de identificación...">
+                                                            <input type="text" id="documento_demandado" class="form-control" placeholder="Número de identificación...">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="ddo_dir_not">Dirección donde recibe notificaciones:</label>
+                                                    <label for="direccion_notificaciones">Dirección donde recibe notificaciones:</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="ddo_dir_not" class="form-control" placeholder="Dirección de notificaciones...">
+                                                            <input type="text" id="direccion_notificaciones" class="form-control" placeholder="Dirección de notificaciones...">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="ddo_email">Dirección de correo electrónico</label>
+                                                    <label for="email">Dirección de correo electrónico</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="email" id="ddo_email" class="form-control" placeholder="Correo electrónico...">
+                                                            <input type="email" id="email" class="form-control" placeholder="Correo electrónico...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -324,57 +324,51 @@
                                             <label for="pretenciones">(Recuerte que si usted se opene sin fundamento y es condenado, se le impondrá una multa equivalente al 10% del valor de la deuda a favor de su acreedor y, además, pagará las costas del proceso)</label>
                                             <div class="col-md-6">    
                                                 <label class="checkbox-label">Si</label>
-                                                <input type="checkbox" id="si" class="filled-in chk-col-blue">
+                                                <input type="checkbox" id="pretenciones" class="filled-in chk-col-blue">
                                                 <label for="depende_cumplimiento">me opongo a las pretensiones.</label>
                                             </div>
-                                            <div class="col-md-6">    
-                                                <label class="checkbox-label">No</label>
-                                                <input type="checkbox" id="no" class="filled-in chk-col-blue">
-                                                <label for="depende_cumplimiento">me opongo a las pretensiones.</label>
-                                            </div>
-
                                         </section>
 
                                         <h2>Hechos</h2>
                                         <section>
                                             <div class="row clearfix">
                                                 <div class="col-md-12">
-                                                    <label for="admitidos">ADMITO los siquientes hechos</label>
+                                                    <label for="hechos_admitidos">ADMITO los siquientes hechos</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="admitidos" placeholder="Refiera en forma concreta los hechos que fundamentan su solicitud..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="hechos_admitidos" placeholder="Refiera en forma concreta los hechos que fundamentan su solicitud..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <label for="negados">NIEGO los siguientes hechos, y en general niego total ( ) o parcialmente ( ) la deuda reclamada</label>
+                                                    <label for="hechos_negados">NIEGO los siguientes hechos, y en general niego total ( ) o parcialmente ( ) la deuda reclamada</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="negados" placeholder="Refiera en forma concreta los hechos que fundamentan su solicitud..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="hechos_negados" placeholder="Refiera en forma concreta los hechos que fundamentan su solicitud..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <label for="explicacion">Explique por qué niega estos hechos, o niega total o parcialmente la deuda reclamada en la demanda:</label>
+                                                    <label for="explicacion_negados">Explique por qué niega estos hechos, o niega total o parcialmente la deuda reclamada en la demanda:</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="explicacion" placeholder="Explique detalladamente..." style="overflow: hidden; word-wrap: break-word; height: 132px;"></textarea>
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="explicacion_negados" placeholder="Explique detalladamente..." style="overflow: hidden; word-wrap: break-word; height: 132px;"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <label for="nomeconstan">NO ME CONSTAN LOS SIGUIENTES HECHOS</label>
+                                                    <label for="hechos_no_constan">NO ME CONSTAN LOS SIGUIENTES HECHOS</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="nomeconstan" placeholder="Refiera en forma concreta los hechos que fundamentan su solicitud..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="hechos_no_constan" placeholder="Refiera en forma concreta los hechos que fundamentan su solicitud..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <label for="explicacionNomeconstan">Explique por qué no le constan estos hechos:</label>
+                                                    <label for="explicacion_no_constan">Explique por qué no le constan estos hechos:</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="explicacionNomeconstan" placeholder="Explique detalladamente..." style="overflow: hidden; word-wrap: break-word; height: 132px;"></textarea>
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="explicacion_no_constan" placeholder="Explique detalladamente..." style="overflow: hidden; word-wrap: break-word; height: 132px;"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -391,39 +385,13 @@
                                                 <label for="excepciones1">(Si quiere plantear excepciones, indíquelas a continuación y precise en forma contreta los hechos que las fundamentan)</label><br><br>
 
                                                 <div class="col-md-12">
-                                                    <label for="nom_excep1">Nombre de la excepción:</label>
+                                                    <label for="nom_excep1">Excepciones:</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="nom_excep1" class="form-control" placeholder="Ingrese el nombre de la excepción...">
+                                                            <input type="text" id="excepciones" class="form-control" placeholder="Ingrese el nombre de la excepción...">
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="col-md-12">
-                                                    <label for="fundamentos1">Fundamentos:</label>
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                            <input type="text" id="fundamentos1" class="form-control" placeholder="Ingrese los fundamentos...">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <label for="nom_excep2">Nombre de la excepción:</label>
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                            <input type="text" id="nom_excep2" class="form-control" placeholder="Ingrese el nombre de la excepción...">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <label for="fundamentos2">Fundamentos:</label>
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                            <input type="text" id="fundamentos2" class="form-control" placeholder="Ingrese los fundamentos...">
-                                                        </div>
-                                                    </div>
-                                                </div>
-
                                                 <div class="col-md-12">
                                                     <label for="reconocimiento">Si Usted pide el reconocimiento de alguna suma de dinero vinculada a la reclamanción de su demandnte (por ejemplo mejoras), debe estimarla bajo juramento y justificar cada uno de los conceptos.</label>
                                                     <div class="form-group">
@@ -438,7 +406,7 @@
                                                 <label for="excepciones1">(Recuerde que si usted se excede en el 50% de la cantidad probada, se le condenará a pagarle a su contraparte, una suma equivalente al 10% de la diferencia.)</label><br>
                                                 <div class="col-md-6">    
                                                     <label class="checkbox-label">En los casos en que procede, invoca usted el derecho de retención </label>
-                                                    <input type="checkbox" id="si2" class="filled-in chk-col-blue">
+                                                    <input type="checkbox" id="retencion" class="filled-in chk-col-blue">
                                                     <label for="depende_cumplimiento">:</label>
                                                 </div>
 
@@ -461,13 +429,6 @@
 
                                                 <div class="col-md-12" id='pruebasfile'></div>
 
-                                                <div class="col-md-12">    
-                                                    <label class="checkbox-label">Manifiesto que</label><br>
-                                                    <input type="checkbox" id="estaba_obligado " class="filled-in chk-col-blue">
-                                                    <label for="estaba_obligado ">Estaba obligado legalmente a declarar renta en el año gravable inmediatamente anterior.</label>
-                                                </div>
-
-
                                             </div>
                                         </section>
 
@@ -478,7 +439,7 @@
                                                     <label for="fundamentos">Fundamentos de derecho</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="fundamentos" placeholder="Otras normas aplicables..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="fundamentosfe" placeholder="Otras normas aplicables..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -491,21 +452,6 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12" id='anexosfile'></div>
-                                                <div class="col-md-6">    
-                                                    <label class="checkbox-label">Solicito medidas cautelares</label><br>
-                                                    <input type="checkbox" id="solicito_cautelares" class="filled-in chk-col-blue">
-                                                    <label for="solicito_cautelares">Solicito la práctica de medidas cautelares</label>
-                                                </div>
-                                                <div id="solicito_cautelares_section" class="animated fadeIn">
-                                                    <div class="col-md-6">
-                                                        <label for="cautelares_que_solicita">Medidas cautelares que solicita</label>
-                                                        <div class="form-group">
-                                                            <div class="form-line">
-                                                                <textarea rows="1" class="form-control no-resize auto-growth" id="cautelares_que_solicita" placeholder="Precise a continuación las que solicita..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
                                             </div>
                                         </section>
                                     </form>
