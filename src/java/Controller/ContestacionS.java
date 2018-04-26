@@ -43,18 +43,18 @@ public class ContestacionS extends HttpServlet {
                 out.println(gson.toJson(contestaciones));
             }
             if (opcion.equalsIgnoreCase("allHelp")) {
-                DemandaDAO d = new DemandaDAO();
+                ContestacionDAO d = new ContestacionDAO();
                 Usuario user=(Usuario)request.getSession().getAttribute("usuario");
-                ArrayList<Demanda> demandas=d.getAllDemandasById(user.getId_usuario());
+                ArrayList<Contestacion> contestaciones = d.getAllContestacionById(user.getDocumento());
                 Gson gson = new Gson();
-                out.println(gson.toJson(demandas));
+                out.println(gson.toJson(contestaciones));
             }
             if (opcion.equalsIgnoreCase("one")) {
-                int id_demanda = Integer.parseInt(request.getParameter("id_demanda"));
-                DemandaDAO d = new DemandaDAO();
-                Demanda demanda=d.getDemandaById(id_demanda);
+                int id_contestacion = Integer.parseInt(request.getParameter("id_contestacion"));
+                ContestacionDAO d = new ContestacionDAO();
+                Contestacion contestacion=d.getContestacionById(id_contestacion);
                 Gson gson = new Gson();
-                out.println(gson.toJson(demanda));
+                out.println(gson.toJson(contestacion));
             }
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(ContestacionS.class.getName()).log(Level.SEVERE, null, ex);
@@ -76,99 +76,56 @@ public class ContestacionS extends HttpServlet {
                 out.print(gson.toJson(true));
             }
             if (opcion.equalsIgnoreCase("update")) {
-                Demanda d = new Demanda();
+                Contestacion d = new Contestacion();
                 if (request.getParameter("id_ayudante") != null && !request.getParameter("id_ayudante").equals("")) {
                     d.setId_ayudante(request.getParameter("id_ayudante"));
                 }else{
                     d.setId_ayudante("");
                 }
-                d.setTitulo(request.getParameter("titulo"));
-                d.setJuez_nombre(request.getParameter("juez_nombre"));
-                d.setDte_nom(request.getParameter("dte_nom"));
-                d.setDte_ciudad(request.getParameter("dte_ciudad"));
-                if (request.getParameter("dte_id_tipo") != null) {
-                    d.setDte_id_tipo(Integer.parseInt(request.getParameter("dte_id_tipo")));
+                d.setId_demanda(Integer.parseInt(request.getParameter("id_demanda")));
+                d.setNombre_demandado(request.getParameter("nombre_demandado"));
+                d.setDocumento_demandado(request.getParameter("documento_demandado"));
+                if (request.getParameter("tipo_documento_demandado") != null) {
+                    d.setTipo_documento_demandado(Integer.parseInt(request.getParameter("tipo_documento_demandado")));
                 }
-                d.setDte_id(request.getParameter("dte_id"));
+                d.setNombre_representante_legal(request.getParameter("nombre_representante_legal"));
+                d.setDomicilio_representante_legal(request.getParameter("domicilio_representante_legal"));
+                d.setDocumento_representante_legal(request.getParameter("documento_representante_legal"));
+                
+                if (request.getParameter("tipo_documento_representante") != null) {
+                    d.setTipo_documento_representante(Integer.parseInt(request.getParameter("tipo_documento_representante")));
+                }
+                d.setNombre_apoderado(request.getParameter("nombre_apoderado"));
+                d.setDomicilio_apoderado(request.getParameter("domicilio_apoderado"));
+                d.setDocumento_apoderado(request.getParameter("documento_apoderado"));
+            
+                if (request.getParameter("tipo_documento_apoderado") != null) {
+                    d.setTipo_documento_apoderado(Integer.parseInt(request.getParameter("tipo_documento_apoderado")));
+                }
+                 d.setTarjeta_profesional_apoderado(request.getParameter("tarjeta_profesional_apoderado"));
+                 d.setDireccion_notificaciones(request.getParameter("direccion_notificaciones"));
+                 d.setEmail(request.getParameter("email"));
 
-                if (request.getParameter("dte_rep_tiene") != null) {
-                    d.setDte_rep_tiene(Boolean.parseBoolean(request.getParameter("dte_rep_tiene")));
+                if (request.getParameter("pretenciones") != null) {
+                    d.setPretenciones(Boolean.parseBoolean(request.getParameter("pretenciones")));
                 } else {
-                    d.setDte_rep_tiene(false);
+                    d.setPretenciones(false);
                 }
-                d.setDte_rep_nom(request.getParameter("dte_rep_nom"));
-                if (request.getParameter("dte_rep_id_tipo") != null) {
-                    d.setDte_rep_id_tipo(Integer.parseInt(request.getParameter("dte_rep_id_tipo")));
-                }
-
-                d.setDte_rep_id(request.getParameter("dte_rep_id"));
-
-                if (request.getParameter("dte_apo_tiene") != null) {
-                    d.setDte_apo_tiene(Boolean.parseBoolean(request.getParameter("dte_apo_tiene")));
-                } else {
-                    d.setDte_apo_tiene(false);
-                }
-                d.setDte_apo_nom(request.getParameter("dte_apo_nom"));
-                if (request.getParameter("dte_apo_id_tipo") != null) {
-                    d.setDte_apo_id_tipo(Integer.parseInt(request.getParameter("dte_apo_id_tipo")));
-                }
-                if (request.getParameter("dte_apo_id") != null && !request.getParameter("dte_apo_id").equals("")) {
-                    d.setDte_apo_id(request.getParameter("dte_apo_id"));
-                }
-                if (request.getParameter("dte_apo_tar_pro") != null) {
-                    d.setDte_apo_tar_pro(request.getParameter("dte_apo_tar_pro"));
-                }
-                d.setDte_dir_not(request.getParameter("dte_dir_not"));
-                d.setDte_email(request.getParameter("dte_email"));
-                d.setDem_nom(request.getParameter("dem_nom"));
-                d.setDem_ciu(request.getParameter("dem_ciu"));
-                if (request.getParameter("dem_rep_tiene") != null) {
-                    d.setDem_rep_tiene(Boolean.parseBoolean(request.getParameter("dem_rep_tiene")));
-                } else {
-                    d.setDem_rep_tiene(false);
-                }
-                d.setDem_rep_nom(request.getParameter("dem_rep_nom"));
-                if (request.getParameter("dem_apo_tiene") != null) {
-                    d.setDem_apo_tiene(Boolean.parseBoolean(request.getParameter("dem_apo_tiene")));
-                } else {
-                    d.setDem_apo_tiene(false);
-                }
-                d.setDem_apo_nom(request.getParameter("dem_apo_nom"));
-                d.setDem_dir_not(request.getParameter("dem_dir_not"));
-                d.setDem_email(request.getParameter("dem_email"));
-                d.setPretensiones(request.getParameter("pretensiones"));
-                d.setHechos(request.getParameter("hechos"));
-                if (request.getParameter("depende_cumplimiento") != null) {
-                    d.setDepende_cumplimiento(Boolean.parseBoolean(request.getParameter("depende_cumplimiento")));
-                } else {
-                    d.setDepende_cumplimiento(false);
-                }
-                if (request.getParameter("tengo_pruebas") != null) {
-                    d.setTengo_pruebas(Boolean.parseBoolean(request.getParameter("tengo_pruebas")));
-                } else {
-                    d.setTengo_pruebas(false);
-                }
+                d.setHechos_admitidos(request.getParameter("hechos_admitidos"));
+                d.setHechos_negados(request.getParameter("hechos_negados"));
+                d.setExplicacion_negados(request.getParameter("explicacion_negados"));
+                d.setHechos_no_constan(request.getParameter("hechos_no_constan"));
+                d.setExplicacion_no_constan(request.getParameter("explicacion_no_constan"));
+                d.setExcepciones(request.getParameter("excepciones"));
                 d.setPruebas(request.getParameter("pruebas"));
-                if (request.getParameter("estaba_obligado") != null) {
-                    d.setEstaba_obligado(Boolean.parseBoolean(request.getParameter("estaba_obligado")));
-                } else {
-                    d.setEstaba_obligado(false);
-                }
-                d.setFundamentos(request.getParameter("fundamentos"));
-                d.setAnexos(request.getParameter("anexos"));
-                if (request.getParameter("solicito_cautelares") != null) {
-                    d.setSolicito_cautelares(Boolean.parseBoolean(request.getParameter("solicito_cautelares")));
-                } else {
-                    d.setSolicito_cautelares(false);
-                }
-
-                d.setCautelares_que_solicita(request.getParameter("cautelares_que_solicita"));
+                
                 if (request.getParameter("porcentaje") != null) {
                     d.setPorcentaje(Float.parseFloat(request.getParameter("porcentaje")));
-                }
-                d.setId_demanda(Integer.parseInt(request.getParameter("id_demanda")));
-                DemandaDAO de = new DemandaDAO(); 
-                de.updateDemanda(d);
+                } 
+                
+                
+                ContestacionDAO de = new ContestacionDAO(); 
+                de.updateContestacion(d);
                 out.print(gson.toJson(true));
             }
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {

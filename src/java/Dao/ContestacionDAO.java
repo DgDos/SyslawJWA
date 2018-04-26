@@ -68,7 +68,7 @@ public class ContestacionDAO {
         return contestaciones;
     }
 
-    public Contestacion getDemandaById(int id_contestacion) throws SQLException, URISyntaxException, ClassNotFoundException, IOException {
+    public Contestacion getContestacionById(int id_contestacion) throws SQLException, URISyntaxException, ClassNotFoundException, IOException {
         Contestacion d = new Contestacion();
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select * from contestacion where delete=1 and id_contestacion=" + id_contestacion);
@@ -142,7 +142,7 @@ public class ContestacionDAO {
         preparedStatement.executeUpdate();
     }
 
-    public void updateDemanda(Contestacion c) throws SQLException, URISyntaxException, ClassNotFoundException, IOException {
+    public void updateContestacion(Contestacion c) throws SQLException, URISyntaxException, ClassNotFoundException, IOException {
         PreparedStatement preparedStatement;
         
         preparedStatement = connection.prepareStatement("update contestacion set id_demanda=?,nombre_demandado=?,documento_demandado=?,tipo_documento_demandado=?,nombre_representante_legal=?,domicilio_representante_legal=?,documento_representante_legal=?,tipo_documento_representante=?,nombre_apoderado=?,domicilio_apoderado=?,documento_apoderado=?,tipo_documento_apoderado=?,tarjeta_profesional_apoderado=?,direccion_notificaciones=?,email=?,pretenciones=?,hechos_admitidos=?,hechos_negados=?,explicacion_negados=?,hechos_no_constan=?,explicacion_no_constan=?,excepciones=?,pruebas=?,porcentaje=?,fecha_modificacion=? where id_demanda=" + c.getId_demanda());
