@@ -10,6 +10,25 @@ $('#sign_in').on('submit', function () {
     return false;
 });
 
+function oscar() {
+    $('#correo').val("fijusohalo@gmail.com");
+    $('#pass').val("123");
+    
+}
+
+function andres() {
+    $('#correo').val("anfegave98@hotmail.com");
+    $('#pass').val("123");
+    
+}
+
+function luna() {
+    $('#correo').val("luna@gmail.com");
+    $('#pass').val("123");
+    
+}
+
+
 function verificarPersona(correo, pass) {
     quitarErrorIniciar();
     $.ajax({

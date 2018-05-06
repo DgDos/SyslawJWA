@@ -31,12 +31,12 @@
             <div class="logo">
                 <div class="py-5 text-center">
                     <img class="d-block mx-auto mb-4" src="images/logo.svg" alt="" width="197" height="72">
-                    <h5 class="subtitle" >Registro de usuario</h5>
+                    <h5 class="subtitle" >Registro de Abogados</h5>
                 </div>
             </div>
             <div class="card">
                 <div class="body">
-                    <form id="agregarPersona" method="post" autocomplete="off">
+                    <form id="agregarAbogado" method="post" autocomplete="off">
                         <small></small>
                         <div class="form-group input-group form-float" style="margin-bottom: 20px">
                             <span class="input-group-addon">
@@ -71,6 +71,15 @@
                             <div class="form-line">
                                 <input type="text" required id="documento" name="documento" class="form-control transparent-control">
                                 <label class="form-label">Número de documento</label>
+                            </div>
+                        </div>
+                        <div class="form-group input-group form-float" style="margin-bottom: 20px">
+                            <span class="input-group-addon">
+                                <i class="material-icons">featured_play_list</i>
+                            </span>
+                            <div class="form-line">
+                                <input type="text" required id="tarjeta" name="tarjeta" class="form-control transparent-control">
+                                <label class="form-label">No. tarjeta profesional</label>
                             </div>
                         </div>
                         <div class="form-group input-group form-float" style="margin-bottom: 20px">
@@ -122,19 +131,15 @@
                             <input type="checkbox" name="terms" id="terms" class="filled-in chk-col-blue">
                             <label for="terms">Leí y estoy deacuerdo con los <a href="javascript:void(0);">términos de uso</a>.</label>
                         </div>
-                        
-                        
 
                         <button class="btn btn-block btn-lg bg-blue waves-effect" type="submit">CREAR CUENTA</button>
                         
+                        <div class="m-t-25 align-center">
+                            <a href="signup.html">Cuenta básica</a>
+                        </div>
                         <div class="m-t-15 m-b--0 align-center">
                             <a href="signin.html">¿Ya tiene una cuenta?</a>
                         </div>
-                        
-                        <div class="m-t-15 m-b--0 align-center">
-                            <button onclick="window.location.href='signup_lawyer.html'" class="btn btn-block btn-lg btn-default waves-effect" type="button">CUENTA PARA ABOGADOS</button>
-                        </div>
-                        
                     </form>
 
                 </div>
