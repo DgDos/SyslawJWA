@@ -7,7 +7,12 @@ $(document).ready(function () {
     // cuadrar altura de paneles laterales derechos
     //setSugeridosHeightAndScroll(true);
     //setAgendadosHeightAndScroll(true);
-
+    
+    console.log("hasta aqui");
+    
+    // Para marcar la pagina activa
+    $('#menu_default').removeClass("active");
+    $('#menu_mis_demandas').addClass("active");
 
     //$('#demandas_tabla').DataTable();
 
@@ -26,13 +31,13 @@ $(document).ready(function () {
             {data: 'fecha_creacion'},
             {data: null},
             {data: 'porcentaje'},
-            {data: null},
+            {data: null}
         ],
         columnDefs: [
             {
                 targets: -1,
                 data: null,
-                defaultContent: '<button type="button" class="btn btn-primary waves-effect">Abrir</button>'
+                defaultContent: '<a style="cursor: pointer; "><i class="material-icons" style="font-size:21px">mode_edit</i></a>'
             }
         ],
         language: {
@@ -42,7 +47,7 @@ $(document).ready(function () {
         order: [[ 1, "desc" ]]
     });
 
-    $('#demandas tbody').on('click', 'button', function () {
+    $('#demandas tbody').on('click', 'a', function () {
         var data = table.row($(this).parents('tr')).data();
         abrir(data.id_demanda);
     });

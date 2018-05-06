@@ -18,6 +18,7 @@ $(document).ready(function () {
         bodyTag: 'section',
         transitionEffect: 'fade',
         enableAllSteps: true,
+        enableFinishButton: false,
         labels:
                 {
                     current: "Página actual:",
@@ -57,6 +58,10 @@ $(document).ready(function () {
     // Agregar botón de guardar
     form.find('a').last().parent().parent()
             .prepend("<li><a style='display:none' href='#save' id='btnSave' name='btnSave' onclick='saveChanges()'>Guardar cambios</a></li>");
+    
+    // Botón de finalizar
+    form.find('a').last().parent().parent()
+            .append("<li><a class='bg-green btn-success' href='#finalizar' id='finalizar' name='finalizar' onclick='finalizar()'>Finalizar</a></li>");
 
     // configurar autosize
     autosize($('textarea.auto-growth'));
@@ -248,7 +253,7 @@ function preLoadDemanda(id_demanda) {
 
             var json = $.parseJSON(data);
             $('#id_demanda').val(json.id_demanda);
-            $('#titulo').val(json.titulo);
+            $('#titulo').text(json.titulo);
 
 
             $('#juez_nombre').val(json.juez_nombre);

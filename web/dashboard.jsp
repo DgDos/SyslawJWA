@@ -302,7 +302,6 @@
 
         <!-- Custom Js -->
         <script src="js/custom/dashboard.js"></script>
-        <script src="js/pages/index.js"></script>
 
 
     </body>

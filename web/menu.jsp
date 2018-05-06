@@ -1,28 +1,44 @@
 <div class="menu">
                     <ul class="list">
-                        <li class="header">MENÚ DE NAVEGACIÓN</li>
-                        <li class="active">
+                        <li class="header">MIS DEMANDAS</li>
+                        <li id="menu_mis_demandas"> 
                             <a href="dashboard.jsp">
-                                <i class="material-icons">format_list_bulleted</i>
-                                <span>Mis Demandas</span>
+                                <i class="material-icons">mode_edit</i>
+                                <span>Demandas en redacción</span>
                             </a>
                         </li>
-                        <li class="active">
+                        <li id="menu_dem_term">
+                            <a href="terminadas.jsp">
+                                <i class="material-icons">rate_review</i>
+                                <span>Demandas en revisión</span>
+                            </a>
+                        </li>
+                        <li id="menu_dem_term">
                             <a href="terminadas.jsp">
                                 <i class="material-icons">playlist_add_check</i>
-                                <span>Demandas terminadas</span>
+                                <span>Demandas enviadas</span>
                             </a>
                         </li>
-                        <li class="active">
+                        
+                        <li class="header">PROCESOS EN LOS QUE ESTOY IMPLICADO</li>
+                        <li id="menu_estoy_dem">
                             <a href="dashboardDemandado.jsp">
                                 <i class="material-icons">warning</i>
                                 <span>¿Estoy demandado?</span>
                             </a>
                         </li>
-                        <li class="active">
+                        <li id="menu_contestaciones">
                             <a href="dashboardContestaciones.jsp">
                                 <i class="material-icons">call</i>
                                 <span>Contestaciones</span>
+                            </a>
+                        </li>
+                        
+                        
+                        <li class="active hidden" id="menu_default">
+                            <a href="terminadas.jsp">
+                                <i class="material-icons">playlist_add_check</i>
+                                <span>Demandas terminadas</span>
                             </a>
                         </li>
                         <!--

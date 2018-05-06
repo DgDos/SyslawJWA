@@ -10,6 +10,10 @@ $('#sign_in').on('submit', function () {
     return false;
 });
 
+function showDevHints() {
+    $('#hints').removeClass("hidden");
+}
+
 function oscar() {
     $('#correo').val("fijusohalo@gmail.com");
     $('#pass').val("123");

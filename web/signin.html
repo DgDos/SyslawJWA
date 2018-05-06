@@ -39,7 +39,7 @@
                     <form id="sign_in" autocomplete="off">
                         <div class="input-group">
                             <span class="input-group-addon">
-                                <i class="material-icons">person</i>
+                                <i onClick="showDevHints();" class="material-icons">person</i>
                             </span>
                             <div class="form-line">
                                 <input autofocus id="correo" type="email" class="form-control" name="correo" placeholder="Correo electrónico" required>
@@ -65,7 +65,7 @@
                 </div>
 
             </div>
-            <div class="row" style="opacity: 0.3">
+            <div class="row hidden" style="opacity: 0.3" id="hints">
                 <div class="col-xs-4">
                     <button onClick="oscar();" class="btn btn-block bg-blue waves-effect" type="submit">Oscar (ddte)</button>
                 </div>
