@@ -170,9 +170,7 @@
 
 
                         <div class="body" id="dashboard-container" style="background-color: #f1f1f1;">  
-                            <h2 style="color: #138fc3;">Título de la demanda</h2>
-                            <input type="text" id="id_demanda" class="form-control" value="id_demanda" disabled>
-                            <input type="text" id="titulo" class="form-control" value="titulo" disabled>
+                            <h2 style="color: #138fc3; margin-bottom: 15px" id="titulo">Título de la demanda</h2>
 
                             <div class="card">
                                 <div class="body">
