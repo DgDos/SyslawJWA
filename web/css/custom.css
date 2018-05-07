@@ -577,14 +577,8 @@ body {
 
 
 /* SYSLAW */
-.bg-syslaw-login {
-    background-color: #1981ad !important;
-    background: radial-gradient(#0a6b94 15%, transparent 16%) 0 0, 
-        radial-gradient(#0473a2 15%, transparent 16%) 8px 8px, 
-        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px, 
-        radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
-    background-color:#282828;
-    background-size:16px 16px;
+.bg-syslaw-login { 
+        background-image: linear-gradient( 135deg, rgba(102, 1, 165, 0.87) 0%, rgba(0, 158, 250, 0.78) 100%);
 }
 .subtitle {
     color: #fff;
