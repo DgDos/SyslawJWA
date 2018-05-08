@@ -1,9 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <welcome-file-list>
+        <welcome-file>lp2.html</welcome-file>
+    </welcome-file-list>
+    <servlet>
+        <servlet-name>Login</servlet-name>
+        <servlet-class>Controller.Login</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Register</servlet-name>
+        <servlet-class>Controller.Register</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DemandaS</servlet-name>
+        <servlet-class>Controller.DemandaS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdministradorS</servlet-name>
+        <servlet-class>Controller.AdministradorS</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ContestacionS</servlet-name>
+        <servlet-class>Controller.ContestacionS</servlet-class>
+    </servlet>
     <servlet>
         <servlet-name>UsuarioS</servlet-name>
         <servlet-class>Controller.UsuarioS</servlet-class>
     </servlet>
+    <servlet-mapping>
+        <servlet-name>Login</servlet-name>
+        <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Register</servlet-name>
+        <url-pattern>/Register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DemandaS</servlet-name>
+        <url-pattern>/DemandaS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdministradorS</servlet-name>
+        <url-pattern>/AdministradorS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ContestacionS</servlet-name>
+        <url-pattern>/ContestacionS</url-pattern>
+    </servlet-mapping>
     <servlet-mapping>
         <servlet-name>UsuarioS</servlet-name>
         <url-pattern>/UsuarioS</url-pattern>
@@ -13,4 +56,5 @@
             30
         </session-timeout>
     </session-config>
+    
 </web-app>
