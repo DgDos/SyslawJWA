@@ -13,6 +13,7 @@
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:200,400,700&amp;subset=cyrillic" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
 
         <!-- Bootstrap Core Css -->
         <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -62,10 +63,10 @@
     <body class="theme-blue" style="background-color: #f1f1f1;">
 
         <!-- Page Loader -->
-        <div class="page-loader-wrapper">
+        <div class="page-loader-wrapper p-l-w-dark">
             <div class="loader">
                 <div class="preloader">
-                    <div class="spinner-layer pl-blue">
+                    <div class="spinner-layer pl-white">
                         <div class="circle-clipper left">
                             <div class="circle"></div>
                         </div>
@@ -170,7 +171,7 @@
 
 
                         <div class="body" id="dashboard-container" style="background-color: #f1f1f1;">  
-                            <h2 style="color: #138fc3; margin-bottom: 15px" id="titulo">Título de la demanda</h2>
+                            <h2 style="margin-bottom: 15px" id="titulo">Título de la demanda</h2>
 
                             <div class="card">
                                 <div class="body">
