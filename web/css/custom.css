@@ -623,7 +623,7 @@ input:-webkit-autofill {
 }
 
 .wizard .steps .current a {
-    background-color: #29abe2 !important;
+    background-color: #3165d8 !important;
 }
 
 @media(max-width: 630px) {
@@ -669,7 +669,7 @@ input:-webkit-autofill {
 }
 
 .wizard > .actions a {
-    background: #29abe2;
+    background: #3165d8;
 }
 
 .wizard > .actions a:hover, .wizard > .actions a:active {
@@ -688,7 +688,7 @@ input:-webkit-autofill {
     margin-bottom: 33px;
     text-align: center;
     padding: 8px;
-    background-color: #29abe2 !important;
+    background-color: #3165d8 !important;
     font-size: 23px;
 }
 

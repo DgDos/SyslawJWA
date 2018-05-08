@@ -119,7 +119,7 @@
                 <!-- User Info -->
                 <div class="user-info">
                     <div class="py-5 text-center">
-                        <img class="d-block mx-auto mb-4" src="images/logo.svg" alt="" width="136" height="58" style="margin-top: 10px">
+                        <img class="d-block mx-auto mb-4" src="images/syslaw_dash_info_2.svg" alt="" width="230" style="margin-top: 25px; margin-bottom: 10px;">
                     </div>
                     <div class="info-container">
                         <%
