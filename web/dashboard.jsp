@@ -13,6 +13,7 @@
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:200,400,700&amp;subset=cyrillic" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
 
         <!-- Bootstrap Core Css -->
         <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -111,7 +112,7 @@
                 <!-- User Info -->
                 <div class="user-info">
                     <div class="py-5 text-center">
-                        <img class="d-block mx-auto mb-4" src="images/logo.svg" alt="" width="136" height="58" style="margin-top: 10px">
+                        <img class="d-block mx-auto mb-4" src="images/syslaw_dash_info_2.svg" alt="" width="230" style="margin-top: 25px; margin-bottom: 10px;">
                     </div>
                     <div class="info-container">
                         <%
@@ -163,7 +164,7 @@
                             <div class="header bg-white add-event-header" style="background-color: #f1f1f1 !important;">
                                 <div class="row clearfix">
                                     <div class="col-xs-6 col-sm-6" style="margin-top: 5px">
-                                        <h2 style="color: #1981ad;">Mis demandas</h2>
+                                        <h2>Mis demandas</h2>
                                     </div>
                                     <div class="col-xs-12 col-sm-6 align-right">
                                         <button type="button" data-toggle="modal" data-target="#nuevaDemanda" class="btn bg-syslaw waves-effect btn-no-shadow">
@@ -191,16 +192,6 @@
                                                         <th></th>
                                                     </tr>
                                                 </thead>
-                                                <tfoot>
-                                                    <tr>
-                                                        <th>Título</th>
-                                                        <th>Modificado</th>
-                                                        <th>Creado</th>
-                                                        <th>Ayudante</th>
-                                                        <th>Porcentaje</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </tfoot>
                                             </table>
                                         </div>
                                     </div>

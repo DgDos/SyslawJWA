@@ -596,6 +596,12 @@ input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
 
+.theme-blue .user-info{
+    background-color: #1981ad !important;
+    background: radial-gradient(#0a6b94 15%, transparent 16%) 0 0, radial-gradient(#0473a2 15%, transparent 16%) 8px 8px, radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 0 1px, radial-gradient(rgba(255,255,255,.1) 15%, transparent 20%) 8px 9px;
+
+    background-size: 16px 16px;
+}
 
 @media only screen and (min-width: 1170px) { 
 
@@ -616,7 +622,18 @@ input:-webkit-autofill {
 
 }
 
+.info-container {
+    top: 17px !important;
+}
 
+.sidebar .user-info {
+    height: 147px;
+}
+
+.bg-syslaw {
+    background-color: #29abe2 !important;
+    color: #fff !important;
+}
 
 .dataTables_wrapper {
     width: 98% !important;
@@ -704,44 +721,7 @@ input:-webkit-autofill {
     visibility: hidden;
 }
 
+
 .bg-syslaw-login { 
-    background-image: linear-gradient( 135deg, rgba(102, 1, 165, 0.87) 0%, rgba(0, 158, 250, 0.78) 100%);
-    background-color: #4c98e6 !important;
-
-}
-.login-page{
-    display: flex;
-    justify-content: center;
-    height: calc(70%);
-}
-
-.login-box {
-    align-self: center;
-}
-
-
-.info-container {
-    top: 17px !important;
-}
-
-.sidebar .user-info {
-    height: 155px;
-}
-
-.bg-syslaw {
-    background-color: #3165d8 !important;
-    color: #fff !important;
-}
-
-.theme-blue .user-info{
-    background-image: linear-gradient( 135deg, rgba(102, 1, 165, 0.87) 0%, rgba(0, 158, 250, 0.78) 100%);
-    background-color: #4c98e6 !important;
-}
-
-.card .header h2 {
-    font-size: 21px;
-    color: #3068d9;
-    font-family: 'Rubik', sans-serif;
-    text-transform: uppercase;
-
+            background-image: linear-gradient( 135deg, rgba(102, 1, 165, 0.87) 0%, rgba(0, 158, 250, 0.78) 100%);
 }

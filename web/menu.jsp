@@ -20,7 +20,7 @@
                             </a>
                         </li>
                         
-                        <li class="header">PROCESOS EN LOS QUE ESTOY IMPLICADO</li>
+                        <li class="header">OTROS SERVICIOS</li>
                         <li id="menu_estoy_dem">
                             <a href="dashboardDemandado.jsp">
                                 <i class="material-icons">warning</i>
@@ -39,6 +39,20 @@
                             <a href="terminadas.jsp">
                                 <i class="material-icons">playlist_add_check</i>
                                 <span>Demandas terminadas</span>
+                            </a>
+                        </li>
+                        
+                        <li class="header">SERVICIO AL CLIENTE</li>
+                        <li id="menu_faq">
+                            <a href="dashboardDemandado.jsp">
+                                <i class="material-icons">question_answer</i>
+                                <span>FAQ</span>
+                            </a>
+                        </li>
+                        <li id="menu_help">
+                            <a href="dashboardDemandado.jsp">
+                                <i class="material-icons">help</i>
+                                <span>Ayuda</span>
                             </a>
                         </li>
                         <!--
