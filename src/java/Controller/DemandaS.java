@@ -38,25 +38,29 @@ public class DemandaS extends HttpServlet {
             user.setDocumento("94092703586");
             Gson gson = new Gson();
             String opcion = request.getParameter("opcion");
+            //trae la lista de demandas dado un estado
             if (opcion.equalsIgnoreCase("state")) {
                 int state = Integer.parseInt(request.getParameter("state"));
                 ArrayList<Demanda> demandas = d.getAllDemandasByState(user.getDocumento(), state);
                 out.println(gson.toJson(demandas));
             }
+            //trae el pool de demandas
             if(opcion.equalsIgnoreCase("pool")){
                 ArrayList<Demanda> demandas = d.getPoolDemandas();
                 out.println(gson.toJson(demandas));
             }
+            //trae la informacion de la demanda que esta ayudando a corregir el abogado
             if(opcion.equalsIgnoreCase("helpInfo")){
                 Demanda demanda = d.getDemandaHelpInfo(user.getDocumento());
                 out.println(gson.toJson(demanda));
             }
+            //trae la demanda que esta ayudando a corregir el abogado
             if(opcion.equalsIgnoreCase("help")){
                 int id_demanda=Integer.parseInt(request.getParameter("id_demanda"));
                 Demanda demanda = d.getDemandaHelp(id_demanda,user.getDocumento());
                 out.println(gson.toJson(demanda));
             }
-            
+            //trae la informacion de la demanda del usuario
             if (opcion.equalsIgnoreCase("one")) {
                 int id_demanda = Integer.parseInt(request.getParameter("id_demanda"));
                 Demanda demanda = d.getDemandaById(id_demanda);
@@ -75,6 +79,7 @@ public class DemandaS extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String opcion = request.getParameter("opcion");
             Gson gson = new Gson();
+            //crea la demanda y llena los datos iniciales
             if (opcion.equalsIgnoreCase("create")) {
                 DemandaDAO d = new DemandaDAO();
                 String titulo = request.getParameter("titulo");
@@ -84,6 +89,7 @@ public class DemandaS extends HttpServlet {
                 d.addDemanda(titulo, user);
                 out.print(gson.toJson(true));
             }
+            //actualiza la demanda BOTON SAVE
             if (opcion.equalsIgnoreCase("update")) {
                 float conta=7;
                 Demanda d = new Demanda();
@@ -240,10 +246,13 @@ public class DemandaS extends HttpServlet {
                 float valor=((conta*100)/37);
                 d.setPorcentaje(valor);
                 d.setId_demanda(Integer.parseInt(request.getParameter("id_demanda")));
+                d.setComentarios_abogado(request.getParameter("com_abo"));
+                d.setComentarios_usuario(request.getParameter("com_usu"));
                 DemandaDAO de = new DemandaDAO();
                 de.updateDemanda(d);
                 out.print(gson.toJson(true));
             }
+            //sirve para cuando el abogado escoja la demanda que quiere ayudar a corregir
             if(opcion.equalsIgnoreCase("pickFromPool")){
                 DemandaDAO de = new DemandaDAO();
                 int id_demanda = Integer.parseInt(request.getParameter("id_demanda"));
@@ -252,6 +261,7 @@ public class DemandaS extends HttpServlet {
                 user.setDocumento("94092703586");
                 out.print(gson.toJson(de.pickIt(id_demanda,user)));
             }
+            //cambia de estado la demanda
             if (opcion.equalsIgnoreCase("endState")) {
                 DemandaDAO de = new DemandaDAO();
                 int id_demanda = Integer.parseInt(request.getParameter("id_demanda"));

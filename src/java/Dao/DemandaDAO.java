@@ -150,7 +150,7 @@ public class DemandaDAO {
 
     public void updateDemanda(Demanda d) throws SQLException, URISyntaxException, ClassNotFoundException, IOException {
         PreparedStatement preparedStatement;
-        preparedStatement = connection.prepareStatement("update demanda set titulo=?,juez_nombre=?,dte_nom=?,dte_ciudad=?,dte_id_tipo=?,dte_id=?,dte_rep_tiene=?,dte_rep_nom=?,dte_rep_id_tipo=?,dte_rep_id=?,dte_apo_tiene=?,dte_apo_nom=?,dte_apo_id_tipo=?,dte_apo_id=?,dte_apo_tar_pro=?,dte_dir_not=?,dte_email=?,dem_nom=?,dem_ciu=?,dem_rep_tiene=?,dem_rep_nom=?,dem_apo_tiene=?,dem_apo_nom=?,dem_dir_not=?,dem_email=?,pretensiones=?,hechos=?,depende_cumplimiento=?,tengo_pruebas=?,pruebas=?,estaba_obligado=?,fundamentos=?,anexos=?,solicito_cautelares=?,cautelares_que_solicita=?,porcentaje=?,fecha_modificacion=?,dem_id=?,dem_id_tipo=? where id_demanda=" + d.getId_demanda());
+        preparedStatement = connection.prepareStatement("update demanda set titulo=?,juez_nombre=?,dte_nom=?,dte_ciudad=?,dte_id_tipo=?,dte_id=?,dte_rep_tiene=?,dte_rep_nom=?,dte_rep_id_tipo=?,dte_rep_id=?,dte_apo_tiene=?,dte_apo_nom=?,dte_apo_id_tipo=?,dte_apo_id=?,dte_apo_tar_pro=?,dte_dir_not=?,dte_email=?,dem_nom=?,dem_ciu=?,dem_rep_tiene=?,dem_rep_nom=?,dem_apo_tiene=?,dem_apo_nom=?,dem_dir_not=?,dem_email=?,pretensiones=?,hechos=?,depende_cumplimiento=?,tengo_pruebas=?,pruebas=?,estaba_obligado=?,fundamentos=?,anexos=?,solicito_cautelares=?,cautelares_que_solicita=?,porcentaje=?,fecha_modificacion=?,dem_id=?,dem_id_tipo=?,comentarios_abogado=?,comentarios_usuario=? where id_demanda=" + d.getId_demanda());
         preparedStatement.setString(1, d.getTitulo());
         preparedStatement.setString(2, d.getJuez_nombre());
         preparedStatement.setString(3, d.getDte_nom());
@@ -190,6 +190,8 @@ public class DemandaDAO {
         preparedStatement.setTimestamp(37, new Timestamp(System.currentTimeMillis()));
         preparedStatement.setString(38, d.getDem_id());
         preparedStatement.setInt(39, d.getDem_id_tipo());
+        preparedStatement.setString(40, d.getComentarios_abogado());
+        preparedStatement.setString(41, d.getComentarios_usuario());
         preparedStatement.executeUpdate();
     }
 
@@ -217,7 +219,7 @@ public class DemandaDAO {
 
     public boolean pickIt(int id_demanda, Usuario user) throws SQLException {
         PreparedStatement preparedStatement;
-        preparedStatement = connection.prepareStatement("update demanda set id_ayudante=? where id_demanda=?");
+        preparedStatement = connection.prepareStatement("update demanda set id_ayudante=?,estado=3 where id_demanda=?");
         preparedStatement.setString(1, user.getDocumento());
         preparedStatement.setInt(2, id_demanda);
         preparedStatement.executeUpdate();
