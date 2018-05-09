@@ -44,6 +44,7 @@ public class Login extends HttpServlet {
             if (u.isUser(user, e.encription(pass))) {
                 request.getSession().setAttribute("usuario", u.getUsuario(user));
                 out.print("si");
+                //out.print((u.getUsuario(user)).getTipo_usuario());
             } else {
                 out.print("no");
             }

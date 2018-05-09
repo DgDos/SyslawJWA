@@ -75,7 +75,7 @@ public class ContestacionS extends HttpServlet {
                 Demanda demanda=dem.getDemandaById(id_demanda);
                 Usuario user=(Usuario)request.getSession().getAttribute("usuario");
                 d.addContestacion( user, demanda);
-                dem.endFinish(id_demanda);
+                dem.endState(id_demanda,6);
                 out.print(gson.toJson(true));
             }
             if (opcion.equalsIgnoreCase("update")) {
