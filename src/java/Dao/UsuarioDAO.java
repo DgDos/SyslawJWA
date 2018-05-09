@@ -27,7 +27,7 @@ public class UsuarioDAO {
         connection = DbUtil.getConnection();
     }
 
-    public void addUsuario(Usuario u, String pass) throws SQLException {
+    public void addUsuarioDemandante(Usuario u, String pass) throws SQLException {
         PreparedStatement preparedStatement = connection.prepareStatement("insert into usuario(documento,tipo_documento,nombre,ciudad,direccion,correo,password,tipo_usuario,delete) values (?,?,?,?,?,?,?,?,1)");
         preparedStatement.setString(1, u.getDocumento());
         preparedStatement.setInt(2, u.getTipo_id());
@@ -37,6 +37,20 @@ public class UsuarioDAO {
         preparedStatement.setString(6, u.getCorreo());
         preparedStatement.setString(7, pass);
         preparedStatement.setInt(8, u.getTipo_usuario());
+        preparedStatement.executeUpdate();
+    }
+    
+    public void addUsuarioAbogado(Usuario u, String pass) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into usuario(documento,tipo_documento,nombre,ciudad,direccion,correo,password,tarjeta,tipo_usuario,delete) values (?,?,?,?,?,?,?,?,?,1)");
+        preparedStatement.setString(1, u.getDocumento());
+        preparedStatement.setInt(2, u.getTipo_id());
+        preparedStatement.setString(3, u.getNombre());
+        preparedStatement.setString(4, u.getCiudad());
+        preparedStatement.setString(5, u.getDireccion());
+        preparedStatement.setString(6, u.getCorreo());
+        preparedStatement.setString(7, pass);
+        preparedStatement.setString(8, u.getTarjeta());
+        preparedStatement.setInt(9, u.getTipo_usuario());
         preparedStatement.executeUpdate();
     }
 
@@ -69,6 +83,7 @@ public class UsuarioDAO {
             user.setCiudad(rs.getString("ciudad"));
             user.setDireccion(rs.getString("direccion"));
             user.setCorreo(correo);
+            user.setTarjeta(rs.getString("tarjeta"));
             user.setTipo_usuario(rs.getInt("tipo_usuario"));
         }
         return user;

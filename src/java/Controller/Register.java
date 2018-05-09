@@ -48,16 +48,22 @@ public class Register extends HttpServlet {
         try {
             String nombre = request.getParameter("nombre");
             int tipo_documento=Integer.parseInt(request.getParameter("tipo_documento"));
+            int tipo_usuario=Integer.parseInt(request.getParameter("tipo_usuario"));
             String documento=request.getParameter("documento");
             String ciudad=request.getParameter("ciudad");
             String direccion=request.getParameter("direccion");
             String correo = request.getParameter("correo");
             String pass = request.getParameter("pass");
             Encription e = new Encription();
-            Usuario user=new Usuario(documento, nombre, ciudad, direccion, correo, 1, tipo_documento);
+            Usuario user=new Usuario(documento, nombre, ciudad, direccion, correo, tipo_usuario, tipo_documento);
             UsuarioDAO u = new UsuarioDAO();
-            u.addUsuario(user, e.encription(pass));
-            
+            if(tipo_usuario==1){
+                u.addUsuarioDemandante(user, e.encription(pass));
+            }else{
+                String tarjeta=request.getParameter("tajeta");
+                user.setTarjeta(tarjeta);
+                u.addUsuarioAbogado(user, e.encription(pass));
+            }
             try (PrintWriter out = response.getWriter()) {
                 Gson gson = new Gson();
                 out.print(gson.toJson(true));
