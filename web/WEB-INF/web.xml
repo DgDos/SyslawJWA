@@ -8,18 +8,19 @@
         <error-code>404</error-code>
         <location>/404.html</location>
     </error-page>
-    
-    
     <!-- redirecciones a paginas especificas -->
     <servlet>
         <servlet-name>signin.html</servlet-name>
         <jsp-file>/signin.html</jsp-file>
     </servlet>
+    <servlet>
+        <servlet-name>LanginS</servlet-name>
+        <servlet-class>Controller.LanginS</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin.html</servlet-name>
         <url-pattern>/login/*</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>signup.html</servlet-name>
         <jsp-file>/signup.html</jsp-file>
@@ -28,16 +29,14 @@
         <servlet-name>signup.html</servlet-name>
         <url-pattern>/signup/*</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>con_signup.html</servlet-name>
         <jsp-file>/con_signup.html</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>con_signup.html</servlet-name>
-        <url-pattern>/connect_signup/*</url-pattern> 
+        <url-pattern>/connect_signup/*</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>dash.jsp</servlet-name>
         <jsp-file>/dash.jsp</jsp-file>
@@ -46,7 +45,6 @@
         <servlet-name>dash.jsp</servlet-name>
         <url-pattern>/dash/*</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>dash_redaccion.jsp</servlet-name>
         <jsp-file>/dash_redaccion.jsp</jsp-file>
@@ -55,7 +53,6 @@
         <servlet-name>dash_redaccion.jsp</servlet-name>
         <url-pattern>/redaccion/*</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>edit_redaccion.jsp</servlet-name>
         <jsp-file>/edit_redaccion.jsp</jsp-file>
@@ -64,10 +61,6 @@
         <servlet-name>edit_redaccion.jsp</servlet-name>
         <url-pattern>/redaccion_editar/*</url-pattern>
     </servlet-mapping>
-    
-    
-    
-    
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>Controller.Login</servlet-class>
@@ -116,10 +109,13 @@
         <servlet-name>UsuarioS</servlet-name>
         <url-pattern>/UsuarioS</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LanginS</servlet-name>
+        <url-pattern>/LanginS</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
         </session-timeout>
     </session-config>
-    
 </web-app>
