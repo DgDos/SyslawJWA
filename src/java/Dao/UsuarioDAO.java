@@ -63,7 +63,16 @@ public class UsuarioDAO {
         return false;
     }
 
-    public boolean isUser(String correo) throws SQLException {
+    public boolean isUserDoc(String documento) throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from usuario where documento='" + documento + "'");
+        while (rs.next()) {
+            return true;
+        }
+        return false;
+    }
+    
+    public boolean isUserCorreo(String correo) throws SQLException {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select * from usuario where correo='" + correo + "'");
         while (rs.next()) {

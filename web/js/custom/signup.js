@@ -23,6 +23,7 @@ $('#agregarAbogado').on('submit', function () {
             url: "Register",
             //force to handle it as text
             data: {
+                'tipo_usuario': 2,
                 'nombre': $('#nombre').val(),
                 'tipo_documento': $('input[name=tipo_documento]:checked').val(),
                 'documento': $('#documento').val(),
@@ -62,6 +63,7 @@ function addPersona(name, tipo_documento, documento, ciudad, direccion, correo, 
         url: "Register",
         //force to handle it as text
         data: {
+            'tipo_usuario': 1,
             'nombre': name,
             'tipo_documento': tipo_documento,
             'documento': documento,
@@ -78,11 +80,14 @@ function addPersona(name, tipo_documento, documento, ciudad, direccion, correo, 
             if (json == true) {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
                 console.log('si se encontro el usuario');
-                document.location.href = 'signin.html';
+                
+                $("#message").empty().append('<a href="login"><span style="width: 100%; font-size: 14px" class="badge bg-green">Usuario agregado con éxito! Ingresar ahora</span></a>');
+                $("#message").removeClass("hidden");
             } else {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
                 console.log('no se encontro el usuario');
-                alert('Error desconocido');
+                $("#message").empty().append('<a href="#"><span style="width: 100%; font-size: 14px" class="badge bg-red">Error desconocido. No se agregó el usuario.</span></a>');
+                $("#message").removeClass("hidden");
             }
         },
         async: false
@@ -97,6 +102,9 @@ $(function () {
                 required: true
             },
             'correo': {
+                remote: 'Register'
+            },
+            'documento': {
                 remote: 'Register'
             },
             'confirm': {
@@ -125,6 +133,9 @@ $(function () {
             'correo': {
                 remote: 'Register'
             },
+            'documento': {
+                remote: 'Register'
+            },
             'confirm': {
                 equalTo: '[name="password"]'
             }
@@ -146,7 +157,7 @@ $(function () {
     $.extend($.validator, {
         messages: {
             required: "Este es un campo requerido",
-            remote: "Este correo ya está registrado",
+            remote: "Ya registrado. Intente con otro valor.",
             email: "Ingrese un correo válido.",
             url: "Please enter a valid URL.",
             date: "Please enter a valid date.",

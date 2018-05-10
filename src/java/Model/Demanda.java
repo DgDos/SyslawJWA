@@ -130,7 +130,11 @@ public class Demanda {
     }
 
     public void setId_ayudante(String id_ayudante) {
-        this.id_ayudante = id_ayudante;
+        if (id_ayudante != null) {
+            this.id_ayudante = id_ayudante;
+        } else {
+            this.id_ayudante = "No asignado"; 
+        }
     }
 
     public String getTitulo() {
@@ -493,9 +497,4 @@ public class Demanda {
         this.comentarios_abogado = comentarios_abogado;
     }
 
-    
-
-   
-
-    
 }

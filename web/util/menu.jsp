@@ -1,20 +1,26 @@
 <div class="menu">
                     <ul class="list">
+                        <li id="menu_dash"> 
+                            <a href="dash">
+                                <i class="material-icons">dashboard</i>
+                                <span>Dashboard</span>
+                            </a>
+                        </li>
                         <li class="header">MIS DEMANDAS</li>
-                        <li id="menu_mis_demandas"> 
-                            <a href="dashboard.jsp">
+                        <li id="menu_redaccion"> 
+                            <a href="redaccion">
                                 <i class="material-icons">mode_edit</i>
                                 <span>Demandas en redacción</span>
                             </a>
                         </li>
-                        <li id="menu_dem_term">
-                            <a href="terminadas.jsp">
+                        <li id="menu_revision">
+                            <a href="revision">
                                 <i class="material-icons">rate_review</i>
                                 <span>Demandas en revisión</span>
                             </a>
                         </li>
-                        <li id="menu_dem_term">
-                            <a href="terminadas.jsp">
+                        <li id="menu_enviadas">
+                            <a href="enviadas">
                                 <i class="material-icons">playlist_add_check</i>
                                 <span>Demandas enviadas</span>
                             </a>
@@ -44,13 +50,13 @@
                         
                         <li class="header">SERVICIO AL CLIENTE</li>
                         <li id="menu_faq">
-                            <a href="dashboardDemandado.jsp">
+                            <a href="faq">
                                 <i class="material-icons">question_answer</i>
                                 <span>FAQ</span>
                             </a>
                         </li>
                         <li id="menu_help">
-                            <a href="dashboardDemandado.jsp">
+                            <a href="ayuda">
                                 <i class="material-icons">help</i>
                                 <span>Ayuda</span>
                             </a>

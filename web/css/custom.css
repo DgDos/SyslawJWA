@@ -604,7 +604,7 @@ input:-webkit-autofill {
         height: calc(100vh) !important;
     }
 
-    .content {
+    body > .content {
         margin-top: 25px !important;
         height: auto;
     }
@@ -740,11 +740,11 @@ input:-webkit-autofill {
 
 .card .header h2 {
     font-size: 21px;
-
+    font-weight: 400 !important;
 }
 
 h2 {
-   color: #3068d9;
+    color: #3068d9 !important;
     font-family: 'Rubik', sans-serif;
     text-transform: uppercase;
 
@@ -757,4 +757,8 @@ h2 {
 
 .p-l-w-dark p {
     color: #fff;
+}
+
+.progress {
+    background-color: #c7c7c7;
 }
