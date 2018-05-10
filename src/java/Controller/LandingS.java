@@ -23,9 +23,9 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author FiJus
  */
-public class LanginS extends HttpServlet {
+public class LandingS extends HttpServlet {
 
-    
+     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,7 +35,7 @@ public class LanginS extends HttpServlet {
             Gson g=new Gson();
             out.print(g.toJson(l.getAllLandings()));
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
-            Logger.getLogger(LanginS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LandingS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -49,7 +49,7 @@ public class LanginS extends HttpServlet {
             Gson g=new Gson();
             out.print(g.toJson(l.addLangind(new Landing(request.getParameter("nombre"), request.getParameter("correo"), Boolean.parseBoolean(request.getParameter("beta"))))));
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
-            Logger.getLogger(LanginS.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LandingS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -58,5 +58,4 @@ public class LanginS extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }
-
 }

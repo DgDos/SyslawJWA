@@ -14,8 +14,8 @@
         <jsp-file>/signin.html</jsp-file>
     </servlet>
     <servlet>
-        <servlet-name>LanginS</servlet-name>
-        <servlet-class>Controller.LanginS</servlet-class>
+        <servlet-name>LandingS</servlet-name>
+        <servlet-class>Controller.LandingS</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>signin.html</servlet-name>
@@ -110,8 +110,8 @@
         <url-pattern>/UsuarioS</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>LanginS</servlet-name>
-        <url-pattern>/LanginS</url-pattern>
+        <servlet-name>LandingS</servlet-name>
+        <url-pattern>/LandingS</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

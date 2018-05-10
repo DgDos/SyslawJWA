@@ -33,9 +33,7 @@ public class DemandaS extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             DemandaDAO d = new DemandaDAO();
-            //Usuario user = (Usuario) request.getSession().getAttribute("usuario");
-            Usuario user = new Usuario();
-            user.setDocumento("94092703586");
+            Usuario user = (Usuario) request.getSession().getAttribute("usuario");
             Gson gson = new Gson();
             String opcion = request.getParameter("opcion");
             //trae la lista de demandas dado un estado
@@ -83,9 +81,7 @@ public class DemandaS extends HttpServlet {
             if (opcion.equalsIgnoreCase("create")) {
                 DemandaDAO d = new DemandaDAO();
                 String titulo = request.getParameter("titulo");
-                //Usuario user = (Usuario) request.getSession().getAttribute("usuario");
-                Usuario user = new Usuario();
-                user.setDocumento("94092703586");
+                Usuario user = (Usuario) request.getSession().getAttribute("usuario");
                 d.addDemanda(titulo, user);
                 out.print(gson.toJson(true));
             }
@@ -253,9 +249,7 @@ public class DemandaS extends HttpServlet {
             if(opcion.equalsIgnoreCase("pickFromPool")){
                 DemandaDAO de = new DemandaDAO();
                 int id_demanda = Integer.parseInt(request.getParameter("id_demanda"));
-                //Usuario user = (Usuario) request.getSession().getAttribute("usuario");
-                Usuario user = new Usuario();
-                user.setDocumento("94092703586");
+                Usuario user = (Usuario) request.getSession().getAttribute("usuario");
                 out.print(gson.toJson(de.pickIt(id_demanda,user)));
             }
             //cambia de estado la demanda
