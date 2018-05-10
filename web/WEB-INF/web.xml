@@ -65,6 +65,42 @@
         <url-pattern>/redaccion_editar/*</url-pattern>
     </servlet-mapping>
     
+    <servlet>
+        <servlet-name>dash_revision.jsp</servlet-name>
+        <jsp-file>/dash_revision.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dash_revision.jsp</servlet-name>
+        <url-pattern>/revision/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>edit_revision.jsp</servlet-name>
+        <jsp-file>/edit_revision.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>edit_revision.jsp</servlet-name>
+        <url-pattern>/revision_editar/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>dash_enviadas.jsp</servlet-name>
+        <jsp-file>/dash_enviadas.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dash_enviadas.jsp</servlet-name>
+        <url-pattern>/enviadas/*</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>edit_enviadas.jsp</servlet-name>
+        <jsp-file>/edit_enviadas.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>edit_enviadas.jsp</servlet-name>
+        <url-pattern>/enviadas_editar/*</url-pattern>
+    </servlet-mapping>
+    
     
     
     

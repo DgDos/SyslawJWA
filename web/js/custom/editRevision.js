@@ -7,7 +7,7 @@ $(document).ready(function () {
     $('#menu_default').removeClass("active");
     $('#menu_redaccion').addClass("active");
 
-    
+
     // Detectar id de la demanda enviado de listar y redireccionar
     if (localStorage.getItem("id_demanda") == null) {
         document.location.href = 'dashboard.jsp';
@@ -63,7 +63,7 @@ $(document).ready(function () {
     // Agregar botón de guardar
     form.find('a').last().parent().parent()
             .prepend("<li><a style='display:none' href='#save' id='btnSave' name='btnSave' onclick='saveChanges()'>Guardar cambios</a></li>");
-    
+
     // configurar autosize
     autosize($('textarea.auto-growth'));
 
@@ -209,7 +209,7 @@ $(document).ready(function () {
             url: "DemandaS",
             data: {
                 'opcion': "endDone",
-                'id_demanda':  $('#id_demanda').val()
+                'id_demanda': $('#id_demanda').val()
             },
             dataType: "text",
             success: function (data) {
@@ -227,37 +227,37 @@ function analizarDemanda() {
 function enviarConnect() {
     alert('enviando a abogado');
     $.ajax({
-            type: 'POST',
-            url: "DemandaS",
-            data: {
-                'opcion': "endState",
-                'id_demanda':  $('#id_demanda').val(),
-                'state':  2
-            },
-            dataType: "text",
-            success: function (data) {
-                document.location.href = 'revision';
-            },
-            async: false
-        });
+        type: 'POST',
+        url: "DemandaS",
+        data: {
+            'opcion': "endState",
+            'id_demanda': $('#id_demanda').val(),
+            'state': 2
+        },
+        dataType: "text",
+        success: function (data) {
+            document.location.href = 'revision';
+        },
+        async: false
+    });
 }
 
 function finalizarDemanda() {
     alert('finalizando demanda');
     $.ajax({
-            type: 'POST',
-            url: "DemandaS",
-            data: {
-                'opcion': "endState",
-                'id_demanda':  $('#id_demanda').val(),
-                'state':  4
-            },
-            dataType: "text",
-            success: function (data) {
-                document.location.href = 'enviadas';
-            },
-            async: false
-        });
+        type: 'POST',
+        url: "DemandaS",
+        data: {
+            'opcion': "endState",
+            'id_demanda': $('#id_demanda').val(),
+            'state': 4
+        },
+        dataType: "text",
+        success: function (data) {
+            document.location.href = 'enviadas';
+        },
+        async: false
+    });
 }
 
 function generateDropzone(title, subtitle) {
@@ -294,8 +294,8 @@ function preLoadDemanda(id_demanda) {
             var json = $.parseJSON(data);
             $('#id_demanda').val(json.id_demanda);
             $('#titulo').val(json.titulo);
-            $('#titulo_text').text(""); 
-            $('#titulo_text').append('<i onclick="" style="margin-right: 8px" class="material-icons">description</i>'+json.titulo);
+            $('#titulo_text').text("");
+            $('#titulo_text').append('<i onclick="" style="margin-right: 8px" class="material-icons">description</i>' + json.titulo);
 
 
             $('#juez_nombre').val(json.juez_nombre);
@@ -418,7 +418,7 @@ function saveChanges() {
 /* Tooltip solo aparece on hover */
 $('[data-toggle="tooltip"]').tooltip({
     trigger: 'hover'
-}) 
+})
 
 // prevenir salida sin guardar cambios
 window.onbeforeunload = function () {

@@ -263,7 +263,7 @@ public class DemandaS extends HttpServlet {
             }
             //cambia de estado la demanda
             if (opcion.equalsIgnoreCase("endState")) {
-                DemandaDAO de = new DemandaDAO();
+                DemandaDAO de = new DemandaDAO(); 
                 int id_demanda = Integer.parseInt(request.getParameter("id_demanda"));
                 int state=Integer.parseInt(request.getParameter("state"));
                 out.print(gson.toJson(de.endState(id_demanda, state)));

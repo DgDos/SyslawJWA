@@ -593,7 +593,7 @@
         <script src="js/pages/ui/tooltips-popovers.js"></script>
 
         <!-- Custom Js -->
-        <script src="js/custom/editRedaccion.js"></script>
+        <script src="js/custom/editEnviadas.js"></script>
         <script src="js/pages/index.js"></script>
 
 

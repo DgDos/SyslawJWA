@@ -185,8 +185,8 @@
                                     <button type="button" data-original-title="Analizar demanda" onclick='analizarDemanda()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                         <i class="material-icons">rate_review</i>
                                     </button>
-                                    <button type="button" data-original-title="Enviar para revisión de abogado"  onclick='enviarConnect()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
-                                        <i class="material-icons">star</i>
+                                    <button type="button" data-original-title="Responder revisión de abogado"  onclick='enviarConnect()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                        <i class="material-icons">reply</i>
                                     </button>
                                     <button type="button" data-original-title="Enviar demanda" data-toggle="tooltip"  onclick='finalizarDemanda()'data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                         <i class="material-icons">send</i>
@@ -593,7 +593,7 @@
         <script src="js/pages/ui/tooltips-popovers.js"></script>
 
         <!-- Custom Js -->
-        <script src="js/custom/editRedaccion.js"></script>
+        <script src="js/custom/editRevision.js"></script>
         <script src="js/pages/index.js"></script>
 
 

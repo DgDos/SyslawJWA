@@ -244,20 +244,6 @@ function enviarConnect() {
 
 function finalizarDemanda() {
     alert('finalizando demanda');
-    $.ajax({
-            type: 'POST',
-            url: "DemandaS",
-            data: {
-                'opcion': "endState",
-                'id_demanda':  $('#id_demanda').val(),
-                'state':  4
-            },
-            dataType: "text",
-            success: function (data) {
-                document.location.href = 'enviadas';
-            },
-            async: false
-        });
 }
 
 function generateDropzone(title, subtitle) {

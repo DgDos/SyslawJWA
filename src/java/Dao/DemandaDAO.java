@@ -211,7 +211,7 @@ public class DemandaDAO {
 
     public boolean endState(int id_demanda, int nextState) throws SQLException {
         PreparedStatement preparedStatement;
-        preparedStatement = connection.prepareStatement("update demanda set paso=? where id_demanda=?");
+        preparedStatement = connection.prepareStatement("update demanda set estado=? where id_demanda=?"); 
         preparedStatement.setInt(1, nextState);
         preparedStatement.setInt(2, id_demanda);
         preparedStatement.executeUpdate();
