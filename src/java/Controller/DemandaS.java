@@ -33,9 +33,7 @@ public class DemandaS extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             DemandaDAO d = new DemandaDAO();
-            //Usuario user = (Usuario) request.getSession().getAttribute("usuario");
-            Usuario user = new Usuario();
-            user.setDocumento("94092703586");
+            Usuario user = (Usuario) request.getSession().getAttribute("usuario");
             Gson gson = new Gson();
             String opcion = request.getParameter("opcion");
             //trae la lista de demandas dado un estado
@@ -83,9 +81,7 @@ public class DemandaS extends HttpServlet {
             if (opcion.equalsIgnoreCase("create")) {
                 DemandaDAO d = new DemandaDAO();
                 String titulo = request.getParameter("titulo");
-                //Usuario user = (Usuario) request.getSession().getAttribute("usuario");
-                Usuario user = new Usuario();
-                user.setDocumento("94092703586");
+                Usuario user = (Usuario) request.getSession().getAttribute("usuario");
                 d.addDemanda(titulo, user);
                 out.print(gson.toJson(true));
             }
@@ -116,15 +112,12 @@ public class DemandaS extends HttpServlet {
                 } else {
                     d.setDte_rep_tiene(false);
                 }
-                d.setDte_rep_nom(request.getParameter("dte_rep_nom"));
+                d.setDte_rep_nom("");
                 if(!d.getDte_rep_nom().equals("")){
                     conta++;
                 }
-                if (request.getParameter("dte_rep_id_tipo") != null) {
-                    d.setDte_rep_id_tipo(Integer.parseInt(request.getParameter("dte_rep_id_tipo")));
-                    conta++;
-                }
-                d.setDte_rep_id(request.getParameter("dte_rep_id"));
+                d.setDte_rep_id_tipo(-1);  
+                d.setDte_rep_id("");
                 if(!d.getDte_rep_id().equals("")){
                     conta++;
                 }
@@ -173,7 +166,7 @@ public class DemandaS extends HttpServlet {
                 } else {
                     d.setDem_rep_tiene(false);
                 }
-                d.setDem_rep_nom(request.getParameter("dem_rep_nom"));
+                d.setDem_rep_nom("");
                 if(!d.getDem_rep_nom().equals("")){
                     conta++;
                 }
@@ -229,7 +222,7 @@ public class DemandaS extends HttpServlet {
                 if(!d.getFundamentos().equals("")){
                     conta++;
                 }
-                d.setAnexos(request.getParameter("anexos"));
+                d.setAnexos("");
                 if(!d.getAnexos().equals("")){
                     conta++;
                 }
@@ -243,7 +236,7 @@ public class DemandaS extends HttpServlet {
                 if(!d.getCautelares_que_solicita().equals("")){
                     conta++;
                 }
-                float valor=((conta*100)/37);
+                float valor=((conta*100)/32);
                 d.setPorcentaje(valor);
                 d.setId_demanda(Integer.parseInt(request.getParameter("id_demanda")));
                 d.setComentarios_abogado(request.getParameter("com_abo"));
@@ -256,9 +249,7 @@ public class DemandaS extends HttpServlet {
             if(opcion.equalsIgnoreCase("pickFromPool")){
                 DemandaDAO de = new DemandaDAO();
                 int id_demanda = Integer.parseInt(request.getParameter("id_demanda"));
-                //Usuario user = (Usuario) request.getSession().getAttribute("usuario");
-                Usuario user = new Usuario();
-                user.setDocumento("94092703586");
+                Usuario user = (Usuario) request.getSession().getAttribute("usuario");
                 out.print(gson.toJson(de.pickIt(id_demanda,user)));
             }
             //cambia de estado la demanda

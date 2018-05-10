@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     // Para marcar la pagina activa
     $('#menu_default').removeClass("active");
-    $('#menu_redaccion').addClass("active");
+    $('#menu_enviadas').addClass("active");
 
     
     // Detectar id de la demanda enviado de listar y redireccionar
