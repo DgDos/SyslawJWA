@@ -41,9 +41,10 @@ public class DemandaDAO {
             d.setId_usuario(rs.getString("id_usuario"));
             d.setTitulo(rs.getString("titulo"));
             d.setPorcentaje(rs.getFloat("porcentaje"));
-            d.setFecha_creacion(rs.getTimestamp("fecha_creacion"));
+            d.setFecha_creacion(rs.getTimestamp("fecha_creacion")); 
             d.setFecha_modificacion(rs.getTimestamp("fecha_modificacion"));
             d.setFecha_autoguardado(rs.getTimestamp("fecha_autoguardado"));
+            d.setId_ayudante(rs.getString("id_ayudante"));
             d.setEstado(rs.getInt("estado"));
             demandas.add(d);
         }

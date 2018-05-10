@@ -139,7 +139,7 @@
                 </div>
                 <!-- #User Info -->
                 <!-- Menu -->
-                <%@include file="menu.jsp" %>
+                <%@include file="util/menu.jsp" %>
 
                 <!-- #Menu -->
                 <!-- Footer -->

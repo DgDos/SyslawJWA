@@ -50,7 +50,7 @@ function verificarPersona(correo, pass) {
             if (encontro == 'si') {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
                 console.log('si se encontro el usuario');
-                document.location.href = 'dashboard.jsp';
+                document.location.href = 'dash';
             } else if (encontro == 'no') {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
                 console.log('no se encontro el usuario');
