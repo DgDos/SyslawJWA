@@ -376,6 +376,11 @@ function saveChanges() {
     location.reload();
 }
 
+/* Tooltip solo aparece on hover */
+$('[data-toggle="tooltip"]').tooltip({
+    trigger: 'hover'
+}) 
+
 // prevenir salida sin guardar cambios
 window.onbeforeunload = function () {
     if (changesdone) {

@@ -185,8 +185,8 @@
                                     <button type="button" data-original-title="Analizar demanda" data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                         <i id="toogle-add-event-icon" class="material-icons">rate_review</i>
                                     </button>
-                                    <button type="button" data-original-title="Revisión de Profesional" data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
-                                        <i id="toogle-add-event-icon" class="material-icons">people</i>
+                                    <button type="button" data-original-title="Enviar para revisión de abogado" data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                        <i id="toogle-add-event-icon" class="material-icons">star</i>
                                     </button>
                                     <button type="button" data-original-title="Enviar demanda" data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                         <i id="toogle-add-event-icon" class="material-icons">send</i>
