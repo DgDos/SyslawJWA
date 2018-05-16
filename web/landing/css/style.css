@@ -712,3 +712,13 @@ header {
         max-width: 1300px;
     }
 }
+
+
+
+.my-tooltip-btn {
+    background-color: rgba(0, 0, 0, 0.32);
+    color: #fff;
+    border-radius: 50px;
+    padding: 3px;
+    cursor: pointer;
+}
