@@ -15,6 +15,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -27,13 +29,18 @@ public class LandingDAO {
         connection = DbUtil.getConnection();
     }
 
-    public boolean addLangind(Landing lan) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into landing(nombre,correo,beta) values (?,?,?)");
-        preparedStatement.setString(1, lan.getNombre());
-        preparedStatement.setString(2, lan.getCorreo());
-        preparedStatement.setBoolean(3, lan.isBeta());
-        preparedStatement.executeUpdate();
-        return true;
+    public boolean addLangind(Landing lan) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into landing(nombre,correo,beta) values (?,?,?)");
+            preparedStatement.setString(1, lan.getNombre());
+            preparedStatement.setString(2, lan.getCorreo());
+            preparedStatement.setBoolean(3, lan.isBeta());
+            preparedStatement.executeUpdate();
+            return true;
+        } catch (SQLException ex) {
+            Logger.getLogger(LandingDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
     }
     
     public ArrayList<Landing> getAllLandings() throws SQLException {

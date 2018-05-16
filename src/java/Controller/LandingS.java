@@ -48,9 +48,7 @@ public class LandingS extends HttpServlet {
             
             LandingDAO l=new LandingDAO();
             Gson g=new Gson();
-            System.out.println(l.addLangind(new Landing(request.getParameter("nombre"), request.getParameter("correo"), request.getParameter("beta").equals("on"))));
-            response.sendRedirect(".");
-            //out.print(g.toJson(l.addLangind(new Landing(request.getParameter("nombre"), request.getParameter("correo"), request.getParameter("beta").equals("on")))));
+            out.print(g.toJson(l.addLangind(new Landing(request.getParameter("nombre"), request.getParameter("correo"), request.getParameter("beta").equals("true")))));
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(LandingS.class.getName()).log(Level.SEVERE, null, ex);
         }
