@@ -15,10 +15,22 @@ public class Usuario {
     private String ciudad;
     private String direccion;
     private String correo;
+    private String tarjeta;
     private int tipo_usuario;
     private int tipo_id;
 
     public Usuario() {
+    }
+
+    public Usuario(String documento, String nombre, String ciudad, String direccion, String correo, String tarjeta, int tipo_usuario, int tipo_id) {
+        this.documento = documento;
+        this.nombre = nombre;
+        this.ciudad = ciudad;
+        this.direccion = direccion;
+        this.correo = correo;
+        this.tarjeta = tarjeta;
+        this.tipo_usuario = tipo_usuario;
+        this.tipo_id = tipo_id;
     }
 
     public Usuario(String documento, String nombre, String ciudad, String direccion, String correo, int tipo_usuario, int tipo_id) {
@@ -87,6 +99,12 @@ public class Usuario {
         this.tipo_id = tipo_id;
     }
 
-    
+    public String getTarjeta() {
+        return tarjeta;
+    }
+
+    public void setTarjeta(String tarjeta) {
+        this.tarjeta = tarjeta;
+    }
     
 }

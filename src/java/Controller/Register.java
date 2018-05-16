@@ -32,10 +32,19 @@ public class Register extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-            String correo = request.getParameter("correo");
-            UsuarioDAO u = new UsuarioDAO();
             Gson gson = new Gson();
-            out.print(gson.toJson(!u.isUser(correo)));
+            if (request.getParameter("documento") != null) {
+                String documento = request.getParameter("documento");
+                UsuarioDAO u = new UsuarioDAO();
+                out.print(gson.toJson(!u.isUserDoc(documento)));
+            } else if (request.getParameter("correo") != null) {
+                String correo = request.getParameter("correo");
+                UsuarioDAO u = new UsuarioDAO();
+                out.print(gson.toJson(!u.isUserCorreo(correo)));
+            } else {
+                out.print(gson.toJson(false));
+            }
+
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -47,22 +56,28 @@ public class Register extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try {
             String nombre = request.getParameter("nombre");
-            int tipo_documento=Integer.parseInt(request.getParameter("tipo_documento"));
-            String documento=request.getParameter("documento");
-            String ciudad=request.getParameter("ciudad");
-            String direccion=request.getParameter("direccion");
+            int tipo_documento = Integer.parseInt(request.getParameter("tipo_documento"));
+            int tipo_usuario = Integer.parseInt(request.getParameter("tipo_usuario"));
+            String documento = request.getParameter("documento");
+            String ciudad = request.getParameter("ciudad");
+            String direccion = request.getParameter("direccion");
             String correo = request.getParameter("correo");
             String pass = request.getParameter("pass");
             Encription e = new Encription();
-            Usuario user=new Usuario(documento, nombre, ciudad, direccion, correo, 1, tipo_documento);
+            Usuario user = new Usuario(documento, nombre, ciudad, direccion, correo, tipo_usuario, tipo_documento);
             UsuarioDAO u = new UsuarioDAO();
-            u.addUsuario(user, e.encription(pass));
-            
+            if (tipo_usuario == 1) {
+                u.addUsuarioDemandante(user, e.encription(pass));
+            } else {
+                String tarjeta = request.getParameter("tarjeta");
+                user.setTarjeta(tarjeta);
+                u.addUsuarioAbogado(user, e.encription(pass));
+            }
             try (PrintWriter out = response.getWriter()) {
                 Gson gson = new Gson();
                 out.print(gson.toJson(true));
             }
-            
+
         } catch (SQLException | URISyntaxException | ClassNotFoundException | NoSuchAlgorithmException ex) {
             Logger.getLogger(Register.class.getName()).log(Level.SEVERE, null, ex);
             try (PrintWriter out = response.getWriter()) {

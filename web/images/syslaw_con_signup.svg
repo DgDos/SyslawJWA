@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2017 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="33.1475mm" height="3.9953mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 1821 219"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil6 {fill:#FEFEFE}
+    .fil4 {fill:#FEFEFE;fill-rule:nonzero}
+    .fil3 {fill:#FEFEFE;fill-rule:nonzero}
+    .fil5 {fill:#FEFEFE;fill-rule:nonzero;fill-opacity:0.901961}
+    .fil0 {fill:url(#id0);fill-rule:nonzero}
+    .fil2 {fill:url(#id1);fill-rule:nonzero}
+    .fil1 {fill:url(#id2);fill-rule:nonzero}
+   ]]>
+  </style>
+  <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="291" y1="112" x2="1" y2="112">
+   <stop offset="0" style="stop-opacity:1; stop-color:#878688"/>
+   <stop offset="0.341176" style="stop-opacity:1; stop-color:#BDBDBF"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#F4F5F7"/>
+  </linearGradient>
+  <linearGradient id="id1" gradientUnits="userSpaceOnUse" x1="291" y1="23" x2="1" y2="23">
+   <stop offset="0" style="stop-opacity:1; stop-color:#878688"/>
+   <stop offset="0.568627" style="stop-opacity:1; stop-color:#F0F1F3"/>
+   <stop offset="0.760784" style="stop-opacity:1; stop-color:#F0F1F3"/>
+   <stop offset="0.921569" style="stop-opacity:1; stop-color:#F4F5F7"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#F4F5F7"/>
+  </linearGradient>
+  <linearGradient id="id2" gradientUnits="userSpaceOnUse" x1="51" y1="53" x2="99" y2="179">
+   <stop offset="0" style="stop-opacity:1; stop-color:#A5A5A5"/>
+   <stop offset="0.341176" style="stop-opacity:1; stop-color:#CCCDCE"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#F4F5F7"/>
+  </linearGradient>
+ </defs>
+ <g id="Capa_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_2488875454464">
+   <path class="fil0" d="M1 8l290 0 -145 208 -145 -208zm57 30l0 0 88 126 88 -126 -175 0z"/>
+   <polygon class="fil1" points="146,216 146,163 59,38 0,8 "/>
+   <polygon class="fil2" points="22,38 58,38 58,38 233,38 233,38 270,38 291,8 1,8 "/>
+  </g>
+  <path class="fil3" d="M462 39c-11,-16 -24,-18 -39,-18 -18,0 -41,7 -41,30 0,20 20,24 39,27 18,3 35,7 35,23 0,19 -21,23 -34,23 -13,0 -30,-6 -36,-19l-7 4c8,16 27,23 44,23 18,0 42,-6 42,-30 0,-23 -21,-27 -42,-31 -18,-3 -33,-7 -33,-20 0,-17 20,-22 32,-22 12,0 25,2 32,14l7 -4z"/>
+  <polygon id="1" class="fil3" points="510,129 519,129 519,87 560,23 560,22 551,22 515,79 478,22 469,22 469,23 510,87 "/>
+  <path id="2" class="fil3" d="M651 39c-11,-16 -24,-18 -39,-18 -18,0 -41,7 -41,30 0,20 20,24 39,27 18,3 35,7 35,23 0,19 -21,23 -34,23 -13,0 -30,-6 -36,-19l-7 4c8,16 27,23 44,23 18,0 42,-6 42,-30 0,-23 -21,-27 -42,-31 -18,-3 -33,-7 -33,-20 0,-17 20,-22 32,-22 12,0 25,2 32,14l7 -4z"/>
+  <polygon class="fil4" points="683,22 683,129 758,129 758,111 703,111 703,22 "/>
+  <path id="1" class="fil4" d="M857 129l22 0 -48 -107 -22 0 -48 107 22 0 9 -20 56 0 9 20zm-17 -39l-40 0 20 -46 20 46z"/>
+  <polygon id="2" class="fil4" points="1026,22 1003,22 979,100 952,22 939,22 913,100 888,22 865,22 905,129 922,129 935,96 946,62 957,96 970,129 987,129 "/>
+  <path class="fil5" d="M1290 65l0 75 7 0 0 -44c0,-14 11,-25 25,-25 4,0 9,1 13,4l3 -6c-5,-3 -11,-5 -16,-4 -10,0 -20,4 -25,14l0 -13 -7 0zm94 76c12,0 25,-5 32,-14l-5 -4c-6,7 -17,11 -27,11 -16,0 -29,-10 -31,-28l68 0c3,-29 -16,-42 -37,-42 -21,0 -38,16 -38,39 0,24 17,39 38,39zm-31 -42c2,-18 15,-29 31,-29 18,0 30,10 31,29l-61 0zm140 -29c-6,-4 -14,-7 -21,-7 -20,0 -35,13 -35,37 0,20 14,36 35,36 14,0 29,6 29,23 0,16 -13,23 -29,23 -15,0 -28,-7 -28,-23l-7 0c0,19 16,30 36,30 20,0 36,-10 36,-30 0,-13 -7,-22 -21,-27 13,-6 20,-19 20,-32 0,-12 -4,-20 -9,-26l7 -9 -5 -4 -7 9zm-21 1c16,0 28,10 28,29 0,16 -13,29 -28,29 -17,0 -28,-13 -28,-29 0,-20 13,-29 28,-29zm58 -6l0 76 -7 0 0 -76 7 0zm-10 -24c0,8 12,8 12,0 0,-8 -12,-8 -12,0zm87 33c-7,-7 -17,-10 -28,-10 -15,0 -30,6 -30,21 0,15 15,18 29,20 12,2 25,4 25,15 0,12 -14,14 -23,14 -10,0 -21,-4 -28,-13l-5 5c7,10 20,15 33,15 13,0 31,-4 31,-21 1,-18 -18,-20 -31,-22 -9,-2 -23,-4 -23,-14 0,-10 11,-14 23,-14 8,0 16,1 23,8l5 -5zm30 -31l0 22 -16 0 0 6 16 0 0 46c0,15 5,24 21,24 5,0 9,-2 14,-4l-3 -6c-4,2 -8,3 -12,3 -12,0 -14,-7 -14,-17l0 -46 26 0 0 -6 -26 0 0 -23 -7 1zm50 22l0 75 7 0 0 -44c0,-14 11,-25 25,-25 4,0 9,1 13,4l3 -6c-5,-3 -11,-5 -16,-4 -10,0 -20,4 -25,14l0 -13 -7 0zm95 76c21,0 38,-15 38,-39 0,-24 -17,-39 -38,-39 -21,0 -38,15 -38,39 0,24 17,39 38,39zm0 -7c-17,0 -31,-12 -31,-31 0,-20 14,-32 31,-32 17,0 31,13 31,32 0,20 -14,31 -31,31z"/>
+  <path class="fil4" d="M407 172c-3,0 -5,1 -7,3 -2,2 -2,5 -2,9 0,8 3,12 9,12 3,0 6,-1 9,-2l0 7c-3,1 -6,2 -10,2 -5,0 -10,-2 -12,-5 -3,-3 -4,-8 -4,-14 0,-4 1,-7 2,-10 1,-3 3,-5 6,-7 3,-2 6,-2 9,-2 4,0 7,1 11,3l-3 6c-1,-1 -3,-1 -4,-2 -1,0 -3,-1 -4,-1z"/>
+  <path id="1" class="fil4" d="M519 184c0,6 -2,11 -5,14 -3,3 -7,5 -13,5 -6,0 -10,-2 -13,-5 -3,-3 -5,-8 -5,-14 0,-6 2,-11 5,-14 3,-3 7,-5 13,-5 6,0 10,2 13,5 3,3 5,8 5,14zm-27 0c0,4 1,7 2,9 2,2 4,3 7,3 6,0 9,-4 9,-13 0,-8 -3,-13 -9,-13 -3,0 -6,1 -7,3 -2,2 -2,5 -2,9z"/>
+  <path id="2" class="fil4" d="M621 203l-10 0 -16 -28 0 0c0,5 0,9 0,11l0 18 -7 0 0 -37 10 0 16 28 0 0c0,-5 0,-8 0,-10l0 -18 7 0 0 37z"/>
+  <path id="3" class="fil4" d="M724 203l-10 0 -16 -28 0 0c0,5 0,9 0,11l0 18 -7 0 0 -37 10 0 16 28 0 0c0,-5 0,-8 0,-10l0 -18 7 0 0 37z"/>
+  <polygon id="4" class="fil4" points="816,203 795,203 795,166 816,166 816,172 803,172 803,180 815,180 815,187 803,187 803,196 816,196 "/>
+  <path id="5" class="fil4" d="M901 172c-3,0 -5,1 -7,3 -2,2 -2,5 -2,9 0,8 3,12 9,12 3,0 6,-1 9,-2l0 7c-3,1 -6,2 -10,2 -5,0 -10,-2 -12,-5 -3,-3 -4,-8 -4,-14 0,-4 1,-7 2,-10 1,-3 3,-5 6,-7 3,-2 6,-2 9,-2 4,0 7,1 11,3l-3 6c-1,-1 -3,-1 -4,-2 -1,0 -3,-1 -4,-1z"/>
+  <polygon id="6" class="fil4" points="994,203 986,203 986,172 976,172 976,166 1004,166 1004,172 994,172 "/>
+  <rect class="fil6" x="1150" width="9" height="219"/>
+ </g>
+</svg>

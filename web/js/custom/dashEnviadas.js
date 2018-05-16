@@ -12,25 +12,29 @@ $(document).ready(function () {
     
     // Para marcar la pagina activa
     $('#menu_default').removeClass("active");
-    $('#menu_mis_demandas').addClass("active");
+    $('#menu_enviadas').addClass("active");
 
     //$('#demandas_tabla').DataTable();
 
 
-    table = $('#demandas').DataTable({
+    table = $('#liststate4').DataTable({
         ajax: {
             url: "DemandaS",
             dataSrc: '',
             data: {
-                'opcion': "allMe"
+                'opcion': "state",
+                'state': "4",
             }
         },
         columns: [
             {data: 'titulo'},
             {data: 'fecha_modificacion'},
             {data: 'fecha_creacion'},
-            {data: null},
-            {data: 'porcentaje'},
+            {data: 'id_ayudante'},
+            {data: 'porcentaje',
+                render: function (data, type, row, meta ) {
+                    return '<div class="progress"><div class="progress-bar progress-bar-striped bg-syslaw" role="progressbar" aria-valuenow="'+data+'" aria-valuemin="0" aria-valuemax="100" style="width: '+data+'%;">' + data +'%</div></div>';
+                }},
             {data: null}
         ],
         columnDefs: [
@@ -47,7 +51,7 @@ $(document).ready(function () {
         order: [[ 1, "desc" ]]
     });
 
-    $('#demandas tbody').on('click', 'a', function () {
+    $('#liststate4 tbody').on('click', 'a', function () {
         var data = table.row($(this).parents('tr')).data();
         abrir(data.id_demanda);
     });
@@ -93,5 +97,5 @@ $('#nueva_demanda_form').on('submit', function () {
 
 function abrir(id_demanda) {
     localStorage.setItem("id_demanda",id_demanda);
-    document.location.href='demanda.jsp';
+    document.location.href='enviadas_editar';
 }

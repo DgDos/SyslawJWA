@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Mis demandas | Syslaw</title>
+        <title>Demandas enviadas | Syslaw</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -91,7 +91,7 @@
                 <div class="navbar-header">
                     <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                     <a href="javascript:void(0);" class="bars"></a>
-                    <a class="navbar-brand" href="index.html">SysLaw</a>
+                    <a class="navbar-brand" href=".">SysLaw</a>
                 </div>
                 <div class="collapse navbar-collapse" id="navbar-collapse">
 
@@ -123,7 +123,7 @@
                         <div class="email"><%=u.getCorreo()%></div>
                         <%
                             } else {
-                                response.sendRedirect("signin.html");
+                                response.sendRedirect("login");
                             }
                         %>
 
@@ -139,7 +139,7 @@
                 </div>
                 <!-- #User Info -->
                 <!-- Menu -->
-                <%@include file="menu.jsp" %>
+                <%@include file="util/menu.jsp" %>
 
                 <!-- #Menu -->
                 <!-- Footer -->
@@ -164,7 +164,7 @@
                             <div class="header bg-white add-event-header" style="background-color: #f1f1f1 !important;">
                                 <div class="row clearfix">
                                     <div class="col-xs-6 col-sm-6" style="margin-top: 5px">
-                                        <h2>Mis demandas</h2>
+                                        <h2>Demandas enviadas</h2>
                                     </div>
                                     <div class="col-xs-12 col-sm-6 align-right">
                                         <button type="button" data-toggle="modal" data-target="#nuevaDemanda" class="btn bg-syslaw waves-effect btn-no-shadow">
@@ -181,7 +181,7 @@
                                 <div class="card">
                                     <div class="body">
                                         <div class="table-responsive">
-                                            <table class="table table-bordered table-striped table-hover js-basic-example dataTable" id="demandas">
+                                            <table id="liststate4" class="table table-bordered table-striped table-hover js-basic-example dataTable">
                                                 <thead>
                                                     <tr>
                                                         <th>Título</th>
@@ -292,7 +292,7 @@
         <script src="js/pages/ui/tooltips-popovers.js"></script>
 
         <!-- Custom Js -->
-        <script src="js/custom/dashboard.js"></script>
+        <script src="js/custom/dashEnviadas.js"></script>
 
 
     </body>

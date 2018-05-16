@@ -13,6 +13,7 @@
         <!-- Google Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Roboto:200,400,700&amp;subset=cyrillic" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet">
 
         <!-- Bootstrap Core Css -->
         <link href="plugins/bootstrap/css/bootstrap.css" rel="stylesheet">
@@ -62,10 +63,10 @@
     <body class="theme-blue" style="background-color: #f1f1f1;">
 
         <!-- Page Loader -->
-        <div class="page-loader-wrapper">
+        <div class="page-loader-wrapper p-l-w-dark">
             <div class="loader">
                 <div class="preloader">
-                    <div class="spinner-layer pl-blue">
+                    <div class="spinner-layer pl-white">
                         <div class="circle-clipper left">
                             <div class="circle"></div>
                         </div>
@@ -130,7 +131,7 @@
                         <div class="email"><%=u.getCorreo()%></div>
                         <%
                             } else {
-                                response.sendRedirect("signin.html");
+                                response.sendRedirect("login");
                             }
                         %>
 
@@ -146,7 +147,7 @@
                 </div>
                 <!-- #User Info -->
                 <!-- Menu -->
-                <%@include file="menu.jsp" %>
+                <%@include file="util/menu.jsp" %>
                 <!-- #Menu -->
                 <!-- Footer -->
                 <div class="legal">
@@ -169,8 +170,31 @@
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
 
-                        <div class="body" id="dashboard-container" style="background-color: #f1f1f1;">  
-                            <h2 style="color: #138fc3; margin-bottom: 15px" id="titulo">Título de la demanda</h2>
+                        <div class="body" id="dashboard-container" style="background-color: #f1f1f1;"> 
+                            <div class="row clearfix">
+                                <div class="col-xs-6 col-sm-6" style="margin-top: 5px">
+                                    <h2 style="margin-bottom: 15px;text-transform: none;" id="titulo_text">Título de la demanda</h2>
+                                </div>
+                                <div class="col-xs-12 col-sm-6 align-right" style="margin-top: 15px">
+                                    <button type="button" onclick="alert('test');"data-original-title="Editar título" data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                        <i class="material-icons">mode_edit</i>
+                                    </button>
+                                    <button type="button" data-original-title="Guardar cambios" onclick='saveChanges()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                        <i class="material-icons">save</i>
+                                    </button>
+                                    <button type="button" data-original-title="Analizar demanda" onclick='analizarDemanda()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                        <i class="material-icons">rate_review</i>
+                                    </button>
+                                    <button type="button" data-original-title="Enviar para revisión de abogado"  onclick='enviarConnect()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                        <i class="material-icons">star</i>
+                                    </button>
+                                    <button type="button" data-original-title="Enviar demanda" data-toggle="tooltip"  onclick='finalizarDemanda()'data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                        <i class="material-icons">send</i>
+                                    </button>
+
+                                </div>
+                            </div>
+
 
                             <div class="card">
                                 <div class="body">
@@ -183,6 +207,22 @@
                                             <div class="row clearfix">                                               
                                                 <div class="col-md-12" style="padding: 0px; margin: 0px;">
                                                     <h3 class="form-section-title">Juez</h3>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label for="titulo">titulo</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="text" id="titulo" class="form-control" placeholder="Titulo">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <label for="id_demanda">ID</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="text" id="id_demanda" class="form-control" placeholder="Ingrese el ID...">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <label for="juez_nombre">Señor, juez municipal de</label>
@@ -351,10 +391,10 @@
                                                 <div class="col-md-3">
                                                     <label for="dem_id">Verificar documento</label>
                                                     <div class="form-group">
-                                                        
-                                                            <button type="button" id="botonVerificacion" class="btn bg-purple btn-circle waves-effect waves-circle waves-float">
-                                                                <i class="material-icons">search</i>
-                                                        
+
+                                                        <button type="button" id="botonVerificacion" class="btn bg-purple btn-circle waves-effect waves-circle waves-float">
+                                                            <i class="material-icons">search</i>
+
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
@@ -498,8 +538,7 @@
                                                 </div>
                                             </div>
                                         </section>
-                                    </form>
-                                    <button type="button" id="finalizar" class="btn btn-success waves-effect">Finalizar</button>
+                                    </form>                                    
                                 </div>
                             </div>
 
@@ -554,7 +593,7 @@
         <script src="js/pages/ui/tooltips-popovers.js"></script>
 
         <!-- Custom Js -->
-        <script src="js/custom/demanda.js"></script>
+        <script src="js/custom/editEnviadas.js"></script>
         <script src="js/pages/index.js"></script>
 
 

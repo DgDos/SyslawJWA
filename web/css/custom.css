@@ -604,7 +604,7 @@ input:-webkit-autofill {
         height: calc(100vh) !important;
     }
 
-    .content {
+    body > .content {
         margin-top: 25px !important;
         height: auto;
     }
@@ -623,7 +623,7 @@ input:-webkit-autofill {
 }
 
 .wizard .steps .current a {
-    background-color: #3165d8 !important;
+    background-color: #404fcd !important;
 }
 
 @media(max-width: 630px) {
@@ -688,7 +688,7 @@ input:-webkit-autofill {
     margin-bottom: 33px;
     text-align: center;
     padding: 8px;
-    background-color: #3165d8 !important;
+    background-image: linear-gradient( 135deg, rgb(106, 63, 236) 0%, rgba(0, 158, 250, 0.78) 100%);
     font-size: 23px;
 }
 
@@ -740,8 +740,25 @@ input:-webkit-autofill {
 
 .card .header h2 {
     font-size: 21px;
-    color: #3068d9;
+    font-weight: 400 !important;
+}
+
+h2 {
+    color: #3068d9 !important;
     font-family: 'Rubik', sans-serif;
     text-transform: uppercase;
 
+}
+
+.p-l-w-dark {
+    background-image: linear-gradient( 135deg, rgba(102, 1, 165, 0.87) 0%, rgba(0, 158, 250, 0.78) 100%);
+    background-color: #4c98e6 !important;
+}
+
+.p-l-w-dark p {
+    color: #fff;
+}
+
+.progress {
+    background-color: #c7c7c7;
 }
