@@ -46,6 +46,9 @@
 
         <!--WaitMe Css-->
         <link href="plugins/waitme/waitMe.css" rel="stylesheet" />
+        
+        <!-- material walkthrough -->
+        <link href="plugins/material-walkthrough/material-walkthrough.css" rel="stylesheet" />
 
         <style>.modal-backdrop.in { opacity: .4;}</style>
 
@@ -111,7 +114,7 @@
             <aside id="leftsidebar" class="sidebar">
                 <!-- User Info -->
                 <div class="user-info">
-                    <div class="py-5 text-center">
+                    <div class="py-5 text-center" id="logo">
                         <img class="d-block mx-auto mb-4" src="images/syslaw_dash_info_2.svg" alt="" width="230" style="margin-top: 25px; margin-bottom: 10px;">
                     </div>
                     <div class="info-container">
@@ -164,10 +167,10 @@
                             <div class="header bg-white add-event-header" style="background-color: #f1f1f1 !important;">
                                 <div class="row clearfix">
                                     <div class="col-xs-6 col-sm-6" style="margin-top: 5px">
-                                        <h2>Mi Dashboard</h2>
+                                        <h2><span id="tour_misdemandas">Mi Dashboard</span></h2>
                                     </div>
                                     <div class="col-xs-12 col-sm-6 align-right">
-                                        <button type="button" data-toggle="modal" data-target="#nuevaDemanda" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                        <button id="tour_addbutton" type="button" data-toggle="modal" data-target="#nuevaDemanda" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i id="toogle-add-event-icon" class="material-icons">add</i>
                                         </button>
 
@@ -181,47 +184,47 @@
                                 <div class="card">
                                     <div class="body">
                                         <div class="row clearfix">
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="tour_redaccion">
                                                 <div class="info-box bg-blue hover-expand-effect">
+                                                    <div class="icon">
+                                                        <i class="material-icons">mode_edit</i>
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="text">DEM. EN REDACCION</div>
+                                                        <div class="number count-to">3</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="tour_revision">
+                                                <div class="info-box bg-cyan hover-expand-effect">
+                                                    <div class="icon">
+                                                        <i class="material-icons">access_time</i>
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="text">CONNECT EN ESPERA</div>
+                                                        <div class="number count-to">3</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="tour_revision2">
+                                                <div class="info-box bg-light-green hover-expand-effect">
+                                                    <div class="icon">
+                                                        <i class="material-icons">rate_review</i>
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="text">CONNECT REVISADOS</div>
+                                                        <div class="number count-to">2</div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="tour_enviadas">
+                                                <div class="info-box bg-orange hover-expand-effect">
                                                     <div class="icon">
                                                         <i class="material-icons">playlist_add_check</i>
                                                     </div>
                                                     <div class="content">
-                                                        <div class="text">NEW TASKS</div>
-                                                        <div class="number count-to" data-from="0" data-to="125" data-speed="15" data-fresh-interval="20"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                                <div class="info-box bg-cyan hover-expand-effect">
-                                                    <div class="icon">
-                                                        <i class="material-icons">help</i>
-                                                    </div>
-                                                    <div class="content">
-                                                        <div class="text">NEW TICKETS</div>
-                                                        <div class="number count-to" data-from="0" data-to="257" data-speed="1000" data-fresh-interval="20"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                                <div class="info-box bg-light-green hover-expand-effect">
-                                                    <div class="icon">
-                                                        <i class="material-icons">forum</i>
-                                                    </div>
-                                                    <div class="content">
-                                                        <div class="text">NEW COMMENTS</div>
-                                                        <div class="number count-to" data-from="0" data-to="243" data-speed="1000" data-fresh-interval="20"></div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                                                <div class="info-box bg-orange hover-expand-effect">
-                                                    <div class="icon">
-                                                        <i class="material-icons">person_add</i>
-                                                    </div>
-                                                    <div class="content">
-                                                        <div class="text">NEW VISITORS</div>
-                                                        <div class="number count-to" data-from="0" data-to="1225" data-speed="1000" data-fresh-interval="20"></div>
+                                                        <div class="text">DEM. ENVIADAS</div>
+                                                        <div class="number count-to">3</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -230,29 +233,8 @@
 
                                         <div class="row clearfix">
                                             <!-- Visitors -->
-                                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
-                                                <div class="card">
-                                                    <div class="body bg-syslaw">
-                                                        <ul class="dashboard-stat-list">
-                                                            <li>
-                                                                TODAY
-                                                                <span class="pull-right"><b>1 200</b> <small>USERS</small></span>
-                                                            </li>
-                                                            <li>
-                                                                YESTERDAY
-                                                                <span class="pull-right"><b>3 872</b> <small>USERS</small></span>
-                                                            </li>
-                                                            <li>
-                                                                LAST WEEK
-                                                                <span class="pull-right"><b>26 582</b> <small>USERS</small></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- #END# Visitors -->
-                                            <!-- Latest Social Trends -->
-                                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                            
+                                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                                 <div class="card">
                                                     <div class="body bg-cyan">
                                                         <div class="m-b--35 font-bold">LATEST SOCIAL TRENDS</div>
@@ -284,7 +266,7 @@
                                             </div>
                                             <!-- #END# Latest Social Trends -->
                                             <!-- Answered Tickets -->
-                                            <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
                                                 <div class="card">
                                                     <div class="body bg-teal">
                                                         <div class="font-bold m-b--35">ANSWERED TICKETS</div>
@@ -414,6 +396,9 @@
         <script src="plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
         <script src="plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
         <script src="plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+        
+        <!-- Material Walkthrough -->
+        <script src="plugins/material-walkthrough/material-walkthrough.js"></script>
 
         <!-- Theme Js -->
         <script src="js/admin.js"></script>
@@ -421,6 +406,7 @@
 
         <!-- Custom Js -->
         <script src="js/custom/dash.js"></script>
+
 
 
     </body>

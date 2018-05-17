@@ -1,4 +1,4 @@
-// Al cargar documento
+﻿// Al cargar documento
 
  var table;
 

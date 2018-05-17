@@ -1,6 +1,6 @@
-// Al cargar documento
+﻿// Al cargar documento
 
- var table;
+var table;
 
 $(document).ready(function () {
 
@@ -9,12 +9,28 @@ $(document).ready(function () {
     //setAgendadosHeightAndScroll(true);
     
     console.log("hasta aqui");
-    
+
     // Para marcar la pagina activa
     $('#menu_default').removeClass("active");
     $('#menu_redaccion').addClass("active");
 
     //$('#demandas_tabla').DataTable();
+    
+    
+    $.walk([
+        {
+            target: '#menu_redaccion',
+            content: 'Aqui encontrarás las demandas en redacción',
+            color: '#0755a5',
+            acceptText: 'Siguiente'
+        },
+        {
+            target: '#menu_revision',
+            content: 'Aqui encontrarás las demandas en revisión',
+            color: '#0755a5',
+            acceptText: 'OK'
+        }
+    ]); 
 
 
     table = $('#liststate1').DataTable({
@@ -30,10 +46,9 @@ $(document).ready(function () {
             {data: 'titulo'},
             {data: 'fecha_modificacion'},
             {data: 'fecha_creacion'},
-            {data: 'id_ayudante'},
             {data: 'porcentaje',
-                render: function (data, type, row, meta ) {
-                    return '<div class="progress"><div class="progress-bar progress-bar-striped bg-syslaw" role="progressbar" aria-valuenow="'+data+'" aria-valuemin="0" aria-valuemax="100" style="width: '+data+'%;">' + data +'%</div></div>';
+                render: function (data, type, row, meta) {
+                    return '<div class="progress"><div class="progress-bar progress-bar-striped bg-syslaw" role="progressbar" aria-valuenow="' + data + '" aria-valuemin="0" aria-valuemax="100" style="width: ' + data + '%;">' + data + '%</div></div>';
                 }},
             {data: null}
         ],
@@ -48,7 +63,7 @@ $(document).ready(function () {
             url: 'https://cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
         },
         responsive: true,
-        order: [[ 1, "desc" ]]
+        order: [[1, "desc"]]
     });
 
     $('#liststate1 tbody').on('click', 'a', function () {
@@ -58,12 +73,11 @@ $(document).ready(function () {
 
 });
 
-
 $('#nueva_demanda_form').on('submit', function () {
 
 
     console.log("creando nueva demanda");
-    
+
     $.ajax({
         type: 'POST',
         url: "DemandaS",
@@ -87,7 +101,7 @@ $('#nueva_demanda_form').on('submit', function () {
         },
         async: false
     });
-    
+
     $('#nuevaDemanda').modal('hide');
 
     table.ajax.reload();
@@ -96,6 +110,6 @@ $('#nueva_demanda_form').on('submit', function () {
 });
 
 function abrir(id_demanda) {
-    localStorage.setItem("id_demanda",id_demanda);
-    document.location.href='redaccion_editar';
+    localStorage.setItem("id_demanda", id_demanda);
+    document.location.href = 'redaccion_editar';
 }

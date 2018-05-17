@@ -3,7 +3,7 @@
                         <li id="menu_dash"> 
                             <a href="dash">
                                 <i class="material-icons">dashboard</i>
-                                <span>Dashboard</span>
+                                <span >Dashboard</span>
                             </a>
                         </li>
                         <li class="header">MIS DEMANDAS</li>
@@ -13,19 +13,26 @@
                                 <span>Demandas en redacción</span>
                             </a>
                         </li>
-                        <li id="menu_revision">
-                            <a href="revision">
-                                <i class="material-icons">rate_review</i>
-                                <span>Demandas en revisión</span>
-                            </a>
-                        </li>
                         <li id="menu_enviadas">
                             <a href="enviadas">
                                 <i class="material-icons">playlist_add_check</i>
                                 <span>Demandas enviadas</span>
                             </a>
                         </li>
-                        
+                        <li class="header">SYSLAW CONNECT</li>
+                        <li id="menu_revision">
+                            <a href="revision">
+                                <i style="color: #ef9203" class="material-icons">sync</i>
+                                <span>Demandas SYSLAW Connect</span>
+                            </a>
+                        </li>
+                        <li id="menu_revision">
+                            <a href="revision">
+                                <i style="color: #ef9203" class="material-icons">attach_money</i>
+                                <span >10.000</span>
+                            </a>
+                        </li>
+                        <!--
                         <li class="header">OTROS SERVICIOS</li>
                         <li id="menu_estoy_dem">
                             <a href="dashboardDemandado.jsp">
@@ -41,13 +48,13 @@
                         </li>
                         
                         
+                        --> 
                         <li class="active hidden" id="menu_default">
                             <a href="terminadas.jsp">
                                 <i class="material-icons">playlist_add_check</i>
                                 <span>Demandas terminadas</span>
                             </a>
                         </li>
-                        
                         <li class="header">SERVICIO AL CLIENTE</li>
                         <li id="menu_faq">
                             <a href="faq">

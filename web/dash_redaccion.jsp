@@ -46,6 +46,9 @@
 
         <!--WaitMe Css-->
         <link href="plugins/waitme/waitMe.css" rel="stylesheet" />
+        
+        <!-- material walkthrough -->
+        <link href="plugins/material-walkthrough/material-walkthrough.css" rel="stylesheet" />
 
         <style>.modal-backdrop.in { opacity: .4;}</style>
 
@@ -187,7 +190,6 @@
                                                         <th>Título</th>
                                                         <th>Modificado</th>
                                                         <th>Creado</th>
-                                                        <th>Ayudante</th>
                                                         <th>Porcentaje</th>
                                                         <th></th>
                                                     </tr>
@@ -286,6 +288,9 @@
         <script src="plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
         <script src="plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
         <script src="plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+        
+        <!-- Material Walkthrough -->
+        <script src="plugins/material-walkthrough/material-walkthrough.js"></script>
 
         <!-- Theme Js -->
         <script src="js/admin.js"></script>
