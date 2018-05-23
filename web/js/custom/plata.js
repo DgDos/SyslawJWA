@@ -14,8 +14,10 @@ $(document).ready(function () {
 
     // Para marcar la pagina activa
     $('#menu_default').removeClass("active");
-    $('#menu_dash').addClass("active");
-     walkEnable = false;
+    $('#menu_plata').addClass("active");
+    
+    walkEnable = false;
+    
     if (walkEnable) {
         $.walk([
             {
@@ -75,6 +77,7 @@ $(document).ready(function () {
 
 
 function getPlata() {
+    
     $.ajax({
         type: 'GET',
         url: "UsuarioS",
@@ -87,10 +90,38 @@ function getPlata() {
 
             var json = $.parseJSON(data);
             $('#menu_plata_num').empty().text(json);
+            $('#plata_num').empty().text(json);
         },
         async: false
     });
 }
+
+$('#form_add_plata').on('submit', function () {
+    var valor = $('#plata_to_add').val();
+    
+    $.ajax({
+        type: 'GET',
+        url: "UsuarioS",
+        //force to handle it as text
+        data: {
+            'opcion': "addplata",
+            'valor': valor
+        },
+        dataType: "text",
+        success: function (data) {
+
+            var json = $.parseJSON(data);
+            if (json == true) {
+                swal("¡Transaccion exitosa!", "Hemos agregado $"+valor+" a tu cuenta.", "success")
+                getPlata();
+            } else {
+                swal("Error en la transacción", "No se pudo cargar el monto a tu cuenta.", "warning")
+            }
+        },
+        async: false
+    });
+    return false;
+});
 
 
 $('#nueva_demanda_form').on('submit', function () {

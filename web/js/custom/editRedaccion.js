@@ -1,5 +1,7 @@
 ﻿var id_demanda;
 var changesdone = false;
+var walkEnable = false;
+var tituloInicial = "";
 
 $(document).ready(function () {
 
@@ -7,10 +9,11 @@ $(document).ready(function () {
     $('#menu_default').removeClass("active");
     $('#menu_redaccion').addClass("active");
 
-    
+
+
     // Detectar id de la demanda enviado de listar y redireccionar
     if (localStorage.getItem("id_demanda") == null) {
-        document.location.href = 'dashboard.jsp';
+        document.location.href = 'redaccion';
     } else {
         id_demanda = localStorage.getItem("id_demanda");
     }
@@ -48,65 +51,81 @@ $(document).ready(function () {
 // preload form with data from controller
             preLoadDemanda(id_demanda);
 
+            tituloInicial = $('#titulo').val();
+
             // set changes save button show
-            $('#demanda_wizard :input').on('change', function () {
+            $('#demanda_wizard :input').on('keyup change', function () {
                 changesdone = true;
                 $('#btnSave').show();
             });
 
+
+
+
+
+
         },
         onStepChanged: function (event) {
             setButtonWavesEffect(event);
+            $("[data-toggle=tooltip]").tooltip();
         }
     });
 
     // Agregar botón de guardar
     form.find('a').last().parent().parent()
             .prepend("<li><a style='display:none' href='#save' id='btnSave' name='btnSave' onclick='saveChanges()'>Guardar cambios</a></li>");
-    
+
     // configurar autosize
     autosize($('textarea.auto-growth'));
 
 
+    if (walkEnable) {
+        $.walk([
+            {
+                target: '#demanda_wizard-t-0',
+                content: 'Tu demanda se divide en 6 secciones. La primera es la del demandante.',
+                color: '#404fcd',
+                acceptText: 'Siguiente'
+            },
+            {
+                target: '#demanda_wizard-t-1',
+                content: 'Puedes cambiar entre secciones haciendo click en los selectores de sección.',
+                color: '#565656',
+                acceptText: 'Siguiente'
+            },
+            {
+                target: '#tour_botones',
+                content: 'Usa la barra de herramientas superior para realizar acciones como renombrar, guardar, analizar, descargar, enviar a SYSLAW Connect y terminar tu demanda.',
+                color: '#1e85e9',
+                acceptText: 'Siguiente'
+            },
+            {
+                target: '#tour_guardar',
+                content: 'No olvides guardar tus cambios, pues estos no se guardarán automáticamente. Sin embargo, la página no te dejará salir sin avisarte de guardar.',
+                color: '#5230bd',
+                acceptText: '¡Redactar mi demanda!'
+            }
+        ]);
+    }
+
+    $('[data-toggle="popover"]').popover();
 
     // Area de grupos condicionales
 
-    // Representante legal
-    var dte_rep_tiene = $("#dte_rep_tiene"); // elemento checkbox
-    var dte_rep_tiene_val; // valor del checkbox
-    var dte_rep_tiene_section = $("#dte_rep_tiene_section"); // seccion que controla el checkbox
-
-    dte_rep_tiene_val = dte_rep_tiene.prop("checked") ? true : false; // tomar valor
-
-    // primera reaccion
-    if (!dte_rep_tiene_val) {
-        dte_rep_tiene_section.addClass("hidden");
-    }
-    //reaccion en el cambio del elemento
-    dte_rep_tiene.on('change', function () {
-
-        dte_rep_tiene_val = dte_rep_tiene.prop("checked") ? true : false;
-        if (!dte_rep_tiene_val) {
-            dte_rep_tiene_section.addClass("hidden");
-        } else {
-            dte_rep_tiene_section.removeClass("hidden");
-        }
-    });
-
-
-    // conditionals start
 
 
     // dte_apo_tiene conditional
     var dte_apo_tiene = $('#dte_apo_tiene'); // elemento checkbox
     var dte_apo_tiene_val; // valor del checkbox
     var dte_apo_tiene_section = $('#dte_apo_tiene_section'); // seccion que controla el checkbox
+    var dte_apo_tiene_not = $('#alert_poder'); // seccion que controla el checkbox
 
     dte_apo_tiene_val = dte_apo_tiene.prop('checked') ? true : false; // tomar valor
     //
     // primera reaccion
     if (!dte_apo_tiene_val) {
         dte_apo_tiene_section.addClass('hidden');
+        dte_apo_tiene_not.addClass('hidden');
     }
     //reaccion en el cambio del elemento
     dte_apo_tiene.on('change', function () {
@@ -114,34 +133,13 @@ $(document).ready(function () {
         dte_apo_tiene_val = dte_apo_tiene.prop('checked') ? true : false;
         if (!dte_apo_tiene_val) {
             dte_apo_tiene_section.addClass('hidden');
+            dte_apo_tiene_not.addClass('hidden');
         } else {
             dte_apo_tiene_section.removeClass('hidden');
+            dte_apo_tiene_not.removeClass('hidden');
         }
     });
 
-
-
-// dem_apo_tiene conditional
-    var dem_apo_tiene = $('#dem_apo_tiene'); // elemento checkbox
-    var dem_apo_tiene_val; // valor del checkbox
-    var dem_apo_tiene_section = $('#dem_apo_tiene_section'); // seccion que controla el checkbox
-
-    dem_apo_tiene_val = dem_apo_tiene.prop('checked') ? true : false; // tomar valor
-    //
-    // primera reaccion
-    if (!dem_apo_tiene_val) {
-        dem_apo_tiene_section.addClass('hidden');
-    }
-    //reaccion en el cambio del elemento
-    dem_apo_tiene.on('change', function () {
-
-        dem_apo_tiene_val = dem_apo_tiene.prop('checked') ? true : false;
-        if (!dem_apo_tiene_val) {
-            dem_apo_tiene_section.addClass('hidden');
-        } else {
-            dem_apo_tiene_section.removeClass('hidden');
-        }
-    });
 
 
 // solicito_cautelares conditional
@@ -171,8 +169,10 @@ $(document).ready(function () {
 
     // conditionals end
 
-    $('#pruebasfile').append(generateDropzone("Arrastre aquí los archivos de pruebas", "Los archivos serán guardados en su cuenta"));
-    $('#anexosfile').append(generateDropzone("Arrastre aquí los archivos anexos", "Los archivos serán guardados en su cuenta"));
+    //$('#pruebasfile').append(generateDropzone("Arrastre aquí los archivos de pruebas", "Los archivos serán guardados en su cuenta"));
+    //$('#anexosfile').append(generateDropzone("Arrastre aquí los archivos anexos", "Los archivos serán guardados en su cuenta"));
+
+
 
 //Dropzone
     Dropzone.options.frmFileUpload = {
@@ -209,7 +209,7 @@ $(document).ready(function () {
             url: "DemandaS",
             data: {
                 'opcion': "endDone",
-                'id_demanda':  $('#id_demanda').val()
+                'id_demanda': $('#id_demanda').val()
             },
             dataType: "text",
             success: function (data) {
@@ -220,6 +220,34 @@ $(document).ready(function () {
     });
 });
 
+function editTitleModal() {
+    $('#editTitleModal').modal('show');
+}
+
+$('#editTitleModal').on('hidden.bs.modal', function () {
+    $('#titulo').val(tituloInicial);
+    $('#titulo_text').text("");
+    $('#titulo_text').append('<i onclick="" style="margin-right: 8px" class="material-icons">description</i>' + $('#titulo').val());
+    $('#editTitleModal').modal('hide');
+});
+
+$('#modifyTitle').on('submit', function () {
+    return false;
+});
+
+function editTitleModalConfirm() {
+    tituloInicial = $('#titulo').val();
+
+    // cambios realizados
+    changesdone = true;
+    $('#btnSave').show();
+
+    $('#titulo_text').text("");
+    $('#titulo_text').append('<i onclick="" style="margin-right: 8px" class="material-icons">description</i>' + tituloInicial);
+    $('#editTitleModal').modal('hide');
+}
+
+
 function analizarDemanda() {
     alert('analizando demanda');
 }
@@ -227,37 +255,37 @@ function analizarDemanda() {
 function enviarConnect() {
     alert('enviando a abogado');
     $.ajax({
-            type: 'POST',
-            url: "DemandaS",
-            data: {
-                'opcion': "endState",
-                'id_demanda':  $('#id_demanda').val(),
-                'state':  2
-            },
-            dataType: "text",
-            success: function (data) {
-                document.location.href = 'revision';
-            },
-            async: false
-        });
+        type: 'POST',
+        url: "DemandaS",
+        data: {
+            'opcion': "endState",
+            'id_demanda': $('#id_demanda').val(),
+            'state': 2
+        },
+        dataType: "text",
+        success: function (data) {
+            document.location.href = 'revision';
+        },
+        async: false
+    });
 }
 
 function finalizarDemanda() {
     alert('finalizando demanda');
     $.ajax({
-            type: 'POST',
-            url: "DemandaS",
-            data: {
-                'opcion': "endState",
-                'id_demanda':  $('#id_demanda').val(),
-                'state':  4
-            },
-            dataType: "text",
-            success: function (data) {
-                document.location.href = 'enviadas';
-            },
-            async: false
-        });
+        type: 'POST',
+        url: "DemandaS",
+        data: {
+            'opcion': "endState",
+            'id_demanda': $('#id_demanda').val(),
+            'state': 4
+        },
+        dataType: "text",
+        success: function (data) {
+            document.location.href = 'enviadas';
+        },
+        async: false
+    });
 }
 
 function generateDropzone(title, subtitle) {
@@ -294,8 +322,9 @@ function preLoadDemanda(id_demanda) {
             var json = $.parseJSON(data);
             $('#id_demanda').val(json.id_demanda);
             $('#titulo').val(json.titulo);
-            $('#titulo_text').text(""); 
-            $('#titulo_text').append('<i onclick="" style="margin-right: 8px" class="material-icons">description</i>'+json.titulo);
+            tituloInicial = json.titulo;
+            $('#titulo_text').text("");
+            $('#titulo_text').append('<i onclick="" style="margin-right: 8px" class="material-icons">description</i>' + tituloInicial);
 
 
             $('#juez_nombre').val(json.juez_nombre);
@@ -402,23 +431,25 @@ function saveChanges() {
             if (json == true) {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
                 console.log('si se actualizo');
+                swal("¡Cambios guardados!", "Todos los cambios fueron guardados con éxito", "success");
+                changesdone = false;
+                location.reload();
             } else {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
                 console.log('no se actualizo');
-                alert('Error desconocido');
+                swal("¡No se guardaron los cambios!", "Se produjo un error desconocido", "error");
             }
         },
         async: false
     });
 
-    changesdone = false;
-    location.reload();
+
 }
 
 /* Tooltip solo aparece on hover */
 $('[data-toggle="tooltip"]').tooltip({
     trigger: 'hover'
-}) 
+})
 
 // prevenir salida sin guardar cambios
 window.onbeforeunload = function () {

@@ -762,3 +762,17 @@ h2 {
 .progress {
     background-color: #c7c7c7;
 }
+
+.form-tooltip {
+    color: #b7b7b7;
+    border-radius: 50px;
+    padding: 0px;
+    cursor: pointer;
+    margin: -4px 0px 0px 6px;
+    display: inline;
+}
+
+.form-tooltip:hover{
+    color: #245390 !important; 
+}
+

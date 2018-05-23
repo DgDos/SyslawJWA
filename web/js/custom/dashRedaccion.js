@@ -1,13 +1,14 @@
 ﻿// Al cargar documento
 
-var table;
+        var table;
+var walkEnable = false;
 
 $(document).ready(function () {
 
     // cuadrar altura de paneles laterales derechos
     //setSugeridosHeightAndScroll(true);
     //setAgendadosHeightAndScroll(true);
-    
+
     console.log("hasta aqui");
 
     // Para marcar la pagina activa
@@ -15,22 +16,30 @@ $(document).ready(function () {
     $('#menu_redaccion').addClass("active");
 
     //$('#demandas_tabla').DataTable();
-    
-    
-    $.walk([
-        {
-            target: '#menu_redaccion',
-            content: 'Aqui encontrarás las demandas en redacción',
-            color: '#0755a5',
-            acceptText: 'Siguiente'
-        },
-        {
-            target: '#menu_revision',
-            content: 'Aqui encontrarás las demandas en revisión',
-            color: '#0755a5',
-            acceptText: 'OK'
-        }
-    ]); 
+
+    walkEnable = false;
+    if (walkEnable) {
+        $.walk([
+            {
+                target: '#tour_redaccion',
+                content: 'La primera etapa de tu demanda es redacción.',
+                color: '#0755a5',
+                acceptText: 'Siguiente'
+            },
+            {
+                target: '#titulo_tour',
+                content: 'Encuentra en esta tabla las demandas que están en redacción',
+                color: '#0755a5',
+                acceptText: 'Siguiente'
+            },
+            {
+                target: '#tour_edit',
+                content: 'Utiliza este botón para editar tu demanda.',
+                color: '#0755a5',
+                acceptText: 'Entendido'
+            }
+        ]);
+    }
 
 
     table = $('#liststate1').DataTable({
@@ -56,7 +65,7 @@ $(document).ready(function () {
             {
                 targets: -1,
                 data: null,
-                defaultContent: '<a style="cursor: pointer; "><i class="material-icons" style="font-size:21px">mode_edit</i></a>'
+                defaultContent: '<a style="cursor: pointer; " id="tour_edit"><i class="material-icons" style="font-size:21px">mode_edit</i></a>'
             }
         ],
         language: {

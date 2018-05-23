@@ -25,35 +25,39 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class UsuarioS extends HttpServlet {
 
-   
-
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             String opcion = request.getParameter("opcion");
+            Gson gson = new Gson();
             if (opcion.equalsIgnoreCase("existUser")) {
-                UsuarioDAO u=new UsuarioDAO();
-                String documento=request.getParameter("documento");
-                Usuario user=u.existUser(documento);
-                Gson gson = new Gson();
+                UsuarioDAO u = new UsuarioDAO();
+                String documento = request.getParameter("documento");
+                Usuario user = u.existUser(documento);
+
                 out.println(gson.toJson(user));
+            }
+
+            if (opcion.equalsIgnoreCase("getPlata")) {
+                out.println(gson.toJson("10.000"));
+            }
+            
+            if (opcion.equalsIgnoreCase("addPlata")) {
+                out.println(gson.toJson(true));
             }
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(UsuarioS.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
-    
     @Override
     public String getServletInfo() {
         return "Short description";

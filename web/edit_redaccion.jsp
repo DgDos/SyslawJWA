@@ -45,8 +45,14 @@
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="css/themes/all-themes.css" rel="stylesheet" />
 
+        <!-- Sweetalert Css -->
+        <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
         <!--WaitMe Css-->
         <link href="plugins/waitme/waitMe.css" rel="stylesheet" />
+
+        <!-- material walkthrough -->
+        <link href="plugins/material-walkthrough/material-walkthrough.css" rel="stylesheet" />
 
         <style>
             .fadeIn {
@@ -176,22 +182,32 @@
                                     <h2 style="margin-bottom: 15px;text-transform: none;" id="titulo_text">Título de la demanda</h2>
                                 </div>
                                 <div class="col-xs-12 col-sm-6 align-right" style="margin-top: 15px">
-                                    <button type="button" onclick="alert('test');"data-original-title="Editar título" data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
-                                        <i class="material-icons">mode_edit</i>
-                                    </button>
-                                    <button type="button" data-original-title="Guardar cambios" onclick='saveChanges()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
-                                        <i class="material-icons">save</i>
-                                    </button>
-                                    <button type="button" data-original-title="Analizar demanda" onclick='analizarDemanda()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
-                                        <i class="material-icons">rate_review</i>
-                                    </button>
-                                    <button type="button" data-original-title="Enviar para revisión de abogado"  onclick='enviarConnect()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
-                                        <i class="material-icons">star</i>
-                                    </button>
-                                    <button type="button" data-original-title="Enviar demanda" data-toggle="tooltip"  onclick='finalizarDemanda()'data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
-                                        <i class="material-icons">send</i>
-                                    </button>
-
+                                    <span  id="tour_botones" >
+                                        <button style="background-color: #601ab1 !important;" type="button" onclick="editTitleModal();" data-original-title="Editar título" data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                            <i class="material-icons">mode_edit</i>
+                                        </button>
+                                        <!--                                        
+                                        </button>
+                                        <button style="background-color: #e4e4e4 !important;" type="button" onclick="deleteDemanda();" data-original-title="Eliminar demanda" data-toggle="tooltip" data-placement="bottom" class="btn btn-transparent waves-effect btn-no-shadow">
+                                            <i class="material-icons">delete</i>
+                                        </button>
+                                        -->
+                                        <button style="background-color: #5230bd !important;" id="tour_guardar" type="button" data-original-title="Guardar cambios" onclick='saveChanges()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                            <i class="material-icons">save</i>
+                                        </button>
+                                        <button style="background-color: #4543c6 !important;"  type="button" data-original-title="Análisis automático de la demanda" onclick='analizarDemanda()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                            <i class="material-icons">spellcheck</i>
+                                        </button>
+                                        <button style="background-color: #365ed4 !important;"  type="button" data-original-title="Enviar para revisión de abogado en SYSLAW Connect"  onclick='enviarConnect()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                            <i class="material-icons">people</i>
+                                        </button>
+                                        <button style="background-color: #1e85e9 !important;"  type="button" data-original-title="Previsualizar PDF"  onclick='previsualizar()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                            <i class="material-icons">file_download</i>
+                                        </button>
+                                        <button style="background-color: #119af5 !important;" type="button" data-original-title="Marcar demanda como terminada" data-toggle="tooltip"  onclick='finalizarDemanda()'data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                            <i class="material-icons">check</i>
+                                        </button>
+                                    </span>
                                 </div>
                             </div>
 
@@ -204,25 +220,9 @@
 
                                         <h2>Demandante</h2>
                                         <section>
-                                            <div class="row clearfix">                                               
+                                            <div class="row clearfix">     
                                                 <div class="col-md-12" style="padding: 0px; margin: 0px;">
                                                     <h3 class="form-section-title">Juez</h3>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <label for="titulo">titulo</label>
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                            <input type="text" id="titulo" class="form-control" placeholder="Titulo">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-12">
-                                                    <label for="id_demanda">ID</label>
-                                                    <div class="form-group">
-                                                        <div class="form-line">
-                                                            <input type="text" id="id_demanda" class="form-control" placeholder="Ingrese el ID...">
-                                                        </div>
-                                                    </div>
                                                 </div>
                                                 <div class="col-md-12">
                                                     <label for="juez_nombre">Señor, juez municipal de</label>
@@ -239,7 +239,7 @@
                                                     <label for="dte_nom">Nombre del demandante</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dte_nom" class="form-control" readonly placeholder="Ingrese el nombre...">
+                                                            <input type="text" id="dte_nom" class="form-control" placeholder="Ingrese el nombre...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -247,17 +247,19 @@
                                                     <label for="dte_ciudad">Ciudad del demandante</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dte_ciudad" class="form-control" readonly placeholder="Ingrese la ciudad...">
+                                                            <input type="text" id="dte_ciudad" class="form-control" placeholder="Ingrese la ciudad...">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6" style="display:none;">
-                                                    <label for="dte_id_tipo">Tipo de id del demandante</label>
+                                                <div class="col-md-6">
+                                                    <label for="dte_id_tipo">Tipo de ID del demandante</label>
                                                     <div class="id-type-radio">
                                                         <input name="dte_id_tipo" type="radio" id="radio_dte_id_tipo_1" value="0"  class="with-gap radio-col-blue" checked="">
                                                         <label for="radio_dte_id_tipo_1">C.C</label>
+                                                        <!--
                                                         <input name="dte_id_tipo" type="radio" id="radio_dte_id_tipo_2" value="1" class="with-gap radio-col-blue">
                                                         <label for="radio_dte_id_tipo_2">NIT</label>
+                                                        -->
                                                         <input name="dte_id_tipo" type="radio" id="radio_dte_id_tipo_3" value="2" class="with-gap radio-col-blue">
                                                         <label for="radio_dte_id_tipo_3">TI</label>
                                                         <input name="dte_id_tipo" type="radio" id="radio_dte_id_tipo_4" value="3" class="with-gap radio-col-blue">
@@ -265,10 +267,10 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="dte_id">Numero del demandante</label>
+                                                    <label for="dte_id">ID del demandante</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dte_id" class="form-control" readonly placeholder="Número de identificación...">
+                                                            <input type="text" id="dte_id" class="form-control" placeholder="Número de identificación...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -276,7 +278,7 @@
                                                     <label for="dte_dir_not">Dirección donde recibe notificaciones:</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dte_dir_not"  readonly class="form-control" placeholder="Dirección de notificaciones...">
+                                                            <input type="text" id="dte_dir_not"  class="form-control" placeholder="Dirección de notificaciones...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -284,16 +286,25 @@
                                                     <label for="dte_email">Dirección de correo electrónico</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="email" id="dte_email" readonly class="form-control" placeholder="Correo electrónico...">
+                                                            <input type="email" id="dte_email"  class="form-control" placeholder="Correo electrónico...">
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-12" style="padding: 0px; margin: 0px;">
-                                                    <h3 class="form-section-title">Apoderado del demantante</h3>
+                                                    <h3 class="form-section-title">Apoderado del demandante</h3>
                                                 </div>
-                                                <div class="col-md-6">    
-                                                    <label class="checkbox-label">Apoderado</label><br>
+                                                <div class="col-md-12">    
+                                                    <label class="checkbox-label">Apoderado</label>
+                                                    <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
+                                                            data-placement="right" 
+                                                            data-html="true" 
+                                                            title="Información sobre este campo" 
+                                                            data-content="Descubre más sobre este campo">
+                                                        <i class="material-icons">help</i>
+                                                    </button>
+                                                    <br>
+
                                                     <input type="checkbox" id="dte_apo_tiene" class="filled-in chk-col-blue">
                                                     <label for="dte_apo_tiene">Demandante tiene apoderado</label>
                                                 </div>
@@ -308,12 +319,29 @@
                                                         </div>
                                                     </div>
                                                     <div class="col-md-6">
+                                                        <label for="dte_apo_tar_pro">Tarjeta profesional No.</label>
+                                                        <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
+                                                                data-placement="right" 
+                                                                data-html="true" 
+                                                                title="Información sobre este campo" 
+                                                                data-content="Descubre más sobre este campo">
+                                                            <i class="material-icons">help</i>
+                                                        </button>
+                                                        <div class="form-group">
+                                                            <div class="form-line">
+                                                                <input type="text" id="dte_apo_tar_pro" class="form-control" placeholder="Número de tarjeta profesional...">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
                                                         <label for="dte_apo_id_tipo">Tipo de identificación</label>
                                                         <div class="id-type-radio">
                                                             <input name="dte_apo_id_tipo" type="radio" id="radio_dte_apo_id_tipo_1" value="0"  class="with-gap radio-col-blue" checked="">
                                                             <label for="radio_dte_apo_id_tipo_1">C.C</label>
+                                                            <!--
                                                             <input name="dte_apo_id_tipo" type="radio" id="radio_dte_apo_id_tipo_2" value="1" class="with-gap radio-col-blue">
                                                             <label for="radio_dte_apo_id_tipo_2">NIT</label>
+                                                            -->
                                                             <input name="dte_apo_id_tipo" type="radio" id="radio_dte_apo_id_tipo_3" value="2" class="with-gap radio-col-blue">
                                                             <label for="radio_dte_apo_id_tipo_3">TI</label>
                                                             <input name="dte_apo_id_tipo" type="radio" id="radio_dte_apo_id_tipo_4" value="3" class="with-gap radio-col-blue">
@@ -328,14 +356,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-6">
-                                                        <label for="dte_apo_tar_pro">Tarjeta profesional No.</label>
-                                                        <div class="form-group">
-                                                            <div class="form-line">
-                                                                <input type="text" id="dte_apo_tar_pro" class="form-control" placeholder="Número de tarjeta profesional...">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+
 
                                                 </div>
                                             </div>
@@ -351,7 +372,7 @@
                                                     <label for="dem_nom">Nombre del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dem_nom" class="form-control" readonly placeholder="Número de identificación...">
+                                                            <input type="text" id="dem_nom" class="form-control" placeholder="Nombre...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -361,7 +382,7 @@
                                                     <label for="dem_ciu">Ciudad de domicilio del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dem_ciu" class="form-control" readonly placeholder="Ingrese la ciudad...">
+                                                            <input type="text" id="dem_ciu" class="form-control" placeholder="Ingrese la ciudad...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -371,8 +392,10 @@
                                                     <div class="id-type-radio">
                                                         <input name="dem_id_tipo" type="radio" id="dem_id_tipo_1" value="0"  class="with-gap radio-col-blue" checked="">
                                                         <label for="dem_id_tipo_1">C.C</label>
+                                                        <!--
                                                         <input name="dem_id_tipo" type="radio" id="dem_id_tipo_2" value="1" class="with-gap radio-col-blue">
                                                         <label for="dem_id_tipo_2">NIT</label>
+                                                        -->
                                                         <input name="dem_id_tipo" type="radio" id="dem_id_tipo_3" value="2" class="with-gap radio-col-blue">
                                                         <label for="dem_id_tipo_3">TI</label>
                                                         <input name="dem_id_tipo" type="radio" id="dem_id_tipo_4" value="3" class="with-gap radio-col-blue">
@@ -380,14 +403,15 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-md-3">
+                                                <div class="col-md-6">
                                                     <label for="dem_id">Documento del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dem_id" class="form-control" placeholder="Ingrese el nombre">
+                                                            <input type="text" id="dem_id" class="form-control" placeholder="Ingrese el no. de identificación...">
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!--
                                                 <div class="col-md-3">
                                                     <label for="dem_id">Verificar documento</label>
                                                     <div class="form-group">
@@ -397,42 +421,23 @@
 
                                                     </div>
                                                 </div>
+                                                -->
                                                 <div class="col-md-6">
                                                     <label for="dem_dir_not">Dirección donde recibe notificaciones:</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dem_dir_not" class="form-control" readonly placeholder="Dirección de notificaciones...">
+                                                            <input type="text" id="dem_dir_not" class="form-control" placeholder="Dirección de notificaciones...">
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="dem_email">Dirección de correo electrónico</label>
+                                                    <label for="dem_email">Dirección de correo electrónico <span style="color:#3bacfa">(opcional)</span></label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="email" id="dem_email" class="form-control" readonly placeholder="Correo electrónico...">
+                                                            <input type="email" id="dem_email" class="form-control" placeholder="Correo electrónico...">
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-12" style="padding: 0px; margin: 0px;">
-                                                    <h3 class="form-section-title">Apoderado del demandado</h3>
-                                                </div>
-                                                <div class="col-md-6">    
-                                                    <label class="checkbox-label">Apoderado</label><br>
-                                                    <input type="checkbox" id="dem_apo_tiene" class="filled-in chk-col-blue">
-                                                    <label for="dem_apo_tiene">Demandado tiene apoderado</label>
-                                                </div>
-
-                                                <div id="dem_apo_tiene_section" class="animated fadeIn">
-                                                    <div class="col-md-6">
-                                                        <label for="dem_apo_nom">Nombre del apoderado</label>
-                                                        <div class="form-group">
-                                                            <div class="form-line">
-                                                                <input type="text" id="dem_apo_nom" class="form-control" placeholder="Ingrese el nombre...">
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
                                             </div>
 
                                         </section>
@@ -442,11 +447,44 @@
                                             <div class="row clearfix">
                                                 <div class="col-md-12">
                                                     <label for="pretensiones">Pretensiones</label>
+                                                    <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
+                                                            data-placement="right" 
+                                                            data-html="true" 
+                                                            title="Información sobre este campo" 
+                                                            data-content="Descubre más sobre este campo">
+                                                        <i class="material-icons">help</i>
+                                                    </button>
                                                     <div class="form-group">
                                                         <div class="form-line">
                                                             <textarea rows="1" class="form-control no-resize auto-growth" id="pretensiones" placeholder="Indique las sumas de dinero cuyo pago solicita..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="col-md-6">    
+                                                    <label class="checkbox-label">Manifiesto que</label>
+                                                    <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
+                                                            data-placement="right" 
+                                                            data-html="true" 
+                                                            title="Información sobre este campo" 
+                                                            data-content="Descubre más sobre este campo">
+                                                        <i class="material-icons">help</i>
+                                                    </button>
+                                                    <br>
+                                                    <input type="checkbox" id="depende_cumplimiento" class="filled-in chk-col-blue">
+                                                    <label for="depende_cumplimiento">El pago de la suma adeudada depende del cumplimiento de una obligación a mi cargo.</label>
+                                                </div>
+                                                <div class="col-md-6">    
+                                                    <label class="checkbox-label">Manifiesto bajo juramento que</label>
+                                                    <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
+                                                            data-placement="right" 
+                                                            data-html="true" 
+                                                            title="Información sobre este campo" 
+                                                            data-content="Descubre más sobre este campo">
+                                                        <i class="material-icons">help</i>
+                                                    </button>
+                                                    <br>
+                                                    <input type="checkbox" id="tengo_pruebas" class="filled-in chk-col-blue">
+                                                    <label for="tengo_pruebas">Tengo en mi poder pruebas documentales sobre la existencia de la obligación cuyo pago pretendo.</label>
                                                 </div>
                                             </div>
                                         </section>
@@ -456,24 +494,19 @@
                                             <div class="row clearfix">
                                                 <div class="col-md-12">
                                                     <label for="hechos">Hechos</label>
+                                                    <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
+                                                            data-placement="right" 
+                                                            data-html="true" 
+                                                            title="Información sobre este campo" 
+                                                            data-content="Descubre más sobre este campo">
+                                                        <i class="material-icons">help</i>
+                                                    </button>
                                                     <div class="form-group">
                                                         <div class="form-line">
                                                             <textarea rows="1" class="form-control no-resize auto-growth" id="hechos" placeholder="Refiera en forma concreta los hechos que fundamentan su solicitud..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-md-6">    
-                                                    <label class="checkbox-label">Manifiesto que</label><br>
-                                                    <input type="checkbox" id="depende_cumplimiento" class="filled-in chk-col-blue">
-                                                    <label for="depende_cumplimiento">El pago de la suma adeudada depende del cumplimiento de una obligación a mi cargo.</label>
-                                                </div>
-                                                <div class="col-md-6">    
-                                                    <label class="checkbox-label">Manifiesto bajo juramento que</label><br>
-                                                    <input type="checkbox" id="tengo_pruebas" class="filled-in chk-col-blue">
-                                                    <label for="tengo_pruebas">Tengo en mi poder pruebas documentales sobre la existencia de la obligación cuyo pago pretendo.</label>
-                                                </div>
-
-
                                             </div>
                                         </section>
 
@@ -482,20 +515,21 @@
                                             <div class="row clearfix">
                                                 <div class="col-md-12">
                                                     <label for="pruebas">Pruebas</label>
+                                                    <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
+                                                            data-placement="right" 
+                                                            data-html="true" 
+                                                            title="Información sobre este campo" 
+                                                            data-content="Descubre más sobre este campo">
+                                                        <i class="material-icons">help</i>
+                                                    </button>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="pruebas" placeholder="Refiera las pruebas que usted aporta..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
+                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="pruebas" placeholder="Refiera las pruebas que usted aporta..." style="overflow: hidden; word-wrap: break-word; height: 132px;"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
 
                                                 <div class="col-md-12" id='pruebasfile'></div>
-
-                                                <div class="col-md-12">    
-                                                    <label class="checkbox-label">Manifiesto que</label><br>
-                                                    <input type="checkbox" id="estaba_obligado " class="filled-in chk-col-blue">
-                                                    <label for="estaba_obligado ">Estaba obligado legalmente a declarar renta en el año gravable inmediatamente anterior.</label>
-                                                </div>
 
 
                                             </div>
@@ -504,8 +538,15 @@
                                         <h2>Otros</h2>
                                         <section>
                                             <div class="row clearfix">
-                                                <div class="col-md-6">
-                                                    <label for="fundamentos">Fundamentos de derecho</label>
+                                                <div class="col-md-12">
+                                                    <label for="fundamentos">Fundamentos de derecho <span style="color:#3bacfa">(opcionales)</span></label>
+                                                    <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
+                                                            data-placement="right" 
+                                                            data-html="true" 
+                                                            title="Información sobre este campo" 
+                                                            data-content="Descubre más sobre este campo">
+                                                        <i class="material-icons">help</i>
+                                                    </button>
                                                     <div class="form-group">
                                                         <div class="form-line">
                                                             <textarea rows="1" class="form-control no-resize auto-growth" id="fundamentos" placeholder="Otras normas aplicables..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
@@ -514,10 +555,20 @@
                                                 </div>
                                                 <div class="col-md-12">
                                                     <label for="anexos ">Anexos</label>
+                                                    <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
+                                                            data-placement="right" 
+                                                            data-html="true" 
+                                                            title="Información sobre este campo" 
+                                                            data-content="Descubre más sobre este campo">
+                                                        <i class="material-icons">help</i>
+                                                    </button>
                                                     <div class="form-group">
                                                         <div class="form-line">
                                                             <textarea rows="1" class="form-control no-resize auto-growth" id="anexos " placeholder="Adjunte los anexos..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
                                                         </div>
+                                                    </div>
+                                                    <div class="alert alert-info" id="alert_poder">
+                                                        <strong>Importante!</strong> Usted ha marcado que cuenta con un apoderado. No olvide agregar como anexo el poder o autorización para el apoderado.
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12" id='anexosfile'></div>
@@ -546,6 +597,38 @@
                     </div>
                 </div>
             </div>
+
+
+
+            <div class="modal fade" id="editTitleModal" tabindex="-1" role="dialog" style="display: none;">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <form id="modifyTitle" method="post">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="defaultModalLabel">Modificar Título de la Demanda</h4>
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group" style="margin-bottom: 0px">
+                                            <div class="form-line">
+                                                <input type="text" id="titulo" class="form-control" placeholder="Titulo">
+                                            </div>
+                                        </div>
+                                    </div>                                                                        
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" onclick="editTitleModalConfirm();" class="btn btn-lg btn-primary waves-effect">MODIFICAR TITULO</button>
+                                <button type="button" class="btn btn-lg btn-default waves-effect" data-dismiss="modal">CANCELAR CAMBIOS</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
 
         </section>
 
@@ -592,9 +675,14 @@
         <script src="js/admin.js"></script>
         <script src="js/pages/ui/tooltips-popovers.js"></script>
 
+        <!-- SweetAlert Plugin Js -->
+        <script src="plugins/sweetalert/sweetalert.min.js"></script> 
+
+        <!-- Material Walkthrough -->
+        <script src="plugins/material-walkthrough/material-walkthrough.js"></script>
+
         <!-- Custom Js -->
         <script src="js/custom/editRedaccion.js"></script>
-        <script src="js/pages/index.js"></script>
 
 
     </body>

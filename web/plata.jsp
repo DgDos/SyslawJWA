@@ -6,7 +6,7 @@
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=Edge">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-        <title>Demandas en redacción | Syslaw</title>
+        <title>Dashboard | Syslaw</title>
         <!-- Favicon-->
         <link rel="icon" href="favicon.ico" type="image/x-icon">
 
@@ -41,12 +41,15 @@
         <link href="css/style.css" rel="stylesheet">
         <link href="css/custom.css" rel="stylesheet">
 
+        <!-- Sweetalert Css -->
+        <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="css/themes/all-themes.css" rel="stylesheet" />
 
         <!--WaitMe Css-->
         <link href="plugins/waitme/waitMe.css" rel="stylesheet" />
-        
+
         <!-- material walkthrough -->
         <link href="plugins/material-walkthrough/material-walkthrough.css" rel="stylesheet" />
 
@@ -58,7 +61,7 @@
     <body class="theme-blue" style="background-color: #f1f1f1;">
 
         <!-- Page Loader -->
-        <div class="page-loader-wrapper">
+        <div class="page-loader-wrapper p-l-w-dark">
             <div class="loader">
                 <div class="preloader">
                     <div class="spinner-layer pl-blue">
@@ -114,7 +117,7 @@
             <aside id="leftsidebar" class="sidebar">
                 <!-- User Info -->
                 <div class="user-info">
-                    <div class="py-5 text-center">
+                    <div class="py-5 text-center" id="logo">
                         <img class="d-block mx-auto mb-4" src="images/syslaw_dash_info_2.svg" alt="" width="230" style="margin-top: 25px; margin-bottom: 10px;">
                     </div>
                     <div class="info-container">
@@ -166,14 +169,8 @@
                         <div class="card" style="box-shadow: none" >
                             <div class="header bg-white add-event-header" style="background-color: #f1f1f1 !important;">
                                 <div class="row clearfix">
-                                    <div class="col-xs-6 col-sm-6" style="margin-top: 5px">
-                                        <h2><span id="tour_redaccion">Demandas en redacción</span></h2>
-                                    </div>
-                                    <div class="col-xs-12 col-sm-6 align-right">
-                                        <button type="button" data-toggle="modal" data-target="#nuevaDemanda" class="btn bg-syslaw waves-effect btn-no-shadow">
-                                            <i id="toogle-add-event-icon" class="material-icons">add</i>
-                                        </button>
-
+                                    <div class="col-xs-12 col-sm-12" style="margin-top: 5px">
+                                        <h2><span id="tour_misdemandas">Mi Plata</span></h2>
                                     </div>
                                 </div>
 
@@ -183,19 +180,41 @@
 
                                 <div class="card">
                                     <div class="body">
-                                        <div class="table-responsive">
-                                            <table id="liststate1" class="table table-bordered table-striped table-hover js-basic-example dataTable">
-                                                <thead>
-                                                    <tr>
-                                                        <th id="titulo_tour">Título</th>
-                                                        <th>Modificado</th>
-                                                        <th>Creado</th>
-                                                        <th>Porcentaje</th>
-                                                        <th></th>
-                                                    </tr>
-                                                </thead>
-                                            </table>
+                                        <div class="row clearfix">
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="plata_container">
+                                                <div class="info-box bg-blue hover-expand-effect">
+                                                    <div class="icon">
+                                                        <i class="material-icons">account_balance_wallet</i>
+                                                    </div>
+                                                    <div class="content">
+                                                        <div class="text">PLATA EN CUENTA</div>
+                                                        <div class="number count-to">$ <span id="plata_num">20.000</span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" id="tour_revision">
+                                                <div class="info-box">
+                                                    <div class="body">
+                                                        <form id="form_add_plata">
+                                                        <div class="input-group">
+                                                            <div class="form-line">
+                                                                <input required id="plata_to_add" type="number" min=1 class="form-control date" placeholder="Agregar dinero">
+                                                            </div>
+                                                            <span class="input-group-addon">
+                                                                <button class="btn btn-default" type="submit" style="cursor: pointer" ><i class="material-icons">add</i></button>
+                                                            </span>
+                                                        </div>
+                                                    </form>
+                                                    </div>                                                    
+                                                </div>
+
+
+
+                                            </div>
+
                                         </div>
+
+
                                     </div>
                                 </div>
 
@@ -267,6 +286,9 @@
         <!-- Waves Effect Plugin Js -->
         <script src="plugins/node-waves/waves.js"></script>
 
+        <!-- Jquery CountTo Plugin Js -->
+        <script src="plugins/jquery-countto/jquery.countTo.js"></script>
+
         <!-- Autosize Plugin Js -->
         <script src="plugins/autosize/autosize.js"></script>
 
@@ -288,7 +310,7 @@
         <script src="plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
         <script src="plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
         <script src="plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-        
+
         <!-- Material Walkthrough -->
         <script src="plugins/material-walkthrough/material-walkthrough.js"></script>
 
@@ -296,8 +318,12 @@
         <script src="js/admin.js"></script>
         <script src="js/pages/ui/tooltips-popovers.js"></script>
 
+        <!-- SweetAlert Plugin Js -->
+        <script src="plugins/sweetalert/sweetalert.min.js"></script>    
+
         <!-- Custom Js -->
-        <script src="js/custom/dashRedaccion.js"></script>
+        <script src="js/custom/plata.js"></script>
+
 
 
     </body>

@@ -22,14 +22,14 @@
                         <li class="header">SYSLAW CONNECT</li>
                         <li id="menu_revision">
                             <a href="revision">
-                                <i style="color: #ef9203" class="material-icons">sync</i>
+                                <i style="color: #ef9203" class="material-icons">people</i>
                                 <span>Demandas SYSLAW Connect</span>
                             </a>
                         </li>
-                        <li id="menu_revision">
-                            <a href="revision">
+                        <li id="menu_plata">
+                            <a href="plata">
                                 <i style="color: #ef9203" class="material-icons">attach_money</i>
-                                <span >10.000</span>
+                                <span>Mi Plata ($</span><span style="margin-left: 0px;" id="menu_plata_num">10.000</span><span style="margin-left: 0px;">)</span>
                             </a>
                         </li>
                         <!--
