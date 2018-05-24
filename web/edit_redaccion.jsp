@@ -228,7 +228,7 @@
                                                     <label for="juez_nombre">Señor, juez municipal de</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="juez_nombre" class="form-control" placeholder="Ingrese la ciudad del juez...">
+                                                            <input maxlength="50" type="text" id="juez_nombre" class="form-control" placeholder="Ingrese la ciudad del juez...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -239,7 +239,7 @@
                                                     <label for="dte_nom">Nombre del demandante</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dte_nom" class="form-control" placeholder="Ingrese el nombre...">
+                                                            <input maxlength="50" type="text" id="dte_nom" class="form-control" placeholder="Ingrese el nombre...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -247,7 +247,7 @@
                                                     <label for="dte_ciudad">Ciudad del demandante</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dte_ciudad" class="form-control" placeholder="Ingrese la ciudad...">
+                                                            <input maxlength="20" type="text" id="dte_ciudad" class="form-control" placeholder="Ingrese la ciudad...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -270,7 +270,7 @@
                                                     <label for="dte_id">ID del demandante</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dte_id" class="form-control" placeholder="Número de identificación...">
+                                                            <input maxlength="20" type="text" id="dte_id" class="form-control" placeholder="Número de identificación...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -278,7 +278,7 @@
                                                     <label for="dte_dir_not">Dirección donde recibe notificaciones:</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dte_dir_not"  class="form-control" placeholder="Dirección de notificaciones...">
+                                                            <input maxlength="100" type="text" id="dte_dir_not"  class="form-control" placeholder="Dirección de notificaciones...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -286,7 +286,7 @@
                                                     <label for="dte_email">Dirección de correo electrónico</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="email" id="dte_email"  class="form-control" placeholder="Correo electrónico...">
+                                                            <input maxlength="50" type="email" id="dte_email"  class="form-control" placeholder="Correo electrónico...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -299,8 +299,8 @@
                                                     <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
                                                             data-placement="right" 
                                                             data-html="true" 
-                                                            title="Información sobre este campo" 
-                                                            data-content="Descubre más sobre este campo">
+                                                            title="¿Qué es un apoderado?" 
+                                                            data-content="Es la persona o abogado que tiene la facultad de representar al demandante y que actúa en su nombre. Esta facultad es otorgada por medio de un poder por parte del demandante.">
                                                         <i class="material-icons">help</i>
                                                     </button>
                                                     <br>
@@ -314,7 +314,7 @@
                                                         <label for="dte_apo_nom">Nombre del apoderado</label>
                                                         <div class="form-group">
                                                             <div class="form-line">
-                                                                <input type="text" id="dte_apo_nom" class="form-control" placeholder="Ingrese el nombre...">
+                                                                <input maxlength="50" type="text" id="dte_apo_nom" class="form-control" placeholder="Ingrese el nombre...">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -329,7 +329,7 @@
                                                         </button>
                                                         <div class="form-group">
                                                             <div class="form-line">
-                                                                <input type="text" id="dte_apo_tar_pro" class="form-control" placeholder="Número de tarjeta profesional...">
+                                                                <input maxlength="20" type="text" id="dte_apo_tar_pro" class="form-control" placeholder="Número de tarjeta profesional...">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -352,7 +352,7 @@
                                                         <label for="dte_apo_id">Numero de identificación</label>
                                                         <div class="form-group">
                                                             <div class="form-line">
-                                                                <input type="text" id="dte_apo_id" class="form-control" placeholder="Número de identificación...">
+                                                                <input maxlength="20" type="text" id="dte_apo_id" class="form-control" placeholder="Número de identificación...">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -372,7 +372,7 @@
                                                     <label for="dem_nom">Nombre del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dem_nom" class="form-control" placeholder="Nombre...">
+                                                            <input maxlength="50" type="text" id="dem_nom" class="form-control" placeholder="Nombre...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -382,7 +382,7 @@
                                                     <label for="dem_ciu">Ciudad de domicilio del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dem_ciu" class="form-control" placeholder="Ingrese la ciudad...">
+                                                            <input maxlength="20" type="text" id="dem_ciu" class="form-control" placeholder="Ingrese la ciudad...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -407,7 +407,7 @@
                                                     <label for="dem_id">Documento del demandado</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dem_id" class="form-control" placeholder="Ingrese el no. de identificación...">
+                                                            <input maxlength="30" type="text" id="dem_id" class="form-control" placeholder="Ingrese el no. de identificación...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -426,7 +426,7 @@
                                                     <label for="dem_dir_not">Dirección donde recibe notificaciones:</label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="text" id="dem_dir_not" class="form-control" placeholder="Dirección de notificaciones...">
+                                                            <input maxlength="100" type="text" id="dem_dir_not" class="form-control" placeholder="Dirección de notificaciones...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -434,7 +434,7 @@
                                                     <label for="dem_email">Dirección de correo electrónico <span style="color:#3bacfa">(opcional)</span></label>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <input type="email" id="dem_email" class="form-control" placeholder="Correo electrónico...">
+                                                            <input maxlength="50" type="email" id="dem_email" class="form-control" placeholder="Correo electrónico...">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -450,25 +450,18 @@
                                                     <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
                                                             data-placement="right" 
                                                             data-html="true" 
-                                                            title="Información sobre este campo" 
-                                                            data-content="Descubre más sobre este campo">
+                                                            title="¿Qué son las pretensiones?" 
+                                                            data-content="Las pretensiones se basan en expresarle al juez lo que quieres obtener cuando se acabe el proceso. <br><br>Es por esto que, mediante estas, puedes solicitar que se condene a tu demandado a pagarte la suma de dinero que te debe, o en general cualquier aspecto que pretendas ganar u obtener cuando dicte sentencia la autoridad del proceso. <br><br>Recuerda que las pretensiones <b>deben estar numeradas</b> y en orden.">
                                                         <i class="material-icons">help</i>
                                                     </button>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="pretensiones" placeholder="Indique las sumas de dinero cuyo pago solicita..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
+                                                            <textarea maxlength="2000" rows="1" class="form-control no-resize auto-growth" id="pretensiones" placeholder="Indique las sumas de dinero cuyo pago solicita..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">    
                                                     <label class="checkbox-label">Manifiesto que</label>
-                                                    <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
-                                                            data-placement="right" 
-                                                            data-html="true" 
-                                                            title="Información sobre este campo" 
-                                                            data-content="Descubre más sobre este campo">
-                                                        <i class="material-icons">help</i>
-                                                    </button>
                                                     <br>
                                                     <input type="checkbox" id="depende_cumplimiento" class="filled-in chk-col-blue">
                                                     <label for="depende_cumplimiento">El pago de la suma adeudada depende del cumplimiento de una obligación a mi cargo.</label>
@@ -478,8 +471,8 @@
                                                     <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
                                                             data-placement="right" 
                                                             data-html="true" 
-                                                            title="Información sobre este campo" 
-                                                            data-content="Descubre más sobre este campo">
+                                                            title="¿Qué es una prueba documental?" 
+                                                            data-content="Es cualquier documeto que te permite demostrarle al juez la veracidad de los hechos que relataste en tu demanda, como un contrato, un cheque, un pagaré, etc.">
                                                         <i class="material-icons">help</i>
                                                     </button>
                                                     <br>
@@ -497,13 +490,13 @@
                                                     <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
                                                             data-placement="right" 
                                                             data-html="true" 
-                                                            title="Información sobre este campo" 
-                                                            data-content="Descubre más sobre este campo">
+                                                            title="¿Qué son los hechos?" 
+                                                            data-content="Son todos los acontecimientos o antecedentes que generan consecuencias jurídicas en una relación jurídica. <br><br>Recuerda que los hechos <b>deben estar numerados</b> y en orden.">
                                                         <i class="material-icons">help</i>
                                                     </button>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="hechos" placeholder="Refiera en forma concreta los hechos que fundamentan su solicitud..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
+                                                            <textarea maxlength="2000" rows="1" class="form-control no-resize auto-growth" id="hechos" placeholder="Refiera en forma concreta los hechos que fundamentan su solicitud..." style="overflow: hidden; word-wrap: break-word; height: 132px;">1.&#13;&#10;2.&#13;&#10;3.&#13;&#10;4.&#13;&#10;5.&#13;&#10;6.</textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -518,13 +511,14 @@
                                                     <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
                                                             data-placement="right" 
                                                             data-html="true" 
-                                                            title="Información sobre este campo" 
-                                                            data-content="Descubre más sobre este campo">
+                                                            title="¿Qué pruebas puedo anexar?" 
+                                                            data-content="Anexa cualquier documento que te permita demostrarle al juez la veracidad de los hechos que relataste en tu demanda. <br><br> Cualquier documento que te ayude a demostrar que el demandado de debe dinero, lo puedes anexar aquí.">
                                                         <i class="material-icons">help</i>
                                                     </button>
+
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="pruebas" placeholder="Refiera las pruebas que usted aporta..." style="overflow: hidden; word-wrap: break-word; height: 132px;"></textarea>
+                                                            <textarea maxlength="2000" rows="1" class="form-control no-resize auto-growth" id="pruebas" placeholder="Refiera las pruebas que usted aporta..." style="overflow: hidden; word-wrap: break-word; height: 132px;"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -543,13 +537,13 @@
                                                     <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
                                                             data-placement="right" 
                                                             data-html="true" 
-                                                            title="Información sobre este campo" 
-                                                            data-content="Descubre más sobre este campo">
+                                                            title="¿Qué son los fundamentos de derecho?" 
+                                                            data-content="En este espacio, puedes indicar los artículos, leyes, resoluciones, decretos o en general cualquier norma colombiana que te permita decirle al juez que tus derechos han sido vulnerados por el demandado quien actuo de forma contraria a lo que versa la norma. <br><br>Te recomendamos citar explícitamente la ley o leyes pertinentes que se acomoden a tu problema.">
                                                         <i class="material-icons">help</i>
                                                     </button>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="fundamentos" placeholder="Otras normas aplicables..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
+                                                            <textarea maxlength="2000" rows="1" class="form-control no-resize auto-growth" id="fundamentos" placeholder="Otras normas aplicables..." style="overflow: hidden; word-wrap: break-word; height: 132px;"></textarea>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -558,17 +552,17 @@
                                                     <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
                                                             data-placement="right" 
                                                             data-html="true" 
-                                                            title="Información sobre este campo" 
-                                                            data-content="Descubre más sobre este campo">
+                                                            title="¿Qué son los anexos?" 
+                                                            data-content="Son todos aquellos documentos que se encuentran vinculados al proceso jurídico que se está iniciando, como por ejemplo el poder o contratos cuando el proceso verse sobre ellos.">
                                                         <i class="material-icons">help</i>
                                                     </button>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <textarea rows="1" class="form-control no-resize auto-growth" id="anexos " placeholder="Adjunte los anexos..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
+                                                            <textarea maxlength="1000" rows="1" class="form-control no-resize auto-growth" id="anexos " placeholder="Mencione los anexos..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
                                                         </div>
                                                     </div>
-                                                    <div class="alert alert-info" id="alert_poder">
-                                                        <strong>Importante!</strong> Usted ha marcado que cuenta con un apoderado. No olvide agregar como anexo el poder o autorización para el apoderado.
+                                                    <div class="alert alert-info bg-syslaw-gradient" id="alert_poder">
+                                                        <strong>Importante!</strong> Usted ha marcado que cuenta con un apoderado. No olvide referenciar como anexo el poder o autorización para el apoderado.
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12" id='anexosfile'></div>
@@ -582,7 +576,7 @@
                                                         <label for="cautelares_que_solicita">Medidas cautelares que solicita</label>
                                                         <div class="form-group">
                                                             <div class="form-line">
-                                                                <textarea rows="1" class="form-control no-resize auto-growth" id="cautelares_que_solicita" placeholder="Precise a continuación las que solicita..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
+                                                                <textarea maxlength="500" rows="1" class="form-control no-resize auto-growth" id="cautelares_que_solicita" placeholder="Precise a continuación las que solicita..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -594,6 +588,127 @@
                             </div>
 
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="analisisDemanda" tabindex="-1" role="dialog" style="display: none;">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <form id="modifyTitle" method="post">
+                            <div class="modal-header detail-header bg-syslaw-gradient">
+                                <div class="pull-left" style="margin-top: 8px;">
+                                    <h4 class="modal-title" style="font-size:18px" id="modEvePubTitulo">Análisis automático</h4>
+                                </div>
+
+
+
+                                <button data-dismiss="modal" type="button" class="pull-right btn btn-info btn-sm btn-transparent">
+                                    <i id="toogle-add-event-icon" class="material-icons">close</i>
+                                </button>
+
+                                <button type="button" class="pull-right btn btn-info btn-sm btn-transparent">
+                                    <i id="toogle-add-event-icon" class="material-icons">help</i><span style="margin-bottom: 7px; margin-left: 5px">Ayuda</span>
+                                </button>
+
+                                <button type="button" class="pull-right btn btn-info btn-sm btn-transparent">
+                                    <i id="toogle-add-event-icon" class="material-icons">spellcheck</i><span style="margin-bottom: 7px; margin-left: 5px">Analizar demanda</span>
+                                </button>
+
+                            </div>
+                            <div class="modal-body">
+
+                                <div class="row" id="collapseAnalisis">
+
+                                    <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
+                                        <div class="panel-group" id="accordion_19" role="tablist" aria-multiselectable="true">
+                                            <div class="panel panel-col-red">
+                                                <div class="panel-heading" role="tab" id="headingOne_19">
+                                                    <h4 class="panel-title">
+                                                        <a role="button" data-toggle="collapse" href="#collapseOne_19" aria-expanded="true" aria-controls="collapseOne_19">
+                                                            <i class="material-icons">cancel</i> Errores (3)
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseOne_19" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne_19">
+                                                    <div class="panel-body p-l-20 p-r-20">
+                                                        <div class="row clearfix">
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <h4>Pretensiones<small><br>Título del error</small></h4>
+                                                                <p>Mensaje del error</p>
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <h4>Pretensiones<small><br>Título del error</small></h4>
+                                                                <p>Mensaje del error</p>
+                                                                <hr>
+                                                            </div>
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-col-orange">
+                                                <div class="panel-heading" role="tab" id="headingTwo_19">
+                                                    <h4 class="panel-title">
+                                                        <a role="button" data-toggle="collapse" href="#collapseTwo_19" aria-expanded="false" aria-controls="collapseTwo_19">
+                                                            <i class="material-icons">warning</i> Advertencias (4)
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseTwo_19" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo_19">
+                                                    <div class="panel-body">
+                                                        advertencias
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="panel panel-col-green">
+                                                <div class="panel-heading" role="tab" id="headingThree_19">
+                                                    <h4 class="panel-title">
+                                                        <a class="collapsed" role="button" data-toggle="collapse" href="#collapseThree_19" aria-expanded="false" aria-controls="collapseThree_19">
+                                                            <i class="material-icons">spellcheck</i> Correctos (6)
+                                                        </a>
+                                                    </h4>
+                                                </div>
+                                                <div id="collapseThree_19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_19">
+                                                    <div class="panel-body">
+                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                                                        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
+                                                        eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
+                                                        single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
+                                                        helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+                                                        Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
+                                                        raw denim aesthetic synth nesciunt you probably haven't heard of them
+                                                        accusamus labore sustainable VHS.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" onclick="editTitleModalConfirm();" class="btn btn-lg btn-primary waves-effect">MODIFICAR TITULO</button>
+                                <button type="button" class="btn btn-lg btn-default waves-effect" data-dismiss="modal">CANCELAR CAMBIOS</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>

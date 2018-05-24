@@ -228,7 +228,7 @@
                                             <label for="nuevotitulo">Titulo de la nueva demanda</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input autofocus type="text" id="nuevotitulo" class="form-control" placeholder="Ingresa un título...">
+                                                    <input autofocus maxlength="50" type="text" id="nuevotitulo" class="form-control" placeholder="Ingresa un título...">
                                                 </div>
                                             </div>
                                         </div>

@@ -5,6 +5,8 @@ var tituloInicial = "";
 
 $(document).ready(function () {
 
+
+$('#analisisDemanda').modal('show');
     // Para marcar la pagina activa
     $('#menu_default').removeClass("active");
     $('#menu_redaccion').addClass("active");
