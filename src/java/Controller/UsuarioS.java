@@ -25,9 +25,6 @@ import javax.servlet.http.HttpServletResponse;
  */
 public class UsuarioS extends HttpServlet {
 
-   
-
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -35,9 +32,9 @@ public class UsuarioS extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             String opcion = request.getParameter("opcion");
             if (opcion.equalsIgnoreCase("existUser")) {
-                UsuarioDAO u=new UsuarioDAO();
-                String documento=request.getParameter("documento");
-                Usuario user=u.existUser(documento);
+                UsuarioDAO u = new UsuarioDAO();
+                String documento = request.getParameter("documento");
+                Usuario user = u.existUser(documento);
                 Gson gson = new Gson();
                 out.println(gson.toJson(user));
             }
@@ -46,14 +43,34 @@ public class UsuarioS extends HttpServlet {
         }
     }
 
-    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+        try{
+            String opcion = request.getParameter("opcion");
+            if (opcion.equals("update")) {
+                int cantidad = Integer.parseInt(request.getParameter("dinero"));
+                UsuarioDAO u = new UsuarioDAO();
+                user.setDinero(user.getDinero()+cantidad);
+                request.getSession().setAttribute("usuario", user);
+                out.println(u.updateMoney(user.getDocumento(), user.getDinero()));
+            }
+            if(opcion.equals("getMoney")){
+                out.println(user.getDinero());
+            }
+            if(opcion.equals("lessMoney")){
+                
+            }
+        } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioS.class.getName()).log(Level.SEVERE, null, ex);
+            out.println(false);
+        }
+
     }
 
-    
     @Override
     public String getServletInfo() {
         return "Short description";

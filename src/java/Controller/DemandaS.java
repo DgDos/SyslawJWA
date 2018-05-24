@@ -106,21 +106,21 @@ public class DemandaS extends HttpServlet {
                 }
                 d.setDte_id(request.getParameter("dte_id"));
                 
-                if (request.getParameter("dte_rep_tiene") != null) {
-                    d.setDte_rep_tiene(Boolean.parseBoolean(request.getParameter("dte_rep_tiene")));
-                    conta++;
-                } else {
-                    d.setDte_rep_tiene(false);
-                }
-                d.setDte_rep_nom("");
-                if(!d.getDte_rep_nom().equals("")){
-                    conta++;
-                }
-                d.setDte_rep_id_tipo(-1);  
-                d.setDte_rep_id("");
-                if(!d.getDte_rep_id().equals("")){
-                    conta++;
-                }
+//                if (request.getParameter("dte_rep_tiene") != null) {
+//                    d.setDte_rep_tiene(Boolean.parseBoolean(request.getParameter("dte_rep_tiene")));
+//                    conta++;
+//                } else {
+//                    d.setDte_rep_tiene(false);
+//                }
+//                d.setDte_rep_nom("");
+//                if(!d.getDte_rep_nom().equals("")){
+//                    conta++;
+//                }
+//                d.setDte_rep_id_tipo(-1);  
+//                d.setDte_rep_id("");
+//                if(!d.getDte_rep_id().equals("")){
+//                    conta++;
+//                }
                 
                 if (request.getParameter("dte_apo_tiene") != null) {
                     d.setDte_apo_tiene(Boolean.parseBoolean(request.getParameter("dte_apo_tiene")));
@@ -160,26 +160,26 @@ public class DemandaS extends HttpServlet {
                 if(!d.getDem_ciu().equals("")){
                     conta++;
                 }
-                if (request.getParameter("dem_rep_tiene") != null) {
-                    d.setDem_rep_tiene(Boolean.parseBoolean(request.getParameter("dem_rep_tiene")));
-                    conta++;
-                } else {
-                    d.setDem_rep_tiene(false);
-                }
-                d.setDem_rep_nom("");
-                if(!d.getDem_rep_nom().equals("")){
-                    conta++;
-                }
-                if (request.getParameter("dem_apo_tiene") != null) {
-                    d.setDem_apo_tiene(Boolean.parseBoolean(request.getParameter("dem_apo_tiene")));
-                    conta++;
-                } else {
-                    d.setDem_apo_tiene(false);
-                }
-                d.setDem_apo_nom(request.getParameter("dem_apo_nom"));
-                if(!d.getDem_apo_nom().equals("")){
-                    conta++;
-                }
+//                if (request.getParameter("dem_rep_tiene") != null) {
+//                    d.setDem_rep_tiene(Boolean.parseBoolean(request.getParameter("dem_rep_tiene")));
+//                    conta++;
+//                } else {
+//                    d.setDem_rep_tiene(false);
+//                }
+//                d.setDem_rep_nom("");
+//                if(!d.getDem_rep_nom().equals("")){
+//                    conta++;
+//                }
+//                if (request.getParameter("dem_apo_tiene") != null) {
+//                    d.setDem_apo_tiene(Boolean.parseBoolean(request.getParameter("dem_apo_tiene")));
+//                    conta++;
+//                } else {
+//                    d.setDem_apo_tiene(false);
+//                }
+//                d.setDem_apo_nom(request.getParameter("dem_apo_nom"));
+//                if(!d.getDem_apo_nom().equals("")){
+//                    conta++;
+//                }
                 d.setDem_dir_not(request.getParameter("dem_dir_not"));
                 if(!d.getDem_dir_not().equals("")){
                     conta++;
@@ -212,17 +212,17 @@ public class DemandaS extends HttpServlet {
                 if(!d.getPruebas().equals("")){
                     conta++;
                 }
-                if (request.getParameter("estaba_obligado") != null) {
-                    d.setEstaba_obligado(Boolean.parseBoolean(request.getParameter("estaba_obligado")));
-                    conta++;
-                } else {
-                    d.setEstaba_obligado(false);
-                }
+//                if (request.getParameter("estaba_obligado") != null) {
+//                    d.setEstaba_obligado(Boolean.parseBoolean(request.getParameter("estaba_obligado")));
+//                    conta++;
+//                } else {
+//                    d.setEstaba_obligado(false);
+//                }
                 d.setFundamentos(request.getParameter("fundamentos"));
                 if(!d.getFundamentos().equals("")){
                     conta++;
                 }
-                d.setAnexos("");
+                d.setAnexos(request.getParameter("anexos"));
                 if(!d.getAnexos().equals("")){
                     conta++;
                 }
@@ -236,7 +236,8 @@ public class DemandaS extends HttpServlet {
                 if(!d.getCautelares_que_solicita().equals("")){
                     conta++;
                 }
-                float valor=((conta*100)/32);
+                float valor=((conta*100)/28);
+                valor = (float) (Math.floor(valor * 100) / 100);
                 d.setPorcentaje(valor);
                 d.setId_demanda(Integer.parseInt(request.getParameter("id_demanda")));
                 d.setComentarios_abogado(request.getParameter("com_abo"));

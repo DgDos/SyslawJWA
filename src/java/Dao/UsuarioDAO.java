@@ -28,7 +28,7 @@ public class UsuarioDAO {
     }
 
     public void addUsuarioDemandante(Usuario u, String pass) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into usuario(documento,tipo_documento,nombre,ciudad,direccion,correo,password,tipo_usuario,delete) values (?,?,?,?,?,?,?,?,1)");
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into usuario(documento,tipo_documento,nombre,ciudad,direccion,correo,password,tipo_usuario,delete,dinero) values (?,?,?,?,?,?,?,?,1,10000)");
         preparedStatement.setString(1, u.getDocumento());
         preparedStatement.setInt(2, u.getTipo_id());
         preparedStatement.setString(3, u.getNombre());
@@ -41,7 +41,7 @@ public class UsuarioDAO {
     }
     
     public void addUsuarioAbogado(Usuario u, String pass) throws SQLException {
-        PreparedStatement preparedStatement = connection.prepareStatement("insert into usuario(documento,tipo_documento,nombre,ciudad,direccion,correo,password,tarjeta,tipo_usuario,delete) values (?,?,?,?,?,?,?,?,?,1)");
+        PreparedStatement preparedStatement = connection.prepareStatement("insert into usuario(documento,tipo_documento,nombre,ciudad,direccion,correo,password,tarjeta,tipo_usuario,delete,dinero) values (?,?,?,?,?,?,?,?,?,1,10000)");
         preparedStatement.setString(1, u.getDocumento());
         preparedStatement.setInt(2, u.getTipo_id());
         preparedStatement.setString(3, u.getNombre());
@@ -94,6 +94,7 @@ public class UsuarioDAO {
             user.setCorreo(correo);
             user.setTarjeta(rs.getString("tarjeta"));
             user.setTipo_usuario(rs.getInt("tipo_usuario"));
+            user.setDinero(rs.getInt("dinero"));
         }
         return user;
     }
@@ -127,6 +128,7 @@ public class UsuarioDAO {
             user.setDireccion(rs.getString("direccion"));
             user.setCorreo(rs.getString("correo"));
             user.setTipo_id(rs.getInt("tipo_documento"));
+            user.setDinero(rs.getInt("dinero"));
             return user;
         }
         user.setDocumento(documento);
@@ -135,7 +137,14 @@ public class UsuarioDAO {
         user.setCiudad("");
         user.setCorreo("");
         user.setTipo_id(-1);
+        user.setDinero(0);
         return user;
+    }
+
+    public boolean updateMoney(String documento, int dinero) throws SQLException {
+        PreparedStatement preparedStatement = connection.prepareStatement("update usuario set dinero="+dinero+" where documento="+documento);
+        preparedStatement.executeUpdate();
+        return true;
     }
 
 }
