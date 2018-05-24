@@ -7,6 +7,7 @@ package Dao;
 
 import Model.Demanda;
 import Model.Estadisticas;
+import Model.Estados;
 import Model.Usuario;
 import Util.DbUtil;
 import java.io.IOException;
@@ -41,7 +42,7 @@ public class DemandaDAO {
             d.setId_usuario(rs.getString("id_usuario"));
             d.setTitulo(rs.getString("titulo"));
             d.setPorcentaje(rs.getFloat("porcentaje"));
-            d.setFecha_creacion(rs.getTimestamp("fecha_creacion")); 
+            d.setFecha_creacion(rs.getTimestamp("fecha_creacion"));
             d.setFecha_modificacion(rs.getTimestamp("fecha_modificacion"));
             d.setFecha_autoguardado(rs.getTimestamp("fecha_autoguardado"));
             d.setId_ayudante(rs.getString("id_ayudante"));
@@ -158,10 +159,10 @@ public class DemandaDAO {
         preparedStatement.setString(4, d.getDte_ciudad());
         preparedStatement.setInt(5, d.getDte_id_tipo());
         preparedStatement.setString(6, d.getDte_id());
-        preparedStatement.setBoolean(7, d.getDte_rep_tiene());
-        preparedStatement.setString(8, d.getDte_rep_nom());
-        preparedStatement.setInt(9, d.getDte_rep_id_tipo());
-        preparedStatement.setString(10, d.getDte_rep_id());
+        preparedStatement.setBoolean(7, false);
+        preparedStatement.setString(8, "");
+        preparedStatement.setInt(9, -1);
+        preparedStatement.setString(10, "");
         preparedStatement.setBoolean(11, d.getDte_apo_tiene());
         preparedStatement.setString(12, d.getDte_apo_nom());
         preparedStatement.setInt(13, d.getDte_apo_id_tipo());
@@ -171,10 +172,10 @@ public class DemandaDAO {
         preparedStatement.setString(17, d.getDte_email());
         preparedStatement.setString(18, d.getDem_nom());
         preparedStatement.setString(19, d.getDem_ciu());
-        preparedStatement.setBoolean(20, d.getDem_rep_tiene());
-        preparedStatement.setString(21, d.getDem_rep_nom());
-        preparedStatement.setBoolean(22, d.getDem_apo_tiene());
-        preparedStatement.setString(23, d.getDem_apo_nom());
+        preparedStatement.setBoolean(20, false);
+        preparedStatement.setString(21, "");
+        preparedStatement.setBoolean(22, false);
+        preparedStatement.setString(23, "");
         preparedStatement.setString(24, d.getDem_dir_not());
         preparedStatement.setString(25, d.getDem_email());
         preparedStatement.setString(26, d.getPretensiones());
@@ -182,7 +183,7 @@ public class DemandaDAO {
         preparedStatement.setBoolean(28, d.getDepende_cumplimiento());
         preparedStatement.setBoolean(29, d.getTengo_pruebas());
         preparedStatement.setString(30, d.getPruebas());
-        preparedStatement.setBoolean(31, d.getEstaba_obligado());
+        preparedStatement.setBoolean(31, false);
         preparedStatement.setString(32, d.getFundamentos());
         preparedStatement.setString(33, d.getAnexos());
         preparedStatement.setBoolean(34, d.getSolicito_cautelares());
@@ -211,7 +212,7 @@ public class DemandaDAO {
 
     public boolean endState(int id_demanda, int nextState) throws SQLException {
         PreparedStatement preparedStatement;
-        preparedStatement = connection.prepareStatement("update demanda set estado=? where id_demanda=?"); 
+        preparedStatement = connection.prepareStatement("update demanda set estado=? where id_demanda=?");
         preparedStatement.setInt(1, nextState);
         preparedStatement.setInt(2, id_demanda);
         preparedStatement.executeUpdate();
@@ -320,4 +321,21 @@ public class DemandaDAO {
         return demandas;
     }
 
+    public ArrayList<Estados> states(String id_demandante) throws SQLException {
+        ArrayList<Estados> estados = new ArrayList<>();
+        Statement statement = connection.createStatement();
+        ResultSet rs;
+        if (id_demandante.equals("")) {
+            rs = statement.executeQuery("select COUNT(demanda.id_demanda) AS cuenta,estado from demanda group by estado");
+        } else {
+            rs = statement.executeQuery("select COUNT(demanda.id_demanda) AS cuenta,estado from demanda where id_usuario='" + id_demandante + "' group by estado");
+        }
+        while (rs.next()) {
+            Estados e = new Estados();
+            e.setCuenta(rs.getInt("cuenta"));
+            e.setEstado(rs.getString("estado"));
+            estados.add(e);
+        }
+        return estados;
+    }
 }

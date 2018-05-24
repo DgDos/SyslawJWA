@@ -64,6 +64,13 @@ public class DemandaS extends HttpServlet {
                 Demanda demanda = d.getDemandaById(id_demanda);
                 out.println(gson.toJson(demanda));
             }
+            if(opcion.equalsIgnoreCase("veces")){
+                if(user.getDocumento().equals("10")){
+                    out.println(gson.toJson(d.states("")));
+                }else{
+                    out.println(gson.toJson(d.states(user.getDocumento())));
+                }
+            }
 
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(DemandaS.class.getName()).log(Level.SEVERE, null, ex);
@@ -222,7 +229,7 @@ public class DemandaS extends HttpServlet {
                 if(!d.getFundamentos().equals("")){
                     conta++;
                 }
-                d.setAnexos(request.getParameter("anexos"));
+                d.setAnexos("");
                 if(!d.getAnexos().equals("")){
                     conta++;
                 }
