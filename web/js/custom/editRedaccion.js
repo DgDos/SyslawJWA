@@ -280,7 +280,7 @@ function finalizarDemanda() {
         data: {
             'opcion': "endState",
             'id_demanda': $('#id_demanda').val(),
-            'state': 4
+            'state': 5
         },
         dataType: "text",
         success: function (data) {

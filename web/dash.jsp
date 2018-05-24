@@ -191,7 +191,7 @@
                                                     </div>
                                                     <div class="content">
                                                         <div class="text">DEM. EN REDACCION</div>
-                                                        <div class="number count-to">3</div>
+                                                        <div class="number" id="redaccion_num">3</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -202,7 +202,7 @@
                                                     </div>
                                                     <div class="content">
                                                         <div class="text">CONNECT EN ESPERA</div>
-                                                        <div class="number count-to">3</div>
+                                                        <div class="number" id="espera_num">3</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -213,7 +213,7 @@
                                                     </div>
                                                     <div class="content">
                                                         <div class="text">CONNECT REVISADOS</div>
-                                                        <div class="number count-to">2</div>
+                                                        <div class="number" id="revisadas_num">2</div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -224,7 +224,7 @@
                                                     </div>
                                                     <div class="content">
                                                         <div class="text">DEM. ENVIADAS</div>
-                                                        <div class="number count-to">3</div>
+                                                        <div class="number" id="enviadas_num">3</div>
                                                     </div>
                                                 </div>
                                             </div>
