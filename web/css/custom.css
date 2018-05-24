@@ -781,3 +781,36 @@ h2 {
     background-image: linear-gradient( 135deg, rgb(106, 63, 236) 0%, rgba(0, 158, 250, 0.78) 100%);
     color: #fff;
 }
+
+.form-tooltip-error {
+    color: red;
+    border-radius: 50px;
+    padding: 0px;
+    cursor: pointer;
+    margin: -4px 0px 0px 6px;
+    display: inline;
+}
+
+.form-tooltip-error:hover{
+    color: darkred !important; 
+}
+
+
+/* no funciona popover */
+/*
+.popover-danger.right .arrow:after {
+    border-right-color: #d9534f;
+}
+
+[data-style='primary'] + .popover {background-color: #d9534f;
+    border-color: #d43f3a;
+    color: white;}
+[data-style='primary'] + .popover .popover-title {border-right-color: #d9534f;}
+
+
+.popover-danger {
+    background-color: #d9534f;
+    border-color: #d43f3a;
+    color: white;
+}
+*/

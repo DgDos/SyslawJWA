@@ -3,10 +3,12 @@ var changesdone = false;
 var walkEnable = false;
 var tituloInicial = "";
 
+
+
 $(document).ready(function () {
 
 
-$('#analisisDemanda').modal('show');
+    $('#analisisDemanda').modal('show');
     // Para marcar la pagina activa
     $('#menu_default').removeClass("active");
     $('#menu_redaccion').addClass("active");
@@ -252,6 +254,27 @@ function editTitleModalConfirm() {
 
 function analizarDemanda() {
     alert('analizando demanda');
+}
+
+function analisisPoint(pagina, campo) {
+    var bool = false;
+
+    bool = $('#demanda_wizard').steps("setStep", pagina);
+    setTimeout(function () {
+
+        $("#" + campo).focus();
+        $("#" + campo).focus();
+
+    }, 300);
+    
+    $("#" + campo).parent().addClass("error");
+    $("label[for='" + campo + "']").addClass("col-red");
+
+}
+
+function agregarTooltipError () {
+    
+    
 }
 
 function enviarConnect() {

@@ -377,7 +377,16 @@
                                                     <h3 class="form-section-title">Demandado</h3>
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label for="dem_nom">Nombre del demandado</label>
+                                                    <label class="" for="dem_nom">Nombre del demandado</label>
+                                                    <span id="dem_nom_ta">
+                                                        <button type="button" class="btn btn-sm btn-transparent form-tooltip-error" data-trigger="hover focus" data-container="body" data-toggle="popover" 
+                                                                data-placement="right" 
+                                                                data-html="true" 
+                                                                title="¿Qué pruebas puedo anexar?" 
+                                                                data-content="Anexa cualquier documento que te permita demostrarle al juez la veracidad de los hechos que relataste en tu demanda. <br><br> Cualquier documento que te ayude a demostrar que el demandado de debe dinero, lo puedes anexar aquí.">
+                                                            <i class="material-icons">cancel</i>
+                                                        </button>
+                                                    </span>
                                                     <div class="form-group">
                                                         <div class="form-line">
                                                             <input maxlength="50" type="text" id="dem_nom" class="form-control" placeholder="Nombre...">
@@ -556,7 +565,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-md-12">
-                                                    <label for="anexos ">Anexos</label>
+                                                    <label for="anexos">Anexos</label>
                                                     <button type="button" class="btn btn-sm btn-transparent form-tooltip" data-trigger="hover focus" data-container="body" data-toggle="popover" 
                                                             data-placement="right" 
                                                             data-html="true" 
@@ -566,7 +575,7 @@
                                                     </button>
                                                     <div class="form-group">
                                                         <div class="form-line">
-                                                            <textarea maxlength="1000" rows="1" class="form-control no-resize auto-growth" id="anexos " placeholder="Mencione los anexos..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
+                                                            <textarea maxlength="1000" rows="1" class="form-control no-resize auto-growth" id="anexos" placeholder="Mencione los anexos..." style="overflow: hidden; word-wrap: break-word; height: 32px;"></textarea>
                                                         </div>
                                                     </div>
                                                     <div class="alert alert-info bg-syslaw-gradient" id="alert_poder">
