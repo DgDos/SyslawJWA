@@ -55,6 +55,28 @@ public class UsuarioS extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        PrintWriter out = response.getWriter();
+        Usuario user = (Usuario) request.getSession().getAttribute("usuario");
+        try{
+            String opcion = request.getParameter("opcion");
+            if (opcion.equals("addMoney")) {
+                int cantidad = Integer.parseInt(request.getParameter("dinero"));
+                UsuarioDAO u = new UsuarioDAO();
+                user.setDinero(user.getDinero()+cantidad);
+                request.getSession().setAttribute("usuario", user);
+                out.println(u.updateMoney(user.getDocumento(), user.getDinero()));
+            }
+            if(opcion.equals("getMoney")){
+                out.println(user.getDinero());
+            }
+            if(opcion.equals("lessMoney")){
+                
+            }
+        } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
+            Logger.getLogger(UsuarioS.class.getName()).log(Level.SEVERE, null, ex);
+            out.println(false);
+        }
 
     }
 

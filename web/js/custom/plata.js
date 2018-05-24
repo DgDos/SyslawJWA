@@ -79,11 +79,11 @@ $(document).ready(function () {
 function getPlata() {
     
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: "UsuarioS",
         //force to handle it as text
         data: {
-            'opcion': "getplata"
+            'opcion': "getMoney"
         },
         dataType: "text",
         success: function (data) {
@@ -100,12 +100,12 @@ $('#form_add_plata').on('submit', function () {
     var valor = $('#plata_to_add').val();
     
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: "UsuarioS",
         //force to handle it as text
         data: {
-            'opcion': "addplata",
-            'valor': valor
+            'opcion': "addMoney",
+            'dinero': valor
         },
         dataType: "text",
         success: function (data) {

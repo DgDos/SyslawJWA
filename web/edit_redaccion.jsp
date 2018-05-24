@@ -220,7 +220,15 @@
 
                                         <h2>Demandante</h2>
                                         <section>
-                                            <div class="row clearfix">     
+                                            <div class="row clearfix">   
+                                                <div class="col-md-12 hidden">
+                                                    <label for="id_demanda">ID</label>
+                                                    <div class="form-group">
+                                                        <div class="form-line">
+                                                            <input type="text" id="id_demanda" class="form-control" placeholder="Ingrese el ID...">
+                                                        </div>
+                                                    </div>
+                                                </div>  
                                                 <div class="col-md-12" style="padding: 0px; margin: 0px;">
                                                     <h3 class="form-section-title">Juez</h3>
                                                 </div>

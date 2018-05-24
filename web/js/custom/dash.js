@@ -70,17 +70,18 @@ $(document).ready(function () {
     }
     
     getPlata();
+    getEstadisticas();
 
 });
 
 
 function getPlata() {
     $.ajax({
-        type: 'GET',
+        type: 'POST',
         url: "UsuarioS",
         //force to handle it as text
         data: {
-            'opcion': "getplata"
+            'opcion': "getMoney"
         },
         dataType: "text",
         success: function (data) {
@@ -91,6 +92,26 @@ function getPlata() {
         async: false
     });
 }
+
+
+function getEstadisticas() {
+    $.ajax({
+        type: 'GET',
+        url: "DemandaS",
+        //force to handle it as text
+        data: {
+            'opcion': "veces"
+        },
+        dataType: "text",
+        success: function (data) {
+
+            var json = $.parseJSON(data);
+            console.log(json);
+        },
+        async: false
+    });
+}
+
 
 
 $('#nueva_demanda_form').on('submit', function () {
