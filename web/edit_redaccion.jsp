@@ -195,7 +195,7 @@
                                         <button style="background-color: #5230bd !important;" id="tour_guardar" type="button" data-original-title="Guardar cambios" onclick='saveChanges()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i class="material-icons">save</i>
                                         </button>
-                                        <button style="background-color: #4543c6 !important;"  type="button" data-original-title="Análisis automático de la demanda" onclick='analizarDemanda()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                        <button style="background-color: #4543c6 !important;"  type="button" data-original-title="Análisis automático de la demanda" onclick='analizarDemandaShow()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i class="material-icons">spellcheck</i>
                                         </button>
                                         <button style="background-color: #365ed4 !important;"  type="button" data-original-title="Enviar para revisión de abogado en SYSLAW Connect"  onclick='enviarConnect()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
@@ -604,15 +604,15 @@
 
 
                                 <button data-dismiss="modal" type="button" class="pull-right btn btn-info btn-sm btn-transparent">
-                                    <i id="toogle-add-event-icon" class="material-icons">close</i>
+                                    <i class="material-icons">close</i>
                                 </button>
-
+                                <!--
                                 <button type="button" class="pull-right btn btn-info btn-sm btn-transparent">
-                                    <i id="toogle-add-event-icon" class="material-icons">help</i><span style="margin-bottom: 7px; margin-left: 5px">Ayuda</span>
+                                    <i onclick="ayudaAnalisis()" class="material-icons">help</i><span style="margin-bottom: 7px; margin-left: 5px">Ayuda</span>
                                 </button>
-
-                                <button type="button" class="pull-right btn btn-info btn-sm btn-transparent">
-                                    <i id="toogle-add-event-icon" class="material-icons">spellcheck</i><span style="margin-bottom: 7px; margin-left: 5px">Analizar demanda</span>
+                                    -->
+                                <button onclick="analizarDemanda()" id="analizarButton" type="button" class="pull-right btn btn-info btn-sm btn-transparent">
+                                    <i class="material-icons">spellcheck</i><span style="margin-bottom: 7px; margin-left: 5px">Analizar demanda</span>
                                 </button>
 
                             </div>
@@ -642,14 +642,49 @@
                                                             <div class="col-lg-12">
                                                                 <hr>
                                                             </div>
-                                                            <div class="col-lg-12">
-                                                                <h4>Pretensiones<small><br>Título del error</small></h4>
-                                                                <p>Mensaje del error</p>
-                                                                <hr>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
                                                             </div>
                                                             <div class="col-lg-12">
-                                                                <h4>Pretensiones<small><br>Título del error</small></h4>
-                                                                <p>Mensaje del error</p>
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
                                                                 <hr>
                                                             </div>
 
@@ -668,7 +703,64 @@
                                                 </div>
                                                 <div id="collapseTwo_19" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo_19">
                                                     <div class="panel-body">
-                                                        advertencias
+                                                        <div class="row clearfix">
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -682,14 +774,64 @@
                                                 </div>
                                                 <div id="collapseThree_19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_19">
                                                     <div class="panel-body">
-                                                        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                                                        non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum
-                                                        eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid
-                                                        single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh
-                                                        helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
-                                                        Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table,
-                                                        raw denim aesthetic synth nesciunt you probably haven't heard of them
-                                                        accusamus labore sustainable VHS.
+                                                        <div class="row clearfix">
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+                                                            <div class="col-lg-4">
+                                                                <h4>Número de documento<small><br>Demandante</small></h4>
+                                                            </div>
+                                                            <div class="col-lg-8">
+                                                                <p style="margin-top: 8px"><b>El campo está vacío</b><br>Por favor llene el campo</p>
+                                                            </div>
+                                                            <div class="col-lg-12">
+                                                                <hr>
+                                                            </div>
+
+
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

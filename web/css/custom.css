@@ -781,3 +781,13 @@ h2 {
     background-image: linear-gradient( 135deg, rgb(106, 63, 236) 0%, rgba(0, 158, 250, 0.78) 100%);
     color: #fff;
 }
+
+/* para el tour sobre el modal
+.modal {
+    z-index: 950 !important;
+}
+
+.modal-backdrop {
+    z-index: 940 !important;
+}
+*/
