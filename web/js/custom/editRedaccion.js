@@ -251,17 +251,46 @@ function editTitleModalConfirm() {
 
 function ayudaAnalisis() {
     $.walk([
-            {
-                target: '#analizarButton',
-                content: 'Inicia el análisis haciendo click en el botón Analizar Demanda.',
-                color: '#404fcd',
-                acceptText: 'Siguiente'
-            }
-        ]);
+        {
+            target: '#analizarButton',
+            content: 'Inicia el análisis haciendo click en el botón Analizar Demanda.',
+            color: '#404fcd',
+            acceptText: 'Siguiente'
+        }
+    ]);
 }
 
 function analizarDemanda() {
-    alert('analizando demanda');
+    if (changesMade) {
+        swal("Se requiere que guarde los cambios en su demanda antes de hacer la verificación automática. ¿Desea guardar cambios?")
+                .then((value) => {
+                    if (value) {
+                        saveChanges();
+                        analizarDemanda();
+                    }
+                });
+    } else {
+        $.ajax({
+            type: 'GET',
+            url: "AnalizarDemanda",
+            data: {
+                'opcion': "analyze"
+            },
+            dataType: "text",
+            success: function (data) {
+                var json = $.parseJSON(data);
+                $('#dem_nom').val(json.nombre);
+                $('#dem_id').val(json.documento);
+                $('input:radio[name=dem_id_tipo]').val([json.tipo_id]);
+                $('#dem_ciu').val(json.ciudad);
+                $('#dem_dir_not').val(json.direccion);
+                $('#dem_email').val(json.correo);
+            },
+            async: false
+        });
+    }
+
+
 }
 
 function analizarDemandaShow() {
