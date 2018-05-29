@@ -7,8 +7,10 @@ var tituloInicial = "";
 
 $(document).ready(function () {
 
+    $("#titulo_text").click(function () {
+        $(".target").effect("highlight", {color: "#669966"}, 3000);
+    });
 
-    $('#analisisDemanda').modal('show');
     // Para marcar la pagina activa
     $('#menu_default').removeClass("active");
     $('#menu_redaccion').addClass("active");
@@ -251,30 +253,292 @@ function editTitleModalConfirm() {
     $('#editTitleModal').modal('hide');
 }
 
-
-function analizarDemanda() {
-    alert('analizando demanda');
+function ayudaAnalisis() {
+    $.walk([
+        {
+            target: '#analizarButton',
+            content: 'Inicia el análisis haciendo click en el botón Analizar Demanda.',
+            color: '#404fcd',
+            acceptText: 'Siguiente'
+        }
+    ]);
 }
 
-function analisisPoint(pagina, campo) {
+function analizarDemanda() {
+    if (changesdone) {
+        swal({
+            title: "¿Desea guardar sus cambios?",
+            text: "Para analizar su demanda, es requerido guardar o descartar los cambios realizados. <br> Si selecciona no guardar, todos su cambios sin guardar se perderán permanentemente.",
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Guardar cambios y analizar",
+            cancelButtonText: "Descartar cambios y analizar",
+            closeOnConfirm: true,
+            closeOnCancel: true
+        }, function (isConfirm) {
+            if (isConfirm) {
+                saveChanges();
+                analizarDemanda();
+            } else {
+                changesdone = false;
+                preLoadDemanda(id_demanda);
+                analizarDemanda();
+            }
+        });
+    } else {
+
+        $('#analisisDemanda').modal('show');
+        
+        $.ajax({
+            type: 'GET',
+            url: "AnalizarDemanda",
+            data: {
+                'opcion': "analyze"
+            },
+            dataType: "text",
+            success: function (data) {
+                var json = $.parseJSON(data);
+                var errores = $('#analisis_errores_area').empty();
+                var advertencias = $('#analisis_advertencias_area').empty();
+                var correctos = $('#analisis_correctos_area').empty();
+
+                var erroresCount = 0;
+                var advertenciasCount = 0;
+                var correctosCount = 0;
+
+                analisisMarkClean();
+                analisisPopoverClean();
+
+                for (var i = 0; i < json.length; i++) {
+                    var not = json[i];
+                    var append = genNotAnalisis(not.campo, not.titulo, not.texto, not.tipo);
+                    analisisMarkError(not.campo, not.tipo);
+                    agregarPopoverError(not.campo, not.titulo, not.texto, not.tipo)
+                    switch (not.tipo) {
+                        case 1:
+                            errores.append(append);
+                            erroresCount++;
+                            break;
+                        case 2:
+                            advertencias.append(append);
+                            advertenciasCount++;
+                            break;
+                        case 3:
+                            correctos.append(append);
+                            correctosCount++;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+                if (erroresCount > 0) {
+                    errores.children("div:last").remove();
+                }
+                if (advertenciasCount > 0) {
+                    advertencias.children("div:last").remove();
+                }
+                if (correctosCount > 0) {
+                    correctos.children("div:last").remove();
+                }
+                
+                $('#errores_count').text(erroresCount);
+                $('#advertencias_count').text(advertenciasCount);
+                $('#correctos_count').text(correctosCount);
+
+
+            },
+            async: false
+        });
+    }
+
+
+}
+
+var campos_nombres = new Map();
+campos_nombres.set('juez_nombre', 'Señor, juez municipal de');
+campos_nombres.set('dte_nom', 'Nombre del demandante');
+campos_nombres.set('dte_ciudad', 'Ciudad del demandante');
+campos_nombres.set('dte_id_tipo', 'Tipo de id del demandante');
+campos_nombres.set('dte_id', 'Identificación del demandante');
+campos_nombres.set('dte_dir_not', 'Dirección donde recibe notificaciones:');
+campos_nombres.set('dte_email', 'Dirección de correo electrónico');
+campos_nombres.set('dte_apo_tiene', 'Apoderado');
+campos_nombres.set('dte_apo_nom', 'Nombre del apoderado');
+campos_nombres.set('dte_apo_id_tipo', 'Tipo de identificación');
+campos_nombres.set('dte_apo_id', 'Numero de identificación');
+campos_nombres.set('dte_apo_tar_pro', 'Tarjeta profesional No.');
+campos_nombres.set('dem_nom', 'Identificación del demandado');
+campos_nombres.set('dem_id_tipo', 'Tipo de id del demandado');
+campos_nombres.set('dem_id', 'Identificación del demandado');
+campos_nombres.set('dem_ciu', 'Ciudad de domicilio del demandado');
+campos_nombres.set('dem_dir_not', 'Dirección donde recibe notificaciones:');
+campos_nombres.set('dem_email', 'Dirección de correo electrónico');
+campos_nombres.set('pretensiones', 'Pretensiones');
+campos_nombres.set('depende_cumplimiento', 'Manifiesto que');
+campos_nombres.set('tengo_pruebas', 'Manifiesto bajo juramento que');
+campos_nombres.set('hechos', 'Hechos');
+campos_nombres.set('pruebas', 'Pruebas');
+campos_nombres.set('fundamentos', 'Fundamentos de derecho');
+campos_nombres.set('anexos', 'Anexos');
+campos_nombres.set('solicito_cautelares', 'Solicito medidas cautelares');
+campos_nombres.set('cautelares_que_solicita', 'Medidas cautelares que solicita');
+
+
+var campos_paginas = new Map();
+campos_paginas.set('juez_nombre', 0);
+campos_paginas.set('dte_nom', 0);
+campos_paginas.set('dte_ciudad', 0);
+campos_paginas.set('dte_id_tipo', 0);
+campos_paginas.set('dte_id', 0);
+campos_paginas.set('dte_dir_not', 0);
+campos_paginas.set('dte_email', 0);
+campos_paginas.set('dte_apo_tiene', 0);
+campos_paginas.set('dte_apo_nom', 0);
+campos_paginas.set('dte_apo_id_tipo', 0);
+campos_paginas.set('dte_apo_id', 0);
+campos_paginas.set('dte_apo_tar_pro', 0);
+campos_paginas.set('dem_nom', 1);
+campos_paginas.set('dem_ciu', 1);
+campos_paginas.set('dem_dir_not', 1);
+campos_paginas.set('dem_email', 1);
+campos_paginas.set('dem_id_tipo', 1);
+campos_paginas.set('dem_id', 1);
+campos_paginas.set('pretensiones', 2);
+campos_paginas.set('depende_cumplimiento', 2);
+campos_paginas.set('tengo_pruebas', 2);
+campos_paginas.set('hechos', 3);
+campos_paginas.set('pruebas', 4);
+campos_paginas.set('fundamentos', 5);
+campos_paginas.set('anexos', 5);
+campos_paginas.set('solicito_cautelares', 5);
+campos_paginas.set('cautelares_que_solicita', 5);
+
+var paginas_nombres = new Map();
+paginas_nombres.set(0, 'Demandante');
+paginas_nombres.set(1, 'Demandado');
+paginas_nombres.set(2, 'Pretensiones');
+paginas_nombres.set(3, 'Hechos');
+paginas_nombres.set(4, 'Pruebas');
+paginas_nombres.set(5, 'Otros');
+
+
+function genNotAnalisis(campo, titulo, texto, tipo) {
+
+    var buttonClass = "";
+
+    switch (tipo) {
+        case 1:
+            buttonClass = "ab-red";
+            break;
+        case 2:
+            buttonClass = "ab-orange";
+            break;
+        case 3:
+            buttonClass = "ab-green";
+            break;
+        default:
+            break;
+    }
+
+    return '<div class="col-lg-1">'
+            + '                          <button type="button" onClick = "analisisGoTo(\'' + campo + '\')" class="btn btn-circle-lg waves-effect waves-circle waves-float analisis-button ' + buttonClass + '">'
+            + '                              <i class="material-icons">search</i>'
+            + '                          </button>                                                               '
+            + '                      </div>'
+            + '                      <div class="col-lg-4">'
+            + '                          <h4>' + campos_nombres.get(campo) + '<small><br>' + paginas_nombres.get(campos_paginas.get(campo)) + '</small></h4>'
+            + '                      </div>'
+            + '                      <div class="col-lg-7">'
+            + '                          <p style="margin-top: 8px"><b>' + titulo + '</b><br>' + texto + '</p>'
+            + '                      </div>'
+            + '                      <div class="col-lg-12">'
+            + '                          <hr>'
+            + '                      </div>'
+}
+function analisisMarkError(campo, tipo) {
+
+    var myClassField = "";
+    var myClassLabel = "";
+    if (tipo == 1) {
+        myClassField = "error";
+        myClassLabel = "col-red";
+    } else if (tipo == 2) {
+        myClassField = "warning";
+        myClassLabel = "col-orange";
+    }
+
+    $("#" + campo).parent().addClass(myClassField);
+    $("label[for='" + campo + "']").addClass(myClassLabel);
+
+}
+
+function analisisMarkClean() {
+    $('form#demanda_wizard label').removeClass();
+    $("form#demanda_wizard :input").parent().removeClass().addClass("form-line");
+}
+
+
+
+function analisisGoTo(campo) {
+
+    $('#analisisDemanda').modal('hide');
+
     var bool = false;
 
-    bool = $('#demanda_wizard').steps("setStep", pagina);
+    bool = $('#demanda_wizard').steps("setStep", campos_paginas.get(campo));
     setTimeout(function () {
 
         $("#" + campo).focus();
         $("#" + campo).focus();
+        goToByScroll(campo);
 
-    }, 300);
-    
-    $("#" + campo).parent().addClass("error");
-    $("label[for='" + campo + "']").addClass("col-red");
+    }, 400);
 
 }
 
-function agregarTooltipError () {
-    
-    
+function goToByScroll(id) {
+
+    $('html,body').animate({
+        scrollTop: $("#" + id).offset().top - 150},
+            'slow');
+}
+
+function analisisPopoverClean() {
+    $(":button.analisis-tooltip-mark").remove();
+}
+
+function agregarPopoverError(campo_id, titulo, mensaje, tipoError) {
+
+    var myClass = "";
+    var myIcon = "";
+    if (tipoError == 1) {
+        myClass = "ft-error";
+        myIcon = "cancel";
+    } else if (tipoError == 2) {
+        myClass = "ft-warning";
+        myIcon = "warning";
+    } else if (tipoError == 3) {
+        myClass = "ft-success";
+        myIcon = "check_circle";
+    } else {
+        return;
+    }
+
+    var popover = '<button type="button" class="btn btn-sm btn-transparent analisis-tooltip-mark form-tooltip ' + myClass + '" data-trigger="hover focus" data-container="body" data-toggle="popover"'
+            + '    data-placement="right" '
+            + '    data-html="true" '
+            + '    title="' + titulo + '" '
+            + '   data-content="' + mensaje + '">'
+            + '<i class="material-icons">' + myIcon + '</i>'
+            + '</button>';
+
+    $("#" + campo_id + "_popover_area").empty().append(popover);
+
+    $("[data-toggle=popover]").popover();
+
+
 }
 
 function enviarConnect() {
@@ -376,10 +640,6 @@ function preLoadDemanda(id_demanda) {
             $('#dem_dir_not').val(json.dem_dir_not);
             $('#dem_email').val(json.dem_email);
 
-            if (json.dem_apo_tiene) {
-                $('#dem_apo_tiene').prop('checked', true).change();
-            }
-            $('#dem_apo_nom').val(json.dem_apo_nom);
             $('#pretensiones').html(json.pretensiones);
             $('#hechos').html(json.hechos);
             if (json.depende_cumplimiento) {
@@ -389,15 +649,14 @@ function preLoadDemanda(id_demanda) {
                 $('#tengo_pruebas').prop('checked', true).change();
             }
             $('#pruebas').html(json.pruebas);
-            if (json.estaba_obligado) {
-                $('#estaba_obligado ').prop('checked', true).change();
-            }
             $('#fundamentos').html(json.fundamentos);
             $('#anexos ').html(json.anexos);
             if (json.solicito_cautelares) {
                 $('#solicito_cautelares').prop('checked', true).change();
             }
             $('#cautelares_que_solicita').html(json.cautelares_que_solicita);
+
+            changesdone = false;
         },
         async: false
     });
@@ -435,14 +694,11 @@ function saveChanges() {
             'dem_dir_not': $('#dem_dir_not').val(),
             'dem_email': $('#dem_email').val(),
 
-            'dem_apo_tiene': $("#dem_apo_tiene").is(":checked"),
-            'dem_apo_nom': $('#dem_apo_nom').val(),
             'pretensiones': $('#pretensiones').val(),
             'hechos': $('#hechos').val(),
             'depende_cumplimiento': $("#depende_cumplimiento").is(":checked"),
             'tengo_pruebas': $("#tengo_pruebas").is(":checked"),
             'pruebas': $('#pruebas').val(),
-            'estaba_obligado ': $("#estaba_obligado ").is(":checked"),
             'fundamentos': $('#fundamentos').val(),
             'anexos ': $('#anexos ').val(),
             'solicito_cautelares': $("#solicito_cautelares").is(":checked"),
@@ -457,8 +713,7 @@ function saveChanges() {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
                 console.log('si se actualizo');
                 swal("¡Cambios guardados!", "Todos los cambios fueron guardados con éxito", "success");
-                changesdone = false;
-                location.reload();
+                preLoadDemanda(id_demanda);
             } else {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
                 console.log('no se actualizo');
