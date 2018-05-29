@@ -199,7 +199,7 @@
                                         <button style="background-color: #4543c6 !important;"  type="button" data-original-title="Análisis automático de la demanda" onclick='analizarDemanda()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i class="material-icons">spellcheck</i>
                                         </button>
-                                        <button style="background-color: #365ed4 !important;"  type="button" data-original-title="Enviar para revisión de abogado en SYSLAW Connect"  onclick='enviarConnect()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                        <button style="background-color: #365ed4 !important;"  type="button" data-original-title="Enviar para revisión de abogado en SYSLAW Connect"  onclick='toConnectModalShow()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i class="material-icons">people</i>
                                         </button>
                                         <button style="background-color: #1e85e9 !important;"  type="button" data-original-title="Previsualizar PDF"  onclick='previsualizar()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
@@ -725,13 +725,47 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-lg btn-default waves-effect" data-dismiss="modal">SALIR</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal fade" id="toConnectModal" tabindex="-1" role="dialog" style="display: none;">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <form id="modifyTitle" method="post">
+                            <div class="modal-header detail-header bg-syslaw-gradient">
+                                <div class="pull-left" style="margin-top: 8px;">
+                                    <h4 class="modal-title" style="font-size:18px" id="modEvePubTitulo">Revisión SYSLAW Connect</h4>
+                                </div>
 
 
 
+                                <button data-dismiss="modal" type="button" class="pull-right btn btn-info btn-sm btn-transparent">
+                                    <i class="material-icons">close</i>
+                                </button>
+                                <!--
+                                <button type="button" class="pull-right btn btn-info btn-sm btn-transparent">
+                                    <i onclick="ayudaAnalisis()" class="material-icons">help</i><span style="margin-bottom: 7px; margin-left: 5px">Ayuda</span>
+                                </button>
+                                -->
+                                <button onclick="analizarDemanda()" id="analizarButton" type="button" class="pull-right btn btn-info btn-sm btn-transparent">
+                                    <i class="material-icons">money</i><span style="margin-bottom: 7px; margin-left: 5px">$15.000</span>
+                                </button>
 
+                            </div>
+                            <div class="modal-body">
 
+                                <div class="row" id="collapseAnalisis">
 
-
+                                    <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
+                                        
+                                    </div>
                                 </div>
                             </div>
                             <div class="modal-footer">

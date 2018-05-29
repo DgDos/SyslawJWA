@@ -290,7 +290,7 @@ function analizarDemanda() {
     } else {
 
         $('#analisisDemanda').modal('show');
-        
+
         $.ajax({
             type: 'GET',
             url: "AnalizarDemanda",
@@ -342,7 +342,7 @@ function analizarDemanda() {
                 if (correctosCount > 0) {
                     correctos.children("div:last").remove();
                 }
-                
+
                 $('#errores_count').text(erroresCount);
                 $('#advertencias_count').text(advertenciasCount);
                 $('#correctos_count').text(correctosCount);
@@ -354,6 +354,41 @@ function analizarDemanda() {
     }
 
 
+}
+
+
+var erroresCount = 0;
+var advertenciasCount = 0;
+var correctosCount = 0;
+var errores = $('#analisis_errores_area').empty();
+var advertencias = $('#analisis_advertencias_area').empty();
+var correctos = $('#analisis_correctos_area').empty();
+
+function testAnalisis(campo, titulo, texto, tipo) {
+
+    var append = genNotAnalisis(campo, titulo, texto, tipo);
+    analisisMarkError(campo, tipo);
+    agregarPopoverError(campo, titulo, texto, tipo)
+    switch (tipo) {
+        case 1:
+            errores.append(append);
+            erroresCount++;
+            break;
+        case 2:
+            advertencias.append(append);
+            advertenciasCount++;
+            break;
+        case 3:
+            correctos.append(append);
+            correctosCount++;
+            break;
+        default:
+            break;
+    }
+
+    $('#errores_count').text(erroresCount);
+    $('#advertencias_count').text(advertenciasCount);
+    $('#correctos_count').text(correctosCount);
 }
 
 var campos_nombres = new Map();
@@ -467,6 +502,9 @@ function analisisMarkError(campo, tipo) {
     } else if (tipo == 2) {
         myClassField = "warning";
         myClassLabel = "col-orange";
+    }else if (tipo == 3) {
+        myClassField = "success";
+        myClassLabel = "col-green";
     }
 
     $("#" + campo).parent().addClass(myClassField);
@@ -476,10 +514,12 @@ function analisisMarkError(campo, tipo) {
 
 function analisisMarkClean() {
     $('form#demanda_wizard label').removeClass();
-    $("form#demanda_wizard :input").parent().removeClass().addClass("form-line");
+    $("form#demanda_wizard :input").parent('.form-line').removeClass().addClass("form-line");
 }
 
-
+function toConnectModalShow() {
+    $('#toConnectModal').modal('show');
+}
 
 function analisisGoTo(campo) {
 
