@@ -17,6 +17,10 @@
         <servlet-name>LandingS</servlet-name>
         <servlet-class>Controller.LandingS</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PdfS</servlet-name>
+        <servlet-class>Controller.PdfS</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>signin.html</servlet-name>
         <url-pattern>/login/*</url-pattern>
@@ -61,7 +65,6 @@
         <servlet-name>edit_redaccion.jsp</servlet-name>
         <url-pattern>/redaccion_editar/*</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>dash_revision.jsp</servlet-name>
         <jsp-file>/dash_revision.jsp</jsp-file>
@@ -70,7 +73,6 @@
         <servlet-name>dash_revision.jsp</servlet-name>
         <url-pattern>/revision/*</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>edit_revision.jsp</servlet-name>
         <jsp-file>/edit_revision.jsp</jsp-file>
@@ -79,7 +81,6 @@
         <servlet-name>edit_revision.jsp</servlet-name>
         <url-pattern>/revision_editar/*</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>dash_enviadas.jsp</servlet-name>
         <jsp-file>/dash_enviadas.jsp</jsp-file>
@@ -88,7 +89,6 @@
         <servlet-name>dash_enviadas.jsp</servlet-name>
         <url-pattern>/enviadas/*</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>edit_enviadas.jsp</servlet-name>
         <jsp-file>/edit_enviadas.jsp</jsp-file>
@@ -97,7 +97,6 @@
         <servlet-name>edit_enviadas.jsp</servlet-name>
         <url-pattern>/enviadas_editar/*</url-pattern>
     </servlet-mapping>
-    
     <servlet>
         <servlet-name>plata.jsp</servlet-name>
         <jsp-file>/plata.jsp</jsp-file>
@@ -106,10 +105,6 @@
         <servlet-name>plata.jsp</servlet-name>
         <url-pattern>/plata/*</url-pattern>
     </servlet-mapping>
-    
-    
-    
-    
     <servlet>
         <servlet-name>Login</servlet-name>
         <servlet-class>Controller.Login</servlet-class>
@@ -161,6 +156,10 @@
     <servlet-mapping>
         <servlet-name>LandingS</servlet-name>
         <url-pattern>/LandingS</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PdfS</servlet-name>
+        <url-pattern>/PdfS</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
