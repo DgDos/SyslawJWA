@@ -235,6 +235,11 @@ public class DemandaDAO {
     }
 
     public boolean pickIt(int id_demanda, Usuario user) throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select * from demanda where delete=1 and id_ayudante='" + user.getDocumento() + "'");
+        while(rs.next()){
+            return false;
+        }
         PreparedStatement preparedStatement;
         preparedStatement = connection.prepareStatement("update demanda set id_ayudante=?,estado=3 where id_demanda=?");
         preparedStatement.setString(1, user.getDocumento());
