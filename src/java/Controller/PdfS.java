@@ -52,7 +52,7 @@ public class PdfS extends HttpServlet {
             PDF pdf=new PDF();
             String url=pdf.makePDF(demanda);
             Gson gson=new Gson();
-            out.print(gson.toJson("./docs/"+demanda.getDte_id()+".pdf"));
+            out.print(gson.toJson("app/docs/1014258431.pdf"));
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(PdfS.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -63,9 +63,6 @@ public class UsuarioS extends HttpServlet {
             if(opcion.equals("getMoney")){
                 out.println(g.toJson(u.getMoney(user.getDocumento())));
             }
-            if(opcion.equals("lessMoney")){
-                
-            }
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(UsuarioS.class.getName()).log(Level.SEVERE, null, ex);
             out.println(false);
