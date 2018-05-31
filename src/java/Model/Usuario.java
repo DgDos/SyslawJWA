@@ -10,6 +10,7 @@ package Model;
  * @author FiJus
  */
 public class Usuario {
+
     private String documento;
     private String nombre;
     private String ciudad;
@@ -32,7 +33,7 @@ public class Usuario {
         this.tarjeta = tarjeta;
         this.tipo_usuario = tipo_usuario;
         this.tipo_id = tipo_id;
-        this.dinero=dinero;
+        this.dinero = dinero;
     }
 
     public Usuario(String documento, String nombre, String ciudad, String direccion, String correo, int dinero, int tipo_usuario, int tipo_id) {
@@ -117,5 +118,28 @@ public class Usuario {
     public void setDinero(int dinero) {
         this.dinero = dinero;
     }
-    
+
+    public String getMoney() {
+        String money = "" + this.dinero;
+        String transformation = "";
+        int cont=1;
+        for (int i = money.length()-1; i >= 0; i--) {
+            transformation += money.charAt(i);
+            if (cont % 3 == 0) {
+                if (cont == 3 || cont == 9) {
+                    transformation += '.';
+                } else {
+                    transformation += "'";
+                }
+            }
+            cont++;
+        }
+        String fin="";
+        for(int i=transformation.length()-1;i>=0;i--){
+            fin+=transformation.charAt(i);
+        }
+        System.out.println(fin);
+        return fin;
+    }
+
 }

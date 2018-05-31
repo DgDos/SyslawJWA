@@ -364,33 +364,6 @@ var errores = $('#analisis_errores_area').empty();
 var advertencias = $('#analisis_advertencias_area').empty();
 var correctos = $('#analisis_correctos_area').empty();
 
-function testAnalisis(campo, titulo, texto, tipo) {
-
-    var append = genNotAnalisis(campo, titulo, texto, tipo);
-    analisisMarkError(campo, tipo);
-    agregarPopoverError(campo, titulo, texto, tipo)
-    switch (tipo) {
-        case 1:
-            errores.append(append);
-            erroresCount++;
-            break;
-        case 2:
-            advertencias.append(append);
-            advertenciasCount++;
-            break;
-        case 3:
-            correctos.append(append);
-            correctosCount++;
-            break;
-        default:
-            break;
-    }
-
-    $('#errores_count').text(erroresCount);
-    $('#advertencias_count').text(advertenciasCount);
-    $('#correctos_count').text(correctosCount);
-}
-
 var campos_nombres = new Map();
 campos_nombres.set('juez_nombre', 'Señor, juez municipal de');
 campos_nombres.set('dte_nom', 'Nombre del demandante');
@@ -502,7 +475,7 @@ function analisisMarkError(campo, tipo) {
     } else if (tipo == 2) {
         myClassField = "warning";
         myClassLabel = "col-orange";
-    }else if (tipo == 3) {
+    } else if (tipo == 3) {
         myClassField = "success";
         myClassLabel = "col-green";
     }
@@ -579,6 +552,54 @@ function agregarPopoverError(campo_id, titulo, mensaje, tipoError) {
     $("[data-toggle=popover]").popover();
 
 
+}
+
+function generatePDF() {
+    if (changesdone) {
+        swal({
+            title: "¿Desea guardar sus cambios?",
+            text: "Para previsualizar su demanda, es requerido guardar o descartar los cambios realizados. <br> Si selecciona no guardar, todos su cambios sin guardar se perderán permanentemente.",
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Guardar cambios y exportar",
+            cancelButtonText: "Descartar cambios y exportar",
+            closeOnConfirm: true,
+            closeOnCancel: true
+        }, function (isConfirm) {
+            if (isConfirm) {
+                saveChanges();
+                generatePDF();
+            } else {
+                changesdone = false;
+                preLoadDemanda(id_demanda);
+                generatePDF();
+            }
+        });
+    } else {
+        $.ajax({
+            type: 'POST',
+            url: "PdfS",
+            //force to handle it as text
+            data: {
+                'id_demanda': id_demanda
+            },
+            dataType: "text",
+            success: function (data) {
+                var json = $.parseJSON(data);
+                var win = window.open(json, '_blank');
+                if (win) {
+                    //Browser has allowed it to be opened
+                    win.focus();
+                } else {
+                    //Browser has blocked it
+                    alert('Please allow popups for this website');
+                }
+            },
+            async: false
+        });
+    }
 }
 
 function enviarConnect() {

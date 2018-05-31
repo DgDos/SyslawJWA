@@ -39,14 +39,6 @@ public class UsuarioS extends HttpServlet {
 
                 out.println(gson.toJson(user));
             }
-
-            if (opcion.equalsIgnoreCase("getPlata")) {
-                out.println(gson.toJson("10.000"));
-            }
-            
-            if (opcion.equalsIgnoreCase("addPlata")) {
-                out.println(gson.toJson(true));
-            }
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(UsuarioS.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -57,6 +49,7 @@ public class UsuarioS extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
+        Gson g=new Gson();
         Usuario user = (Usuario) request.getSession().getAttribute("usuario");
         try{
             String opcion = request.getParameter("opcion");
@@ -68,7 +61,7 @@ public class UsuarioS extends HttpServlet {
                 out.println(u.updateMoney(user.getDocumento(), user.getDinero()));
             }
             if(opcion.equals("getMoney")){
-                out.println(user.getDinero());
+                out.println(g.toJson(user.getMoney()));
             }
             if(opcion.equals("lessMoney")){
                 

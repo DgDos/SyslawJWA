@@ -19,11 +19,34 @@ try {
 
 }
 
+function getPlata() {
+
+    $.ajax({
+        type: 'POST',
+        url: "UsuarioS",
+        //force to handle it as text
+        data: {
+            'opcion': "getMoney"
+        },
+        dataType: "text",
+        success: function (data) {
+
+            var json = $.parseJSON(data);
+            $('#menu_plata_num').empty().text(json);
+            try {
+                $('#plata_num').empty().text(json);
+            } catch (e) {
+            }
+        },
+        async: false
+    });
+}
+$(document).ready(getPlata())
 function logout() {
     $.ajax({
         type: 'get',
         url: "Login",
-        
+
         dataType: "text",
         success: function (data) {
 

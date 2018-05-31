@@ -69,29 +69,9 @@ $(document).ready(function () {
         ]);
     }
 
-    getPlata();
     getEstadisticas();
 
 });
-
-
-function getPlata() {
-    $.ajax({
-        type: 'POST',
-        url: "UsuarioS",
-        //force to handle it as text
-        data: {
-            'opcion': "getMoney"
-        },
-        dataType: "text",
-        success: function (data) {
-
-            var json = $.parseJSON(data);
-            $('#menu_plata_num').empty().text(json);
-        },
-        async: false
-    });
-}
 
 
 function getEstadisticas() {
