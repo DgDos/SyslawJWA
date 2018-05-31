@@ -1,6 +1,6 @@
 ﻿// Al cargar documento
 
- var table;
+ var table1;
 
 $(document).ready(function () {
 
@@ -17,13 +17,41 @@ $(document).ready(function () {
     //$('#demandas_tabla').DataTable();
 
 
-    table = $('#liststate2').DataTable({
+    table1 = $('#liststate2').DataTable({
         ajax: {
             url: "DemandaS",
             dataSrc: '',
             data: {
                 'opcion': "state",
                 'state': "2",
+            }
+        },
+        columns: [
+            {data: 'titulo'},
+            {data: 'fecha_modificacion'},
+            {data: 'fecha_creacion'},
+            {data: 'id_ayudante'},
+            {data: 'porcentaje',
+                render: function (data, type, row, meta ) {
+                    return '<div class="progress"><div class="progress-bar progress-bar-striped bg-syslaw" role="progressbar" aria-valuenow="'+data+'" aria-valuemin="0" aria-valuemax="100" style="width: '+data+'%;">' + data +'%</div></div>';
+                }}
+        ],
+        language: {
+            url: 'https://cdn.datatables.net/plug-ins/1.10.16/i18n/Spanish.json'
+        },
+        responsive: true,
+        order: [[ 1, "desc" ]]
+    });
+    
+    
+    
+    table2 = $('#liststate4').DataTable({
+        ajax: {
+            url: "DemandaS",
+            dataSrc: '',
+            data: {
+                'opcion': "state",
+                'state': "4",
             }
         },
         columns: [
@@ -51,10 +79,11 @@ $(document).ready(function () {
         order: [[ 1, "desc" ]]
     });
 
-    $('#liststate2 tbody').on('click', 'a', function () {
-        var data = table.row($(this).parents('tr')).data();
+    $('#liststate4 tbody').on('click', 'a', function () {
+        var data = table2.row($(this).parents('tr')).data();
         abrir(data.id_demanda);
     });
+    
 
 });
 
@@ -90,7 +119,7 @@ $('#nueva_demanda_form').on('submit', function () {
     
     $('#nuevaDemanda').modal('hide');
 
-    table.ajax.reload();
+    table1.ajax.reload();
 
     return false;
 });

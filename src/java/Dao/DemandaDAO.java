@@ -231,7 +231,7 @@ public class DemandaDAO {
                 UsuarioDAO u = new UsuarioDAO();
                 DemandaDAO d = new DemandaDAO();
                 Demanda demanda = d.getDemandaById(id_demanda);
-                u.addMoney2(demanda.getId_ayudante());
+                u.addMoney2(demanda.getId_ayudante(),id_demanda);
                 
             } catch (URISyntaxException | ClassNotFoundException | IOException ex) {
                 Logger.getLogger(DemandaDAO.class.getName()).log(Level.SEVERE, null, ex);
