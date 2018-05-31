@@ -74,6 +74,26 @@ function showCancelMessage() {
         closeOnCancel: false
     }, function (isConfirm) {
         if (isConfirm) {
+            showCancelMessage2();
+        } else {
+            swal("Cancelled", "Your imaginary file is safe :)", "error");
+        }
+    });
+}
+
+function showCancelMessage2() {
+    swal({
+        title: "Are you sure2?",
+        text: "You will not be able to recover this imaginary file!",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Yes, delete it!",
+        cancelButtonText: "No, cancel plx!",
+        closeOnConfirm: true,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
             swal("Deleted!", "Your imaginary file has been deleted.", "success");
         } else {
             swal("Cancelled", "Your imaginary file is safe :)", "error");
