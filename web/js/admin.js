@@ -50,7 +50,7 @@ function logout() {
         dataType: "text",
         success: function (data) {
 
-            document.location.href = 'signin.html';
+            document.location.href = 'login';
         },
 
     });
