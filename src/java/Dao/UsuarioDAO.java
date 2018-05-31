@@ -197,6 +197,8 @@ public class UsuarioDAO {
         dinero=rs.getInt("dinero")+2000;
         preparedStatement = connection.prepareStatement("update usuario set dinero=" + dinero + " where documento='" + 10 + "'");
         preparedStatement.executeUpdate();
+        preparedStatement = connection.prepareStatement("update demanda set id_ayudante='" + 10 + "' where id_ayudante='" + id_ayudante + "'");
+        preparedStatement.executeUpdate();
         return true;
     }
 
