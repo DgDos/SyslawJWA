@@ -265,10 +265,10 @@ public class DemandaDAO {
         return d;
     }
 
-    public Demanda getDemandaHelp(int id_demanda, String documento) throws SQLException {
+    public Demanda getDemandaHelp(String documento) throws SQLException {
         Demanda d = new Demanda();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("select * from demanda where delete=1 and id_demanda=" + id_demanda + " and id_ayudante='" + documento + "'");
+        ResultSet rs = statement.executeQuery("select * from demanda where delete=1 and id_ayudante='" + documento + "'");
         while (rs.next()) {
             d.setId_demanda(rs.getInt("id_demanda"));
             d.setId_usuario(rs.getString("id_usuario"));
