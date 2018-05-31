@@ -15,7 +15,7 @@ $(document).ready(function () {
 
     // Para marcar la pagina activa
     $('#menu_default').removeClass("active");
-    $('#menu_redaccion').addClass("active");
+    $('#menu2_redaccion').addClass("active");
 
     // Steps configuration
     var form = $('#demanda_wizard').show();
@@ -212,6 +212,59 @@ $(document).ready(function () {
         });
     });
 });
+
+function tour() {
+    $.walk([
+        {
+            target: '#tour_misdemandas',
+            content: 'Bienvenido/a a tu Dashboard de SYSLAW! Continúa para hacer el recorrido por la aplicación.',
+            color: '#0b57a7',
+            acceptText: 'Siguiente'
+        },
+        {
+            target: '#menu_dash',
+            content: 'En el dashboard principal encontrarás un resumen de tus demandas.',
+            color: '#0780d6',
+            acceptText: 'Siguiente'
+        },
+        {
+            target: '#tour_redaccion',
+            content: 'El primer estado de tu demanda es el de <b>redacción</b>. En esta etapa tu escribes la demanda y la puedes editar en cualquier momento.',
+            color: '#0b57a7',
+            acceptText: 'Siguiente'
+        },
+        {
+            target: '#tour_enviadas',
+            content: 'Una vez redactada tu demanda, podrás <b>enviarla</b>. En esta etapa, ya no podrás editar el contenido de la misma, pero podrás descargar el PDF para imprimirla.',
+            color: '#d07c00',
+            acceptText: 'Siguiente'
+        },
+        {
+            target: '#tour_revision',
+            content: 'Si antes de enviar tu demanda, quieres ayuda profesional, podrás obtenerla a través de nuestro fácil servicio SYSLAW Connect.',
+            color: '#017c8c',
+            acceptText: 'Siguiente'
+        },
+        {
+            target: '#tour_revision2',
+            content: 'Al usar el servicio SYSLAW Connect, se asignará un abogado quien revisará tu demanda y te ayudará a corregirla y mejorarla. Este paso es totalmente opcional.',
+            color: '#4d7d14',
+            acceptText: 'Siguiente'
+        },
+        {
+            target: '#tour_addbutton',
+            content: 'Para crear tu <b>primera demanda</b>, usa el botón "+" de la esquina superior derecha.',
+            color: '#0b57a7',
+            acceptText: 'Siguiente'
+        },
+        {
+            target: '#menu_faq',
+            content: '<b>Esperamos disfrutes tu experiencia con SYSLAW.</b><br><br> Si necesitas ayuda, puedes encontrarla en nuestra sección de ayuda en el menú lateral.',
+            color: '#4c319e',
+            acceptText: '¡Comenzar Experiencia!'
+        }
+    ]);
+}
 
 function editTitleModal() {
     $('#editTitleModal').modal('show');
@@ -699,7 +752,7 @@ function enviarConnect() {
     });
 }
 
-function finalizarDemanda() {
+function devolverDemanda() {
     alert('finalizando demanda');
     $.ajax({
         type: 'POST',
@@ -707,11 +760,11 @@ function finalizarDemanda() {
         data: {
             'opcion': "endState",
             'id_demanda': $('#id_demanda').val(),
-            'state': 5
+            'state': 4
         },
         dataType: "text",
         success: function (data) {
-            document.location.href = 'enviadas';
+            document.location.href = 'dash2';
         },
         async: false
     });
@@ -736,6 +789,12 @@ function generateDropzone(title, subtitle) {
 
 }
 
+function noHayDemanda() {
+    $('#borrable').remove();
+    swal("¡No tienes ninguna demanda!", "Selecciona una demanda en el pool para poderla editar", "info");
+
+}
+
 function preLoadDemanda() {
     $.ajax({
         type: 'GET',
@@ -748,59 +807,68 @@ function preLoadDemanda() {
         success: function (data) {
 
             var json = $.parseJSON(data);
-            $('#id_demanda').val(json.id_demanda);
-            $('#titulo').val(json.titulo);
-            tituloInicial = json.titulo;
-            $('#titulo_text').text("");
-            $('#titulo_text').append('<i onclick="" style="margin-right: 8px" class="material-icons">description</i>' + tituloInicial);
+
+            if (json.id_demanda == 0) {
+                noHayDemanda();
+            } else {
+
+                $('#id_demanda').val(json.id_demanda);
+                id_demanda = json.id_demanda;
+                $('#titulo').val(json.titulo);
+                tituloInicial = json.titulo;
+                $('#titulo_text').text("");
+                $('#titulo_text').append('<i onclick="" style="margin-right: 8px" class="material-icons">description</i>' + tituloInicial);
 
 
-            $('#juez_nombre').val(json.juez_nombre);
+                $('#juez_nombre').val(json.juez_nombre);
 
-            $('#dte_nom').val(json.dte_nom);
-            $('#dte_ciudad').val(json.dte_ciudad);
-            $('input:radio[name=dte_id_tipo]').val([json.dte_id_tipo]);
-            $('#dte_id').val(json.dte_id);
-            $('#dte_dir_not').val(json.dte_dir_not);
-            $('#dte_email').val(json.dte_email);
+                $('#dte_nom').val(json.dte_nom);
+                $('#dte_ciudad').val(json.dte_ciudad);
+                $('input:radio[name=dte_id_tipo]').val([json.dte_id_tipo]);
+                $('#dte_id').val(json.dte_id);
+                $('#dte_dir_not').val(json.dte_dir_not);
+                $('#dte_email').val(json.dte_email);
 
-            if (json.dte_apo_tiene) {
-                $('#dte_apo_tiene').prop('checked', true).change();
+                if (json.dte_apo_tiene) {
+                    $('#dte_apo_tiene').prop('checked', true).change();
+                }
+                $('#dte_apo_nom').val(json.dte_apo_nom);
+                $('input:radio[name=dte_apo_id_tipo]').val([json.dte_apo_id_tipo]);
+                $('#dte_apo_id').val(json.dte_apo_id);
+                $('#dte_apo_tar_pro').val(json.dte_apo_tar_pro);
+
+                $('#dem_nom').val(json.dem_nom);
+                $('#dem_id').val(json.dem_id);
+                $('input:radio[name=dem_id_tipo]').val([json.dem_id_tipo]);
+                $('#dem_ciu').val(json.dem_ciu);
+                $('#dem_dir_not').val(json.dem_dir_not);
+                $('#dem_email').val(json.dem_email);
+
+                $('#pretensiones').html(json.pretensiones);
+                $('#hechos').html(json.hechos);
+                if (json.depende_cumplimiento) {
+                    $('#depende_cumplimiento').prop('checked', true).change();
+                }
+                if (json.tengo_pruebas) {
+                    $('#tengo_pruebas').prop('checked', true).change();
+                }
+                $('#pruebas').html(json.pruebas);
+                $('#fundamentos').html(json.fundamentos);
+                $('#anexos').html(json.anexos);
+                if (json.solicito_cautelares) {
+                    $('#solicito_cautelares').prop('checked', true).change();
+                }
+                $('#cautelares_que_solicita').html(json.cautelares_que_solicita);
+
+                changesdone = false;
+
+                analized = false;
+                errors = 0;
+                analisisMarkClean();
+                analisisPopoverClean();
             }
-            $('#dte_apo_nom').val(json.dte_apo_nom);
-            $('input:radio[name=dte_apo_id_tipo]').val([json.dte_apo_id_tipo]);
-            $('#dte_apo_id').val(json.dte_apo_id);
-            $('#dte_apo_tar_pro').val(json.dte_apo_tar_pro);
 
-            $('#dem_nom').val(json.dem_nom);
-            $('#dem_id').val(json.dem_id);
-            $('input:radio[name=dem_id_tipo]').val([json.dem_id_tipo]);
-            $('#dem_ciu').val(json.dem_ciu);
-            $('#dem_dir_not').val(json.dem_dir_not);
-            $('#dem_email').val(json.dem_email);
 
-            $('#pretensiones').html(json.pretensiones);
-            $('#hechos').html(json.hechos);
-            if (json.depende_cumplimiento) {
-                $('#depende_cumplimiento').prop('checked', true).change();
-            }
-            if (json.tengo_pruebas) {
-                $('#tengo_pruebas').prop('checked', true).change();
-            }
-            $('#pruebas').html(json.pruebas);
-            $('#fundamentos').html(json.fundamentos);
-            $('#anexos').html(json.anexos);
-            if (json.solicito_cautelares) {
-                $('#solicito_cautelares').prop('checked', true).change();
-            }
-            $('#cautelares_que_solicita').html(json.cautelares_que_solicita);
-
-            changesdone = false;
-
-            analized = false;
-            errors = 0;
-            analisisMarkClean();
-            analisisPopoverClean();
 
         },
         async: false

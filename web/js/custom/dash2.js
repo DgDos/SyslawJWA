@@ -318,6 +318,7 @@ function pick(id_demanda) {
             var json = $.parseJSON(data);
             if (json == true) {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
+                document.location.href = 'actual';
             } else {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
                 console.log('no se encontro el usuario');

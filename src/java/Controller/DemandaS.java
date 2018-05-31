@@ -49,7 +49,6 @@ public class DemandaS extends HttpServlet {
             }
             //trae la informacion de la demanda que esta ayudando a corregir el abogado
             if (opcion.equalsIgnoreCase("helpInfo")) {
-                ;
                 out.println(gson.toJson(d.getDemandaHelpInfo(user.getDocumento())));
             }
             //trae la demanda que esta ayudando a corregir el abogado

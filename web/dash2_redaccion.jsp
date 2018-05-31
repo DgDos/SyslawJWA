@@ -154,7 +154,7 @@
                 </div>
                 <!-- #User Info -->
                 <!-- Menu -->
-                <%@include file="util/menu.jsp" %>
+                <%@include file="util/menu2.jsp" %>
                 <!-- #Menu -->
                 <!-- Footer -->
                 <div class="legal">
@@ -172,7 +172,7 @@
 
         <section class="content">
             <div class="container-fluid">
-                <div class="row clearfix">
+                <div class="row clearfix" id="borrable">
 
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 
@@ -184,29 +184,38 @@
                                 </div>
                                 <div class="col-xs-12 col-sm-6 align-right" style="margin-top: 15px">
                                     <span  id="tour_botones" >
+                                        <!-- 
                                         <button style="background-color: #601ab1 !important;" type="button" onclick="editTitleModal();" data-original-title="Editar título" data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i class="material-icons">mode_edit</i>
-                                        </button>
+                                        </button> -->
                                         <!--                                        
                                         </button>
                                         <button style="background-color: #e4e4e4 !important;" type="button" onclick="deleteDemanda();" data-original-title="Eliminar demanda" data-toggle="tooltip" data-placement="bottom" class="btn btn-transparent waves-effect btn-no-shadow">
                                             <i class="material-icons">delete</i>
                                         </button>
                                         -->
+                                        
                                         <button style="background-color: #5230bd !important;" id="tour_guardar" type="button" data-original-title="Guardar cambios" onclick='saveChanges()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i class="material-icons">save</i>
-                                        </button>
-                                        <button style="background-color: #4543c6 !important;"  type="button" data-original-title="Análisis automático de la demanda" onclick='analizarDemanda()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                        </button> 
+                                        <!-- 
+                                         <button style="background-color: #5230bd !important;"  type="button" data-original-title="Ayuda"  onclick='tour()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                            <i class="material-icons">help</i>
+                                        </button> -->
+                                        
+                                        <button style="background-color: #4547c9 !important;"  type="button" data-original-title="Análisis automático de la demanda" onclick='analizarDemanda()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i class="material-icons">spellcheck</i>
                                         </button>
+                                        
+                                        <!-- 
                                         <button style="background-color: #365ed4 !important;"  type="button" data-original-title="Enviar para revisión de abogado en SYSLAW Connect"  onclick='enviarConnectShow()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i class="material-icons">people</i>
-                                        </button>
+                                        </button>--><!-- 
                                         <button style="background-color: #1e85e9 !important;"  type="button" data-original-title="Previsualizar PDF"  onclick='generatePDF()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i class="material-icons">file_download</i>
-                                        </button>
-                                        <button style="background-color: #119af5 !important;" type="button" data-original-title="Marcar demanda como terminada" data-toggle="tooltip"  onclick='finalizarDemanda()'data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
-                                            <i class="material-icons">check</i>
+                                        </button>-->
+                                        <button style="background-color: #365dd4 !important;" type="button" data-original-title="Devolver demanda a usuario" data-toggle="tooltip"  onclick='devolverDemanda()'data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                            <i class="material-icons">reply</i>
                                         </button>
                                     </span>
                                 </div>
