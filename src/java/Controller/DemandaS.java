@@ -54,8 +54,7 @@ public class DemandaS extends HttpServlet {
             }
             //trae la demanda que esta ayudando a corregir el abogado
             if (opcion.equalsIgnoreCase("help")) {
-                int id_demanda = Integer.parseInt(request.getParameter("id_demanda"));
-                Demanda demanda = d.getDemandaHelp(id_demanda, user.getDocumento());
+                Demanda demanda = d.getDemandaHelp(user.getDocumento());
                 out.println(gson.toJson(demanda));
             }
             //trae la informacion de la demanda del usuario
