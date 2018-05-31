@@ -60,6 +60,9 @@
         <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
         <link href="css/themes/all-themes.css" rel="stylesheet" />
 
+        <!-- Sweetalert Css -->
+        <link href="plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
         <!--WaitMe Css-->
         <link href="plugins/waitme/waitMe.css" rel="stylesheet" />
 
@@ -323,6 +326,9 @@
 
         <!-- Material Walkthrough -->
         <script src="plugins/material-walkthrough/material-walkthrough.js"></script>
+
+        <!-- SweetAlert Plugin Js -->
+        <script src="plugins/sweetalert/sweetalert.min.js"></script> 
 
         <!-- Theme Js -->
         <script src="js/admin.js"></script>

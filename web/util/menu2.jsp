@@ -14,7 +14,7 @@
             </a>
         </li>
         <li id="menu2_redaccion"> 
-            <a href="redaccion">
+            <a href="actual">
                 <i class="material-icons">mode_edit</i>
                 <span>Demanda actual</span>
             </a>

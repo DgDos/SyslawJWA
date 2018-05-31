@@ -105,7 +105,7 @@ $(document).ready(function () {
 
     $('#liststate2 tbody').on('click', 'a', function () {
         var data = table.row($(this).parents('tr')).data();
-        abrir(data.id_demanda);
+        pick(data.id_demanda);
     });
     
     
@@ -303,9 +303,29 @@ $('#nueva_demanda_form').on('submit', function () {
     return false;
 });
 
-function abrir(id_demanda) {
-    localStorage.setItem("id_demanda", id_demanda);
-    document.location.href = 'demanda.jsp';
+function pick(id_demanda) {
+    $.ajax({
+        type: 'POST',
+        url: "DemandaS",
+        //force to handle it as text
+        data: {
+            'opcion': "pickFromPool",
+            'id_demanda': id_demanda
+        },
+        dataType: "text",
+        success: function (data) {
+
+            var json = $.parseJSON(data);
+            if (json == true) {
+                // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
+            } else {
+                // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
+                console.log('no se encontro el usuario');
+                swal("¡No se puedo seleccionar la demanda!", "Envía primero la demanda actual para poder escojer otra", "error");
+            }
+        },
+        async: false
+    });
 }
 
 function wait(ms) {
