@@ -100,10 +100,10 @@ public class PDF {
         if (demanda.getDte_id_tipo() == 2) {
             demandante += "_) NIT(_) TI(X) CE(_) PASAPORTE(_)\n";
         }
-        if (demanda.getDte_id_tipo() == 3) {
+        if (demanda.getDte_id_tipo() == 4) {
             demandante += "_) NIT(_) TI(_) CE(X) PASAPORTE(_)\n";
         }
-        if (demanda.getDte_id_tipo() == 4) {
+        if (demanda.getDte_id_tipo() == 3) {
             demandante += "_) NIT(_) TI(_) CE(_) PASAPORTE(X)\n";
         }
         demandante += "Número: " + demanda.getDte_id() + "\n"
@@ -121,10 +121,10 @@ public class PDF {
             if (demanda.getDte_apo_id_tipo() == 2) {
                 demandante += "_) NIT(_) TI(X) CE(_) PASAPORTE(_)\n";
             }
-            if (demanda.getDte_apo_id_tipo() == 3) {
+            if (demanda.getDte_apo_id_tipo() == 4) {
                 demandante += "_) NIT(_) TI(_) CE(X) PASAPORTE(_)\n";
             }
-            if (demanda.getDte_apo_id_tipo() == 4) {
+            if (demanda.getDte_apo_id_tipo() == 3) {
                 demandante += "_) NIT(_) TI(_) CE(_) PASAPORTE(X)\n";
             }
             demandante += "Número: " + demanda.getDte_apo_id() + "\n"
@@ -146,10 +146,10 @@ public class PDF {
         if (demanda.getDem_id_tipo() == 2) {
             demandado += "_) NIT(_) TI(X) CE(_) PASAPORTE(_)\n";
         }
-        if (demanda.getDem_id_tipo() == 3) {
+        if (demanda.getDem_id_tipo() == 4) {
             demandado += "_) NIT(_) TI(_) CE(X) PASAPORTE(_)\n";
         }
-        if (demanda.getDem_id_tipo() == 4) {
+        if (demanda.getDem_id_tipo() == 3) {
             demandado += "_) NIT(_) TI(_) CE(_) PASAPORTE(X)\n";
         }
         demandado += "Número: " + demanda.getDem_id() + "\n"
