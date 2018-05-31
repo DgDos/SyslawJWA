@@ -1,18 +1,20 @@
 <%@page import="Model.Usuario"%>
 <%
-                            if (request.getSession().getAttribute("usuario") != null) {
-                                Usuario u = (Usuario) request.getSession().getAttribute("usuario");
-                                if(u.getTipo_usuario()==0){    
-                                    response.sendRedirect("dash0");                               
-                                }if(u.getTipo_usuario()==1){
-                                    response.sendRedirect("dash"); 
-                                }if(u.getTipo_usuario()==2){
-                                }
-                            }
-                            else{
-                                response.sendRedirect("login");
-                            }
-                        %> 
+    if (request.getSession().getAttribute("usuario") != null) {
+        Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+        if (u.getTipo_usuario() == 0) {
+            response.sendRedirect("dash0");
+        }
+        if (u.getTipo_usuario() == 1) {
+            response.sendRedirect("dash");
+        }
+        if (u.getTipo_usuario() == 2) {
+        }
+    } else {
+        response.sendRedirect("login");
+        return;
+    }
+%> 
 <!DOCTYPE html>
 <html>
 
@@ -181,7 +183,7 @@
                             <div class="header bg-white add-event-header" style="background-color: #f1f1f1 !important;">
                                 <div class="row clearfix">
                                     <div class="col-xs-6 col-sm-6" style="margin-top: 5px">
-                                        <h2><span id="tour_misdemandas">Mi Dashboard</span></h2>
+                                        <h2><span id="tour_misdemandas">POOL SYSLAW Connect</span></h2>
                                     </div>
                                     <div class="col-xs-12 col-sm-6 align-right">
                                         <button type="button" onclick="tour()" class="btn bg-grey waves-effect btn-no-shadow">
@@ -201,64 +203,25 @@
                                 <div class="card">
                                     <div class="body">
                                         <div class="row clearfix">
-                                            
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 shorter-row" id="tour_redaccion">
 
-                                                <div class="info-box bg-blue hover-expand-effect">
-                                                    <a href="redaccion">
-                                                        <div class="icon">
-                                                            <i class="material-icons">mode_edit</i>
-                                                        </div>
-                                                    </a>
-                                                    <div class="content">
-                                                        <div class="text">DEM. EN REDACCION</div>
-                                                        <div class="number" id="redaccion_num">3</div>
-                                                    </div>
-                                                </div> 
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 shorter-row" id="tour_revision">
-                                                <div class="info-box bg-cyan hover-expand-effect">
-                                                    <a href="revision">
-                                                        <div class="icon">
-                                                            <i class="material-icons">access_time</i>
-                                                        </div>
-                                                    </a>
-                                                    <div class="content">
-                                                        <div class="text">CONNECT EN ESPERA</div>
-                                                        <div class="number" id="espera_num">3</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 shorter-row" id="tour_revision2">
-                                                <div class="info-box bg-light-green hover-expand-effect">
-                                                    <a href="revision">
-                                                        <div class="icon">
-                                                            <i class="material-icons">rate_review</i>
-                                                        </div>
-                                                    </a>
-                                                    <div class="content">
-                                                        <div class="text">CONNECT REVISADOS</div>
-                                                        <div class="number" id="revisadas_num">2</div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 shorter-row"  id="tour_enviadas">
-                                                <div class="info-box bg-orange hover-expand-effect">
-                                                    <a href="enviadas">
-                                                        <div class="icon">
-                                                            <i class="material-icons">playlist_add_check</i>
-                                                        </div>
-                                                    </a>
-                                                    <div class="content">
-                                                        <div class="text">DEM. ENVIADAS</div>
-                                                        <div class="number" id="enviadas_num">3</div>
-                                                    </div>
-                                                </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                                <table id="liststate2" class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th id="titulo_tour">Título</th>
+                                                            <th>Modificado</th>
+                                                            <th>Creado</th>
+                                                            <th>Porcentaje</th>
+                                                            <th></th>
+                                                        </tr>
+                                                    </thead>
+                                                </table>
                                             </div>
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                                                 <div class="">
-                                                   <img class="d-block mx-auto mb-4" src="images/welcome.png" alt="" width="auto" style="margin-top: 25px; margin-bottom: 10px; width: 100%;">
+                                                    <img class="d-block mx-auto mb-4" src="images/welcome.png" alt="" width="auto" style="margin-top: 25px; margin-bottom: 10px; width: 100%;">
                                                 </div> 
                                             </div>
                                         </div>

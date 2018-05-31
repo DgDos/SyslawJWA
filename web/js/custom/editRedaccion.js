@@ -348,9 +348,9 @@ function analizarDemanda() {
                 $('#errores_count').text(erroresCount);
                 $('#advertencias_count').text(advertenciasCount);
                 $('#correctos_count').text(correctosCount);
-                
+
                 analized = true;
-                errors = erroresCount;        
+                errors = erroresCount;
 
 
             },
@@ -452,7 +452,7 @@ function genNotAnalisis(campo, titulo, texto, tipo) {
             buttonClass = "ab-green";
             titulo = "Campo lleno";
             texto = "No encontramos problemas en este campo";
-            
+
             break;
         default:
             break;
@@ -607,73 +607,88 @@ function generatePDF() {
     }
 }
 
-function enviarConnectShow(){
+function analizedDialog() {
+    swal({
+        title: "¿Desea analizar su demanda?",
+        text: "Para enviar su demanda a un abogado le recomendamos que analice su demanda con nuestro sistema",
+        type: "warning",
+        html: true,
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Analizar",
+        cancelButtonText: "No analizar y enviar",
+        closeOnConfirm: true,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            analizarDemanda();
+        } else {
+            analized = true;
+        }
+    });
+}
+
+function changesDialog() {
+    swal({
+        title: "¿Desea guardar sus cambios?",
+        text: "Para previsualizar su demanda, es requerido guardar o descartar los cambios realizados. <br> Si selecciona no guardar, todos su cambios sin guardar se perderán permanentemente.",
+        type: "warning",
+        html: true,
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Guardar cambios y enviar",
+        cancelButtonText: "Descartar cambios y enviar",
+        closeOnConfirm: true,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            saveChanges(false);
+            preLoadDemanda(id_demanda);
+        } else {
+            changesdone = false;
+            preLoadDemanda(id_demanda);
+        }
+    });
+}
+
+function advertenciasDialog() {
+    swal({
+        title: "Advertencias graves",
+        text: "El último análisis realizado encontró " + errors + " advertencias importantes en tu demanda. Te recomendamos realizar un nuevo análisis hasta que no tengas más advertencias, antes de enviar tu demanda a un abogado.",
+        type: "warning",
+        html: true,
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: "Analizar de nuevo",
+        cancelButtonText: "Ignorar errores y enviar",
+        closeOnConfirm: true,
+        closeOnCancel: true
+    }, function (isConfirm) {
+        if (isConfirm) {
+            analizarDemanda();
+        } else {
+            errors = 0;
+            enviarConnectShow();
+        }
+    });
+}
+
+function enviarConnectShow() {
     if (changesdone) {
-        swal({
-            title: "¿Desea guardar sus cambios?",
-            text: "Para previsualizar su demanda, es requerido guardar o descartar los cambios realizados. <br> Si selecciona no guardar, todos su cambios sin guardar se perderán permanentemente.",
-            type: "warning",
-            html: true,
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Guardar cambios y enviar",
-            cancelButtonText: "Descartar cambios y enviar",
-            closeOnConfirm: true,
-            closeOnCancel: true
-        }, function (isConfirm) {
-            if (isConfirm) {
-                saveChanges();
-                enviarConnectShow();
-            } else {
-                changesdone = false;
-                preLoadDemanda(id_demanda);
-                enviarConnectShow();
-            }
-        });
+        changesDialog();
+        enviarConnectShow();
     } else {
         if (!analized) {
-        swal({
-            title: "¿Desea analizar su demanda?",
-            text: "Para enviar su demanda a un abogado le recomendamos que analice su demanda con nuestro sistema",
-            type: "warning",
-            html: true,
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Analizar",
-            cancelButtonText: "No analizar y enviar",
-            closeOnConfirm: true,
-            closeOnCancel: true
-        }, function (isConfirm) {
-            if (isConfirm) {
-                analizarDemanda();
+            analizedDialog();
+            enviarConnectShow();
+        } else {
+            if (errors > 0) {
+                advertenciasDialog();
+                enviarConnectShow();
             } else {
                 $('#toConnectModal').modal('show');
             }
-        });
-    } else {
-        if (errors > 0) {
-        swal({
-            title: "Advertencias graves",
-            text: "El último análisis realizado encontró " + errors + " advertencias importantes en tu demanda. Te recomendamos realizar un nuevo análisis hasta que no tengas más advertencias, antes de enviar tu demanda a un abogado.",
-            type: "warning",
-            html: true,
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Analizar de nuevo",
-            cancelButtonText: "Ignorar errores y enviar",
-            closeOnConfirm: true,
-            closeOnCancel: true
-        }, function (isConfirm) {
-            if (isConfirm) {
-                analizarDemanda();
-            } else {
-                $('#toConnectModal').modal('show');
-            }
-        });
-    } else {
-        $('#toConnectModal').modal('show');
-    }
-    }
+        }
     }
 }
 
@@ -792,12 +807,19 @@ function preLoadDemanda(id_demanda) {
             $('#cautelares_que_solicita').html(json.cautelares_que_solicita);
 
             changesdone = false;
+            analisisMarkClean();
+            analisisPopoverClean();
+
         },
         async: false
     });
 }
 
 function saveChanges() {
+    saveChanges(true);
+}
+
+function saveChanges(showNot) {
     $.ajax({
         type: 'POST',
         url: "DemandaS",
@@ -847,7 +869,10 @@ function saveChanges() {
             if (json == true) {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
                 console.log('si se actualizo');
-                swal("¡Cambios guardados!", "Todos los cambios fueron guardados con éxito", "success");
+                if (showNot) {
+                    swal("¡Cambios guardados!", "Todos los cambios fueron guardados con éxito", "success");
+                }
+
                 preLoadDemanda(id_demanda);
             } else {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
