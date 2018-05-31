@@ -701,7 +701,7 @@ function enviarConnect() {
             } else {
                 // Aqui debe modificar la pagina de alguna forma con jQuery para mostrar el mensaje
                 console.log('no se pudo');
-                alert('No tengo plata');
+                swal("¡No se puedo hacer el pago!", "Revisa tu saldo", "error");
             }
         },
         async: false

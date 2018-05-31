@@ -76,8 +76,7 @@ $(document).ready(function () {
             url: "DemandaS",
             dataSrc: '',
             data: {
-                'opcion': "state",
-                'state': "2",
+                'opcion': "pool"
             }
         },
         columns: [
@@ -94,7 +93,7 @@ $(document).ready(function () {
             {
                 targets: -1,
                 data: null,
-                defaultContent: '<a style="cursor: pointer; " id="tour_edit"><i class="material-icons" style="font-size:21px">mode_edit</i></a>'
+                defaultContent: '<a style="cursor: pointer; " id="tour_edit"><i class="material-icons" style="font-size:21px">play_circle_filled</i></a>'
             }
         ],
         language: {
@@ -164,6 +163,56 @@ function tour() {
                 acceptText: '¡Comenzar Experiencia!'
             }
         ]);
+}
+
+function hasAssigned() {
+    $.ajax({
+        type: 'GET',
+        url: "DemandaS",
+        //force to handle it as text
+        data: {
+            'opcion': "veces"
+        },
+        dataType: "text",
+        success: function (data) {
+
+            var json = $.parseJSON(data);
+            var e1 = 0, e2 = 0, e3 = 0, e4 = 0;
+
+            for (var i = 0; i < json.length; i++) {
+                var item = json[i];
+
+                var estado = item.estado;
+
+                switch (estado) {
+                    case "1":
+                        e1 += item.cuenta;
+                        break;
+                    case "2":
+                        e2 += item.cuenta;
+                        break;
+                    case "3":
+                        e2 += item.cuenta;
+                        break;
+                    case "4":
+                        e3 += item.cuenta;
+                        break;
+                    case "5":
+                        e4 += item.cuenta;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            $('#redaccion_num').empty().text(e1);
+            $('#espera_num').empty().text(e2);
+            $('#revisadas_num').empty().text(e3);
+            $('#enviadas_num').empty().text(e4);
+
+        },
+        async: false
+    });
 }
 
 function getEstadisticas() {
