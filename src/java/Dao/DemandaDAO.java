@@ -248,21 +248,13 @@ public class DemandaDAO {
         return true;
     }
 
-    public Demanda getDemandaHelpInfo(String id_ayudante) throws SQLException {
-        Demanda d = new Demanda();
+    public Boolean getDemandaHelpInfo(String id_ayudante) throws SQLException {
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery("select * from demanda where delete=1 and id_ayudante='" + id_ayudante + "'");
         while (rs.next()) {
-            d.setId_demanda(rs.getInt("id_demanda"));
-            d.setId_usuario(rs.getString("id_usuario"));
-            d.setTitulo(rs.getString("titulo"));
-            d.setPorcentaje(rs.getFloat("porcentaje"));
-            d.setFecha_creacion(rs.getTimestamp("fecha_creacion"));
-            d.setFecha_modificacion(rs.getTimestamp("fecha_modificacion"));
-            d.setFecha_autoguardado(rs.getTimestamp("fecha_autoguardado"));
-            d.setEstado(rs.getInt("estado"));
+            return true;
         }
-        return d;
+        return false;
     }
 
     public Demanda getDemandaHelp(String documento) throws SQLException {
