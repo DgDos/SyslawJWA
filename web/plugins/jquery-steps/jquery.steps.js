@@ -443,6 +443,12 @@ function getValidEnumValue(enumType, keyOrValue)
     }
 }
 
+function _goToStep(wizard, options, state, index)
+{
+    return paginationClick(wizard, options, state, index);
+}
+
+
 /**
  * Routes to the next step.
  *
@@ -1457,10 +1463,16 @@ $.fn.steps.remove = function (index)
  * @param index {Integer} An integer that belongs to the position of a step
  * @param step {Object} The step object to change
  **/
-$.fn.steps.setStep = function (index, step)
+$.fn.steps.setStep = function (step)
 {
-    throw new Error("Not yet implemented!");
+
+    var options = getOptions(this),
+        state = getState(this);
+
+    return _goToStep(this, options, state, step);
+
 };
+
 
 /**
  * Skips an certain amount of steps.

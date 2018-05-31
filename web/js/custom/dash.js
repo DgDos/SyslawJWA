@@ -15,7 +15,7 @@ $(document).ready(function () {
     // Para marcar la pagina activa
     $('#menu_default').removeClass("active");
     $('#menu_dash').addClass("active");
-     walkEnable = false;
+    walkEnable = false;
     if (walkEnable) {
         $.walk([
             {
@@ -68,7 +68,7 @@ $(document).ready(function () {
             }
         ]);
     }
-    
+
     getPlata();
     getEstadisticas();
 
@@ -106,7 +106,39 @@ function getEstadisticas() {
         success: function (data) {
 
             var json = $.parseJSON(data);
-            console.log(json);
+            var e1 = 0, e2 = 0, e3 = 0, e4 = 0;
+
+            for (var i = 0; i < json.length; i++) {
+                var item = json[i];
+
+                var estado = item.estado;
+
+                switch (estado) {
+                    case "1":
+                        e1 += item.cuenta;
+                        break;
+                    case "2":
+                        e2 += item.cuenta;
+                        break;
+                    case "3":
+                        e2 += item.cuenta;
+                        break;
+                    case "4":
+                        e3 += item.cuenta;
+                        break;
+                    case "5":
+                        e4 += item.cuenta;
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            $('#redaccion_num').empty().text(e1);
+            $('#espera_num').empty().text(e2);
+            $('#revisadas_num').empty().text(e3);
+            $('#enviadas_num').empty().text(e4);
+
         },
         async: false
     });
