@@ -50,9 +50,9 @@ public class PdfS extends HttpServlet {
             DemandaDAO d=new DemandaDAO();
             Demanda demanda=d.getDemandaById(idDemanda);
             PDF pdf=new PDF();
-            pdf.makePDF(demanda);
+            String url=pdf.makePDF(demanda);
             Gson gson=new Gson();
-            out.print(gson.toJson("http://localhost:8080/SyslawJWA/docs/"+demanda.getDte_id()+".pdf"));
+            out.print(gson.toJson(url+"\\"+demanda.getDte_id()+".pdf"));
         } catch (SQLException | URISyntaxException | ClassNotFoundException ex) {
             Logger.getLogger(PdfS.class.getName()).log(Level.SEVERE, null, ex);
         }
