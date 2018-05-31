@@ -836,7 +836,7 @@ h2 {
 */
 
 .analisis-button {
-        background-color: #b3b3b3;
+    background-color: #b3b3b3;
     color: #fff !important;
 }
 .analisis-button:hover {
@@ -859,4 +859,9 @@ h2 {
 
 .shorter-row {
     margin-bottom: -25px !important;
+}
+
+.modal.center .modal-dialog {
+    -webkit-transform: translate3d(0,0,0); 
+    position: absolute;
 }
