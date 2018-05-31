@@ -22,6 +22,7 @@ import com.itextpdf.text.Section;
 import com.itextpdf.text.pdf.PdfPCell;
 import com.itextpdf.text.pdf.PdfPTable;
 import com.itextpdf.text.pdf.PdfWriter;
+import java.io.File;
 import java.io.FileOutputStream;
 import java.util.Date;
 
@@ -42,19 +43,22 @@ public class PDF {
 
     }
 
-    public void makePDF(Demanda demanda) {
+    public String makePDF(Demanda demanda) {
         try {
             Document document = new Document();
-            String file = "F:\\11 Repositories\\NetBeansProjects no sync\\SyslawJWA\\web\\docs\\" + demanda.getDte_id() + ".pdf";
+            File f=new File("");
+            String file = "" + demanda.getDte_id() + ".pdf";
             PdfWriter.getInstance(document, new FileOutputStream(file));
             document.open();
             addMetaData(document, demanda.getDte_nom(), demanda.getFecha_creacion(), demanda.getTitulo(), demanda.getDem_nom());
             addTitlePage(document, demanda);
             addContent(document, demanda);
             document.close();
+            return f.getAbsolutePath();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        return "";
     }
 
     // iText allows to add metadata to the PDF which can be viewed in your Adobe
@@ -100,10 +104,10 @@ public class PDF {
         if (demanda.getDte_id_tipo() == 2) {
             demandante += "_) NIT(_) TI(X) CE(_) PASAPORTE(_)\n";
         }
-        if (demanda.getDte_id_tipo() == 3) {
+        if (demanda.getDte_id_tipo() == 4) {
             demandante += "_) NIT(_) TI(_) CE(X) PASAPORTE(_)\n";
         }
-        if (demanda.getDte_id_tipo() == 4) {
+        if (demanda.getDte_id_tipo() == 3) {
             demandante += "_) NIT(_) TI(_) CE(_) PASAPORTE(X)\n";
         }
         demandante += "Número: " + demanda.getDte_id() + "\n"
@@ -121,10 +125,10 @@ public class PDF {
             if (demanda.getDte_apo_id_tipo() == 2) {
                 demandante += "_) NIT(_) TI(X) CE(_) PASAPORTE(_)\n";
             }
-            if (demanda.getDte_apo_id_tipo() == 3) {
+            if (demanda.getDte_apo_id_tipo() == 4) {
                 demandante += "_) NIT(_) TI(_) CE(X) PASAPORTE(_)\n";
             }
-            if (demanda.getDte_apo_id_tipo() == 4) {
+            if (demanda.getDte_apo_id_tipo() == 3) {
                 demandante += "_) NIT(_) TI(_) CE(_) PASAPORTE(X)\n";
             }
             demandante += "Número: " + demanda.getDte_apo_id() + "\n"
@@ -146,10 +150,10 @@ public class PDF {
         if (demanda.getDem_id_tipo() == 2) {
             demandado += "_) NIT(_) TI(X) CE(_) PASAPORTE(_)\n";
         }
-        if (demanda.getDem_id_tipo() == 3) {
+        if (demanda.getDem_id_tipo() == 4) {
             demandado += "_) NIT(_) TI(_) CE(X) PASAPORTE(_)\n";
         }
-        if (demanda.getDem_id_tipo() == 4) {
+        if (demanda.getDem_id_tipo() == 3) {
             demandado += "_) NIT(_) TI(_) CE(_) PASAPORTE(X)\n";
         }
         demandado += "Número: " + demanda.getDem_id() + "\n"
