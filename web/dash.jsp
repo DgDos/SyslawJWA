@@ -1,19 +1,21 @@
 <%@page import="Model.Usuario"%>
 <%
-                            if (request.getSession().getAttribute("usuario") != null) {
-                                Usuario u = (Usuario) request.getSession().getAttribute("usuario");
-                                if(u.getTipo_usuario()==0){
-                                    response.sendRedirect("dash0");                                    
-                                }if(u.getTipo_usuario()==1){
-                                }if(u.getTipo_usuario()==2){
-                                    response.sendRedirect("dash2");
-                                }
-                            }
-                            else{
-                                response.sendRedirect("login");
-                            }
-                        %> 
-                        
+    if (request.getSession().getAttribute("usuario") != null) {
+        Usuario u = (Usuario) request.getSession().getAttribute("usuario");
+        if (u.getTipo_usuario() == 0) {
+            response.sendRedirect("dash0");
+        }
+        if (u.getTipo_usuario() == 1) {
+        }
+        if (u.getTipo_usuario() == 2) {
+            response.sendRedirect("dash2");
+        }
+    } else {
+        response.sendRedirect("login");
+        return;
+    }
+%> 
+
 <!DOCTYPE html>
 <html>
 
@@ -202,7 +204,7 @@
                                 <div class="card">
                                     <div class="body">
                                         <div class="row clearfix">
-                                            
+
                                             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 shorter-row" id="tour_redaccion">
 
                                                 <div class="info-box bg-blue hover-expand-effect">
@@ -259,7 +261,7 @@
                                             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
                                                 <div class="">
-                                                   <img class="d-block mx-auto mb-4" src="images/welcome.png" alt="" width="auto" style="margin-top: 25px; margin-bottom: 10px; width: 100%;">
+                                                    <img class="d-block mx-auto mb-4" src="images/welcome.png" alt="" width="auto" style="margin-top: 25px; margin-bottom: 10px; width: 100%;">
                                                 </div> 
                                             </div>
                                         </div>
