@@ -166,12 +166,7 @@
                                     <div class="col-xs-6 col-sm-6" style="margin-top: 5px">
                                         <h2>Demandas revisadas</h2>
                                     </div>
-                                    <div class="col-xs-12 col-sm-6 align-right">
-                                        <button type="button" data-toggle="modal" data-target="#nuevaDemanda" class="btn bg-syslaw waves-effect btn-no-shadow">
-                                            <i id="toogle-add-event-icon" class="material-icons">add</i>
-                                        </button>
-
-                                    </div>
+                                    
                                 </div>
 
                             </div>
@@ -201,20 +196,16 @@
                         </div>
                     </div>
 
-
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="padding: 0px; margin-top:-10px">
+                    
+                   
+                    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding: 0px; margin-top:-10px">
                         <div class="card" style="box-shadow: none" >
                             <div class="header bg-white add-event-header" style="background-color: #f1f1f1 !important;">
                                 <div class="row clearfix">
                                     <div class="col-xs-6 col-sm-6" style="margin-top: 5px">
-                                        <h2>Demandas pendientes de revisión</h2>
+                                        <h2>Pendientes de revisión</h2>
                                     </div>
-                                    <div class="col-xs-12 col-sm-6 align-right">
-                                        <button type="button" data-toggle="modal" data-target="#nuevaDemanda" class="btn bg-syslaw waves-effect btn-no-shadow">
-                                            <i id="toogle-add-event-icon" class="material-icons">add</i>
-                                        </button>
-
-                                    </div>
+                                    
                                 </div>
 
                             </div>
@@ -242,6 +233,43 @@
                             </div>
                         </div>
                     </div>
+                    
+                     <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" style="padding: 0px; margin-top:-10px">
+                        <div class="card" style="box-shadow: none" >
+                            <div class="header bg-white add-event-header" style="background-color: #f1f1f1 !important;">
+                                <div class="row clearfix">
+                                    <div class="col-xs-6 col-sm-6" style="margin-top: 5px">
+                                        <h2>En proceso de revisión</h2>
+                                    </div>
+                                    
+                                </div>
+
+                            </div>
+
+                            <div class="body" id="dashboard-container" style="background-color: #f1f1f1;">  
+
+                                <div class="card">
+                                    <div class="body">
+                                        <div class="table-responsive">
+                                            <table id="liststate3" class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Título</th>
+                                                        <th>Modificado</th>
+                                                        <th>Creado</th>
+                                                        <th>Ayudante</th>
+                                                        <th>Porcentaje</th>
+                                                    </tr>
+                                                </thead>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
 

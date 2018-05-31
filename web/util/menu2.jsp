@@ -21,7 +21,7 @@
         </li>
         <li class="header">INGRESOS</li>
         <li id="menu2_plata">
-            <a href="plata">
+            <a>
                 <i style="color: #ef9203" class="material-icons">attach_money</i>
                 <span>Mi Plata ($</span><span style="margin-left: 0px;" id="menu_plata_num">10.000</span><span style="margin-left: 0px;">)</span>
             </a>
