@@ -185,4 +185,19 @@ public class UsuarioDAO {
         return fin;
     }
 
+    boolean addMoney2(String id_ayudante) throws SQLException {
+        Statement statement = connection.createStatement();
+        ResultSet rs = statement.executeQuery("select dinero from usuario where delete=1 and documento='" + id_ayudante + "'");
+        rs.next();
+        int dinero=rs.getInt("dinero")+8000;
+        PreparedStatement preparedStatement = connection.prepareStatement("update usuario set dinero=" + dinero + " where documento='" + id_ayudante + "'");
+        preparedStatement.executeUpdate();
+        rs = statement.executeQuery("select dinero from usuario where delete=1 and documento='" + 10 + "'");
+        rs.next();
+        dinero=rs.getInt("dinero")+2000;
+        preparedStatement = connection.prepareStatement("update usuario set dinero=" + dinero + " where documento='" + 10 + "'");
+        preparedStatement.executeUpdate();
+        return true;
+    }
+
 }
