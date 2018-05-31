@@ -2,18 +2,17 @@
 <%
                             if (request.getSession().getAttribute("usuario") != null) {
                                 Usuario u = (Usuario) request.getSession().getAttribute("usuario");
-                                if(u.getTipo_usuario()==0){
-                                    response.sendRedirect("dash0");                                    
+                                if(u.getTipo_usuario()==0){    
+                                    response.sendRedirect("dash0");                               
                                 }if(u.getTipo_usuario()==1){
+                                    response.sendRedirect("dash"); 
                                 }if(u.getTipo_usuario()==2){
-                                    response.sendRedirect("dash2");
                                 }
                             }
                             else{
                                 response.sendRedirect("login");
                             }
                         %> 
-                        
 <!DOCTYPE html>
 <html>
 
@@ -157,7 +156,7 @@
                 </div>
                 <!-- #User Info -->
                 <!-- Menu -->
-                <%@include file="util/menu.jsp" %>
+                <%@include file="util/menu2.jsp" %>
 
                 <!-- #Menu -->
                 <!-- Footer -->
@@ -367,7 +366,7 @@
         <script src="js/pages/ui/tooltips-popovers.js"></script>
 
         <!-- Custom Js -->
-        <script src="js/custom/dash.js"></script>
+        <script src="js/custom/dash2.js"></script>
 
 
 

@@ -41,6 +41,27 @@
         <servlet-name>con_signup.html</servlet-name>
         <url-pattern>/connect_signup/*</url-pattern>
     </servlet-mapping>
+        
+    <servlet>
+        <servlet-name>dash0.jsp</servlet-name>
+        <jsp-file>/dash0.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dash0.jsp</servlet-name>
+        <url-pattern>/dash0/*</url-pattern>
+    </servlet-mapping>
+    
+            
+    <servlet>
+        <servlet-name>dash2.jsp</servlet-name>
+        <jsp-file>/dash2.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>dash2.jsp</servlet-name>
+        <url-pattern>/dash2/*</url-pattern>
+    </servlet-mapping>
+    
+            
     <servlet>
         <servlet-name>dash.jsp</servlet-name>
         <jsp-file>/dash.jsp</jsp-file>
@@ -49,6 +70,7 @@
         <servlet-name>dash.jsp</servlet-name>
         <url-pattern>/dash/*</url-pattern>
     </servlet-mapping>
+    
     <servlet>
         <servlet-name>dash_redaccion.jsp</servlet-name>
         <jsp-file>/dash_redaccion.jsp</jsp-file>

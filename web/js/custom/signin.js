@@ -20,8 +20,8 @@ function oscar() {
     
 }
 
-function andres() {
-    $('#correo').val("anfegave98@hotmail.com");
+function juan() {
+    $('#correo').val("juandavidpianista@gmail.com");
     $('#pass').val("123");
     
 }
