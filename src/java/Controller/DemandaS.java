@@ -229,7 +229,7 @@ public class DemandaS extends HttpServlet {
                 if (!d.getFundamentos().equals("")) {
                     conta++;
                 }
-                d.setAnexos("");
+                d.setAnexos(request.getParameter("anexos"));
                 if (!d.getAnexos().equals("")) {
                     conta++;
                 }

@@ -45,7 +45,7 @@ public class PDF {
     public void makePDF(Demanda demanda) {
         try {
             Document document = new Document();
-            String file = "C:\\Users\\FiJus\\Documents\\TrabajosSextoSemestre\\Emprendimiento\\SyslawJWA\\web\\docs\\" + demanda.getDte_id() + ".pdf";
+            String file = "F:\\11 Repositories\\NetBeansProjects no sync\\SyslawJWA\\web\\docs\\" + demanda.getDte_id() + ".pdf";
             PdfWriter.getInstance(document, new FileOutputStream(file));
             document.open();
             addMetaData(document, demanda.getDte_nom(), demanda.getFecha_creacion(), demanda.getTitulo(), demanda.getDem_nom());

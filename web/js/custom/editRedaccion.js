@@ -1,5 +1,7 @@
 ﻿var id_demanda;
 var changesdone = false;
+var analized = false;
+var errors = 0;
 var walkEnable = false;
 var tituloInicial = "";
 
@@ -293,9 +295,9 @@ function analizarDemanda() {
 
         $.ajax({
             type: 'GET',
-            url: "AnalizarDemanda",
+            url: "PdfS",
             data: {
-                'opcion': "analyze"
+                'id_demanda': id_demanda
             },
             dataType: "text",
             success: function (data) {
@@ -313,10 +315,10 @@ function analizarDemanda() {
 
                 for (var i = 0; i < json.length; i++) {
                     var not = json[i];
-                    var append = genNotAnalisis(not.campo, not.titulo, not.texto, not.tipo);
-                    analisisMarkError(not.campo, not.tipo);
-                    agregarPopoverError(not.campo, not.titulo, not.texto, not.tipo)
-                    switch (not.tipo) {
+                    var append = genNotAnalisis(not.id, not.titulo, not.content, not.code);
+                    analisisMarkError(not.id, not.code);
+                    agregarPopoverError(not.id, not.titulo, not.content, not.code)
+                    switch (not.code) {
                         case 1:
                             errores.append(append);
                             erroresCount++;
@@ -346,6 +348,9 @@ function analizarDemanda() {
                 $('#errores_count').text(erroresCount);
                 $('#advertencias_count').text(advertenciasCount);
                 $('#correctos_count').text(correctosCount);
+                
+                analized = true;
+                errors = erroresCount;        
 
 
             },
@@ -377,7 +382,7 @@ campos_nombres.set('dte_apo_nom', 'Nombre del apoderado');
 campos_nombres.set('dte_apo_id_tipo', 'Tipo de identificación');
 campos_nombres.set('dte_apo_id', 'Numero de identificación');
 campos_nombres.set('dte_apo_tar_pro', 'Tarjeta profesional No.');
-campos_nombres.set('dem_nom', 'Identificación del demandado');
+campos_nombres.set('dem_nom', 'Nombre del demandado');
 campos_nombres.set('dem_id_tipo', 'Tipo de id del demandado');
 campos_nombres.set('dem_id', 'Identificación del demandado');
 campos_nombres.set('dem_ciu', 'Ciudad de domicilio del demandado');
@@ -445,6 +450,9 @@ function genNotAnalisis(campo, titulo, texto, tipo) {
             break;
         case 3:
             buttonClass = "ab-green";
+            titulo = "Campo lleno";
+            texto = "No encontramos problemas en este campo";
+            
             break;
         default:
             break;
@@ -490,9 +498,6 @@ function analisisMarkClean() {
     $("form#demanda_wizard :input").parent('.form-line').removeClass().addClass("form-line");
 }
 
-function toConnectModalShow() {
-    $('#toConnectModal').modal('show');
-}
 
 function analisisGoTo(campo) {
 
@@ -602,8 +607,77 @@ function generatePDF() {
     }
 }
 
+function enviarConnectShow(){
+    if (changesdone) {
+        swal({
+            title: "¿Desea guardar sus cambios?",
+            text: "Para previsualizar su demanda, es requerido guardar o descartar los cambios realizados. <br> Si selecciona no guardar, todos su cambios sin guardar se perderán permanentemente.",
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Guardar cambios y enviar",
+            cancelButtonText: "Descartar cambios y enviar",
+            closeOnConfirm: true,
+            closeOnCancel: true
+        }, function (isConfirm) {
+            if (isConfirm) {
+                saveChanges();
+                enviarConnectShow();
+            } else {
+                changesdone = false;
+                preLoadDemanda(id_demanda);
+                enviarConnectShow();
+            }
+        });
+    } else {
+        if (!analized) {
+        swal({
+            title: "¿Desea analizar su demanda?",
+            text: "Para enviar su demanda a un abogado le recomendamos que analice su demanda con nuestro sistema",
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Analizar",
+            cancelButtonText: "No analizar y enviar",
+            closeOnConfirm: true,
+            closeOnCancel: true
+        }, function (isConfirm) {
+            if (isConfirm) {
+                analizarDemanda();
+            } else {
+                $('#toConnectModal').modal('show');
+            }
+        });
+    } else {
+        if (errors > 0) {
+        swal({
+            title: "Advertencias graves",
+            text: "El último análisis realizado encontró " + errors + " advertencias importantes en tu demanda. Te recomendamos realizar un nuevo análisis hasta que no tengas más advertencias, antes de enviar tu demanda a un abogado.",
+            type: "warning",
+            html: true,
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Analizar de nuevo",
+            cancelButtonText: "Ignorar errores y enviar",
+            closeOnConfirm: true,
+            closeOnCancel: true
+        }, function (isConfirm) {
+            if (isConfirm) {
+                analizarDemanda();
+            } else {
+                $('#toConnectModal').modal('show');
+            }
+        });
+    } else {
+        $('#toConnectModal').modal('show');
+    }
+    }
+    }
+}
+
 function enviarConnect() {
-    alert('enviando a abogado');
     $.ajax({
         type: 'POST',
         url: "DemandaS",
@@ -711,7 +785,7 @@ function preLoadDemanda(id_demanda) {
             }
             $('#pruebas').html(json.pruebas);
             $('#fundamentos').html(json.fundamentos);
-            $('#anexos ').html(json.anexos);
+            $('#anexos').html(json.anexos);
             if (json.solicito_cautelares) {
                 $('#solicito_cautelares').prop('checked', true).change();
             }
@@ -761,7 +835,7 @@ function saveChanges() {
             'tengo_pruebas': $("#tengo_pruebas").is(":checked"),
             'pruebas': $('#pruebas').val(),
             'fundamentos': $('#fundamentos').val(),
-            'anexos ': $('#anexos ').val(),
+            'anexos': $('#anexos').val(),
             'solicito_cautelares': $("#solicito_cautelares").is(":checked"),
             'cautelares_que_solicita': $('#cautelares_que_solicita').val()
 

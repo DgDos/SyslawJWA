@@ -199,7 +199,7 @@
                                         <button style="background-color: #4543c6 !important;"  type="button" data-original-title="Análisis automático de la demanda" onclick='analizarDemanda()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i class="material-icons">spellcheck</i>
                                         </button>
-                                        <button style="background-color: #365ed4 !important;"  type="button" data-original-title="Enviar para revisión de abogado en SYSLAW Connect"  onclick='toConnectModalShow()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
+                                        <button style="background-color: #365ed4 !important;"  type="button" data-original-title="Enviar para revisión de abogado en SYSLAW Connect"  onclick='enviarConnectShow()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i class="material-icons">people</i>
                                         </button>
                                         <button style="background-color: #1e85e9 !important;"  type="button" data-original-title="Previsualizar PDF"  onclick='generatePDF()' data-toggle="tooltip" data-placement="bottom" class="btn bg-syslaw waves-effect btn-no-shadow">
@@ -662,7 +662,7 @@
                                                 <div class="panel-heading" role="tab" id="headingOne_19">
                                                     <h4 class="panel-title">
                                                         <a role="button" data-toggle="collapse" href="#collapseOne_19" aria-expanded="true" aria-controls="collapseOne_19">
-                                                            <i class="material-icons">cancel</i> Errores (<span id="errores_count">test</span>)
+                                                            <i class="material-icons">cancel</i> Advertencias (<span id="errores_count">test</span>)
                                                         </a>
                                                     </h4>
                                                 </div>
@@ -693,14 +693,14 @@
                                                 <div class="panel-heading" role="tab" id="headingTwo_19">
                                                     <h4 class="panel-title">
                                                         <a role="button" data-toggle="collapse" href="#collapseTwo_19" aria-expanded="false" aria-controls="collapseTwo_19">
-                                                            <i class="material-icons">warning</i> Advertencias (<span id="advertencias_count">test</span>)
+                                                            <i class="material-icons">warning</i> Sugerencias (<span id="advertencias_count">test</span>)
                                                         </a>
                                                     </h4>
                                                 </div>
                                                 <div id="collapseTwo_19" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingTwo_19">
                                                     <div class="panel-body">
                                                         <div class="row clearfix" id="analisis_advertencias_area">
-                                                            
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -716,7 +716,7 @@
                                                 <div id="collapseThree_19" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree_19">
                                                     <div class="panel-body">
                                                         <div class="row clearfix" id="analisis_correctos_area">
-                                                            
+
 
 
                                                         </div>
@@ -734,7 +734,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="modal fade" id="toConnectModal" tabindex="-1" role="dialog" style="display: none;">
                 <div class="modal-dialog modal-lg" role="document">
                     <div class="modal-content">
@@ -755,7 +755,7 @@
                                 </button>
                                 -->
                                 <button onclick="analizarDemanda()" id="analizarButton" type="button" class="pull-right btn btn-info btn-sm btn-transparent">
-                                    <i class="material-icons">money</i><span style="margin-bottom: 7px; margin-left: 5px">$15.000</span>
+                                    <i class="material-icons">money</i><span style="margin-bottom: 7px; margin-left: 5px">$<span id="plata_num">15.000</span></span>
                                 </button>
 
                             </div>
@@ -763,12 +763,23 @@
 
                                 <div class="row" id="collapseAnalisis">
 
-                                    <div class="col-xs-12 ol-sm-12 col-md-12 col-lg-12">
-                                        
+                                    <div class="col-xs-4">
+
+                                        <img src="landing/images/graphic2.png" alt="graphic" class="img-fluid rounded align-self-start mr-lg-5 mb-5 mb-lg-0">
+
+                                    </div>
+
+                                    <div class="col-xs-8">
+                                        <h2>Ayuda profesional para tu demanda</h2>
+                                        <p class="lead">Syslaw Connect te conecta con la ayuda que necesitas</p>
+                                        <p>Aunque el servicio gratuito te ayuda a redactar tu demanda, es posible que quieras contar con la guía personalizada de un abogado. Con Syslaw Connect, un abogado estara ahí, a muy bajo costo, para resolver tus dudas y corregir tu demanda. 
+                                        </p>
+                                        <h4>El servicio de 1 revisión te cuesta: $10.000</h4>
                                     </div>
                                 </div>
                             </div>
                             <div class="modal-footer">
+                                <button type="button" onclick="enviarConnect()" class="btn btn-lg btn-primary waves-effect">PAGAR Y ENVIAR A ABOGADO</button>
                                 <button type="button" class="btn btn-lg btn-default waves-effect" data-dismiss="modal">SALIR</button>
                             </div>
                         </form>

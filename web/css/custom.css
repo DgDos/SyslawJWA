@@ -856,3 +856,7 @@ h2 {
 .ab-green:hover {
     background-color: #4caf50 !important;
 }
+
+.shorter-row {
+    margin-bottom: -25px !important;
+}

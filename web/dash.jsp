@@ -46,7 +46,7 @@
 
         <!--WaitMe Css-->
         <link href="plugins/waitme/waitMe.css" rel="stylesheet" />
-        
+
         <!-- material walkthrough -->
         <link href="plugins/material-walkthrough/material-walkthrough.css" rel="stylesheet" />
 
@@ -170,6 +170,9 @@
                                         <h2><span id="tour_misdemandas">Mi Dashboard</span></h2>
                                     </div>
                                     <div class="col-xs-12 col-sm-6 align-right">
+                                        <button type="button" onclick="tour()" class="btn bg-grey waves-effect btn-no-shadow">
+                                            <i id="toogle-add-event-icon" class="material-icons">directions</i>
+                                        </button>
                                         <button id="tour_addbutton" type="button" data-toggle="modal" data-target="#nuevaDemanda" class="btn bg-syslaw waves-effect btn-no-shadow">
                                             <i id="toogle-add-event-icon" class="material-icons">add</i>
                                         </button>
@@ -184,122 +187,66 @@
                                 <div class="card">
                                     <div class="body">
                                         <div class="row clearfix">
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="tour_redaccion">
+                                            
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 shorter-row" id="tour_redaccion">
+
                                                 <div class="info-box bg-blue hover-expand-effect">
-                                                    <div class="icon">
-                                                        <i class="material-icons">mode_edit</i>
-                                                    </div>
+                                                    <a href="redaccion">
+                                                        <div class="icon">
+                                                            <i class="material-icons">mode_edit</i>
+                                                        </div>
+                                                    </a>
                                                     <div class="content">
                                                         <div class="text">DEM. EN REDACCION</div>
                                                         <div class="number" id="redaccion_num">3</div>
                                                     </div>
-                                                </div>
+                                                </div> 
                                             </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="tour_revision">
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 shorter-row" id="tour_revision">
                                                 <div class="info-box bg-cyan hover-expand-effect">
-                                                    <div class="icon">
-                                                        <i class="material-icons">access_time</i>
-                                                    </div>
+                                                    <a href="revision">
+                                                        <div class="icon">
+                                                            <i class="material-icons">access_time</i>
+                                                        </div>
+                                                    </a>
                                                     <div class="content">
                                                         <div class="text">CONNECT EN ESPERA</div>
                                                         <div class="number" id="espera_num">3</div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="tour_revision2">
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 shorter-row" id="tour_revision2">
                                                 <div class="info-box bg-light-green hover-expand-effect">
-                                                    <div class="icon">
-                                                        <i class="material-icons">rate_review</i>
-                                                    </div>
+                                                    <a href="revision">
+                                                        <div class="icon">
+                                                            <i class="material-icons">rate_review</i>
+                                                        </div>
+                                                    </a>
                                                     <div class="content">
                                                         <div class="text">CONNECT REVISADOS</div>
                                                         <div class="number" id="revisadas_num">2</div>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" id="tour_enviadas">
+                                            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 shorter-row"  id="tour_enviadas">
                                                 <div class="info-box bg-orange hover-expand-effect">
-                                                    <div class="icon">
-                                                        <i class="material-icons">playlist_add_check</i>
-                                                    </div>
+                                                    <a href="enviadas">
+                                                        <div class="icon">
+                                                            <i class="material-icons">playlist_add_check</i>
+                                                        </div>
+                                                    </a>
                                                     <div class="content">
                                                         <div class="text">DEM. ENVIADAS</div>
                                                         <div class="number" id="enviadas_num">3</div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 
-
-                                        <div class="row clearfix">
-                                            <!-- Visitors -->
-                                            
-                                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                                <div class="card">
-                                                    <div class="body bg-cyan">
-                                                        <div class="m-b--35 font-bold">LATEST SOCIAL TRENDS</div>
-                                                        <ul class="dashboard-stat-list">
-                                                            <li>
-                                                                #socialtrends
-                                                                <span class="pull-right">
-                                                                    <i class="material-icons">trending_up</i>
-                                                                </span>
-                                                            </li>
-                                                            <li>
-                                                                #materialdesign
-                                                                <span class="pull-right">
-                                                                    <i class="material-icons">trending_up</i>
-                                                                </span>
-                                                            </li>
-                                                            <li>#adminbsb</li>
-                                                            <li>#freeadmintemplate</li>
-                                                            <li>#bootstraptemplate</li>
-                                                            <li>
-                                                                #freehtmltemplate
-                                                                <span class="pull-right">
-                                                                    <i class="material-icons">trending_up</i>
-                                                                </span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
+                                                <div class="">
+                                                   <img class="d-block mx-auto mb-4" src="images/welcome.png" alt="" width="auto" style="margin-top: 25px; margin-bottom: 10px; width: 100%;">
+                                                </div> 
                                             </div>
-                                            <!-- #END# Latest Social Trends -->
-                                            <!-- Answered Tickets -->
-                                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-                                                <div class="card">
-                                                    <div class="body bg-teal">
-                                                        <div class="font-bold m-b--35">ANSWERED TICKETS</div>
-                                                        <ul class="dashboard-stat-list">
-                                                            <li>
-                                                                TODAY
-                                                                <span class="pull-right"><b>12</b> <small>TICKETS</small></span>
-                                                            </li>
-                                                            <li>
-                                                                YESTERDAY
-                                                                <span class="pull-right"><b>15</b> <small>TICKETS</small></span>
-                                                            </li>
-                                                            <li>
-                                                                LAST WEEK
-                                                                <span class="pull-right"><b>90</b> <small>TICKETS</small></span>
-                                                            </li>
-                                                            <li>
-                                                                LAST MONTH
-                                                                <span class="pull-right"><b>342</b> <small>TICKETS</small></span>
-                                                            </li>
-                                                            <li>
-                                                                LAST YEAR
-                                                                <span class="pull-right"><b>4 225</b> <small>TICKETS</small></span>
-                                                            </li>
-                                                            <li>
-                                                                ALL
-                                                                <span class="pull-right"><b>8 752</b> <small>TICKETS</small></span>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <!-- #END# Answered Tickets -->
                                         </div>
                                     </div>
                                 </div>
@@ -396,7 +343,7 @@
         <script src="plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
         <script src="plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
         <script src="plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
-        
+
         <!-- Material Walkthrough -->
         <script src="plugins/material-walkthrough/material-walkthrough.js"></script>
 
