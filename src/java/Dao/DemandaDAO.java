@@ -19,6 +19,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -211,6 +213,19 @@ public class DemandaDAO {
     }
 
     public boolean endState(int id_demanda, int nextState) throws SQLException {
+        if (nextState == 2) {
+            try {
+                UsuarioDAO u = new UsuarioDAO();
+                DemandaDAO d = new DemandaDAO();
+                Demanda demanda = d.getDemandaById(id_demanda);
+                boolean dinero = u.removeMoney(demanda.getId_usuario());
+                if (!dinero) {
+                    return dinero;
+                }
+            } catch (URISyntaxException | ClassNotFoundException | IOException ex) {
+                Logger.getLogger(DemandaDAO.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
         PreparedStatement preparedStatement;
         preparedStatement = connection.prepareStatement("update demanda set estado=? where id_demanda=?");
         preparedStatement.setInt(1, nextState);

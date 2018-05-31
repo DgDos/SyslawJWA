@@ -53,15 +53,15 @@ public class UsuarioS extends HttpServlet {
         Usuario user = (Usuario) request.getSession().getAttribute("usuario");
         try{
             String opcion = request.getParameter("opcion");
+            UsuarioDAO u = new UsuarioDAO();
             if (opcion.equals("addMoney")) {
                 int cantidad = Integer.parseInt(request.getParameter("dinero"));
-                UsuarioDAO u = new UsuarioDAO();
                 user.setDinero(user.getDinero()+cantidad);
                 request.getSession().setAttribute("usuario", user);
                 out.println(u.updateMoney(user.getDocumento(), user.getDinero()));
             }
             if(opcion.equals("getMoney")){
-                out.println(g.toJson(user.getMoney()));
+                out.println(g.toJson(u.getMoney(user.getDocumento())));
             }
             if(opcion.equals("lessMoney")){
                 

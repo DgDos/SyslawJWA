@@ -119,27 +119,5 @@ public class Usuario {
         this.dinero = dinero;
     }
 
-    public String getMoney() {
-        String money = "" + this.dinero;
-        String transformation = "";
-        int cont=1;
-        for (int i = money.length()-1; i >= 0; i--) {
-            transformation += money.charAt(i);
-            if (cont % 3 == 0) {
-                if (cont == 3 || cont == 9) {
-                    transformation += '.';
-                } else {
-                    transformation += "'";
-                }
-            }
-            cont++;
-        }
-        String fin="";
-        for(int i=transformation.length()-1;i>=0;i--){
-            fin+=transformation.charAt(i);
-        }
-        System.out.println(fin);
-        return fin;
-    }
 
 }
